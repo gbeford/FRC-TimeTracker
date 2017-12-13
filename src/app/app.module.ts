@@ -4,7 +4,10 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AppComponent } from './app.component';
-import { MatToolbarModule, MatButtonModule, MatMenuModule, MatIconModule, MatDatepickerModule } from '@angular/material';
+import {
+  MatToolbarModule, MatButtonModule, MatMenuModule, MatIconModule, MatDatepickerModule,
+  MatFormFieldModule, MatNativeDateModule, MatInputModule
+} from '@angular/material';
 import { ReportsComponent } from './reports/reports.component';
 import { MenuComponent } from './menu/menu.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
@@ -32,6 +35,9 @@ import { TimeTrackerService } from './time-tracker/time-tracker.service';
     MatButtonModule,
     MatMenuModule,
     MatIconModule,
+    MatFormFieldModule,
+    MatNativeDateModule,
+    MatInputModule,
     MatDatepickerModule,
     AppRoutingModule
   ],

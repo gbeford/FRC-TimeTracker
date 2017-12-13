@@ -7,7 +7,7 @@ import { FormGroup, FormControl, FormBuilder, Validators } from '@angular/forms'
   styleUrls: ['./time-tracker.component.css']
 })
 export class TimeTrackerComponent implements OnInit {
-  title = 'Student Time Tracker';
+  title = '';
 
   public timeTrackerForm: FormGroup;
   constructor(private fb: FormBuilder) { }

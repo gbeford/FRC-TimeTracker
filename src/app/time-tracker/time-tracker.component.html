@@ -1,34 +1,31 @@
-<div class="container-fluid">
-  <div class="row">
+<!-- {{missions | json}} -->
+<form class="form-horizontal" *ngIf="timeTrackerForm" [formGroup]="timeTrackerForm" novalidate (ngSubmit)="save()">
 
-    <!-- {{missions | json}} -->
-    <form class="form-horizontal" *ngIf="timeTrackerForm" [formGroup]="timeTrackerForm" novalidate (ngSubmit)="save()">
-      <div class="panel panel-default">
-        <div class='panel-heading'>
-          <span>{{title}}</span>
-        </div>
-        <div class="panel-body">
+  <span>{{title}}</span>
 
-          <div class='form-group col-md-2'>
-            <label for='name'>Name</label>
-            <input class='form-control' id='name' placeholder='Name' type='text' formControlName="name">
-          </div>
 
-          <div class='form-group col-md-2'>
-            <label for='date'>Date</label>
-            <mat-form-field>
-              <input matInput [matDatepicker]="picker" placeholder="Choose a date">
-              <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-              <mat-datepicker #picker></mat-datepicker>
-            </mat-form-field>
-          </div>
-        </div>
-        <div class='col-md-12'>
-          <button type="submit" [disabled]="!timeTrackerForm.valid">Save</button>
-        </div>
-      </div>
-    </form>
-  </div>
-  <!--row div-->
+<div>
+  <mat-form-field>
+    <input matInput placeholder="Name">
+  </mat-form-field>
+  <!-- <mat-form-field>
+    <mat-select placeholder="Favorite food">
+      <mat-option *ngFor="let food of foods" [value]="food.value">
+        {{ food.viewValue }}
+      </mat-option>
+    </mat-select>
+  </mat-form-field> -->
 </div>
-<!-- /.container -->
+<div>
+  <mat-form-field>
+    <input matInput [matDatepicker]="picker" placeholder="Choose a date">
+    <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+    <mat-datepicker #picker></mat-datepicker>
+  </mat-form-field>
+
+</div>
+  <div class=''>
+    <button type="submit" [disabled]="!timeTrackerForm.valid">Save</button>
+  </div>
+
+</form>
