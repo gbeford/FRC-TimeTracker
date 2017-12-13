@@ -16,13 +16,19 @@
 
           <div class='form-group col-md-2'>
             <label for='date'>Date</label>
-            <input class='form-control' id='date' placeholder='Date' type='text' formControlName="date">
-          </div>          
+            <mat-form-field>
+              <input matInput [matDatepicker]="picker" placeholder="Choose a date">
+              <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+              <mat-datepicker #picker></mat-datepicker>
+            </mat-form-field>
+          </div>
         </div>
         <div class='col-md-12'>
           <button type="submit" [disabled]="!timeTrackerForm.valid">Save</button>
         </div>
       </div>
     </form>
-  </div>  <!--row div-->
-</div><!-- /.container -->
+  </div>
+  <!--row div-->
+</div>
+<!-- /.container -->
