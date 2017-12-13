@@ -1,26 +1,19 @@
-<mat-toolbar color="menu-teal">
+<mat-toolbar color="">
 
   <button mat-icon-button [matMenuTriggerFor]="appMenu">
     <mat-icon>menu</mat-icon>
   </button>
 
   <mat-menu #appMenu="matMenu">
-
     <a [routerLink]="['/']" mat-menu-item>
       <span>Home </span>
     </a>
-   
-
-    <a [routerLink]="['/trackTime']" mat-menu-item>     
+    <a [routerLink]="['/trackTime']" mat-menu-item>
       <span>Track Time</span>
     </a>
-
-
-    <!-- <button md-menu-item>      -->
     <a href="mailto:john@shrewsburyrobotics.org?Subject=Mindstorm" mat-menu-item>
       <span> mail </span>
     </a>
-    <!-- </button> -->
   </mat-menu>
 
   <span class="spacer"> </span>
