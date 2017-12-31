@@ -8,6 +8,10 @@ import {
   MatToolbarModule, MatButtonModule, MatMenuModule, MatIconModule, MatDatepickerModule,
   MatFormFieldModule, MatNativeDateModule, MatInputModule
 } from '@angular/material';
+import { AngularFirestoreModule } from 'angularfire2/firestore';
+import { AngularFireModule } from 'angularfire2';
+import { AngularFireAuthModule } from 'angularfire2/auth';
+import { environment } from '../environments/environment';
 import { ReportsComponent } from './reports/reports.component';
 import { MenuComponent } from './menu/menu.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
@@ -39,7 +43,10 @@ import { TimeTrackerService } from './time-tracker/time-tracker.service';
     MatNativeDateModule,
     MatInputModule,
     MatDatepickerModule,
-    AppRoutingModule
+    AppRoutingModule,
+    AngularFirestoreModule,
+    AngularFireModule.initializeApp(environment.firebase_467_timeTracker),
+    AngularFireAuthModule,
   ],
   providers: [TimeTrackerService],
   bootstrap: [AppComponent]

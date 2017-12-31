@@ -1,6 +1,10 @@
 
 
-/* Defines the team entity */
+/* Defines the time tracker entity */
 export interface ITimeTraxker {
-    timeTrackerId: number;
+    stdentId: number;
+    inTime: Date;
+    outTime: Date;
+    total: number;
+
 }

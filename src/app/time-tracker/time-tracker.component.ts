@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, FormBuilder, Validators } from '@angular/forms';
+import { TimeTrackerService } from './time-tracker.service';
+import { Observable } from 'rxjs/Observable';
+import { IStudent } from './model/student';
 
 @Component({
   selector: 'app-tracker',
@@ -8,20 +11,39 @@ import { FormGroup, FormControl, FormBuilder, Validators } from '@angular/forms'
 })
 export class TimeTrackerComponent implements OnInit {
   title = '';
-
+  enterBtn = '';
+  in = '';
+  student: IStudent[];
   public timeTrackerForm: FormGroup;
-  constructor(private fb: FormBuilder) { }
+  constructor(private formBuilder: FormBuilder, private timeTrackerService: TimeTrackerService) { }
 
-  ngOnInit() { this.timeTrackerForm = this.createForm(); }
+  ngOnInit( ): void {
+    this.createForm();
+  }
+
 
   createForm() {
-    const group = this.fb.group({
-      name: [''],
+    this.timeTrackerForm = this.formBuilder.group({
+      studentID: ['', , [<any>Validators.required, <any>Validators.maxLength(25)]],
       date: [''],
     });
-    return group;
   }
-  save() {  }
 
+
+  getStudentInfo() {
+     this.timeTrackerService.getStudent(this.timeTrackerForm.controls['studentID'].value).subscribe(s => this.student = s);
+    }
+
+
+  checkIfSignedIn() {
+
+    if (this.in) {
+      this.enterBtn = 'In';
+    } else {
+      this.enterBtn = 'out';
+    }
+}
+
+  save() { }
 
 }
