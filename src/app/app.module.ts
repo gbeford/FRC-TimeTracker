@@ -8,6 +8,7 @@ import {
   MatToolbarModule, MatButtonModule, MatMenuModule, MatIconModule, MatDatepickerModule,
   MatFormFieldModule, MatNativeDateModule, MatInputModule
 } from '@angular/material';
+import { MatAutocompleteModule } from '@angular/material/autocomplete';
 import { AngularFirestoreModule } from 'angularfire2/firestore';
 import { AngularFireModule } from 'angularfire2';
 import { AngularFireAuthModule } from 'angularfire2/auth';
@@ -43,6 +44,7 @@ import { TimeTrackerService } from './time-tracker/time-tracker.service';
     MatNativeDateModule,
     MatInputModule,
     MatDatepickerModule,
+    MatAutocompleteModule,
     AppRoutingModule,
     AngularFirestoreModule,
     AngularFireModule.initializeApp(environment.firebase_467_timeTracker),

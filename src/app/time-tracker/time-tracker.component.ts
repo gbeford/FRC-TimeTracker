@@ -1,7 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, FormBuilder, Validators } from '@angular/forms';
-import { TimeTrackerService } from './time-tracker.service';
 import { Observable } from 'rxjs/Observable';
+import { startWith } from 'rxjs/operators/startWith';
+import { map } from 'rxjs/operators/map';
+
+import { TimeTrackerService } from './time-tracker.service';
 import { IStudent } from './model/student';
 
 @Component({
@@ -13,37 +16,79 @@ export class TimeTrackerComponent implements OnInit {
   title = '';
   enterBtn = '';
   in = '';
-  student: IStudent[];
+  students: IStudent[];
   public timeTrackerForm: FormGroup;
-  constructor(private formBuilder: FormBuilder, private timeTrackerService: TimeTrackerService) { }
 
-  ngOnInit( ): void {
+  studentCtrl: FormControl = new FormControl();
+  filteredOptions: Observable<IStudent[]>;
+
+  constructor(private formBuilder: FormBuilder,
+    private timeTrackerService: TimeTrackerService) { }
+
+
+
+  ngOnInit(): void {
     this.createForm();
+    this.getAllStudents();
+    this.checkIfSignedIn();
+  }
+
+  studentAutoComplete() {
+    this.filteredOptions = this.studentCtrl.valueChanges
+      .pipe(
+      startWith(''),
+      map(val => this.filterStudents(val))
+      );
   }
 
 
   createForm() {
+    console.log('here');
     this.timeTrackerForm = this.formBuilder.group({
-      studentID: ['', , [<any>Validators.required, <any>Validators.maxLength(25)]],
-      date: [''],
+      studentCtrl: ['', [<any>Validators.required]],
+      // studentID: [''],
     });
   }
 
+  getAllStudents() {
+    this.timeTrackerService.getStudents().subscribe(s => {
+      this.students = s;
+      this.studentAutoComplete();
+    });
+  }
 
-  getStudentInfo() {
-     this.timeTrackerService.getStudent(this.timeTrackerForm.controls['studentID'].value).subscribe(s => this.student = s);
-    }
+  filterStudents(fName: string) {
+    return this.students.filter(students =>
+      students.firstName.toLowerCase().indexOf(fName.toLowerCase()) === 0);
+  }
+
+
+  getStudentInfo(): Observable<IStudent[]> {
+    return this.timeTrackerService.getStudent(this.timeTrackerForm.controls['studentID'].value);
+  }
 
 
   checkIfSignedIn() {
 
-    if (this.in) {
+    if (this.in || null) {
       this.enterBtn = 'In';
     } else {
       this.enterBtn = 'out';
     }
-}
+  }
 
-  save() { }
+  save() {
+
+    // this.getStudentInfo().subscribe(s => {
+
+    //   if () {
+    //     this.timeTrackerService.saveStudentTime(s[0].studentId, in_time, out_time, timeTotal);
+    //   }
+    // });
+
+
+
+
+  }
 
 }

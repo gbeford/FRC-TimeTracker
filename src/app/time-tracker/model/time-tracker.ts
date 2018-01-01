@@ -1,10 +1,9 @@
 
 
 /* Defines the time tracker entity */
-export interface ITimeTraxker {
-    stdentId: number;
+export interface ITimeTracker {
+    studentId: string;
     inTime: Date;
-    outTime: Date;
-    total: number;
-
+    outTime?: Date;
+    total?: number;
 }

@@ -1,13 +1,32 @@
 <!-- {{missions | json}} -->
-<form class="form-horizontal" *ngIf="timeTrackerForm" [formGroup]="timeTrackerForm" novalidate (ngSubmit)="save()">
+<form class="form-horizontal" *ngIf="timeTrackerForm" novalidate (ngSubmit)="save()">
 
   <span>{{title}}</span>
 
 
-<div>
+<!-- <div>
   <mat-form-field>
     <input matInput placeholder="Student ID" formControlName="studentID">
   </mat-form-field>
+</div> -->
+
+<!-- <mat-autocomplete>
+  <mat-option *ngFor="let option of options" [value]="option">
+    {{ option }}
+  </mat-option>
+</mat-autocomplete> -->
+
+<mat-form-field class="example-full-width">
+  <input matInput placeholder="Student" aria-label="Student" [matAutocomplete]="auto" [formControl]="studentCtrl">
+  <mat-autocomplete #auto="matAutocomplete">
+    <mat-option *ngFor="let student of filteredOptions | async" [value]="student.firstName + ' ' + student.lastName + ' | ' + student.studentId">
+      <img style="vertical-align:middle;" height="25" />
+      <span>{{ student.firstName }} {{student.lastName}}</span> |
+      <small>Student ID: {{student.studentId}}</small>
+    </mat-option>
+  </mat-autocomplete>
+</mat-form-field>
+
   <!-- <mat-form-field>
     <mat-select placeholder="Favorite food">
       <mat-option *ngFor="let food of foods" [value]="food.value">
@@ -15,15 +34,15 @@
       </mat-option>
     </mat-select>
   </mat-form-field> -->
-</div>
-<div>
+
+<!-- <div>
   <mat-form-field>
     <input matInput [matDatepicker]="picker" placeholder="Choose a date" formControlName="date">
     <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
     <mat-datepicker #picker></mat-datepicker>
   </mat-form-field>
 
-</div>
+</div> -->
   <div class=''>
     <button type="submit" [disabled]="!timeTrackerForm.valid">{{enterBtn}}</button>
   </div>
