@@ -90,9 +90,9 @@ export class TimeTrackerComponent implements OnInit {
     if (this.selectedStudent) {
       console.log(this.selectedStudent.status);
       if (this.selectedStudent.status === 'in' || this.selectedStudent.status === undefined) {
-        this.enterBtn = 'In';
+        this.enterBtn = 'In Time';
       } else {
-        this.enterBtn = 'Out';
+        this.enterBtn = 'Out Time';
       }
     }
   }
