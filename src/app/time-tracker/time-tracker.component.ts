@@ -98,6 +98,16 @@ export class TimeTrackerComponent implements OnInit {
   }
 
   save() {
+    if (this.selectedStudent.status === 'in' || this.selectedStudent.status === undefined) {
+      this.timeTrackerService.saveStudentTime(this.selectedStudent);
+    } else {
+      this.timeTrackerService.updateStudentTime(this.selectedStudent);
+    }
+
+
+  }
+
+
 
     // this.getStudentInfo().subscribe(s => {
 
@@ -105,10 +115,4 @@ export class TimeTrackerComponent implements OnInit {
     //     this.timeTrackerService.saveStudentTime(s[0].studentId, in_time, out_time, timeTotal);
     //   }
     // });
-
-
-
-
-  }
-
 }

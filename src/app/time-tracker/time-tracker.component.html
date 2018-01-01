@@ -1,5 +1,5 @@
 <!-- {{missions | json}} -->
-<form class="form-horizontal" *ngIf="timeTrackerForm" novalidate (ngSubmit)="save()">
+<form class="form-horizontal" *ngIf="timeTrackerForm" novalidate>
 
   <span>{{title}}</span>
 
@@ -17,7 +17,7 @@
 </mat-autocomplete> -->
 
 <mat-form-field class="example-full-width">
-  <input matInput placeholder="Student" aria-label="Student" [matAutocomplete]="auto" [formControl]="studentCtrl">
+  <input matInput placeholder="Student" aria-label="Student" [matAutocomplete]="auto" [formControl]="studentCtrl" required>
   <mat-autocomplete #auto="matAutocomplete" [displayWith]="displayFn">
     <mat-option *ngFor="let student of filteredOptions | async" [value]="student">
       <img style="vertical-align:middle;" height="25" />
@@ -44,7 +44,7 @@
 
 </div> -->
   <div class='' *ngIf='selectedStudent'>
-    <button type="submit" [disabled]="!timeTrackerForm.valid">{{enterBtn}}</button>
+    <button type="button" (click)='save()'>{{enterBtn}}</button>
   </div>
 
 </form>
