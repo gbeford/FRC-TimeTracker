@@ -18,8 +18,8 @@
 
 <mat-form-field class="example-full-width">
   <input matInput placeholder="Student" aria-label="Student" [matAutocomplete]="auto" [formControl]="studentCtrl">
-  <mat-autocomplete #auto="matAutocomplete">
-    <mat-option *ngFor="let student of filteredOptions | async" [value]="student.firstName + ' ' + student.lastName + ' | ' + student.studentId">
+  <mat-autocomplete #auto="matAutocomplete" [displayWith]="displayFn">
+    <mat-option *ngFor="let student of filteredOptions | async" [value]="student">
       <img style="vertical-align:middle;" height="25" />
       <span>{{ student.firstName }} {{student.lastName}}</span> |
       <small>Student ID: {{student.studentId}}</small>
@@ -43,7 +43,7 @@
   </mat-form-field>
 
 </div> -->
-  <div class=''>
+  <div class='' *ngIf='selectedStudent'>
     <button type="submit" [disabled]="!timeTrackerForm.valid">{{enterBtn}}</button>
   </div>
 

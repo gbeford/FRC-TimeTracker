@@ -18,7 +18,7 @@ export class TimeTrackerService {
 
   // get list of all students
   getStudents(): Observable<IStudent[]> {
-    const studentCollection = this.afs.collection<IStudent>('students', ref => ref.orderBy('lastName'));
+    const studentCollection = this.afs.collection<IStudent>('students', ref => ref.orderBy('firstName'));
     const students = studentCollection.valueChanges();
     return students;
   }

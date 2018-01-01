@@ -17,6 +17,7 @@ export class TimeTrackerComponent implements OnInit {
   enterBtn = '';
   in = '';
   students: IStudent[];
+  selectedStudent: IStudent;
   public timeTrackerForm: FormGroup;
 
   studentCtrl: FormControl = new FormControl();
@@ -30,16 +31,10 @@ export class TimeTrackerComponent implements OnInit {
   ngOnInit(): void {
     this.createForm();
     this.getAllStudents();
-    this.checkIfSignedIn();
+    this.watchStudent();
   }
 
-  studentAutoComplete() {
-    this.filteredOptions = this.studentCtrl.valueChanges
-      .pipe(
-      startWith(''),
-      map(val => this.filterStudents(val))
-      );
-  }
+
 
 
   createForm() {
@@ -50,6 +45,7 @@ export class TimeTrackerComponent implements OnInit {
     });
   }
 
+  // get list of students for autoComplete
   getAllStudents() {
     this.timeTrackerService.getStudents().subscribe(s => {
       this.students = s;
@@ -57,23 +53,47 @@ export class TimeTrackerComponent implements OnInit {
     });
   }
 
-  filterStudents(fName: string) {
+  studentAutoComplete() {
+    this.filteredOptions = this.studentCtrl.valueChanges
+      .pipe(
+      // startWith(''),
+      startWith({} as IStudent),
+      map(students => students && typeof students === 'object' ? students.firstName : students),
+      map(firstName => firstName ? this.filterStudents(firstName) : this.students.slice())
+      // map(val => this.filterStudents(val))
+      );
+  }
+
+  filterStudents(fName: string): IStudent[] {
     return this.students.filter(students =>
       students.firstName.toLowerCase().indexOf(fName.toLowerCase()) === 0);
   }
 
+  displayFn(student: IStudent): string {
+    return student ? student.firstName + ' ' + student.lastName : '';
+  }
 
-  getStudentInfo(): Observable<IStudent[]> {
+  watchStudent() {
+    this.studentCtrl.valueChanges.subscribe(s => {
+      this.selectedStudent = s;
+      this.checkIfSignedIn();
+    });
+  }
+
+
+  getStudentById(): Observable<IStudent[]> {
     return this.timeTrackerService.getStudent(this.timeTrackerForm.controls['studentID'].value);
   }
 
 
   checkIfSignedIn() {
-
-    if (this.in || null) {
-      this.enterBtn = 'In';
-    } else {
-      this.enterBtn = 'out';
+    if (this.selectedStudent) {
+      console.log(this.selectedStudent.status);
+      if (this.selectedStudent.status === 'in' || this.selectedStudent.status === undefined) {
+        this.enterBtn = 'In';
+      } else {
+        this.enterBtn = 'Out';
+      }
     }
   }
 
