@@ -104,6 +104,7 @@ export class TimeTrackerComponent implements OnInit {
       this.timeTrackerService.updateStudentTime(this.selectedStudent);
     }
 
+    this.studentCtrl.reset();
 
   }
 
