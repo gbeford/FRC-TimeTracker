@@ -85,16 +85,16 @@ export class TimeTrackerComponent implements OnInit {
   checkIfSignedIn() {
     if (this.selectedStudent) {
       console.log(this.selectedStudent);
-      if (this.selectedStudent.status === 'in' || this.selectedStudent.status === undefined) {
-        this.enterBtn = 'Sign In';
+      if (this.selectedStudent.status === 'out' || this.selectedStudent.status === undefined) {
+        this.enterBtn = 'Sign in';
       } else {
-        this.enterBtn = 'Sign Out';
+        this.enterBtn = 'Sign out';
       }
     }
   }
 
   save() {
-    if (this.selectedStudent.status === 'in' || this.selectedStudent.status === undefined) {
+    if (this.selectedStudent.status === 'out' || this.selectedStudent.status === undefined) {
       this.timeTrackerService.saveStudentTime(this.selectedStudent);
     } else {
       this.timeTrackerService.updateStudentTime(this.selectedStudent);
