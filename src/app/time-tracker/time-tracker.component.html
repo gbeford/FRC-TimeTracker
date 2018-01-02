@@ -20,7 +20,6 @@
   <input matInput placeholder="Student" aria-label="Student" [matAutocomplete]="auto" [formControl]="studentCtrl" required>
   <mat-autocomplete #auto="matAutocomplete" [displayWith]="displayFn">
     <mat-option *ngFor="let student of filteredOptions | async" [value]="student">
-      <img style="vertical-align:middle;" height="25" />
       <span>{{ student.firstName }} {{student.lastName}}</span> |
       <small>Student ID: {{student.studentId}}</small>
     </mat-option>

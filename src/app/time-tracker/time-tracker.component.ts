@@ -1,8 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, FormBuilder, Validators } from '@angular/forms';
 import { Observable } from 'rxjs/Observable';
-import { startWith } from 'rxjs/operators/startWith';
-import { map } from 'rxjs/operators/map';
+import { map, tap, startWith, debounceTime } from 'rxjs/operators';
 
 import { TimeTrackerService } from './time-tracker.service';
 import { IStudent } from './model/student';
@@ -27,15 +26,11 @@ export class TimeTrackerComponent implements OnInit {
     private timeTrackerService: TimeTrackerService) { }
 
 
-
   ngOnInit(): void {
     this.createForm();
     this.getAllStudents();
     this.watchStudent();
   }
-
-
-
 
   createForm() {
     console.log('here');
@@ -56,21 +51,22 @@ export class TimeTrackerComponent implements OnInit {
   studentAutoComplete() {
     this.filteredOptions = this.studentCtrl.valueChanges
       .pipe(
-      // startWith(''),
-      startWith({} as IStudent),
-      map(students => students && typeof students === 'object' ? students.firstName : students),
-      map(firstName => firstName ? this.filterStudents(firstName) : this.students.slice())
-      // map(val => this.filterStudents(val))
+      debounceTime(200),
+      startWith(this.studentCtrl.value),
+      map(val => this.displayFn(val)),
+      map(val => this.filterStudents(val))
       );
   }
 
   filterStudents(fName: string): IStudent[] {
-    return this.students.filter(students =>
-      students.firstName.toLowerCase().indexOf(fName.toLowerCase()) === 0);
+    return fName && typeof fName === 'string' ?
+      this.students.filter(student =>
+        student.firstName.toLowerCase().indexOf(fName.toLowerCase()) === 0)
+      : this.students;
   }
 
-  displayFn(student: IStudent): string {
-    return student ? student.firstName + ' ' + student.lastName : '';
+  displayFn(value: any): string {
+    return value && typeof value === 'object' ? `${value.firstName} ${value.lastName}` : value;
   }
 
   watchStudent() {
@@ -88,11 +84,11 @@ export class TimeTrackerComponent implements OnInit {
 
   checkIfSignedIn() {
     if (this.selectedStudent) {
-      console.log(this.selectedStudent.status);
+      console.log(this.selectedStudent);
       if (this.selectedStudent.status === 'in' || this.selectedStudent.status === undefined) {
-        this.enterBtn = 'In Time';
+        this.enterBtn = 'Sign In';
       } else {
-        this.enterBtn = 'Out Time';
+        this.enterBtn = 'Sign Out';
       }
     }
   }
@@ -110,10 +106,10 @@ export class TimeTrackerComponent implements OnInit {
 
 
 
-    // this.getStudentInfo().subscribe(s => {
+  // this.getStudentInfo().subscribe(s => {
 
-    //   if () {
-    //     this.timeTrackerService.saveStudentTime(s[0].studentId, in_time, out_time, timeTotal);
-    //   }
-    // });
+  //   if () {
+  //     this.timeTrackerService.saveStudentTime(s[0].studentId, in_time, out_time, timeTotal);
+  //   }
+  // });
 }
