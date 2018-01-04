@@ -7,4 +7,5 @@ export interface ITimeTracker {
     inTime: Date;
     outTime?: Date;
     total?: number;
+    points?: number;
 }

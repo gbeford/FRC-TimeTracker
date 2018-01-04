@@ -77,7 +77,9 @@ export class TimeTrackerService {
       const inTime = val[0].inTime;
       const compareTimes = date.getTime() - inTime.getTime();
       const totalTime = Math.round((compareTimes / (1000 * 60 * 60) * 100)) / 100;
+      const totalPoints = Math.floor(totalTime / 3);
       console.log(val[0].id);
+      console.log('total points ' + totalPoints);
 
       this.afs.doc(`timeTracker/${val[0].id}`).set({
         outTime: date,
