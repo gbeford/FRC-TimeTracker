@@ -1,0 +1,45 @@
+<form class="form-horizontal" *ngIf="studentTimeReportForm" novalidate>
+
+  <span>{{title}}</span>
+  <div>
+    <mat-form-field>
+      <input matInput placeholder="Student ID" formControlName="studentID">
+    </mat-form-field>
+  </div>
+
+  <div>
+    <mat-form-field>
+      <input matInput placeholder='Student ID' type='text' formControlName="studentId" required>
+      <div [hidden]="studentId.controls['teamName'].valid || studentId.controls['studentId'].pristine && !submitted" class="alert alert-danger">
+        Team name is required !
+      </div>
+    </mat-form-field>
+  </div>
+
+  <div>
+    <mat-form-field>
+      <input matInput [matDatepicker]="picker" placeholder="Choose a date" formControlName="inDate">
+      <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+      <mat-datepicker #picker></mat-datepicker>
+    </mat-form-field>
+  </div>
+  <div>
+    <mat-form-field>
+      <input matInput [matDatepicker]="picker" placeholder="Choose a date" formControlName="outDate">
+      <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+      <mat-datepicker #picker></mat-datepicker>
+    </mat-form-field>
+  </div>
+
+  <div>
+    <button class='trackerBtn' type="button" (click)='run()'>Submit</button>
+  </div>
+
+  <div *ngIf=''>
+    <label class='' for='student_name'>{{studentName}}</label>
+    <label class='' for='student_ID'>{{studentID}}</label>
+    <label class='' for='total_hours'>{{totalHours}}</label>
+    <label class='' for='total-points'>{{totalPoints}}</label>
+ </div>
+
+</form>

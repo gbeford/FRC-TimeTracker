@@ -49,20 +49,6 @@ export class TimeTrackerService {
     const timeCollection = this.afs.collection<ITimeTracker>('timeTracker', ref => ref.where('studentId', '==', student.studentId)
       .where('createDate', '==', createDate).where('outTime', '==', null));
 
-    // timeCollection.valueChanges().subscribe(val => {
-    //   if (val) {
-    //     const inTime = val[0].inTime;
-    //     const compareTimes = date.getTime() - inTime.getTime();
-    //     const totalTime = compareTimes / 1000 * 60 * 60;
-    //     console.log(totalTime);
-
-
-
-    //     // outTime: date.toISOString().split('T')[0],
-    //     //   total: null
-    //   }
-    // });
-
     const toUpdate = timeCollection.snapshotChanges().map(actions => {
       return actions.map(action => {
         console.log(action);
@@ -89,10 +75,16 @@ export class TimeTrackerService {
         status: 'out'
       }, { merge: true });
     });
+  }
 
+  // report data
 
-
-
+  getStudentTimeTrackerInfo(studentId: string, startDate: Date, endDate: Date): Observable<ITimeTracker[]> {
+    const reportCollection = this.afs.collection<ITimeTracker>('timeTracker', ref => ref.where('studentId', '==', studentId)
+      .where('createDate', 'between', startDate && endDate)).orderByValue('startDate');
+    const trackerInfo = reportCollection.valueChanges();
+    console.log(trackerInfo);
+    return trackerInfo;
 
 
   }

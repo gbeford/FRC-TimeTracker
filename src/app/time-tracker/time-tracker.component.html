@@ -3,19 +3,6 @@
 
   <span>{{title}}</span>
 
-
-<!-- <div>
-  <mat-form-field>
-    <input matInput placeholder="Student ID" formControlName="studentID">
-  </mat-form-field>
-</div> -->
-
-<!-- <mat-autocomplete>
-  <mat-option *ngFor="let option of options" [value]="option">
-    {{ option }}
-  </mat-option>
-</mat-autocomplete> -->
-
 <mat-form-field class="autoComplete-full-width">
   <input matInput placeholder="Student" aria-label="Student" [matAutocomplete]="auto" [formControl]="studentCtrl" required>
   <mat-autocomplete #auto="matAutocomplete" [displayWith]="displayFn">
@@ -26,22 +13,7 @@
   </mat-autocomplete>
 </mat-form-field>
 
-  <!-- <mat-form-field>
-    <mat-select placeholder="Favorite food">
-      <mat-option *ngFor="let food of foods" [value]="food.value">
-        {{ food.viewValue }}
-      </mat-option>
-    </mat-select>
-  </mat-form-field> -->
 
-<!-- <div>
-  <mat-form-field>
-    <input matInput [matDatepicker]="picker" placeholder="Choose a date" formControlName="date">
-    <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-    <mat-datepicker #picker></mat-datepicker>
-  </mat-form-field>
-
-</div> -->
   <div  *ngIf='selectedStudent'>
     <button class='trackerBtn' type="button" (click)='save()'>{{enterBtn}}</button>
   </div>
