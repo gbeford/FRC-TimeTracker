@@ -78,12 +78,11 @@ export class TimeTrackerService {
       const compareTimes = date.getTime() - inTime.getTime();
       const totalTime = Math.round((compareTimes / (1000 * 60 * 60) * 100)) / 100;
       const totalPoints = Math.floor(totalTime / 3);
-      console.log(val[0].id);
-      console.log('total points ' + totalPoints);
 
       this.afs.doc(`timeTracker/${val[0].id}`).set({
         outTime: date,
-        total: totalTime
+        total: totalTime,
+        points: totalPoints
       }, { merge: true });
 
       this.afs.doc(`students/${student.studentId}`).set({
