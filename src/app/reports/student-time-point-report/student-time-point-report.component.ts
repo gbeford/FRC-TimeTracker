@@ -42,13 +42,16 @@ export class StudentTimePointReportComponent implements OnInit {
 
   run() {
     // get students data
-    this.timeTrackerService.getStudentTimeTrackerInfo(this.studentTimeReportForm.controls['studentID'].value,
+    this.timeTrackerService.getStudentTimeTrackerInfo(this.studentTimeReportForm.controls['studentId'].value,
       this.studentTimeReportForm.controls['inDate'].value, this.studentTimeReportForm.controls['outDate'].value).subscribe(s => {
         this.report = s;
-        console.log(s);
+        console.log('values ' + this.studentTimeReportForm.controls['studentId'].value,
+          this.studentTimeReportForm.controls['inDate'].value,
+          this.studentTimeReportForm.controls['outDate'].value);
+        console.log('report ' + this.report);
 
       });
-    this.timeTrackerService.getStudent(this.studentTimeReportForm.controls['studentID'].value);
+    this.timeTrackerService.getStudent(this.studentTimeReportForm.controls['studentId'].value);
     this.show = true;
   }
 

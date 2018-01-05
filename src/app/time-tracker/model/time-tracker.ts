@@ -4,6 +4,7 @@
 export interface ITimeTracker {
     studentId: string;
     createDate: string;
+    createDateTime: Date;
     inTime: Date;
     outTime?: Date;
     total?: number;
