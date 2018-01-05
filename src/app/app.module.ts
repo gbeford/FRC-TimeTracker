@@ -20,6 +20,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { HomeComponent } from './home/home.component';
 import { TimeTrackerComponent } from './time-tracker/time-tracker.component';
 import { TimeTrackerService } from './time-tracker/time-tracker.service';
+import { StudentTimePointReportComponent } from './reports/student-time-point-report/student-time-point-report.component';
 
 @NgModule({
   declarations: [
@@ -28,7 +29,8 @@ import { TimeTrackerService } from './time-tracker/time-tracker.service';
     ReportsComponent,
     MenuComponent,
     PageNotFoundComponent,
-    HomeComponent
+    HomeComponent,
+    StudentTimePointReportComponent
   ],
   imports: [
     BrowserModule,
