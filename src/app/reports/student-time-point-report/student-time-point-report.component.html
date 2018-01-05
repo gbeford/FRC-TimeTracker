@@ -1,4 +1,4 @@
-<form class="form-horizontal" *ngIf="studentTimeReportForm" novalidate>
+<form class="form-horizontal" *ngIf="timeTrackerForm" novalidate>
 
   <span>{{title}}</span>
   <div>
@@ -10,9 +10,9 @@
   <div>
     <mat-form-field>
       <input matInput placeholder='Student ID' type='text' formControlName="studentId" required>
-      <div [hidden]="studentId.controls['teamName'].valid || studentId.controls['studentId'].pristine && !submitted" class="alert alert-danger">
-        Team name is required !
-      </div>
+      <!-- <div [hidden]="studentId.controls['teamName'].valid || studentId.controls['studentId'].pristine && !submitted" class="alert alert-danger">
+         Student ID is required !
+      </div> -->
     </mat-form-field>
   </div>
 

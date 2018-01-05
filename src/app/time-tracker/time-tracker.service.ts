@@ -8,6 +8,7 @@ import { take } from 'rxjs/operators';
 @Injectable()
 export class TimeTrackerService {
 
+  student: IStudent[];
   constructor(private afs: AngularFirestore) { }
 
   // get student by id
@@ -83,12 +84,10 @@ export class TimeTrackerService {
 
   getStudentTimeTrackerInfo(studentId: string, startDate: Date, endDate: Date): Observable<ITimeTracker[]> {
     const reportCollection = this.afs.collection<ITimeTracker>('timeTracker', ref => ref.where('studentId', '==', studentId)
-      .where('createDate', 'between', startDate && endDate)).orderByValue('startDate');
+      .where('createDate', '>=', startDate).where('createDate', '<=', 'endDate').orderBy('startDate', 'asc'));
     const trackerInfo = reportCollection.valueChanges();
     console.log(trackerInfo);
     return trackerInfo;
-
-
   }
 
 
