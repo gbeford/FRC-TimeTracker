@@ -31,6 +31,7 @@ export class TimeTrackerService {
     const trackStudentTime: ITimeTracker = {
       studentId: student.studentId,
       createDate: date.toISOString().split('T')[0],
+      createDateTime: date,
       inTime: date,
       outTime: null,
       total: null
@@ -84,9 +85,9 @@ export class TimeTrackerService {
 
   getStudentTimeTrackerInfo(studentId: string, startDate: Date, endDate: Date): Observable<ITimeTracker[]> {
     const reportCollection = this.afs.collection<ITimeTracker>('timeTracker', ref => ref.where('studentId', '==', studentId)
-      .where('createDate', '>=', startDate).where('createDate', '<=', 'endDate').orderBy('startDate', 'asc'));
+      .where('createDateTime', '>=', startDate).where('createDateTime', '<=', endDate).orderBy('createDateTime', 'asc'));
     const trackerInfo = reportCollection.valueChanges();
-    console.log(trackerInfo);
+
     return trackerInfo;
   }
 

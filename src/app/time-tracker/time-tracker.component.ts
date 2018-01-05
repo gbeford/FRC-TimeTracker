@@ -12,7 +12,7 @@ import { IStudent } from './model/student';
   styleUrls: ['./time-tracker.component.css']
 })
 export class TimeTrackerComponent implements OnInit {
-  title = '';
+  title = 'Hours / Points Tracker';
   enterBtn = '';
   in = '';
   students: IStudent[];

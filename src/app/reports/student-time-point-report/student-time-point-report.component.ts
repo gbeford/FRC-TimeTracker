@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormControl, FormBuilder, Validators } from '@angular/forms';
+import { FormGroup, FormControl, FormBuilder, Validators, ReactiveFormsModule } from '@angular/forms';
 import { Observable } from 'rxjs/Observable';
 import { ITimeTracker } from '../../time-tracker/model/time-tracker';
 import { TimeTrackerService } from '../../time-tracker/time-tracker.service';
@@ -17,20 +17,21 @@ export class StudentTimePointReportComponent implements OnInit {
   totalHours = '';
   totalPoints = '';
   studentID = '';
-
-  public timeTrackerForm: FormGroup;
+  show = false;
+  public studentTimeReportForm: FormGroup;
 
 
   constructor(private formBuilder: FormBuilder,
-  private timeTrackerService: TimeTrackerService) { }
+    private timeTrackerService: TimeTrackerService) { }
 
   ngOnInit() {
+    this.createForm();
   }
 
   createForm() {
     console.log('here');
-    this.timeTrackerForm = this.formBuilder.group({
-      studentId: ['', [<any>Validators.required, <any>Validators.maxLength(6)]],
+    this.studentTimeReportForm = this.formBuilder.group({
+      studentId: ['', [<any>Validators.required, <any>Validators.maxLength(7)]],
       inDate: ['', [<any>Validators.required]],
       outDate: ['', [<any>Validators.required]]
 
@@ -38,18 +39,20 @@ export class StudentTimePointReportComponent implements OnInit {
   }
 
 
-
-
   run() {
     // get students data
-    this.timeTrackerService.getStudentTimeTrackerInfo(this.timeTrackerForm.controls['studentID'].value,
-      this.timeTrackerForm.controls['inDate'].value, this.timeTrackerForm.controls['outDate'].value).subscribe(s => {
-      this.report = s;
-      console.log(s);
+    this.timeTrackerService.getStudentTimeTrackerInfo(this.studentTimeReportForm.controls['studentId'].value,
+      this.studentTimeReportForm.controls['inDate'].value, this.studentTimeReportForm.controls['outDate'].value).subscribe(s => {
+        this.report = s;
+        console.log('values ' + this.studentTimeReportForm.controls['studentId'].value,
+          this.studentTimeReportForm.controls['inDate'].value,
+          this.studentTimeReportForm.controls['outDate'].value);
+        console.log('report ' + this.report);
 
-});
-    this.timeTrackerService.getStudent(this.timeTrackerForm.controls['studentID'].value);
-    }
+      });
+    this.timeTrackerService.getStudent(this.studentTimeReportForm.controls['studentId'].value);
+    this.show = true;
+  }
 
 
 }
