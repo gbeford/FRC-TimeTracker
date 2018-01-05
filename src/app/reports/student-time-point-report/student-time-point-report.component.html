@@ -1,36 +1,36 @@
 <form class="form-horizontal" [formGroup]="studentTimeReportForm" novalidate (ngSubmit)="run()">
 
   <h1>{{title}}</h1>
+  <div *ngIf='!this.show'>
+    <div>
+      <mat-form-field>
+        <input matInput placeholder='Student ID' type='text' formControlName="studentId" required>
+        <div [hidden]="studentTimeReportForm.controls['studentId'].valid || studentTimeReportForm.controls['studentId'].pristine && !submitted"
+          class="alert alert-danger">
+          Student ID is required !
+        </div>
+      </mat-form-field>
+    </div>
 
-  <div>
-    <mat-form-field>
-      <input matInput placeholder='Student ID' type='text' formControlName="studentId" required>
-      <div [hidden]="studentTimeReportForm.controls['studentId'].valid || studentTimeReportForm.controls['studentId'].pristine && !submitted"
-        class="alert alert-danger">
-        Student ID is required !
-      </div>
-    </mat-form-field>
-  </div>
+    <div>
+      <mat-form-field>
+        <input matInput [matDatepicker]="picker1" placeholder="Choose a start date" formControlName="inDate" required>
+        <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
+        <mat-datepicker #picker1></mat-datepicker>
+      </mat-form-field>
+    </div>
+    <div>
+      <mat-form-field>
+        <input matInput [matDatepicker]="picker2" placeholder="Choose a end date" formControlName="outDate" required>
+        <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
+        <mat-datepicker #picker2></mat-datepicker>
+      </mat-form-field>
+    </div>
 
-  <div>
-    <mat-form-field>
-      <input matInput [matDatepicker]="picker1" placeholder="Choose a start date" formControlName="inDate" required>
-      <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
-      <mat-datepicker #picker1></mat-datepicker>
-    </mat-form-field>
+    <div>
+      <button class='trackerBtn'> submit</button>
+    </div>
   </div>
-  <div>
-    <mat-form-field>
-      <input matInput [matDatepicker]="picker2" placeholder="Choose a end date" formControlName="outDate" required>
-      <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
-      <mat-datepicker #picker2></mat-datepicker>
-    </mat-form-field>
-  </div>
-
-  <div>
-    <button class='trackerBtn'> submit</button>
-  </div>
-
   <div *ngIf='this.show'>
     <div>
       <label class='' for='student_name'>Student Info</label>
@@ -44,6 +44,12 @@
     <div>
       <label class='' for='total-points'>Total Points</label>
       <label class='' for='total-points'>{{totalPoints}}</label>
+    </div>
+
+    <div>
+      <a class='trackerBtn' [routerLink]="['/studentTimeReport']">
+        <span > track again</span>
+      </a>
     </div>
   </div>
 

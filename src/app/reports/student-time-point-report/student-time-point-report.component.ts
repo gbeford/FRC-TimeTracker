@@ -47,16 +47,16 @@ export class StudentTimePointReportComponent implements OnInit {
     this.timeTrackerService.getStudentTimeTrackerInfo(this.studentTimeReportForm.controls['studentId'].value,
       this.studentTimeReportForm.controls['inDate'].value, this.studentTimeReportForm.controls['outDate'].value).subscribe(s => {
         this.report = s;
-        // console.log('values ' + this.studentTimeReportForm.controls['studentId'].value,
-        //   this.studentTimeReportForm.controls['inDate'].value,
-        //   this.studentTimeReportForm.controls['outDate'].value);
+        console.log('values ' + this.studentTimeReportForm.controls['studentId'].value,
+          this.studentTimeReportForm.controls['inDate'].value,
+          this.studentTimeReportForm.controls['outDate'].value);
         console.log('report ', this.report);
-        console.log('points ', this.report[0].points);
-        console.log('hours ', this.report[0].total);
 
         for (let i = 0; i < this.report.length; i++) {
-          this.totalPoints = this.totalPoints + this.report[0].points;
-          this.totalHours = this.totalHours + this.report[0].total;
+          console.log(i);
+          this.totalPoints = this.totalPoints + this.report[i].points;
+          console.log('hours total ' + this.totalHours);
+          this.totalHours = this.totalHours + this.report[i].totalHrs;
         }
         console.log('point total ' + this.totalPoints);
         console.log('hours total ' + this.totalHours);
