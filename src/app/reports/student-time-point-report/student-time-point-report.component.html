@@ -5,8 +5,9 @@
   <div>
     <mat-form-field>
       <input matInput placeholder='Student ID' type='text' formControlName="studentId" required>
-      <div [hidden]="studentTimeReportForm.controls['studentId'].valid || studentTimeReportForm.controls['studentId'].pristine && !submitted" class="alert alert-danger">
-         Student ID is required !
+      <div [hidden]="studentTimeReportForm.controls['studentId'].valid || studentTimeReportForm.controls['studentId'].pristine && !submitted"
+        class="alert alert-danger">
+        Student ID is required !
       </div>
     </mat-form-field>
   </div>
@@ -31,10 +32,19 @@
   </div>
 
   <div *ngIf='this.show'>
-    <label class='' for='student_name'>{{studentName}}</label>
-    <label class='' for='student_ID'>{{studentID}}</label>
-    <label class='' for='total_hours'>{{totalHours}}</label>
-    <label class='' for='total-points'>{{totalPoints}}</label>
- </div>
+    <div>
+      <label class='' for='student_name'>Student Info</label>
+      <label class='' for='student_name'>{{studentName}}</label>
+      <label class='' for='student_ID'>{{studentID}}</label>
+    </div>
+    <div>
+      <label class='' for='total_hours'>Total Hours</label>
+      <label class='' for='total_hours'>{{totalHours}}</label>
+    </div>
+    <div>
+      <label class='' for='total-points'>Total Points</label>
+      <label class='' for='total-points'>{{totalPoints}}</label>
+    </div>
+  </div>
 
 </form>
