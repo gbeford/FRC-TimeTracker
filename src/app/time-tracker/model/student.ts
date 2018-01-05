@@ -7,4 +7,5 @@ export interface IStudent {
     email: string;
     grade: number;
     status?: string;
+    checkInTime?: Date;
 }

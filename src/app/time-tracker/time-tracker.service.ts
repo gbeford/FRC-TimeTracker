@@ -39,6 +39,7 @@ export class TimeTrackerService {
 
     const studentCollection = this.afs.doc(`students/${student.studentId}`);
     student.status = 'in';
+    student.checkInTime = date;
     studentCollection.set(student, { merge: true });
   }
 
@@ -72,7 +73,8 @@ export class TimeTrackerService {
       }, { merge: true });
 
       this.afs.doc(`students/${student.studentId}`).set({
-        status: 'out'
+        status: 'out',
+        checkInTime: null
       }, { merge: true });
     });
   }

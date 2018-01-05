@@ -15,6 +15,7 @@
 
 
   <div  *ngIf='selectedStudent'>
+    <div *ngIf="selectedStudent.status=='in'">{{selectedStudent.firstName}} checked in at {{selectedStudent.checkInTime | date}}</div>
     <button class='trackerBtn' type="button" (click)='save()'>{{enterBtn}}</button>
   </div>
 
