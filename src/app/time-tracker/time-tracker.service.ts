@@ -34,8 +34,9 @@ export class TimeTrackerService {
       createDateTime: date,
       inTime: date,
       outTime: null,
-      total: null
+      totalHrs: null
     };
+
     const timeCollection = this.afs.collection<ITimeTracker>('timeTracker');
     timeCollection.add(trackStudentTime);
 
@@ -54,7 +55,7 @@ export class TimeTrackerService {
 
     const toUpdate = timeCollection.snapshotChanges().map(actions => {
       return actions.map(action => {
-        console.log(action);
+        // console.log(action);
         const data = action.payload.doc.data() as ITimeTracker;
         const id = action.payload.doc.id;
         return { id, ...data };
@@ -70,7 +71,7 @@ export class TimeTrackerService {
 
       this.afs.doc(`timeTracker/${val[0].id}`).set({
         outTime: date,
-        total: totalTime,
+        totalHrs: totalTime,
         points: totalPoints
       }, { merge: true });
 
@@ -84,6 +85,7 @@ export class TimeTrackerService {
   // report data
 
   getStudentTimeTrackerInfo(studentId: string, startDate: Date, endDate: Date): Observable<ITimeTracker[]> {
+     endDate = new Date(endDate.setHours(23, 59, 59, 0));
     const reportCollection = this.afs.collection<ITimeTracker>('timeTracker', ref => ref.where('studentId', '==', studentId)
       .where('createDateTime', '>=', startDate).where('createDateTime', '<=', endDate).orderBy('createDateTime', 'asc'));
     const trackerInfo = reportCollection.valueChanges();

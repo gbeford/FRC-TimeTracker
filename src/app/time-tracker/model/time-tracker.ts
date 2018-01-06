@@ -7,6 +7,6 @@ export interface ITimeTracker {
     createDateTime: Date;
     inTime: Date;
     outTime?: Date;
-    total?: number;
+    totalHrs?: number;
     points?: number;
 }
