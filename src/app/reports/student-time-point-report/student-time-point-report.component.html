@@ -33,23 +33,28 @@
   </div>
   <div *ngIf='this.show'>
     <div>
-      <label class='' for='student_name'>Student Info</label>
-      <label class='' for='student_name'>{{studentName}}</label>
-      <label class='' for='student_ID'>{{studentID}}</label>
+      <label class='infoLabel' for='student_name'>Date Range:</label>
+      {{startDate | date:"MM/dd/yy"}} - {{endDate | date:"MM/dd/yy"}}
     </div>
     <div>
-      <label class='' for='total_hours'>Total Hours</label>
+      <label class='infoLabel' for='student_name'>Student Info:</label>
+      <label class='' for='student_name'>{{studentName}}  </label>
+
+    </div>
+    <div>
+      <label class='infoLabel' for='total_hours'>Total Hours:</label>
       <label class='' for='total_hours'>{{totalHours}}</label>
     </div>
     <div>
-      <label class='' for='total-points'>Total Points</label>
+      <label class='infoLabel' for='total-points'>Total Points:</label>
       <label class='' for='total-points'>{{totalPoints}}</label>
     </div>
 
     <div>
-      <a class='trackerBtn' [routerLink]="['/studentTimeReport']">
+      <!-- <a [routerLink]="['/studentTimeReport']">
         <span > track again</span>
-      </a>
+      </a> -->
+      <button class='trackerBtn' (click)='submit()'>track again</button>
     </div>
   </div>
 

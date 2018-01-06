@@ -36,6 +36,7 @@ export class TimeTrackerService {
       outTime: null,
       totalHrs: null
     };
+
     const timeCollection = this.afs.collection<ITimeTracker>('timeTracker');
     timeCollection.add(trackStudentTime);
 
@@ -53,7 +54,7 @@ export class TimeTrackerService {
 
     const toUpdate = timeCollection.snapshotChanges().map(actions => {
       return actions.map(action => {
-        console.log(action);
+        // console.log(action);
         const data = action.payload.doc.data() as ITimeTracker;
         const id = action.payload.doc.id;
         return { id, ...data };

@@ -20,6 +20,8 @@ export class StudentTimePointReportComponent implements OnInit {
   totalHours = 0;
   totalPoints = 0;
   studentID = '';
+  startDate: Date;
+  endDate: Date;
   show = false;
   public studentTimeReportForm: FormGroup;
 
@@ -32,20 +34,20 @@ export class StudentTimePointReportComponent implements OnInit {
   }
 
   createForm() {
-    console.log('here');
     this.studentTimeReportForm = this.formBuilder.group({
       studentId: ['', [<any>Validators.required, <any>Validators.maxLength(7)]],
       inDate: ['', [<any>Validators.required]],
       outDate: ['', [<any>Validators.required]]
-
     });
   }
 
 
   run() {
     // get students data
+    this.startDate = this.studentTimeReportForm.controls['inDate'].value;
+    this.endDate = this.studentTimeReportForm.controls['outDate'].value;
     this.timeTrackerService.getStudentTimeTrackerInfo(this.studentTimeReportForm.controls['studentId'].value,
-      this.studentTimeReportForm.controls['inDate'].value, this.studentTimeReportForm.controls['outDate'].value).subscribe(s => {
+      this.startDate, this.endDate).subscribe(s => {
         this.report = s;
         console.log('values ' + this.studentTimeReportForm.controls['studentId'].value,
           this.studentTimeReportForm.controls['inDate'].value,
@@ -53,22 +55,25 @@ export class StudentTimePointReportComponent implements OnInit {
         console.log('report ', this.report);
 
         for (let i = 0; i < this.report.length; i++) {
-          console.log(i);
           this.totalPoints = this.totalPoints + this.report[i].points;
-          console.log('hours total ' + this.totalHours);
           this.totalHours = this.totalHours + this.report[i].totalHrs;
         }
+        this.totalHours = parseFloat(this.totalHours.toFixed(1));
         console.log('point total ' + this.totalPoints);
         console.log('hours total ' + this.totalHours);
       });
 
     this.timeTrackerService.getStudent(this.studentTimeReportForm.controls['studentId'].value).subscribe(s => {
       this.studentInfo = s;
-      this.studentName = this.studentInfo[0].firstName + ' ' + this.studentInfo[0].lastName + ' ' + this.studentInfo[0].studentId;
+      this.studentName = this.studentInfo[0].firstName + ' ' + this.studentInfo[0].lastName + '-' + this.studentInfo[0].studentId;
     });
-    console.log('student  ' + this.studentName);
-    console.log('show   ' + this.show);
+
     this.show = true;
+  }
+
+  submit() {
+    this.studentTimeReportForm.reset();
+    this.show = false;
   }
 
 
