@@ -6,7 +6,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AppComponent } from './app.component';
 import {
   MatToolbarModule, MatButtonModule, MatMenuModule, MatIconModule, MatDatepickerModule,
-  MatFormFieldModule, MatNativeDateModule, MatInputModule
+  MatFormFieldModule, MatNativeDateModule, MatInputModule, MatSnackBarModule
 } from '@angular/material';
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
 import { AngularFirestoreModule } from 'angularfire2/firestore';
@@ -49,6 +49,7 @@ import { PointsFormComponent } from './forms/points-form/points-form.component';
     MatInputModule,
     MatDatepickerModule,
     MatAutocompleteModule,
+    MatSnackBarModule,
     AppRoutingModule,
     AngularFirestoreModule,
     AngularFireModule.initializeApp(environment.firebase_467_timeTracker),

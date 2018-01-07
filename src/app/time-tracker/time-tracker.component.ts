@@ -5,6 +5,7 @@ import { map, tap, startWith, debounceTime } from 'rxjs/operators';
 
 import { TimeTrackerService } from './time-tracker.service';
 import { IStudent } from './model/student';
+import { MatSnackBar } from '@angular/material';
 
 @Component({
   selector: 'app-tracker',
@@ -23,7 +24,8 @@ export class TimeTrackerComponent implements OnInit {
   filteredOptions: Observable<IStudent[]>;
 
   constructor(private formBuilder: FormBuilder,
-    private timeTrackerService: TimeTrackerService) { }
+    private timeTrackerService: TimeTrackerService,
+    private snackBar: MatSnackBar) { }
 
 
   ngOnInit(): void {
@@ -96,8 +98,14 @@ export class TimeTrackerComponent implements OnInit {
   save() {
     if (this.selectedStudent.status === 'out' || this.selectedStudent.status === undefined) {
       this.timeTrackerService.saveStudentTime(this.selectedStudent);
+      this.snackBar.open(`${this.selectedStudent.firstName} signed in.`, 'Welcome!', {
+        duration: 5000, verticalPosition: 'top'
+      });
     } else {
       this.timeTrackerService.updateStudentTime(this.selectedStudent);
+      this.snackBar.open(`${this.selectedStudent.firstName} signed out.`, 'Bye!', {
+        duration: 5000, verticalPosition: 'top'
+      });
     }
 
     this.studentCtrl.reset();
