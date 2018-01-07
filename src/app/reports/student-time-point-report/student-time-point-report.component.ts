@@ -14,7 +14,7 @@ export class StudentTimePointReportComponent implements OnInit {
 
   report: ITimeTracker[];
   studentInfo: IStudent[];
-  title = 'Get Student Hours & Points';
+  title = 'Student Time Report';
   studentName = '';
   totalHours = 0;
   totalPoints = 0;
@@ -72,6 +72,9 @@ export class StudentTimePointReportComponent implements OnInit {
 
   submit() {
     this.studentTimeReportForm.reset();
+    this.totalHours = 0;
+    this.totalPoints = 0;
+    this.studentName = '';
     this.show = false;
   }
 
