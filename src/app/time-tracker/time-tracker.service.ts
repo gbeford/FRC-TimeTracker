@@ -2,7 +2,7 @@ import { ITimeTracker } from './model/time-tracker';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
 import { IStudent } from './model/student';
-import { AngularFirestore } from 'angularfire2/firestore';
+import { AngularFirestore, AngularFirestoreCollection } from 'angularfire2/firestore';
 import { take } from 'rxjs/operators';
 
 @Injectable()
@@ -27,36 +27,40 @@ export class TimeTrackerService {
 
 
   logOutStudents(today: Date) {
-    const loginDate = today.toISOString().split('T')[0];
+    const loginDate = today.toISOString().split('T') [0];
 
     const studentCollection = this.afs.collection<IStudent>('students', ref => ref.where('status', '==', 'in'));
-    studentCollection.valueChanges().subscribe(s => {
+    studentCollection.valueChanges().pipe(take(1)).subscribe(s => {
       s.forEach(student => {
         const id = student.studentId;
 
         const timeCollection = this.afs.collection<ITimeTracker>('timeTracker', ref => ref.where('studentId', '==', id)
           .where('createDate', '==', loginDate).where('outTime', '==', null));
 
-        const toUpdateTracker = this.getCollectionWithID<ITimeTracker>(timeCollection);
-        toUpdateTracker.forEach(timeRecord => {
-          this.afs.doc(`timeTracker/${(timeRecord as any).id}`).set({
-            outTime: today,
-            totalHrs: 1,
-            points: 0
-          }, { merge: true });
-          this.afs.doc(`students/${id}`).set({
-            status: 'out',
-            checkInTime: null
-          }, { merge: true });
+        this.getCollectionWithID<ITimeTracker>(timeCollection).pipe(take(1)).subscribe(recs => {
 
-          // send email
+          recs.forEach(timeRecord => {
+            console.log(timeRecord);
+            this.afs.doc(`timeTracker/${(timeRecord as any).id}`).set({
+              outTime: today,
+              totalHrs: 1,
+              points: 0,
+              adminSignedOut: true
+            }, { merge: true });
+            this.afs.doc(`students/${id}`).set({
+              status: 'out',
+              checkInTime: null
+            }, { merge: true });
+
+            // send email
+
+          });
         });
       });
     });
   }
 
-  totalStudentsLogin(today: Date) {
- const loginDate = today.toISOString().split('T')[0];
+  totalStudentsLogin() {
     const studentCollection = this.afs.collection<IStudent>('students', ref => ref.where('status', '==', 'in'));
    return studentCollection.valueChanges();
   }
@@ -70,7 +74,7 @@ export class TimeTrackerService {
 
     const trackStudentTime: ITimeTracker = {
       studentId: student.studentId,
-      createDate: date.toISOString().split('T')[0],
+      createDate: date.toISOString().split('T') [0],
       createDateTime: date,
       inTime: date,
       outTime: null,
@@ -88,7 +92,7 @@ export class TimeTrackerService {
 
   updateStudentTime(student: IStudent) {
     const date = new Date();
-    const createDate = date.toISOString().split('T')[0];
+    const createDate = date.toISOString().split('T') [0];
 
     const timeCollection = this.afs.collection<ITimeTracker>('timeTracker', ref => ref.where('studentId', '==', student.studentId)
       .where('createDate', '==', createDate).where('outTime', '==', null));
@@ -135,9 +139,13 @@ export class TimeTrackerService {
   }
 
 
+
+
+
+
   // generic functions
 
-  getCollectionWithID<T extends object>(collection): [T] {
+  getCollectionWithID<T extends object>(collection: AngularFirestoreCollection<T>): Observable<T[]> {
     return collection.snapshotChanges().map(actions => {
       return actions.map(action => {
         // console.log(action);
