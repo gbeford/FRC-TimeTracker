@@ -1,9 +1,10 @@
-<p>
-  home works!
-</p>
+<button mat-raised-button color="primary" (click)="loginWithGoogle()" *ngIf="!user">Login</button>
+    <div *ngIf="authenticated()">
+      <button mat-raised-button color="warn" (click)='logOut()'>Log Out</button>
+    </div>
 
-
-
-    <div>
+    <div *ngIf="authenticated()">
       <button class='trackerBtn' (click)=' logOutStudents()'>Log Out Students</button>
     </div>
+
+

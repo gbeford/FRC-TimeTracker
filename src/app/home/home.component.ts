@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { TimeTrackerService } from '../time-tracker/time-tracker.service';
 import { MatSnackBar } from '@angular/material';
+import { AuthService } from '../shared/auth.service';
+import * as firebase from 'firebase';
 
 @Component({
   selector: 'app-home',
@@ -9,13 +11,31 @@ import { MatSnackBar } from '@angular/material';
 })
 export class HomeComponent implements OnInit {
 
-  constructor(private svc: TimeTrackerService, private snackBar: MatSnackBar) { }
+  user: firebase.User = null;
+
+  constructor(private svc: TimeTrackerService, private snackBar: MatSnackBar,
+    private auth: AuthService) { }
 
   ngOnInit() {
+    this.auth.getAuthState().subscribe(
+      (user) => this.user = user);
   }
 
   getStudentLoginCount() {
 
+  }
+
+  loginWithGoogle() {
+    this.auth.loginWithGoogle();
+  }
+
+  authenticated() {
+    const ok = this.user != null && this.user.email.indexOf('shrewsburyrobotics.org') > -1;
+    return ok;
+   }
+
+  logOut() {
+    this.auth.logOut();
   }
 
   logOutStudents() {

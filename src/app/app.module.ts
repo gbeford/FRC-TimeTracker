@@ -22,6 +22,7 @@ import { TimeTrackerComponent } from './time-tracker/time-tracker.component';
 import { TimeTrackerService } from './time-tracker/time-tracker.service';
 import { StudentTimePointReportComponent } from './reports/student-time-point-report/student-time-point-report.component';
 import { PointsFormComponent } from './forms/points-form/points-form.component';
+import { AuthService } from './shared/auth.service';
 
 @NgModule({
   declarations: [
@@ -55,7 +56,7 @@ import { PointsFormComponent } from './forms/points-form/points-form.component';
     AngularFireModule.initializeApp(environment.firebase_467_timeTracker),
     AngularFireAuthModule,
   ],
-  providers: [TimeTrackerService],
+  providers: [TimeTrackerService, AuthService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
