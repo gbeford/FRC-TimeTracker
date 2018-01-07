@@ -10,6 +10,7 @@ import * as firebase from 'firebase';
   styleUrls: ['./home.component.css']
 })
 export class HomeComponent implements OnInit {
+  signedInStudent: number;
 
   user: firebase.User = null;
 
@@ -19,6 +20,7 @@ export class HomeComponent implements OnInit {
   ngOnInit() {
     this.auth.getAuthState().subscribe(
       (user) => this.user = user);
+    this.countOfStudentsLogin();
   }
 
   getStudentLoginCount() {
@@ -44,6 +46,10 @@ export class HomeComponent implements OnInit {
       duration: 5000, verticalPosition: 'top'
     });
     // msend email
+  }
+
+  countOfStudentsLogin() {
+    this.svc.totalStudentsLogin().subscribe(s => this.signedInStudent = s.length);
   }
 
 }

@@ -3,6 +3,9 @@
       <button mat-raised-button color="warn" (click)='logOut()'>Log Out</button>
     </div>
 
+<h1>There is currently <strong>{{signedInStudent}}</strong> students signed in.</h1>
+
+
     <div *ngIf="authenticated()">
       <button class='trackerBtn' (click)=' logOutStudents()'>Log Out Students</button>
     </div>

@@ -60,10 +60,9 @@ export class TimeTrackerService {
     });
   }
 
-  totalStudentsLogin(): Observable<IStudent[]> {
-    const collection = this.afs.collection<IStudent>('students', ref => ref.where('status', '==', 'in'));
-    const students = collection.valueChanges();
-    return students;
+  totalStudentsLogin() {
+    const studentCollection = this.afs.collection<IStudent>('students', ref => ref.where('status', '==', 'in'));
+   return studentCollection.valueChanges();
   }
 
 
