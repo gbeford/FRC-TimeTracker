@@ -25,6 +25,13 @@ export class TimeTrackerService {
     return students;
   }
 
+  // get list of all students
+  getStudentsByLastname(): Observable<IStudent[]> {
+    const studentCollection = this.afs.collection<IStudent>('students', ref => ref.orderBy('lastName'));
+    const students = studentCollection.valueChanges();
+    return students;
+  }
+
 
   logOutStudents(today: Date) {
     const loginDate = today.toISOString().split('T') [0];

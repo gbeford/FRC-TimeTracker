@@ -6,7 +6,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AppComponent } from './app.component';
 import {
   MatToolbarModule, MatButtonModule, MatMenuModule, MatIconModule, MatDatepickerModule,
-  MatFormFieldModule, MatNativeDateModule, MatInputModule, MatSnackBarModule
+  MatFormFieldModule, MatNativeDateModule, MatInputModule, MatSnackBarModule, MatTableModule
 } from '@angular/material';
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
 import { AngularFirestoreModule } from 'angularfire2/firestore';
@@ -23,6 +23,7 @@ import { TimeTrackerService } from './time-tracker/time-tracker.service';
 import { StudentTimePointReportComponent } from './reports/student-time-point-report/student-time-point-report.component';
 import { PointsFormComponent } from './forms/points-form/points-form.component';
 import { AuthService } from './shared/auth.service';
+import { StudentListComponent } from './student-list/student-list.component';
 
 @NgModule({
   declarations: [
@@ -33,7 +34,8 @@ import { AuthService } from './shared/auth.service';
     PageNotFoundComponent,
     HomeComponent,
     StudentTimePointReportComponent,
-    PointsFormComponent
+    PointsFormComponent,
+    StudentListComponent
   ],
   imports: [
     BrowserModule,
@@ -51,6 +53,7 @@ import { AuthService } from './shared/auth.service';
     MatDatepickerModule,
     MatAutocompleteModule,
     MatSnackBarModule,
+    MatTableModule,
     AppRoutingModule,
     AngularFirestoreModule,
     AngularFireModule.initializeApp(environment.firebase_467_timeTracker),
