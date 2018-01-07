@@ -25,6 +25,46 @@ export class TimeTrackerService {
     return students;
   }
 
+
+  logOutStudents(today: Date) {
+    const loginDate = today.toISOString().split('T')[0];
+
+    const studentCollection = this.afs.collection<IStudent>('students', ref => ref.where('status', '==', 'in'));
+    studentCollection.valueChanges().subscribe(s => {
+      s.forEach(student => {
+        const id = student.studentId;
+
+        const timeCollection = this.afs.collection<ITimeTracker>('timeTracker', ref => ref.where('studentId', '==', id)
+          .where('createDate', '==', loginDate).where('outTime', '==', null));
+
+        const toUpdateTracker = this.getCollectionWithID<ITimeTracker>(timeCollection);
+        toUpdateTracker.forEach(timeRecord => {
+          this.afs.doc(`timeTracker/${(timeRecord as any).id}`).set({
+            outTime: today,
+            totalHrs: 1,
+            points: 0
+          }, { merge: true });
+          this.afs.doc(`students/${id}`).set({
+            status: 'out',
+            checkInTime: null
+          }, { merge: true });
+
+          // send email
+        });
+      });
+    });
+  }
+
+  totalStudentsLogin(): Observable<IStudent[]> {
+    const collection = this.afs.collection<IStudent>('students', ref => ref.where('status', '==', 'in'));
+    const students = collection.valueChanges();
+    return students;
+  }
+
+
+
+  // CRUD
+
   saveStudentTime(student: IStudent) {
     const date = new Date();
 
@@ -82,6 +122,7 @@ export class TimeTrackerService {
     });
   }
 
+
   // report data
 
   getStudentTimeTrackerInfo(studentId: string, startDate: Date, endDate: Date): Observable<ITimeTracker[]> {
@@ -94,38 +135,7 @@ export class TimeTrackerService {
   }
 
 
-  logOutStudents(today: Date) {
-    const loginDate = today.toISOString().split('T')[0];
-
-    const studentCollection = this.afs.collection<IStudent>('students', ref => ref.where('status', '==', 'in'));
-    studentCollection.valueChanges().subscribe(s => {
-      s.forEach(student => {
-        const id = student.studentId;
-
-        const timeCollection = this.afs.collection<ITimeTracker>('timeTracker', ref => ref.where('studentId', '==', id)
-          .where('createDate', '==', loginDate).where('outTime', '==', null));
-
-        const toUpdateTracker = this.getCollectionWithID<ITimeTracker>(timeCollection);
-        toUpdateTracker.forEach(timeRecord => {
-          this.afs.doc(`timeTracker/${(timeRecord as any).id}`).set({
-            outTime: today,
-            totalHrs: 1,
-            points: 0
-          }, { merge: true });
-          this.afs.doc(`students/${id }`).set({
-            status: 'out',
-            checkInTime: null
-          }, { merge: true });
-
-          // send email
-          
-        });
-    });
-  });
-}
-
-
-
+// generic functions
 
 getCollectionWithID < T extends object > (collection): [T] {
   return collection.snapshotChanges().map(actions => {
