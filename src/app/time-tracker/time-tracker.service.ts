@@ -55,10 +55,10 @@ export class TimeTrackerService {
     });
   }
 
-  totalStudentsLogin(): Observable<IStudent[]> {
-    const collection = this.afs.collection<IStudent>('students', ref => ref.where('status', '==', 'in'));
-    const students = collection.valueChanges();
-    return students;
+  totalStudentsLogin(today: Date) {
+ const loginDate = today.toISOString().split('T')[0];
+    const studentCollection = this.afs.collection<IStudent>('students', ref => ref.where('status', '==', 'in'));
+   return studentCollection.valueChanges();
   }
 
 
@@ -135,18 +135,18 @@ export class TimeTrackerService {
   }
 
 
-// generic functions
+  // generic functions
 
-getCollectionWithID < T extends object > (collection): [T] {
-  return collection.snapshotChanges().map(actions => {
-    return actions.map(action => {
-      // console.log(action);
-      const data = action.payload.doc.data();
-      data.id = action.payload.doc.id;
-      return data as T;
+  getCollectionWithID<T extends object>(collection): [T] {
+    return collection.snapshotChanges().map(actions => {
+      return actions.map(action => {
+        // console.log(action);
+        const data = action.payload.doc.data();
+        data.id = action.payload.doc.id;
+        return data as T;
+      });
     });
-  });
-}
+  }
 
 
 

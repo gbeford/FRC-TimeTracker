@@ -22,4 +22,10 @@ export class HomeComponent implements OnInit {
     // msend email
   }
 
+  countOfStudentsLogin() {
+
+    .subscribe(s => {
+      s.forEach(student => {
+  }
+
 }
