@@ -23,9 +23,6 @@ export class HomeComponent implements OnInit {
     this.countOfStudentsLogin();
   }
 
-  getStudentLoginCount() {
-
-  }
 
   loginWithGoogle() {
     this.auth.loginWithGoogle();
