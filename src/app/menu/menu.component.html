@@ -8,17 +8,18 @@
     <a [routerLink]="['/']" mat-menu-item>
       <span>Home </span>
     </a>
-    <a [routerLink]="['/trackTime']" mat-menu-item>
+    <a [routerLink]="['/trackTime']" mat-menu-item *ngIf="loggedIn()">
       <span>Track Time</span>
     </a>
-    <a [routerLink]="['/studentTimeReport']" mat-menu-item>
+    <a [routerLink]="['/studentTimeReport']" mat-menu-item *ngIf="loggedIn()">
       <span>Student Time Report</span>
     </a>
-    <a [routerLink]="['/studentlist']" mat-menu-item>
+    <a [routerLink]="['/studentlist']" mat-menu-item *ngIf="isAdmin()">
       <span>Student List</span>
     </a>
   </mat-menu>
-
+  <span class="spacer"></span>
+  <span *ngIf="user">Hello {{ user.displayName }}</span>
   <span class="spacer"> </span>
   <span>Student Time Tracker</span>
 

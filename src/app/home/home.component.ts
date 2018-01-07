@@ -3,41 +3,38 @@ import { TimeTrackerService } from '../time-tracker/time-tracker.service';
 import { MatSnackBar } from '@angular/material';
 import { AuthService } from '../shared/auth.service';
 import * as firebase from 'firebase';
+import { User } from '../shared/user';
 
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.css']
 })
+
 export class HomeComponent implements OnInit {
   signedInStudent: number;
 
-  user: firebase.User = null;
+  user: User;
 
   constructor(private svc: TimeTrackerService, private snackBar: MatSnackBar,
     private auth: AuthService) { }
 
   ngOnInit() {
-    this.auth.getAuthState().subscribe(
+    this.auth.user$.subscribe(
       (user) => this.user = user);
     this.countOfStudentsLogin();
   }
 
-  getStudentLoginCount() {
-
-  }
-
   loginWithGoogle() {
-    this.auth.loginWithGoogle();
+    this.auth.googleLogin();
   }
 
-  authenticated() {
-    const ok = this.user != null && this.user.email.indexOf('shrewsburyrobotics.org') > -1;
-    return ok;
+  canAdmin() {
+    return this.auth.canAdmin(this.user);
    }
 
   logOut() {
-    this.auth.logOut();
+    this.auth.signOut();
   }
 
   logOutStudents() {
