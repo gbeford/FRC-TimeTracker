@@ -25,12 +25,57 @@ export class TimeTrackerService {
     return students;
   }
 
+
+  logOutStudents(today: Date) {
+    const loginDate = today.toISOString().split('T') [0];
+
+    const studentCollection = this.afs.collection<IStudent>('students', ref => ref.where('status', '==', 'in'));
+    studentCollection.valueChanges().pipe(take(1)).subscribe(s => {
+      s.forEach(student => {
+        const id = student.studentId;
+
+        const timeCollection = this.afs.collection<ITimeTracker>('timeTracker', ref => ref.where('studentId', '==', id)
+          .where('createDate', '==', loginDate).where('outTime', '==', null));
+
+        this.getCollectionWithID<ITimeTracker>(timeCollection).pipe(take(1)).subscribe(recs => {
+
+          recs.forEach(timeRecord => {
+            console.log(timeRecord);
+            this.afs.doc(`timeTracker/${(timeRecord as any).id}`).set({
+              outTime: today,
+              totalHrs: 1,
+              points: 0,
+              adminSignedOut: true
+            }, { merge: true });
+            this.afs.doc(`students/${id}`).set({
+              status: 'out',
+              checkInTime: null
+            }, { merge: true });
+
+            // send email
+
+          });
+        });
+      });
+    });
+  }
+
+  totalStudentsLogin(): Observable<IStudent[]> {
+    const collection = this.afs.collection<IStudent>('students', ref => ref.where('status', '==', 'in'));
+    const students = collection.valueChanges();
+    return students;
+  }
+
+
+
+  // CRUD
+
   saveStudentTime(student: IStudent) {
     const date = new Date();
 
     const trackStudentTime: ITimeTracker = {
       studentId: student.studentId,
-      createDate: date.toISOString().split('T')[0],
+      createDate: date.toISOString().split('T') [0],
       createDateTime: date,
       inTime: date,
       outTime: null,
@@ -48,7 +93,7 @@ export class TimeTrackerService {
 
   updateStudentTime(student: IStudent) {
     const date = new Date();
-    const createDate = date.toISOString().split('T')[0];
+    const createDate = date.toISOString().split('T') [0];
 
     const timeCollection = this.afs.collection<ITimeTracker>('timeTracker', ref => ref.where('studentId', '==', student.studentId)
       .where('createDate', '==', createDate).where('outTime', '==', null));
@@ -82,6 +127,7 @@ export class TimeTrackerService {
     });
   }
 
+
   // report data
 
   getStudentTimeTrackerInfo(studentId: string, startDate: Date, endDate: Date): Observable<ITimeTracker[]> {
@@ -94,53 +140,22 @@ export class TimeTrackerService {
   }
 
 
-  logOutStudents(today: Date) {
-    const loginDate = today.toISOString().split('T')[0];
 
-    const studentCollection = this.afs.collection<IStudent>('students', ref => ref.where('status', '==', 'in'));
-    studentCollection.valueChanges().pipe(take(1)).subscribe(s => {
-      s.forEach(student => {
-        const id = student.studentId;
 
-        const timeCollection = this.afs.collection<ITimeTracker>('timeTracker', ref => ref.where('studentId', '==', id)
-          .where('createDate', '==', loginDate).where('outTime', '==', null));
 
-        this.getCollectionWithID<ITimeTracker>(timeCollection).pipe(take(1)).subscribe(recs => {
 
-          recs.forEach(timeRecord => {
-            console.log(timeRecord);
-            this.afs.doc(`timeTracker/${(timeRecord as any).id}`).set({
-              outTime: today,
-              totalHrs: 1,
-              points: 0,
-              adminSignedOut: true
-            }, { merge: true });
-            this.afs.doc(`students/${id }`).set({
-              status: 'out',
-              checkInTime: null
-            }, { merge: true });
+  // generic functions
 
-            // send email
-
-          });
-        });
+  getCollectionWithID<T extends object>(collection: AngularFirestoreCollection<T>): Observable<T[]> {
+    return collection.snapshotChanges().map(actions => {
+      return actions.map(action => {
+        // console.log(action);
+        const data = action.payload.doc.data();
+        data.id = action.payload.doc.id;
+        return data as T;
+      });
     });
-  });
-}
-
-
-
-
-getCollectionWithID < T extends object > (collection: AngularFirestoreCollection<T>): Observable<T[]> {
-  return collection.snapshotChanges().map(actions => {
-    return actions.map(action => {
-      // console.log(action);
-      const data = action.payload.doc.data();
-      data.id = action.payload.doc.id;
-      return data as T;
-    });
-  });
-}
+  }
 
 
 
