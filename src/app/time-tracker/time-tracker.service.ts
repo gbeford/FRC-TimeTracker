@@ -28,19 +28,18 @@ export class TimeTrackerService {
 
   logOutStudents(today: Date) {
     const loginDate = today.toISOString().split('T') [0];
-
+    console.log(loginDate);
     const studentCollection = this.afs.collection<IStudent>('students', ref => ref.where('status', '==', 'in'));
     studentCollection.valueChanges().pipe(take(1)).subscribe(s => {
       s.forEach(student => {
         const id = student.studentId;
-
+        console.log(student.firstName, student.lastName);
         const timeCollection = this.afs.collection<ITimeTracker>('timeTracker', ref => ref.where('studentId', '==', id)
           .where('createDate', '==', loginDate).where('outTime', '==', null));
 
         this.getCollectionWithID<ITimeTracker>(timeCollection).pipe(take(1)).subscribe(recs => {
 
           recs.forEach(timeRecord => {
-            console.log(timeRecord);
             this.afs.doc(`timeTracker/${(timeRecord as any).id}`).set({
               outTime: today,
               totalHrs: 1,
