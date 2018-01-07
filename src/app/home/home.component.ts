@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { TimeTrackerService } from '../time-tracker/time-tracker.service';
+import { MatSnackBar } from '@angular/material';
 
 @Component({
   selector: 'app-home',
@@ -8,7 +9,7 @@ import { TimeTrackerService } from '../time-tracker/time-tracker.service';
 })
 export class HomeComponent implements OnInit {
 
-  constructor(private svc: TimeTrackerService) { }
+  constructor(private svc: TimeTrackerService, private snackBar: MatSnackBar) { }
 
   ngOnInit() {
   }
@@ -19,7 +20,9 @@ export class HomeComponent implements OnInit {
 
   logOutStudents() {
     this.svc.logOutStudents(new Date());
-
+    this.snackBar.open('All signed in students have been signed out.', 'Okay', {
+      duration: 5000, verticalPosition: 'top'
+    });
     // msend email
   }
 
