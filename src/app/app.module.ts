@@ -21,6 +21,7 @@ import { HomeComponent } from './home/home.component';
 import { TimeTrackerComponent } from './time-tracker/time-tracker.component';
 import { TimeTrackerService } from './time-tracker/time-tracker.service';
 import { StudentTimePointReportComponent } from './reports/student-time-point-report/student-time-point-report.component';
+import { PointsFormComponent } from './forms/points-form/points-form.component';
 
 @NgModule({
   declarations: [
@@ -30,7 +31,8 @@ import { StudentTimePointReportComponent } from './reports/student-time-point-re
     MenuComponent,
     PageNotFoundComponent,
     HomeComponent,
-    StudentTimePointReportComponent
+    StudentTimePointReportComponent,
+    PointsFormComponent
   ],
   imports: [
     BrowserModule,

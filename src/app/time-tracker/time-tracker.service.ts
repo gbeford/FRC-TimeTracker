@@ -85,13 +85,60 @@ export class TimeTrackerService {
   // report data
 
   getStudentTimeTrackerInfo(studentId: string, startDate: Date, endDate: Date): Observable<ITimeTracker[]> {
-     endDate = new Date(endDate.setHours(23, 59, 59, 0));
+    endDate = new Date(endDate.setHours(23, 59, 59, 0));
     const reportCollection = this.afs.collection<ITimeTracker>('timeTracker', ref => ref.where('studentId', '==', studentId)
       .where('createDateTime', '>=', startDate).where('createDateTime', '<=', endDate).orderBy('createDateTime', 'asc'));
     const trackerInfo = reportCollection.valueChanges();
 
     return trackerInfo;
   }
+
+
+  logOutStudents(today: Date) {
+    const loginDate = today.toISOString().split('T')[0];
+
+    const studentCollection = this.afs.collection<IStudent>('students', ref => ref.where('status', '==', 'in'));
+    studentCollection.valueChanges().subscribe(s => {
+      s.forEach(student => {
+        const id = student.studentId;
+
+        const timeCollection = this.afs.collection<ITimeTracker>('timeTracker', ref => ref.where('studentId', '==', id)
+          .where('createDate', '==', loginDate).where('outTime', '==', null));
+
+        const toUpdateTracker = this.getCollectionWithID<ITimeTracker>(timeCollection);
+        toUpdateTracker.forEach(timeRecord => {
+          this.afs.doc(`timeTracker/${(timeRecord as any).id}`).set({
+            outTime: today,
+            totalHrs: 1,
+            points: 0
+          }, { merge: true });
+          this.afs.doc(`students/${id }`).set({
+            status: 'out',
+            checkInTime: null
+          }, { merge: true });
+
+          // send email
+          
+        });
+    });
+  });
+}
+
+
+
+
+getCollectionWithID < T extends object > (collection): [T] {
+  return collection.snapshotChanges().map(actions => {
+    return actions.map(action => {
+      // console.log(action);
+      const data = action.payload.doc.data();
+      data.id = action.payload.doc.id;
+      return data as T;
+    });
+  });
+}
+
+
 
 
 }

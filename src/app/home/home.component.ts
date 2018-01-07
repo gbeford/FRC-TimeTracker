@@ -12,4 +12,14 @@ export class HomeComponent implements OnInit {
   ngOnInit() {
   }
 
+  getStudentLoginCount() {
+
+  }
+
+  logOutStudents() {
+
+
+    // msend email
+  }
+
 }
