@@ -24,6 +24,7 @@ import { StudentTimePointReportComponent } from './reports/student-time-point-re
 import { PointsFormComponent } from './forms/points-form/points-form.component';
 import { AuthService } from './shared/auth.service';
 import { StudentListComponent } from './student-list/student-list.component';
+import { EditStudentRecordComponent } from './forms/edit-student-record/edit-student-record.component';
 
 @NgModule({
   declarations: [
@@ -35,7 +36,8 @@ import { StudentListComponent } from './student-list/student-list.component';
     HomeComponent,
     StudentTimePointReportComponent,
     PointsFormComponent,
-    StudentListComponent
+    StudentListComponent,
+    EditStudentRecordComponent
   ],
   imports: [
     BrowserModule,

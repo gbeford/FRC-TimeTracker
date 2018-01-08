@@ -9,6 +9,8 @@ import { take } from 'rxjs/operators';
 export class TimeTrackerService {
 
   student: IStudent[];
+  trackerRecord: ITimeTracker;
+
   constructor(private afs: AngularFirestore) { }
 
   // get student by id
@@ -16,6 +18,13 @@ export class TimeTrackerService {
     const collection = this.afs.collection<IStudent>('students', ref => ref.where('studentId', '==', studentId));
     const student = collection.valueChanges();
     return student;
+  }
+  // get student by date
+  getStudentByDate(studentId: string, createDate: string): Observable<ITimeTracker[]> {
+    const collection = this.afs.collection<ITimeTracker>('students', ref => ref.where('studentId', '==', studentId)
+      .where('createDate', '==', createDate));
+    const trackerRecord = collection.valueChanges();
+    return trackerRecord;
   }
 
   // get list of all students
@@ -35,7 +44,6 @@ export class TimeTrackerService {
 
   logOutStudents(today: Date) {
     const loginDate = today.toISOString().split('T') [0];
-    console.log(loginDate);
     const studentCollection = this.afs.collection<IStudent>('students', ref => ref.where('status', '==', 'in'));
     studentCollection.valueChanges().pipe(take(1)).subscribe(s => {
       s.forEach(student => {
@@ -71,6 +79,25 @@ export class TimeTrackerService {
    return studentCollection.valueChanges();
   }
 
+  editStudentRecord(today, studentId, in_time, out_time, hours, points) {
+    const loginDate = today.toISOString().split('T')[0];
+
+    const timeCollection = this.afs.collection<ITimeTracker>('timeTracker', ref => ref.where('studentId', '==', studentId)
+          .where('createDate', '==', loginDate));
+
+    this.getCollectionWithID<ITimeTracker>(timeCollection).pipe(take(1)).subscribe(recs => {
+
+      recs.forEach(timeRecord => {
+        this.afs.doc(`timeTracker/${(timeRecord as any).id}`).set({
+          inTime: in_time,
+          outTime: out_time,
+          totalHrs: hours,
+          points: points,
+          adminSignedOut: true
+        }, { merge: true });
+      });
+    });
+  }
 
 
   // CRUD
