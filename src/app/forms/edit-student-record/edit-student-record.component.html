@@ -1,0 +1,79 @@
+<div class='container'>
+  <div class="row">
+    <form class='form-horizontal' [formGroup]="studentEditForm" novalidate (ngSubmit)="save()">
+
+      <div class='panel-heading'>
+        <span>Student Edit Form</span>
+      </div>
+      
+      <div *ngIf="!show">
+        <div>
+          <mat-form-field class="autoComplete-full-width">
+            <input matInput placeholder="Student" aria-label="Student" [matAutocomplete]="auto" [formControl]="studentCtrl" required>
+            <mat-autocomplete #auto="matAutocomplete" [displayWith]="displayFn">
+              <mat-option *ngFor="let student of filteredOptions | async" [value]="student">
+                <span>{{ student.firstName }} {{student.lastName}}</span> |
+                <small>Student ID: {{student.studentId}}</small>
+              </mat-option>
+            </mat-autocomplete>
+          </mat-form-field>
+          </div>
+          <div>
+            <mat-form-field>
+              <input matInput [matDatepicker]="picker1" placeholder="Choose the created date" formControlName="createDate" required>
+              <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
+              <mat-datepicker #picker1></mat-datepicker>
+            </mat-form-field>
+          </div>
+          <div>
+          <button (click)="retrevieStudentRecord()">Get Student Info</button>
+        </div>
+      </div>
+
+      <div *ngIf="show">
+        <div>
+          <mat-form-field>
+            <input matInput [matDatepicker]="picker2" placeholder="Choose a start date" formControlName="inDate" required>
+            <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
+            <mat-datepicker #picker2></mat-datepicker>
+          </mat-form-field>
+        </div>
+        <div>
+          <mat-form-field>
+            <input matInput [matDatepicker]="picker3" placeholder="Choose a end date" formControlName="outDate" required>
+            <mat-datepicker-toggle matSuffix [for]="picker3"></mat-datepicker-toggle>
+            <mat-datepicker #picker3></mat-datepicker>
+          </mat-form-field>
+        </div>
+
+
+        <div class='form-group'>
+          <label class='control-label col-md-3 col-md-offset-2' for='total-hours'>Total Hours</label>
+          <div class='col-md-2'>
+            <div class='form-group internal'>
+              <input class='form-control' id='total-hours' placeholder='Total Hours' type='text' formControlName="totalHours" required>
+              <!-- <div [hidden]="teamEditForm.controls['coachFirstName'].valid || teamEditForm.controls['coachFirstName'].pristine && !submitted"
+                  class="alert alert-danger">
+                  Coach first name is required !
+                </div> -->
+            </div>
+          </div>
+        </div>
+        <div class='form-group'>
+          <label class='control-label col-md-3 col-md-offset-2' for='points'>Points</label>
+          <div class='col-md-2'>
+            <div class='form-group internal'>
+              <input class='form-control' id='points' placeholder='Points' type='text' formControlName="points" required>
+              <!-- <div [hidden]="teamEditForm.controls['coachLastName'].valid || teamEditForm.controls['coachLastName'].pristine && !submitted"
+                  class="alert alert-danger">
+                  Coach last name is required !
+                </div> -->
+            </div>
+          </div>
+        </div>
+        <button> submit</button>
+      </div>
+
+    </form>
+  </div>
+</div>
