@@ -14,7 +14,7 @@
     <a [routerLink]="['/studentTimeReport']" mat-menu-item *ngIf="loggedIn()">
       <span>Student Time Report</span>
     </a>
-    <a [routerLink]="['/studentlist']" mat-menu-item *ngIf="isAdmin()">
+    <a [routerLink]="['/studentlist']" mat-menu-item *ngIf="loggedIn()">
       <span>Student List</span>
     </a>
   </mat-menu>
