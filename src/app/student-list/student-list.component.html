@@ -33,7 +33,7 @@
 
     <ng-container matColumnDef="status">
       <mat-header-cell *matHeaderCellDef> Status </mat-header-cell>
-      <mat-cell *matCellDef="let element"> {{element.status}} {{element.checkInTime | date:"hh:MM a"}}</mat-cell>
+      <mat-cell *matCellDef="let element"> {{element.status}} {{element.checkInTime | date:"hh:mm a"}}</mat-cell>
     </ng-container>
 
     <ng-container matColumnDef="controls">
