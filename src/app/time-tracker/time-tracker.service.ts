@@ -125,6 +125,7 @@ export class TimeTrackerService {
   }
 
   updateStudentTime(student: IStudent) {
+    // const date = new Date(2018, 0, 10, 21, 0, 0);
     const date = new Date();
     const createDate = this.formatDate(date);
     console.log(createDate);
