@@ -35,8 +35,8 @@ export class TimeTrackerService {
   }
 
   // get list of all students
-  getStudentsByLastname(): Observable<IStudent[]> {
-    const studentCollection = this.afs.collection<IStudent>('students', ref => ref.orderBy('lastName'));
+  getAllStudents(): Observable<IStudent[]> {
+    const studentCollection = this.afs.collection<IStudent>('students');
     const students = studentCollection.valueChanges();
     return students;
   }
@@ -145,7 +145,7 @@ export class TimeTrackerService {
       const inTime = val[0].inTime;
       const compareTimes = date.getTime() - inTime.getTime();
       const totalTime = Math.round((compareTimes / (1000 * 60 * 60) * 100)) / 100;
-      const totalPoints = Math.floor(((totalTime * 60 + 30) / 60) / 3);
+      const totalPoints = Math.floor(((totalTime * 60) / 60) / 2.5);
 
       tempUpdateSub.unsubscribe();
 

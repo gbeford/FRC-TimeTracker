@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, AfterViewInit, ViewChild } from '@angular/core';
+import { MatTableDataSource, MatSort } from '@angular/material';
 import { Observable } from 'rxjs/Observable';
 import { IStudent } from '../time-tracker/model/student';
 import { TimeTrackerService } from '../time-tracker/time-tracker.service';
@@ -9,17 +10,21 @@ import { DataSource } from '@angular/cdk/collections';
   templateUrl: './student-list.component.html',
   styleUrls: ['./student-list.component.css']
 })
-export class StudentListComponent implements OnInit {
-  students: Observable<IStudent[]>;
-  dataSource: StudentsDataSource;
+export class StudentListComponent implements AfterViewInit {
+  dataSource: MatTableDataSource<any>; // StudentsDataSource;
 
-  displayedColumns = ['studentId', 'lastName', 'firstName', 'email', 'grade', 'status'];
+  displayedColumns = ['studentId', 'status', 'lastName', 'firstName', 'email', 'grade'];
+  @ViewChild(MatSort) sort: MatSort;
 
   constructor(private sls: TimeTrackerService) { }
 
-  ngOnInit() {
-    this.students = this.sls.getStudentsByLastname();
-    this.dataSource = new StudentsDataSource(this.students);
+  ngAfterViewInit() {
+    this.sls.getAllStudents().subscribe(data => {
+      this.dataSource = new MatTableDataSource(data);
+      this.dataSource.sort = this.sort;
+
+    });
+    // this.dataSource = new StudentsDataSource(this.students);
   }
 
 }
