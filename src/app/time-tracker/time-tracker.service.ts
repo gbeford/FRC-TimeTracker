@@ -35,21 +35,21 @@ export class TimeTrackerService {
   }
 
   // get list of all students
-  getStudentsByLastname(): Observable<IStudent[]> {
-    const studentCollection = this.afs.collection<IStudent>('students', ref => ref.orderBy('lastName'));
+  getAllStudents(): Observable<IStudent[]> {
+    const studentCollection = this.afs.collection<IStudent>('students');
     const students = studentCollection.valueChanges();
     return students;
   }
 
 
   logOutStudents(today: Date) {
-    const loginDate = today.toISOString().split('T') [0];
+    const loginDate = this.formatDate(today);
+    console.log(loginDate);
     const studentCollection = this.afs.collection<IStudent>('students', ref => ref.where('status', '==', 'in'));
     const tempStudentSub = studentCollection.valueChanges().subscribe(s => {
       tempStudentSub.unsubscribe();
       s.forEach(student => {
         const id = student.studentId;
-        console.log(student.firstName, student.lastName);
         const timeCollection = this.afs.collection<ITimeTracker>('timeTracker', ref => ref.where('studentId', '==', id)
           .where('createDate', '==', loginDate).where('outTime', '==', null));
 
@@ -108,7 +108,7 @@ export class TimeTrackerService {
 
     const trackStudentTime: ITimeTracker = {
       studentId: student.studentId,
-      createDate: date.toISOString().split('T') [0],
+      createDate: this.formatDate(date),
       createDateTime: date,
       inTime: date,
       outTime: null,
@@ -125,15 +125,15 @@ export class TimeTrackerService {
   }
 
   updateStudentTime(student: IStudent) {
+    // const date = new Date(2018, 0, 10, 21, 0, 0);
     const date = new Date();
-    const createDate = date.toISOString().split('T') [0];
-
+    const createDate = this.formatDate(date);
+    console.log(createDate);
     const timeCollection = this.afs.collection<ITimeTracker>('timeTracker', ref => ref.where('studentId', '==', student.studentId)
       .where('createDate', '==', createDate).where('outTime', '==', null));
 
     const toUpdate = timeCollection.snapshotChanges().map(actions => {
       return actions.map(action => {
-        // console.log(action);
         const data = action.payload.doc.data() as ITimeTracker;
         const id = action.payload.doc.id;
         return { id, ...data };
@@ -141,11 +141,13 @@ export class TimeTrackerService {
     });
 
     const tempUpdateSub = toUpdate.subscribe(val => {
-      tempUpdateSub.unsubscribe();
+
       const inTime = val[0].inTime;
       const compareTimes = date.getTime() - inTime.getTime();
       const totalTime = Math.round((compareTimes / (1000 * 60 * 60) * 100)) / 100;
-      const totalPoints = Math.floor(totalTime / 3);
+      const totalPoints = Math.floor(((totalTime * 60) / 60) / 2.5);
+
+      tempUpdateSub.unsubscribe();
 
       this.afs.doc(`timeTracker/${val[0].id}`).set({
         outTime: date,
@@ -178,6 +180,16 @@ export class TimeTrackerService {
 
 
   // generic functions
+
+  formatDate(d: Date): string {
+    const mm = d.getMonth() + 1; // getMonth() is zero-based
+    const dd = d.getDate();
+
+    return [d.getFullYear(),
+    (mm > 9 ? '' : '0') + mm,
+    (dd > 9 ? '' : '0') + dd
+    ].join('-');
+  }
 
   getCollectionWithID<T extends object>(collection: AngularFirestoreCollection<T>): Observable<T[]> {
     return collection.snapshotChanges().map(actions => {

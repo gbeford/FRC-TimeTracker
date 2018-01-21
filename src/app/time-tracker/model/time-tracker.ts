@@ -1,5 +1,4 @@
 
-
 /* Defines the time tracker entity */
 export interface ITimeTracker {
     studentId: string;
