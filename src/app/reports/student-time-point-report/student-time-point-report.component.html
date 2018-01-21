@@ -3,7 +3,13 @@
   <h1>{{title}}</h1>
   <div *ngIf='!this.show'>
     <div>
-     <!-- typeahead here -->
+      <!-- typeahead here -->
+      <mat-form-field>
+        <input matInput placeholder='Student ID' type='text' formControlName="studentId" required>
+        <div [hidden]="studentTimeReportForm.controls['studentId'].valid || studentTimeReportForm.controls['studentId'].pristine && !submitted"
+          class="alert alert-danger">
+          Student ID is required ! </div>
+      </mat-form-field>
     </div>
 
     <div>
@@ -32,7 +38,7 @@
     </div>
     <div>
       <label class='infoLabel' for='student_name'>Student Info:</label>
-      <label class='' for='student_name'>{{studentName}}  </label>
+      <label class='' for='student_name'>{{studentName}} </label>
 
     </div>
     <div>

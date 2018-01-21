@@ -52,6 +52,7 @@ export class EditStudentRecordComponent implements OnInit {
       this.studentAutoComplete();
     });
   }
+
   retrevieStudentRecord() {
     this.create_date = this.studentEditForm.controls['createDate'].value.toISOString().split('T')[0];
     this.timeTrackerService.getStudentByDate(this.studentEditForm.controls['studentId'].value,
