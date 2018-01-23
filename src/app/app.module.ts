@@ -27,6 +27,7 @@ import { StudentListComponent } from './student-list/student-list.component';
 import { EditStudentRecordComponent } from './forms/edit-student-record/edit-student-record.component';
 import { AutoCompleteComponent } from './shared/auto-complete/auto-complete.component';
 import { BadgeEntryComponent } from './forms/badge-entry/badge-entry.component';
+import { TestSharedComponentsComponent } from './shared/test-shared-components/test-shared-components.component';
 
 @NgModule({
   declarations: [
@@ -41,7 +42,8 @@ import { BadgeEntryComponent } from './forms/badge-entry/badge-entry.component';
     StudentListComponent,
     EditStudentRecordComponent,
     AutoCompleteComponent,
-    BadgeEntryComponent
+    BadgeEntryComponent,
+    TestSharedComponentsComponent
   ],
   imports: [
     BrowserModule,

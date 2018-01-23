@@ -1,3 +1,12 @@
-<p>
-  auto-complete works!
-</p>
+<div>
+  <!-- typeahead here -->
+  <mat-form-field class="autoComplete-full-width">
+    <input matInput placeholder="Enter Student Name" aria-label="Student" [matAutocomplete]="auto" [formControl]="studentCtrl" required>
+    <mat-autocomplete #auto="matAutocomplete" [displayWith]="displayFn">
+      <mat-option *ngFor="let student of filteredOptions | async" [value]="student">
+        <span>{{ student.firstName }} {{student.lastName}}</span> |
+        <small>Student ID: {{student.studentId}}</small>
+      </mat-option>
+    </mat-autocomplete>
+  </mat-form-field>
+</div>
