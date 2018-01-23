@@ -1,4 +1,10 @@
+import { FormControl } from '@angular/forms';
+import { map, tap, startWith, debounceTime } from 'rxjs/operators';
+import { Observable } from 'rxjs/Observable';
 import { Component, OnInit } from '@angular/core';
+
+import { TimeTrackerService } from './../../time-tracker/time-tracker.service';
+import { IStudent } from './../../time-tracker/model/student';
 
 @Component({
   selector: 'app-auto-complete',
@@ -7,9 +13,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AutoCompleteComponent implements OnInit {
 
-  constructor() { }
+  filteredOptions: Observable<IStudent[]>;
+  students: IStudent[];
+  studentCtrl: FormControl = new FormControl();
+  student_id: number;
+
+  constructor(private timeTrackerService: TimeTrackerService) { }
 
   ngOnInit() {
+    this.getAllStudents();
   }
 
   // get list of students for autoComplete
@@ -19,6 +31,7 @@ export class AutoCompleteComponent implements OnInit {
       this.studentAutoComplete();
     });
   }
+
 
   studentAutoComplete() {
     this.filteredOptions = this.studentCtrl.valueChanges
