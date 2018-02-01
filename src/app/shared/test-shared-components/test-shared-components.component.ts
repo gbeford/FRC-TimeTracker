@@ -14,10 +14,20 @@ export class TestSharedComponentsComponent implements OnInit {
   constructor(private formBuilder: FormBuilder) { }
 
   ngOnInit() {
+    this.buildForm();
+
   }
 
   onNotify(message: string): void {
     alert(message);
   }
+
+  buildForm() {
+
+    // this creates the form that the reusable component (autocomple) will go to
+    this.testPage = this.formBuilder.group({
+    });
+  }
+
 
 }

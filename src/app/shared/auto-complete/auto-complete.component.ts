@@ -1,7 +1,7 @@
-import { FormControl } from '@angular/forms';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { map, tap, startWith, debounceTime } from 'rxjs/operators';
 import { Observable } from 'rxjs/Observable';
-import { Component, OnInit, EventEmitter, Output } from '@angular/core';
+import { Component, OnInit, EventEmitter, Output, Input } from '@angular/core';
 
 import { TimeTrackerService } from './../../time-tracker/time-tracker.service';
 import { IStudent } from './../../time-tracker/model/student';
@@ -13,18 +13,22 @@ import { IStudent } from './../../time-tracker/model/student';
 })
 export class AutoCompleteComponent implements OnInit {
 
-
-  @Output() notify: EventEmitter<string> = new EventEmitter<string>();
+  @Input() autoCompleteForm: FormGroup;
+  @Output() notify: EventEmitter<any> = new EventEmitter<any>();
 
   filteredOptions: Observable<IStudent[]>;
   students: IStudent[];
-  studentCtrl: FormControl = new FormControl();
+  studentCtrl: FormControl;
   student_id: number;
 
   constructor(private timeTrackerService: TimeTrackerService) { }
 
   ngOnInit() {
     this.getAllStudents();
+    // this creates the control with validation
+    this.studentCtrl = new FormControl('', Validators.required);
+    // this is to set up the control that will be added to the form
+    this.autoCompleteForm.addControl('studentAutoComplete', this.studentCtrl);
   }
 
   // get list of students for autoComplete
@@ -39,10 +43,10 @@ export class AutoCompleteComponent implements OnInit {
   studentAutoComplete() {
     this.filteredOptions = this.studentCtrl.valueChanges
       .pipe(
-      debounceTime(200),
-      startWith(this.studentCtrl.value),
-      map(val => this.displayFn(val)),
-      map(val => this.filterStudents(val))
+        debounceTime(200),
+        startWith(this.studentCtrl.value),
+        map(val => this.displayFn(val)),
+        map(val => this.filterStudents(val))
       );
   }
 
@@ -57,9 +61,10 @@ export class AutoCompleteComponent implements OnInit {
       : this.students;
   }
 
+  // this should get the student info from the autocomplete control
   getStudentInfo(value) {
-    console.log(value);
-    // this.notify.emit(student);
+    console.log(value.source.value.studentId);
+    this.notify.emit(value.source.value.studentId);
   }
 
 }
