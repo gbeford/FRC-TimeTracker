@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AutoCompleteComponent } from '../auto-complete/auto-complete.component';
+import { FormBuilder, FormGroup } from '@angular/forms';
 
 @Component({
   selector: 'app-test-shared-components',
@@ -8,9 +9,15 @@ import { AutoCompleteComponent } from '../auto-complete/auto-complete.component'
 })
 export class TestSharedComponentsComponent implements OnInit {
 
-  constructor() { }
+  public testPage: FormGroup;
+
+  constructor(private formBuilder: FormBuilder) { }
 
   ngOnInit() {
+  }
+
+  onNotify(message: string): void {
+    alert(message);
   }
 
 }

@@ -1,9 +1,9 @@
 <div>
   <!-- typeahead here -->
   <mat-form-field class="autoComplete-full-width">
-    <input matInput placeholder="Enter Student Name" aria-label="Student" [matAutocomplete]="auto" [formControl]="studentCtrl" required>
+    <input matInput placeholder="Enter Student Name" aria-label="Student" [matAutocomplete]="auto" [formControl]="studentCtrl" required >
     <mat-autocomplete #auto="matAutocomplete" [displayWith]="displayFn">
-      <mat-option *ngFor="let student of filteredOptions | async" [value]="student">
+      <mat-option *ngFor="let student of filteredOptions | async" [value]="student" (onSelectionChange)="getStudentInfo()">
         <span>{{ student.firstName }} {{student.lastName}}</span> |
         <small>Student ID: {{student.studentId}}</small>
       </mat-option>

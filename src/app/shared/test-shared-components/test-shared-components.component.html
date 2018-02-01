@@ -1,7 +1,9 @@
-<p>
+<form class="example-form" [formGroup]="testPage">
+  <p>
   test-shared-components works!
 </p>
 
 <div>
-  <app-auto-complete>Loading...</app-auto-complete>
+  <app-auto-complete (notify)='onNotify($event)'>Loading...</app-auto-complete>
 </div>
+</form>

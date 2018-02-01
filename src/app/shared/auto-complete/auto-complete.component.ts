@@ -1,7 +1,7 @@
 import { FormControl } from '@angular/forms';
 import { map, tap, startWith, debounceTime } from 'rxjs/operators';
 import { Observable } from 'rxjs/Observable';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, EventEmitter, Output } from '@angular/core';
 
 import { TimeTrackerService } from './../../time-tracker/time-tracker.service';
 import { IStudent } from './../../time-tracker/model/student';
@@ -12,6 +12,9 @@ import { IStudent } from './../../time-tracker/model/student';
   styleUrls: ['./auto-complete.component.css']
 })
 export class AutoCompleteComponent implements OnInit {
+
+
+  @Output() notify: EventEmitter<string> = new EventEmitter<string>();
 
   filteredOptions: Observable<IStudent[]>;
   students: IStudent[];
@@ -54,5 +57,9 @@ export class AutoCompleteComponent implements OnInit {
       : this.students;
   }
 
+  getStudentInfo(value) {
+    console.log(value);
+    // this.notify.emit(student);
+  }
 
 }
