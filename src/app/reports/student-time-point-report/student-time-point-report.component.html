@@ -3,13 +3,7 @@
   <h1>{{title}}</h1>
   <div *ngIf='!this.show'>
     <div>
-      <!-- typeahead here -->
-      <mat-form-field>
-        <input matInput placeholder='Student ID' type='text' formControlName="studentId" required>
-        <div [hidden]="studentTimeReportForm.controls['studentId'].valid || studentTimeReportForm.controls['studentId'].pristine && !submitted"
-          class="alert alert-danger">
-          Student ID is required ! </div>
-      </mat-form-field>
+      <app-auto-complete (notify)='onNotify($event)' [autoCompleteForm]="studentTimeReportForm">Loading...</app-auto-complete>
     </div>
 
     <div>
