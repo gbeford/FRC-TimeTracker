@@ -41,6 +41,8 @@ export class StudentTimePointReportComponent implements OnInit {
 
 
   run() {
+    this.totalHours = 0;
+    this.totalPoints = 0;
     // get students data
     this.startDate = this.studentTimeReportForm.controls['inDate'].value;
     this.endDate = this.studentTimeReportForm.controls['outDate'].value;
@@ -53,8 +55,10 @@ export class StudentTimePointReportComponent implements OnInit {
         console.log('report ', this.report);
 
         for (let i = 0; i < this.report.length; i++) {
-          this.totalPoints = this.totalPoints + this.report[i].points;
-          this.totalHours = this.totalHours + this.report[i].totalHrs;
+          if (this.report[i].points !== undefined) {
+            this.totalPoints = this.totalPoints + this.report[i].points;
+            this.totalHours = this.totalHours + this.report[i].totalHrs;
+          }
         }
         this.totalHours = parseFloat(this.totalHours.toFixed(1));
         console.log('point total ' + this.totalPoints);
