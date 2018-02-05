@@ -5,7 +5,7 @@ import { HttpModule } from '@angular/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AppComponent } from './app.component';
 import {
-  MatToolbarModule, MatButtonModule, MatMenuModule, MatIconModule, MatDatepickerModule,
+  MatToolbarModule, MatButtonModule, MatMenuModule, MatIconModule, MatDatepickerModule, MatSelectModule,
   MatFormFieldModule, MatNativeDateModule, MatInputModule, MatSnackBarModule, MatTableModule, MatSortModule
 } from '@angular/material';
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
@@ -28,6 +28,10 @@ import { EditStudentRecordComponent } from './forms/edit-student-record/edit-stu
 import { AutoCompleteComponent } from './shared/auto-complete/auto-complete.component';
 import { BadgeEntryComponent } from './forms/badge-entry/badge-entry.component';
 import { TestSharedComponentsComponent } from './shared/test-shared-components/test-shared-components.component';
+import { AddNewMessageComponent } from './forms/add-new-message/add-new-message.component';
+import { ShowMessageComponent } from './forms/show-message/show-message.component';
+import { MessageListComponent } from './reports/message-list/message-list.component';
+import { MessageService } from './forms/message.service';
 
 @NgModule({
   declarations: [
@@ -43,7 +47,10 @@ import { TestSharedComponentsComponent } from './shared/test-shared-components/t
     EditStudentRecordComponent,
     AutoCompleteComponent,
     BadgeEntryComponent,
-    TestSharedComponentsComponent
+    TestSharedComponentsComponent,
+    AddNewMessageComponent,
+    ShowMessageComponent,
+    MessageListComponent
   ],
   imports: [
     BrowserModule,
@@ -57,6 +64,7 @@ import { TestSharedComponentsComponent } from './shared/test-shared-components/t
     MatIconModule,
     MatFormFieldModule,
     MatNativeDateModule,
+    MatSelectModule,
     MatInputModule,
     MatDatepickerModule,
     MatAutocompleteModule,
@@ -68,7 +76,10 @@ import { TestSharedComponentsComponent } from './shared/test-shared-components/t
     AngularFireModule.initializeApp(environment.firebase_467_timeTracker),
     AngularFireAuthModule,
   ],
-  providers: [TimeTrackerService, AuthService],
+  providers: [TimeTrackerService,
+    AuthService,
+    MessageService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

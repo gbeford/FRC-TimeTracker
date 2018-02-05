@@ -9,6 +9,7 @@ import { StudentTimePointReportComponent } from './reports/student-time-point-re
 import { StudentListComponent } from './student-list/student-list.component';
 import { EditStudentRecordComponent } from './forms/edit-student-record/edit-student-record.component';
 import { TestSharedComponentsComponent } from './shared/test-shared-components/test-shared-components.component';
+import { ShowMessageComponent } from './forms/show-message/show-message.component';
 
 
 @NgModule({
@@ -19,6 +20,7 @@ import { TestSharedComponentsComponent } from './shared/test-shared-components/t
             { path: 'studentTimeReport', component: StudentTimePointReportComponent },
             { path: 'studentlist', component: StudentListComponent },
             { path: 'studentEditForm', component: EditStudentRecordComponent },
+            { path: 'addMessage', component: ShowMessageComponent },
             { path: 'test', component: TestSharedComponentsComponent },
             { path: '**', component: PageNotFoundComponent }
         ]),

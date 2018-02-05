@@ -7,17 +7,18 @@
       </div>
 
       <div *ngIf="!show">
-      <div>
-        <app-auto-complete (notify)='onNotify($event)' [autoCompleteForm]="testPage">Loading...</app-auto-complete>
-    
-            <mat-form-field>
-              <input matInput [matDatepicker]="picker1" placeholder="Choose the created date" formControlName="createDate" required>
-              <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
-              <mat-datepicker #picker1></mat-datepicker>
-            </mat-form-field>
-          </div>
-          <div>
-          <button (click)="retrevieStudentRecord()">Get Student Info</button>
+        <div>
+          <app-auto-complete (notify)='onNotify($event)' [autoCompleteForm]="studentEditForm">Loading...</app-auto-complete>
+        </div>
+        <div>
+          <mat-form-field>
+            <input matInput [matDatepicker]="picker1" placeholder="Choose date" formControlName="createDate" required>
+            <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
+            <mat-datepicker #picker1></mat-datepicker>
+          </mat-form-field>
+        </div>
+        <div>
+          <button class='trackerBtn' (click)="retrevieStudentRecord()">Get Student Info</button>
         </div>
       </div>
 

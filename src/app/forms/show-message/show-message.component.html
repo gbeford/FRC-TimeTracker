@@ -1,0 +1,24 @@
+<h1>
+  Add message to student
+
+</h1>
+
+<form class="form-horizontal" [formGroup]="showMessageForm" novalidate (ngSubmit)="submit()">
+
+  <mat-form-field style="width: 50%;">
+    <mat-select placeholder="Select messages you want to flag the kids" [formControl]="messageCtrl"  multiple >
+      <mat-select-trigger>
+        {{messageCtrl.value ? messageCtrl.value[0] : ''}}
+        <span *ngIf="messageCtrl.value?.length > 1" class="additional-selection">
+          (+{{messageCtrl.value.length - 1}} others)
+        </span>
+      </mat-select-trigger>
+      <mat-option *ngFor="let message of messageList" [value]="message.message">{{message.message}}</mat-option>
+    </mat-select>
+
+  <mat-error *ngIf="messageCtrl.hasError('required')">Please choose at least 1 message</mat-error>
+</mat-form-field>
+
+
+
+</form>

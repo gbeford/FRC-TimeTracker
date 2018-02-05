@@ -41,7 +41,7 @@ export class TimeTrackerService {
     return students;
   }
 
-
+// log out all students still signed it. This will set's the student hours to 1
   logOutStudents(today: Date) {
     const loginDate = this.formatDate(today);
     console.log(loginDate);
@@ -67,7 +67,7 @@ export class TimeTrackerService {
               checkInTime: null
             }, { merge: true });
 
-            // send email
+            // TODO: send email
 
           });
         });

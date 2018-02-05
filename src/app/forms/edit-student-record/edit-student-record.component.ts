@@ -25,6 +25,7 @@ export class EditStudentRecordComponent implements OnInit {
   studentCtrl: FormControl = new FormControl();
   filteredOptions: Observable<IStudent[]>;
   students: IStudent[];
+  studentID = '';
 
   constructor(private formBuilder: FormBuilder,
     private timeTrackerService: TimeTrackerService) { }
@@ -37,7 +38,7 @@ export class EditStudentRecordComponent implements OnInit {
   buildForm() {
     this.studentEditForm = this.formBuilder.group({
       studentCtrl: ['', [<any>Validators.required]],
-      studentId: ['', [<any>Validators.required, <any>Validators.maxLength(7)]],
+      // studentId: ['', [<any>Validators.required, <any>Validators.maxLength(7)]],
       createDate: ['', [<any>Validators.required]],
       inDate: ['', [<any>Validators.required]],
       outDate: ['', [<any>Validators.required]],
@@ -49,15 +50,13 @@ export class EditStudentRecordComponent implements OnInit {
   getAllStudents() {
     this.timeTrackerService.getStudents().subscribe(s => {
       this.students = s;
-      this.studentAutoComplete();
     });
   }
 
   retrevieStudentRecord() {
     this.create_date = this.studentEditForm.controls['createDate'].value.toISOString().split('T')[0];
-    this.timeTrackerService.getStudentByDate(this.studentEditForm.controls['studentId'].value,
+    this.timeTrackerService.getStudentByDate(this.studentID,
       this.create_date).subscribe(s => {
-        this.studentAutoComplete();
       });
     this.show = true;
   }
@@ -68,31 +67,15 @@ export class EditStudentRecordComponent implements OnInit {
     this.end_date = this.studentEditForm.controls['outDate'].value;
     this.hours = this.studentEditForm.controls['outDate'].value;
     this.points = this.studentEditForm.controls['outDate'].value;
-    this.student_id = this.studentEditForm.controls['studentId'].value;
+    this.student_id = this.studentID;
     // this.timeTrackerService.editStudentRecord(this.create_date, this.in_date, this.end_date, this.hours, this.points)
     // this.student_id).subscribe(s => {
     // });
   }
 
-  studentAutoComplete() {
-    this.filteredOptions = this.studentCtrl.valueChanges
-      .pipe(
-      debounceTime(200),
-      startWith(this.studentCtrl.value),
-      map(val => this.displayFn(val)),
-      map(val => this.filterStudents(val))
-      );
-  }
-
-  displayFn(value: any): string {
-    return value && typeof value === 'object' ? `${value.firstName} ${value.lastName}` : value;
-  }
-
-  filterStudents(fName: string): IStudent[] {
-    return fName && typeof fName === 'string' ?
-      this.students.filter(student =>
-        student.firstName.toLowerCase().indexOf(fName.toLowerCase()) === 0)
-      : this.students;
+  onNotify(value: string): void {
+    // alert(message);
+    this.studentID = value;
   }
 
 }
