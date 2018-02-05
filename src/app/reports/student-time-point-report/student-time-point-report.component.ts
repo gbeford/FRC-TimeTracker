@@ -34,7 +34,6 @@ export class StudentTimePointReportComponent implements OnInit {
 
   createForm() {
     this.studentTimeReportForm = this.formBuilder.group({
-      studentId: ['', [<any>Validators.required, <any>Validators.maxLength(7)]],
       inDate: ['', [<any>Validators.required]],
       outDate: ['', [<any>Validators.required]]
     });
@@ -42,27 +41,31 @@ export class StudentTimePointReportComponent implements OnInit {
 
 
   run() {
+    this.totalHours = 0;
+    this.totalPoints = 0;
     // get students data
     this.startDate = this.studentTimeReportForm.controls['inDate'].value;
     this.endDate = this.studentTimeReportForm.controls['outDate'].value;
-    this.timeTrackerService.getStudentTimeTrackerInfo(this.studentTimeReportForm.controls['studentId'].value,
+    this.timeTrackerService.getStudentTimeTrackerInfo(this.studentID,
       this.startDate, this.endDate).subscribe(s => {
         this.report = s;
-        console.log('values ' + this.studentTimeReportForm.controls['studentId'].value,
+        console.log('values ' + this.studentID,
           this.studentTimeReportForm.controls['inDate'].value,
           this.studentTimeReportForm.controls['outDate'].value);
         console.log('report ', this.report);
 
         for (let i = 0; i < this.report.length; i++) {
-          this.totalPoints = this.totalPoints + this.report[i].points;
-          this.totalHours = this.totalHours + this.report[i].totalHrs;
+          if (this.report[i].points !== undefined) {
+            this.totalPoints = this.totalPoints + this.report[i].points;
+            this.totalHours = this.totalHours + this.report[i].totalHrs;
+          }
         }
         this.totalHours = parseFloat(this.totalHours.toFixed(1));
         console.log('point total ' + this.totalPoints);
         console.log('hours total ' + this.totalHours);
       });
 
-    this.timeTrackerService.getStudent(this.studentTimeReportForm.controls['studentId'].value).subscribe(s => {
+    this.timeTrackerService.getStudent(this.studentID).subscribe(s => {
       this.studentInfo = s;
       this.studentName = this.studentInfo[0].firstName + ' ' + this.studentInfo[0].lastName + '-' + this.studentInfo[0].studentId;
     });
@@ -72,10 +75,16 @@ export class StudentTimePointReportComponent implements OnInit {
 
   submit() {
     this.studentTimeReportForm.reset();
+
     this.totalHours = 0;
     this.totalPoints = 0;
     this.studentName = '';
     this.show = false;
+  }
+
+  onNotify(value: string): void {
+    // alert(message);
+    this.studentID = value;
   }
 
 
