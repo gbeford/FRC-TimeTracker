@@ -5,20 +5,11 @@
       <div class='panel-heading'>
         <span>Student Edit Form</span>
       </div>
-      
+
       <div *ngIf="!show">
-        <div>
-          <mat-form-field class="autoComplete-full-width">
-            <input matInput placeholder="Student" aria-label="Student" [matAutocomplete]="auto" [formControl]="studentCtrl" required>
-            <mat-autocomplete #auto="matAutocomplete" [displayWith]="displayFn">
-              <mat-option *ngFor="let student of filteredOptions | async" [value]="student">
-                <span>{{ student.firstName }} {{student.lastName}}</span> |
-                <small>Student ID: {{student.studentId}}</small>
-              </mat-option>
-            </mat-autocomplete>
-          </mat-form-field>
-          </div>
-          <div>
+      <div>
+        <app-auto-complete (notify)='onNotify($event)' [autoCompleteForm]="testPage">Loading...</app-auto-complete>
+    
             <mat-form-field>
               <input matInput [matDatepicker]="picker1" placeholder="Choose the created date" formControlName="createDate" required>
               <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
