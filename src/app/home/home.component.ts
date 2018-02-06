@@ -25,17 +25,17 @@ export class HomeComponent implements OnInit {
     this.countOfStudentsLogin();
   }
 
-  loginWithGoogle() {
-    this.auth.googleLogin();
-  }
+  // loginWithGoogle() {
+  //   this.auth.googleLogin();
+  // }
 
   canAdmin() {
     return this.auth.canAdmin(this.user);
    }
 
-  logOut() {
-    this.auth.signOut();
-  }
+  // logOut() {
+  //   this.auth.signOut();
+  // }
 
   logOutStudents() {
     this.svc.logOutStudents(new Date());

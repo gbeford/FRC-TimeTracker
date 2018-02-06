@@ -1,7 +1,7 @@
-<button mat-raised-button color="primary" (click)="loginWithGoogle()" *ngIf="!user">Login</button>
+<!-- <a (click)="loginWithGoogle()" *ngIf="!user">Login</a>
 <div *ngIf="user">
-  <button mat-raised-button color="warn" (click)='logOut()'>Log Out</button>
-</div>
+  <a (click)='logOut()'>Log Out</a>
+</div> -->
 
 <h1 *ngIf="canAdmin()">There are currently {{signedInStudent}} students signed in.</h1>
 

@@ -23,20 +23,32 @@
     <a [routerLink]="['/addMessage']" mat-menu-item *ngIf="isAdmin()">
       <span>Show message to student</span>
     </a>
-  <a [routerLink]="['/messageList']" mat-menu-item *ngIf="isAdmin()">
-    <span>Message List</span>
-  </a>
-<a [routerLink]="['/badges']" mat-menu-item *ngIf="isAdmin()">
-  <span>Badges</span>
-</a>
+    <a [routerLink]="['/messageList']" mat-menu-item *ngIf="isAdmin()">
+      <span>Message List</span>
+    </a>
+    <a [routerLink]="['/badges']" mat-menu-item *ngIf="isAdmin()">
+      <span>Badges</span>
+    </a>
 
 
   </mat-menu>
   <span class="spacer"></span>
-  <span *ngIf="user">Hello {{ user.displayName }}</span>
+  <div>
+    <div>
+      <a (click)="loginWithGoogle()" *ngIf="!user">Login</a>
+    </div>
+    <div *ngIf="user">
+      <a (click)='logOut()'>Log Out</a>
+    </div>
+  </div>
   <span class="spacer"> </span>
   {{ signedInStudents }} signed in.
   <span class="spacer"> </span>
-  <span>Student Time Tracker</span>
+  <span class="spacer"> </span>
+  <span style="padding-right: 50px;" *ngIf="user">{{ user.displayName }}</span>
+
+  <span>
+    <img src="/assets/images/colonial.png" height="50px">
+  </span>
 
 </mat-toolbar>

@@ -20,7 +20,15 @@ export class MenuComponent implements OnInit {
       (user) => this.user = user);
     this.countOfStudentsLogin();
   }
+  // log in to the application
+  loginWithGoogle() {
+    this.auth.googleLogin();
+  }
+  logOut() {
+    this.auth.signOut();
+  }
 
+  // permissons to the pages
   loggedIn() {
     return this.auth.canEdit(this.user);
   }

@@ -1,4 +1,9 @@
 /* You can add global styles to this file, and also import other style files */
+
+ a{cursor: pointer;}
+
+
+
 .trackerBtn{
     background-color: #2A4283;
     color: #C5B357;
