@@ -23,7 +23,6 @@ import { TimeTrackerService } from './time-tracker/time-tracker.service';
 import { StudentTimePointReportComponent } from './reports/student-time-point-report/student-time-point-report.component';
 import { PointsFormComponent } from './forms/points-form/points-form.component';
 import { AuthService } from './shared/auth.service';
-import { StudentListComponent } from './student-list/student-list.component';
 import { EditStudentRecordComponent } from './forms/edit-student-record/edit-student-record.component';
 import { AutoCompleteComponent } from './shared/auto-complete/auto-complete.component';
 import { BadgeEntryComponent } from './forms/badge-entry/badge-entry.component';
@@ -32,6 +31,7 @@ import { AddNewMessageComponent } from './forms/add-new-message/add-new-message.
 import { ShowMessageComponent } from './forms/show-message/show-message.component';
 import { MessageListComponent } from './reports/message-list/message-list.component';
 import { MessageService } from './forms/message.service';
+import { StudentListComponent } from './reports/student-list/student-list.component';
 
 @NgModule({
   declarations: [

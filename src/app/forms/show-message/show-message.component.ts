@@ -34,11 +34,11 @@ export class ShowMessageComponent implements OnInit {
     this.showMessageForm = this.formBuilder.group({
       messageCtrl: ['', [<any>Validators.required]]
     });
-    this.showMessageForm.valueChanges.subscribe(v => console.log);
   }
 
   submit() {
     this.showMessageForm.reset();
+    console.log(this.messageCtrl.value);
 
   }
 
