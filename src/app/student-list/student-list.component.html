@@ -36,7 +36,7 @@
       <mat-cell *matCellDef="let element"> {{element.status}} {{element.checkInTime | date:"hh:mm a"}}</mat-cell>
     </ng-container>
 
-    <ng-container matColumnDef="controls">
+    <!-- <ng-container matColumnDef="controls">
       <mat-header-cell *matHeaderCellDef> controls </mat-header-cell>
       <mat-cell *matCellDef="let element">
         <button mat-icon-button (click)="update(element)">
@@ -44,7 +44,7 @@
         </button>
         <mat-icon color="warn">delete</mat-icon>
       </mat-cell>
-    </ng-container>
+    </ng-container> -->
 
     <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
     <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>

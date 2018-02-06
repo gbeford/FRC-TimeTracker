@@ -27,8 +27,6 @@ export class ShowMessageComponent implements OnInit {
     this.messageService.getMessageList().subscribe(s => {
       this.messageList = s;
       console.log('message ', this.messageList);
-
-
     });
   }
 

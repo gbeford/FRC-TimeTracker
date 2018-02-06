@@ -10,6 +10,7 @@ import { StudentListComponent } from './student-list/student-list.component';
 import { EditStudentRecordComponent } from './forms/edit-student-record/edit-student-record.component';
 import { TestSharedComponentsComponent } from './shared/test-shared-components/test-shared-components.component';
 import { ShowMessageComponent } from './forms/show-message/show-message.component';
+import { MessageListComponent } from './reports/message-list/message-list.component';
 
 
 @NgModule({
@@ -21,7 +22,9 @@ import { ShowMessageComponent } from './forms/show-message/show-message.componen
             { path: 'studentlist', component: StudentListComponent },
             { path: 'studentEditForm', component: EditStudentRecordComponent },
             { path: 'addMessage', component: ShowMessageComponent },
+            { path: 'messageList', component: MessageListComponent },
             { path: 'test', component: TestSharedComponentsComponent },
+
             { path: '**', component: PageNotFoundComponent }
         ]),
     ],
