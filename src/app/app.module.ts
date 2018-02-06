@@ -32,6 +32,7 @@ import { ShowMessageComponent } from './forms/show-message/show-message.componen
 import { MessageListComponent } from './reports/message-list/message-list.component';
 import { MessageService } from './forms/message.service';
 import { StudentListComponent } from './reports/student-list/student-list.component';
+import { BadgeViewComponent } from './badge-view/badge-view.component';
 
 @NgModule({
   declarations: [
@@ -50,7 +51,8 @@ import { StudentListComponent } from './reports/student-list/student-list.compon
     TestSharedComponentsComponent,
     AddNewMessageComponent,
     ShowMessageComponent,
-    MessageListComponent
+    MessageListComponent,
+    BadgeViewComponent
   ],
   imports: [
     BrowserModule,

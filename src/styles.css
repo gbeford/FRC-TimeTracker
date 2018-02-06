@@ -4,7 +4,7 @@
     color: #C5B357;
     box-shadow: 0 5px #AAA8A8;
     border: none;
-    border-radius: 12px;
+    border-radius: 9px;
     cursor: pointer;
     padding: 10px;
     text-align: center;
@@ -18,6 +18,13 @@
 .trackerBtn:hover {background-color: #3D61BD}
 
 .trackerBtn:active {
+  background-color: #2A4283;
+  box-shadow: 0 5px #AAA8A8;
+  transform: translateY(4px);
+}
+.trackerLogoutBtn:hover {background-color: #3D61BD}
+
+.trackerLogoutBtn:active {
   background-color: #2A4283;
   box-shadow: 0 5px #AAA8A8;
   transform: translateY(4px);

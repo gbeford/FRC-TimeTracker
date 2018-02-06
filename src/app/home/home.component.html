@@ -1,13 +1,11 @@
 <button mat-raised-button color="primary" (click)="loginWithGoogle()" *ngIf="!user">Login</button>
-    <div *ngIf="user">
-      <button mat-raised-button color="warn" (click)='logOut()'>Log Out</button>
-    </div>
+<div *ngIf="user">
+  <button mat-raised-button color="warn" (click)='logOut()'>Log Out</button>
+</div>
 
 <h1 *ngIf="canAdmin()">There are currently {{signedInStudent}} students signed in.</h1>
 
 
-    <div *ngIf="user && canAdmin()">
-      <button class='trackerBtn' (click)=' logOutStudents()'>Log Out Students</button>
-    </div>
-
-
+<div *ngIf="user && canAdmin()">
+  <button class='trackerBtn' (click)=' logOutStudents()'>Log Out Students</button>
+</div>

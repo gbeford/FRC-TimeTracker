@@ -11,6 +11,7 @@ import { TestSharedComponentsComponent } from './shared/test-shared-components/t
 import { ShowMessageComponent } from './forms/show-message/show-message.component';
 import { MessageListComponent } from './reports/message-list/message-list.component';
 import { StudentListComponent } from './reports/student-list/student-list.component';
+import { BadgeViewComponent } from './badge-view/badge-view.component';
 
 
 @NgModule({
@@ -23,6 +24,7 @@ import { StudentListComponent } from './reports/student-list/student-list.compon
             { path: 'studentEditForm', component: EditStudentRecordComponent },
             { path: 'addMessage', component: ShowMessageComponent },
             { path: 'messageList', component: MessageListComponent },
+            { path: 'badges', component: BadgeViewComponent },
             { path: 'test', component: TestSharedComponentsComponent },
 
             { path: '**', component: PageNotFoundComponent }

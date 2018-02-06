@@ -26,6 +26,10 @@
   <a [routerLink]="['/messageList']" mat-menu-item *ngIf="isAdmin()">
     <span>Message List</span>
   </a>
+<a [routerLink]="['/badges']" mat-menu-item *ngIf="isAdmin()">
+  <span>Badges</span>
+</a>
+
 
   </mat-menu>
   <span class="spacer"></span>
