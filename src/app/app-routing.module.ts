@@ -12,9 +12,11 @@ import { MessageListComponent } from './reports/message-list/message-list.compon
 import { StudentListComponent } from './reports/student-list/student-list.component';
 import { BadgeViewComponent } from './badge-view/badge-view.component';
 import { TimeTrackerComponent } from './forms/time-tracker/time-tracker.component';
+import { AddNewMessageComponent } from './forms/add-new-message/add-new-message.component';
 
 
 @NgModule({
+
     imports: [
         RouterModule.forRoot([
             { path: '', component: HomeComponent },
@@ -22,9 +24,10 @@ import { TimeTrackerComponent } from './forms/time-tracker/time-tracker.componen
             { path: 'studentTimeReport', component: StudentTimePointReportComponent },
             { path: 'studentlist', component: StudentListComponent },
             { path: 'studentEditForm', component: EditStudentRecordComponent },
-            { path: 'addMessage', component: ShowMessageComponent },
+            { path: 'messageStudent', component: ShowMessageComponent },
             { path: 'messageList', component: MessageListComponent },
             { path: 'badges', component: BadgeViewComponent },
+            { path: 'addMessage', component: AddNewMessageComponent },
             { path: 'test', component: TestSharedComponentsComponent },
 
             { path: '**', component: PageNotFoundComponent }

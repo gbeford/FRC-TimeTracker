@@ -25,7 +25,6 @@ import { EditStudentRecordComponent } from './forms/edit-student-record/edit-stu
 import { AutoCompleteComponent } from './shared/auto-complete/auto-complete.component';
 import { BadgeEntryComponent } from './forms/badge-entry/badge-entry.component';
 import { TestSharedComponentsComponent } from './shared/test-shared-components/test-shared-components.component';
-import { AddNewMessageComponent } from './forms/add-new-message/add-new-message.component';
 import { ShowMessageComponent } from './forms/show-message/show-message.component';
 import { MessageListComponent } from './reports/message-list/message-list.component';
 import { MessageService } from './forms/message.service';
@@ -33,6 +32,7 @@ import { StudentListComponent } from './reports/student-list/student-list.compon
 import { BadgeViewComponent } from './badge-view/badge-view.component';
 import { TimeTrackerService } from './forms/time-tracker/time-tracker.service';
 import { TimeTrackerComponent } from './forms/time-tracker/time-tracker.component';
+import { AddNewMessageComponent } from './forms/add-new-message/add-new-message.component';
 
 @NgModule({
   declarations: [
@@ -52,7 +52,7 @@ import { TimeTrackerComponent } from './forms/time-tracker/time-tracker.componen
     AddNewMessageComponent,
     ShowMessageComponent,
     MessageListComponent,
-    BadgeViewComponent
+    BadgeViewComponent,
   ],
   imports: [
     BrowserModule,

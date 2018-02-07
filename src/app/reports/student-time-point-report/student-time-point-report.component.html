@@ -1,6 +1,6 @@
 <form class="form-horizontal" [formGroup]="studentTimeReportForm" novalidate (ngSubmit)="run()">
 
-  <h1>{{title}}</h1>
+  <h2>{{title}}</h2>
   <div *ngIf='!this.show'>
     <div>
       <app-auto-complete (notify)='onNotify($event)' [autoCompleteForm]="studentTimeReportForm">Loading...</app-auto-complete>

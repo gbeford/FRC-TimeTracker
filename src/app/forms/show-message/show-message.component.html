@@ -1,15 +1,14 @@
-<h1>
-  Add message to student
-
-</h1>
+<h2>
+  Message Student
+</h2>
 
 <form class="form-horizontal" [formGroup]="showMessageForm" novalidate (ngSubmit)="submit()">
-<div>
-  <app-auto-complete (notify)='onNotify($event)' [autoCompleteForm]="showMessageForm">Loading...</app-auto-complete>
-</div>
+  <div>
+    <app-auto-complete (notify)='onNotify($event)' [autoCompleteForm]="showMessageForm">Loading...</app-auto-complete>
+  </div>
 
   <mat-form-field style="width: 50%;">
-    <mat-select placeholder="Select messages you want to flag the kids" [formControl]="messageCtrl"  multiple >
+    <mat-select placeholder="Select messages you want to flag the kids" [formControl]="messageCtrl" multiple>
       <mat-select-trigger>
         {{messageCtrl.value ? messageCtrl.value[0] : ''}}
         <span *ngIf="messageCtrl.value?.length > 1" class="additional-selection">
@@ -19,11 +18,11 @@
       <mat-option *ngFor="let message of messageList" [value]="message.message">{{message.message}}</mat-option>
     </mat-select>
 
-  <mat-error *ngIf="messageCtrl.hasError('required')">Please choose at least 1 message</mat-error>
-</mat-form-field>
+    <mat-error *ngIf="messageCtrl.hasError('required')">Please choose at least 1 message</mat-error>
+  </mat-form-field>
 
-<div>
+  <div>
     <button class='trackerBtn' type="button" (click)='submit()'>Submit</button>
-</div>
+  </div>
 
 </form>

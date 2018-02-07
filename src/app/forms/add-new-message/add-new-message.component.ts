@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FormGroup } from '@angular/forms';
 
 @Component({
   selector: 'app-add-new-message',
@@ -6,10 +7,14 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./add-new-message.component.css']
 })
 export class AddNewMessageComponent implements OnInit {
-
+  public addMessageForm: FormGroup;
   constructor() { }
 
   ngOnInit() {
+  }
+
+  submit() {
+
   }
 
 }

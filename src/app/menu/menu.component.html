@@ -21,7 +21,10 @@
       <span>Edit</span>
     </a>
     <a [routerLink]="['/addMessage']" mat-menu-item *ngIf="isAdmin()">
-      <span>Show message to student</span>
+      <span>Add New Message</span>
+    </a>
+    <a [routerLink]="['/messageStudent']" mat-menu-item *ngIf="isAdmin()">
+      <span>Message Student</span>
     </a>
     <a [routerLink]="['/messageList']" mat-menu-item *ngIf="isAdmin()">
       <span>Message List</span>
@@ -47,7 +50,7 @@
     </div>
   </div>
   <span>
-    <img class="colonialImg"  src="/assets/images/colonial.png" >
+    <img class="colonialImg" src="/assets/images/colonial.png">
   </span>
 
 </mat-toolbar>

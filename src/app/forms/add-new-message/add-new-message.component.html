@@ -1,3 +1,24 @@
-<p>
-  add-new-message works!
-</p>
+<div class="container">
+
+  <h2>
+    Add A New Message
+  </h2>
+
+  <form [formGroup]="addMessageForm" novalidate (ngSubmit)="submit()">
+    <mat-form-field class="messageText">
+      <textarea matInput placeholder="Add Message" matTextareaAutosize matAutosizeMinRows="2" matAutosizeMaxRows="5"></textarea>
+    </mat-form-field>
+
+    <!-- <div>
+      <label>Float label: </label>
+      <mat-radio-group formControlName="Show Message">
+        <mat-radio-button value="true">Yes</mat-radio-button>
+        <mat-radio-button value="false">No</mat-radio-button>
+      </mat-radio-group>
+    </div> -->
+    <div>
+      <button class='trackerBtn' type="button" (click)='submit()'>Submit</button>
+    </div>
+  </form>
+
+</div>

@@ -1,27 +1,28 @@
-<h1>
- Message List To Show Students
-</h1>
+<h2>
+  Message List To Show Students
+</h2>
 
+<div class="example-container mat-elevation-z8">
+  <mat-table #table [dataSource]="dataSource" matSort>
 
-<mat-table #table [dataSource]="dataSource" matSort>
+    <!-- Position Column -->
+    <ng-container matColumnDef="message">
+      <mat-header-cell *matHeaderCellDef mat-sort-header fxFlex="100px"> Message </mat-header-cell>
+      <mat-cell *matCellDef="let element" fxFlex="100px"> {{element.message}} </mat-cell>
+    </ng-container>
 
-  <!-- Position Column -->
-  <ng-container matColumnDef="message">
-    <mat-header-cell *matHeaderCellDef mat-sort-header fxFlex="100px"> Message </mat-header-cell>
-    <mat-cell *matCellDef="let element" fxFlex="100px"> {{element.message}} </mat-cell>
-  </ng-container>
+    <ng-container matColumnDef="sortOrder">
+      <mat-header-cell *matHeaderCellDef mat-sort-header fxFlex="100px"> Sort Order </mat-header-cell>
+      <mat-cell *matCellDef="let element" fxFlex="100px"> {{element.sortOrder}} </mat-cell>
+    </ng-container>
 
-  <ng-container matColumnDef="sortOrder">
-    <mat-header-cell *matHeaderCellDef mat-sort-header fxFlex="100px"> Sort Order </mat-header-cell>
-    <mat-cell *matCellDef="let element" fxFlex="100px"> {{element.sortOrder}} </mat-cell>
-  </ng-container>
+    <ng-container matColumnDef="show">
+      <mat-header-cell *matHeaderCellDef mat-sort-header fxFlex="100px"> Show Message </mat-header-cell>
+      <mat-cell *matCellDef="let element" fxFlex="100px"> {{element.show}} </mat-cell>
+    </ng-container>
 
-  <ng-container matColumnDef="show">
-    <mat-header-cell *matHeaderCellDef mat-sort-header fxFlex="100px"> Show Message </mat-header-cell>
-    <mat-cell *matCellDef="let element" fxFlex="100px"> {{element.show}} </mat-cell>
-  </ng-container>
+    <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+    <mat-row *matRowDef="let row; columns: displayedColumns"></mat-row>
 
-  <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
-  <mat-row *matRowDef="let row; columns: displayedColumns"></mat-row>
-
-</mat-table>
+  </mat-table>
+</div>
