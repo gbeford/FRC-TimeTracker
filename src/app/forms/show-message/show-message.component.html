@@ -4,6 +4,9 @@
 </h1>
 
 <form class="form-horizontal" [formGroup]="showMessageForm" novalidate (ngSubmit)="submit()">
+<div>
+  <app-auto-complete (notify)='onNotify($event)' [autoCompleteForm]="showMessageForm">Loading...</app-auto-complete>
+</div>
 
   <mat-form-field style="width: 50%;">
     <mat-select placeholder="Select messages you want to flag the kids" [formControl]="messageCtrl"  multiple >

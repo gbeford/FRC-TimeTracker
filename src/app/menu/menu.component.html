@@ -32,8 +32,13 @@
 
 
   </mat-menu>
-  <span class="spacer"></span>
-  <div>
+
+  <span style="padding-left: 50px;" *ngIf="user">{{ user.displayName }}</span>
+  <span class="spacer"> </span>
+  {{ signedInStudents }} signed in.
+  <span class="spacer"> </span>
+  <span class="spacer"> </span>
+  <div style="padding-right: 50px;">
     <div>
       <a (click)="loginWithGoogle()" *ngIf="!user">Login</a>
     </div>
@@ -41,12 +46,6 @@
       <a (click)='logOut()'>Log Out</a>
     </div>
   </div>
-  <span class="spacer"> </span>
-  {{ signedInStudents }} signed in.
-  <span class="spacer"> </span>
-  <span class="spacer"> </span>
-  <span style="padding-right: 50px;" *ngIf="user">{{ user.displayName }}</span>
-
   <span>
     <img src="/assets/images/colonial.png" height="50px">
   </span>

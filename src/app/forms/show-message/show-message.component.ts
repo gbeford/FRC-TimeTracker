@@ -13,7 +13,7 @@ export class ShowMessageComponent implements OnInit {
   messageList: IMessage[];
   public showMessageForm: FormGroup;
   messageCtrl = new FormControl();
-
+  studentID = '';
 
   constructor(private formBuilder: FormBuilder, private messageService: MessageService) { }
 
@@ -42,7 +42,10 @@ export class ShowMessageComponent implements OnInit {
 
   }
 
-
+  onNotify(value: string): void {
+    // alert(message);
+    this.studentID = value;
+  }
 
 
 }
