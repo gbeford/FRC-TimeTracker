@@ -1,0 +1,29 @@
+@import '../../styles';
+.spacing {
+  margin-bottom: 1em;
+  width: 300px;
+}
+
+.spacer {
+  -webkit-box-flex: 1;
+  -ms-flex: 1 1 auto;
+  flex: 1 1 auto;
+}
+
+.mat-toolbar,
+.mat-menu-content {
+  background-color: $primary-blue;
+  color: $primary-yellow;
+}
+
+.mat-icon-button {
+  background-color: $secondary-blue;
+  height: 35px;
+  line-height: 35px;
+}
+
+.mat-toolbar-row,
+.mat-toolbar-single-row {
+  height: 55px;
+  font: 500 14px/32px Roboto, "Helvetica Neue", sans-serif;
+}

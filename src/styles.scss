@@ -1,0 +1,44 @@
+/* You can add global styles to this file, and also import other style files */
+
+$primary-blue:#2A4283;
+$secondary-blue:rgb(51, 78, 155);
+$primary-yellow:rgb(221, 204, 120);
+a {
+  cursor: pointer;
+}
+
+@mixin border-radius($radius) {
+  -webkit-border-radius: $radius;
+  -moz-border-radius: $radius;
+  -ms-border-radius: $radius;
+  border-radius: $radius;
+}
+
+.trackerBtn {
+  //   background-color: #2A4283;
+  background-color: $primary-blue;
+  color: $primary-yellow;
+  box-shadow: 0 3px #AAA8A8;
+  border: none;
+  @include border-radius(7px);
+  cursor: pointer;
+  padding: 7px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 13px;
+  font-weight: bold;
+  margin: 4px 2px;
+  &:hover {
+    // background-color: rgb(51, 78, 155);
+    background-color: $secondary-blue;
+  }
+  &:active {
+    transform: translateY(4px);
+  }
+}
+
+.mat-cell,
+.mat-header-cell {
+  padding: 0 1em 0 1em;
+}

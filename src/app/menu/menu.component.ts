@@ -6,7 +6,7 @@ import { TimeTrackerService } from 'app/time-tracker/time-tracker.service';
 @Component({
   selector: 'app-menu',
   templateUrl: './menu.component.html',
-  styleUrls: ['./menu.component.css']
+  styleUrls: ['./menu.component.scss']
 })
 export class MenuComponent implements OnInit {
 
