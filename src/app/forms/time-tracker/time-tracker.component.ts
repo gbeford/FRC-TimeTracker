@@ -2,10 +2,10 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, FormBuilder, Validators } from '@angular/forms';
 import { Observable } from 'rxjs/Observable';
 import { map, tap, startWith, debounceTime } from 'rxjs/operators';
-
-import { TimeTrackerService } from './time-tracker.service';
-import { IStudent } from './model/student';
 import { MatSnackBar } from '@angular/material';
+import { TimeTrackerService } from './time-tracker.service';
+import { IStudent } from '../../model/student';
+
 
 @Component({
   selector: 'app-tracker',
@@ -53,10 +53,10 @@ export class TimeTrackerComponent implements OnInit {
   studentAutoComplete() {
     this.filteredOptions = this.studentCtrl.valueChanges
       .pipe(
-      debounceTime(200),
-      startWith(this.studentCtrl.value),
-      map(val => this.displayFn(val)),
-      map(val => this.filterStudents(val))
+        debounceTime(200),
+        startWith(this.studentCtrl.value),
+        map(val => this.displayFn(val)),
+        map(val => this.filterStudents(val))
       );
   }
 

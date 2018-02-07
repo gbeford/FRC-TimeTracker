@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { TimeTrackerService } from '../time-tracker/time-tracker.service';
 import { MatSnackBar } from '@angular/material';
 import { AuthService } from '../shared/auth.service';
 import * as firebase from 'firebase';
 import { User } from '../shared/user';
+import { TimeTrackerService } from '../forms/time-tracker/time-tracker.service';
 
 @Component({
   selector: 'app-home',
@@ -31,7 +31,7 @@ export class HomeComponent implements OnInit {
 
   canAdmin() {
     return this.auth.canAdmin(this.user);
-   }
+  }
 
   // logOut() {
   //   this.auth.signOut();

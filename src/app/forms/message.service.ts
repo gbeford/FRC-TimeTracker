@@ -3,7 +3,8 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
 import { AngularFirestore, AngularFirestoreCollection } from 'angularfire2/firestore';
 import { take } from 'rxjs/operators';
-import { IMessage } from './model/message';
+import { IMessage } from '../model/message';
+
 
 
 

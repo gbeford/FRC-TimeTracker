@@ -1,9 +1,10 @@
-import { ITimeTracker } from './model/time-tracker';
+
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
-import { IStudent } from './model/student';
 import { AngularFirestore, AngularFirestoreCollection } from 'angularfire2/firestore';
 import { take } from 'rxjs/operators';
+import { IStudent } from '../../model/student';
+import { ITimeTracker } from '../../model/time-tracker';
 
 @Injectable()
 export class TimeTrackerService {

@@ -3,6 +3,11 @@
 $primary-blue:#2A4283;
 $secondary-blue:rgb(51, 78, 155);
 $primary-yellow:rgb(221, 204, 120);
+//---------------------------------------------------------
+html {
+  font: 500 14px/32px Roboto, "Helvetica Neue", sans-serif;
+}
+
 a {
   cursor: pointer;
 }
@@ -15,7 +20,6 @@ a {
 }
 
 .trackerBtn {
-  //   background-color: #2A4283;
   background-color: $primary-blue;
   color: $primary-yellow;
   box-shadow: 0 3px #AAA8A8;
@@ -30,7 +34,6 @@ a {
   font-weight: bold;
   margin: 4px 2px;
   &:hover {
-    // background-color: rgb(51, 78, 155);
     background-color: $secondary-blue;
   }
   &:active {

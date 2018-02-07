@@ -3,9 +3,9 @@ import { Observable } from 'rxjs/Observable';
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, FormBuilder, Validators } from '@angular/forms';
 import { map, tap, startWith, debounceTime } from 'rxjs/operators';
+import { IStudent } from '../../model/student';
+import { TimeTrackerService } from '../time-tracker/time-tracker.service';
 
-import { TimeTrackerService } from './../../time-tracker/time-tracker.service';
-import { IStudent } from './../../time-tracker/model/student';
 
 @Component({
   selector: 'app-edit-student-record',

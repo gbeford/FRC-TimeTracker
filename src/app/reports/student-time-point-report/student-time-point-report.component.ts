@@ -1,9 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, FormBuilder, Validators, ReactiveFormsModule } from '@angular/forms';
 import { Observable } from 'rxjs/Observable';
-import { ITimeTracker } from '../../time-tracker/model/time-tracker';
-import { TimeTrackerService } from '../../time-tracker/time-tracker.service';
-import { IStudent } from '../../time-tracker/model/student';
+import { ITimeTracker } from '../../model/time-tracker';
+import { IStudent } from '../../model/student';
+import { TimeTrackerService } from '../../forms/time-tracker/time-tracker.service';
+
 
 @Component({
   selector: 'app-student-time-point-report',

@@ -2,8 +2,10 @@ import { Component, AfterViewInit, ViewChild } from '@angular/core';
 import { MatTableDataSource, MatSort } from '@angular/material';
 import { Observable } from 'rxjs/Observable';
 import { DataSource } from '@angular/cdk/collections';
-import { TimeTrackerService } from '../../time-tracker/time-tracker.service';
-import { IStudent } from '../../time-tracker/model/student';
+import { TimeTrackerService } from '../../forms/time-tracker/time-tracker.service';
+import { IStudent } from '../../model/student';
+
+
 
 @Component({
   selector: 'app-student-list',

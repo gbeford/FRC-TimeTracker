@@ -8,4 +8,5 @@ export interface IStudent {
     grade: number;
     status?: string;
     checkInTime?: Date;
+    messages: string[];
 }

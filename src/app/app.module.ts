@@ -18,8 +18,6 @@ import { MenuComponent } from './menu/menu.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { AppRoutingModule } from './app-routing.module';
 import { HomeComponent } from './home/home.component';
-import { TimeTrackerComponent } from './time-tracker/time-tracker.component';
-import { TimeTrackerService } from './time-tracker/time-tracker.service';
 import { StudentTimePointReportComponent } from './reports/student-time-point-report/student-time-point-report.component';
 import { PointsFormComponent } from './forms/points-form/points-form.component';
 import { AuthService } from './shared/auth.service';
@@ -33,6 +31,8 @@ import { MessageListComponent } from './reports/message-list/message-list.compon
 import { MessageService } from './forms/message.service';
 import { StudentListComponent } from './reports/student-list/student-list.component';
 import { BadgeViewComponent } from './badge-view/badge-view.component';
+import { TimeTrackerService } from './forms/time-tracker/time-tracker.service';
+import { TimeTrackerComponent } from './forms/time-tracker/time-tracker.component';
 
 @NgModule({
   declarations: [

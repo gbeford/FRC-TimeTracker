@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../shared/auth.service';
 import { User } from '../shared/user';
-import { TimeTrackerService } from 'app/time-tracker/time-tracker.service';
+import { TimeTrackerService } from '../forms/time-tracker/time-tracker.service';
+
 
 @Component({
   selector: 'app-menu',
