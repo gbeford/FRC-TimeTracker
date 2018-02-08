@@ -30,21 +30,16 @@ export class MessageService {
 
     saveMessage(msg: string) {
         // const date = new Date();
-
-    const message: IMessage = {
-        messageId: null,
-        message: msg,
-        sortOrder: null,
-        show: false
+        console.log('message' + msg);
+        const message: IMessage = {
+            messageId: null,
+            message: msg,
+            sortOrder: null,
+            show: false
         };
 
-    const messageCollection = this.afs.collection<IMessage>('messages');
-    messageCollection.add(message);
-
-        // const studentCollection = this.afs.doc(`students/${student.studentId}`);
-        // student.status = 'in';
-        // student.checkInTime = date;
-        // studentCollection.set(student, { merge: true });
+        const messageCollection = this.afs.collection<IMessage>('messages');
+        messageCollection.add(message);
     }
 
     // updateStudentTime(student: IStudent) {

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup } from '@angular/forms';
 import { MessageService } from '../message.service';
+import { FormGroup, FormControl, FormBuilder, Validators } from '@angular/forms';
+
 
 @Component({
   selector: 'app-add-new-message',
@@ -9,15 +10,25 @@ import { MessageService } from '../message.service';
 })
 export class AddNewMessageComponent implements OnInit {
   public addMessageForm: FormGroup;
+  messageTxtCtrl = new FormControl();
 
-  constructor(private messageService: MessageService) { }
+  constructor(private formBuilder: FormBuilder, private messageService: MessageService) { }
+
 
   ngOnInit() {
+    this.createForm();
+  }
+
+  createForm() {
+    this.addMessageForm = this.formBuilder.group({
+      messageTxtCtrl: ['', [<any>Validators.required]]
+    });
   }
 
   submit() {
-
-    this.messageService.saveMessag();
+    // console.log(this.messageTxtCtrl.value);
+    this.messageService.saveMessage(this.messageTxtCtrl.value);
+    this.addMessageForm.reset();
   }
 
 }

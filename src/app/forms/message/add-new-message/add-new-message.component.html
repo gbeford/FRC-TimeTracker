@@ -4,9 +4,10 @@
     Add A New Message
   </h2>
 
-  <form [formGroup]="addMessageForm" novalidate (ngSubmit)="submit()">
+  <form [formGroup]="addMessageForm" novalidate>
+
     <mat-form-field class="messageText">
-      <textarea matInput placeholder="Add Message" matTextareaAutosize matAutosizeMinRows="2" matAutosizeMaxRows="5"></textarea>
+      <textarea matInput placeholder="Add Message" matTextareaAutosize matAutosizeMinRows="2" matAutosizeMaxRows="5" [formControl]="messageTxtCtrl"></textarea>
     </mat-form-field>
 
     <!-- <div>
