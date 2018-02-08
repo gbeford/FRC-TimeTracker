@@ -25,14 +25,15 @@ import { EditStudentRecordComponent } from './forms/edit-student-record/edit-stu
 import { AutoCompleteComponent } from './shared/auto-complete/auto-complete.component';
 import { BadgeEntryComponent } from './forms/badge-entry/badge-entry.component';
 import { TestSharedComponentsComponent } from './shared/test-shared-components/test-shared-components.component';
-import { ShowMessageComponent } from './forms/show-message/show-message.component';
 import { MessageListComponent } from './reports/message-list/message-list.component';
-import { MessageService } from './forms/message.service';
 import { StudentListComponent } from './reports/student-list/student-list.component';
 import { BadgeViewComponent } from './badge-view/badge-view.component';
 import { TimeTrackerService } from './forms/time-tracker/time-tracker.service';
 import { TimeTrackerComponent } from './forms/time-tracker/time-tracker.component';
-import { AddNewMessageComponent } from './forms/add-new-message/add-new-message.component';
+import { AddNewMessageComponent } from './forms/message/add-new-message/add-new-message.component';
+import { ShowMessageComponent } from './forms/message/show-message/show-message.component';
+import { MessageService } from './forms/message/message.service';
+
 
 @NgModule({
   declarations: [

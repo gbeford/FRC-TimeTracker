@@ -1,7 +1,7 @@
 import { Component, OnInit, AfterViewInit, ViewChild } from '@angular/core';
 import { MatTableDataSource, MatSort } from '@angular/material';
-import { MessageService } from '../../forms/message.service';
 import { IMessage } from '../../model/message';
+import { MessageService } from '../../forms/message/message.service';
 
 @Component({
   selector: 'app-message-list',
