@@ -6,7 +6,7 @@
 
   <form [formGroup]="addMessageForm" novalidate (ngSubmit)="submit()">
     <mat-form-field class="messageText">
-      <textarea matInput placeholder="Add Message" matTextareaAutosize matAutosizeMinRows="2" matAutosizeMaxRows="5"></textarea>
+      <textarea matInput placeholder="Add Message" matTextareaAutosize matAutosizeMinRows="2" matAutosizeMaxRows="5" [formControl]="messageCtrl"></textarea>
     </mat-form-field>
 
     <!-- <div>

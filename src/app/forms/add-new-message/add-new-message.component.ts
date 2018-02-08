@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup } from '@angular/forms';
+import { FormGroup, FormControl } from '@angular/forms';
 
 @Component({
   selector: 'app-add-new-message',
@@ -8,6 +8,8 @@ import { FormGroup } from '@angular/forms';
 })
 export class AddNewMessageComponent implements OnInit {
   public addMessageForm: FormGroup;
+  messageCtrl = new FormControl();
+
   constructor() { }
 
   ngOnInit() {
