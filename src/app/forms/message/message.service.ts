@@ -4,6 +4,7 @@ import { Observable } from 'rxjs/Observable';
 import { AngularFirestore, AngularFirestoreCollection } from 'angularfire2/firestore';
 import { take } from 'rxjs/operators';
 import { IMessage } from '../../model/message';
+import { IStudent } from '../../model/student';
 
 
 
@@ -42,9 +43,12 @@ export class MessageService {
         messageCollection.add(message);
     }
 
-    setMessage() {
+    setMessage(studentId, messages) {
+                this.afs.doc(`students/${studentId}`).set({
+                    message: messages
+                }, { merge: true });
+        }
 
-    }
 
     // updateStudentTime(student: IStudent) {
     //     // const date = new Date(2018, 0, 10, 21, 0, 0);

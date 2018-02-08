@@ -19,15 +19,15 @@ export class AddNewMessageComponent implements OnInit {
     this.createForm();
   }
 
-  createForm() {
+  private createForm() {
     this.addMessageForm = this.formBuilder.group({
-      messageTxtCtrl: ['', [<any>Validators.required]]
+      messageTxtCtrl: new FormControl('', Validators.required),
     });
   }
 
   submit() {
     console.log(this.messageTxtCtrl.value);
-    this.messageService.saveMessage(this.messageTxtCtrl.value);
+    // this.messageService.saveMessage(this.messageTxtCtrl.value);
     this.addMessageForm.reset();
   }
 

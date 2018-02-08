@@ -16,6 +16,7 @@ export class ShowMessageComponent implements OnInit {
   public showMessageForm: FormGroup;
   messageCtrl = new FormControl();
   studentID = '';
+  message: string;
 
   constructor(private formBuilder: FormBuilder, private messageService: MessageService) { }
 
@@ -39,7 +40,12 @@ export class ShowMessageComponent implements OnInit {
   }
 
   submit() {
-    this.showMessageForm.reset();
+    this.message = null;
+    if (this.messageCtrl.value !== 'Remove Message') {
+      this.message = this.messageCtrl.value;
+    }
+    this.messageService.setMessage(this.studentID, this.message);
+    this.showMessageForm.reset(this.messageCtrl);
     console.log(this.messageCtrl.value);
 
   }
