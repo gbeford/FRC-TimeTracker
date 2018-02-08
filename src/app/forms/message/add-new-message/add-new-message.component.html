@@ -4,7 +4,7 @@
     Add A New Message
   </h2>
 
-  <form [formGroup]="addMessageForm" novalidate>
+  <form [formGroup]="addMessageForm" novalidate (ngSubmit)="submit()">
 
     <mat-form-field class="messageText">
       <textarea matInput placeholder="Add Message" matTextareaAutosize matAutosizeMinRows="2" matAutosizeMaxRows="5" [formControl]="messageTxtCtrl"></textarea>
@@ -18,7 +18,7 @@
       </mat-radio-group>
     </div> -->
     <div>
-      <button class='trackerBtn' type="button" (click)='submit()'>Submit</button>
+      <button class='trackerBtn' type="submit">Submit</button>
     </div>
   </form>
 

@@ -42,6 +42,10 @@ export class MessageService {
         messageCollection.add(message);
     }
 
+    setMessage() {
+
+    }
+
     // updateStudentTime(student: IStudent) {
     //     // const date = new Date(2018, 0, 10, 21, 0, 0);
     //     const date = new Date();

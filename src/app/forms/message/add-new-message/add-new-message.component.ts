@@ -26,7 +26,7 @@ export class AddNewMessageComponent implements OnInit {
   }
 
   submit() {
-    // console.log(this.messageTxtCtrl.value);
+    console.log(this.messageTxtCtrl.value);
     this.messageService.saveMessage(this.messageTxtCtrl.value);
     this.addMessageForm.reset();
   }
