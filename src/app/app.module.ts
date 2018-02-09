@@ -7,7 +7,8 @@ import { AppComponent } from './app.component';
 import {
   MatToolbarModule, MatButtonModule, MatMenuModule, MatIconModule, MatDatepickerModule, MatSelectModule,
   MatFormFieldModule, MatNativeDateModule, MatInputModule, MatSnackBarModule, MatTableModule, MatSortModule,
-  MatCheckboxModule
+  MatCheckboxModule,
+  MatDialogModule
 } from '@angular/material';
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
 import { AngularFirestoreModule } from 'angularfire2/firestore';
@@ -34,6 +35,7 @@ import { TimeTrackerComponent } from './forms/time-tracker/time-tracker.componen
 import { AddNewMessageComponent } from './forms/message/add-new-message/add-new-message.component';
 import { ShowMessageComponent } from './forms/message/show-message/show-message.component';
 import { MessageService } from './forms/message/message.service';
+import { TimeTrackerModalComponent } from './forms/time-tracker/time-tracker-modal.component';
 
 
 @NgModule({
@@ -55,6 +57,7 @@ import { MessageService } from './forms/message/message.service';
     ShowMessageComponent,
     MessageListComponent,
     BadgeViewComponent,
+    TimeTrackerModalComponent,
   ],
   imports: [
     BrowserModule,
@@ -76,6 +79,7 @@ import { MessageService } from './forms/message/message.service';
     MatTableModule,
     MatSortModule,
     MatCheckboxModule,
+    MatDialogModule,
     AppRoutingModule,
     AngularFirestoreModule,
     AngularFireModule.initializeApp(environment.firebase_467_timeTracker),
@@ -85,6 +89,7 @@ import { MessageService } from './forms/message/message.service';
     AuthService,
     MessageService
   ],
+  entryComponents: [TimeTrackerModalComponent],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

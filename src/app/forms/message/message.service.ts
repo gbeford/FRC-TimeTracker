@@ -44,10 +44,10 @@ export class MessageService {
     }
 
     setMessage(studentId, messages) {
-                this.afs.doc(`students/${studentId}`).set({
-                    message: messages
-                }, { merge: true });
-        }
+        this.afs.doc(`students/${studentId}`).set({
+            messages: messages
+        }, { merge: true });
+    }
 
 
 }

@@ -2,9 +2,10 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, FormBuilder, Validators } from '@angular/forms';
 import { Observable } from 'rxjs/Observable';
 import { map, tap, startWith, debounceTime } from 'rxjs/operators';
-import { MatSnackBar } from '@angular/material';
+import { MatSnackBar, MatDialog } from '@angular/material';
 import { TimeTrackerService } from './time-tracker.service';
 import { IStudent } from '../../model/student';
+import { TimeTrackerModalComponent } from './time-tracker-modal.component';
 
 
 @Component({
@@ -23,7 +24,8 @@ export class TimeTrackerComponent implements OnInit {
 
   constructor(private formBuilder: FormBuilder,
     private timeTrackerService: TimeTrackerService,
-    private snackBar: MatSnackBar) { }
+    private snackBar: MatSnackBar,
+    public dialog: MatDialog) { }
 
   ngOnInit(): void {
     this.createForm();
@@ -67,13 +69,30 @@ export class TimeTrackerComponent implements OnInit {
       });
     }
 
-    this.timeTrackerForm.reset();
+    console.log('student message ', this.selectedStudent);
+    if (this.selectedStudent.messages && this.selectedStudent.messages.length > 0) {
 
+      this.openDialog(this.selectedStudent);
+    }
+    this.timeTrackerForm.reset();
   }
 
+  // autoComplete
   onNotify(value: IStudent): void {
     this.selectedStudent = value;
     this.checkIfSignedIn();
+  }
+
+  // modal
+  openDialog(student): void {
+    const dialogRef = this.dialog.open(TimeTrackerModalComponent, {
+      width: '250px',
+
+      // get student messages
+      data: { messages: student.messages }
+    });
+
+
   }
 
 }
