@@ -83,9 +83,9 @@ export class StudentTimePointReportComponent implements OnInit {
     this.show = false;
   }
 
-  onNotify(value: string): void {
+  onNotify(value: IStudent): void {
     // alert(message);
-    this.studentID = value;
+    this.studentID = value.studentId;
   }
 
 

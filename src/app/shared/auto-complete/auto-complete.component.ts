@@ -65,7 +65,7 @@ export class AutoCompleteComponent implements OnInit {
   // this should get the student info from the autocomplete control
   getStudentInfo(value) {
     console.log(value.source.value.studentId);
-    this.notify.emit(value.source.value.studentId);
+    this.notify.emit(value.source.value);
   }
 
 }

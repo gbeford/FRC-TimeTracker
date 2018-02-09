@@ -45,6 +45,12 @@ h2 {
   &:active {
     transform: translateY(4px);
   }
+  &:disabled {
+    cursor: default;
+    background-color: #f0f0f0;
+    color: #e0e0e0;
+    border: 1px solid #e0e0e0;
+  }
 }
 
 .mat-cell,
@@ -52,14 +58,6 @@ h2 {
   padding: 0 1em 0 1em;
 }
 
-.error {
-  color: red;
+.messageText {
+  width: 55%;
 }
-
-.error-msg {
-  display: block;
-  position: absolute;
-  font-size: 75%;
-  bottom: -2em;
-}
-

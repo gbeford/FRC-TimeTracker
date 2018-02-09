@@ -73,9 +73,9 @@ export class EditStudentRecordComponent implements OnInit {
     // });
   }
 
-  onNotify(value: string): void {
+  onNotify(value: IStudent): void {
     // alert(message);
-    this.studentID = value;
+    this.studentID = value.studentId;
   }
 
 }

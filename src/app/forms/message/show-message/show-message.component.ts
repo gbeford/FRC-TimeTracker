@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators, FormControl } from '@angular/forms';
 import { IMessage } from '../../../model/message';
 import { MessageService } from '../message.service';
+import { IStudent } from 'app/model/student';
 
 
 
@@ -16,6 +17,7 @@ export class ShowMessageComponent implements OnInit {
   public showMessageForm: FormGroup;
   // messageCtrl = new FormControl();
   studentID = '';
+  show = true;
 
   constructor(private formBuilder: FormBuilder, private messageService: MessageService) { }
 
@@ -32,6 +34,9 @@ export class ShowMessageComponent implements OnInit {
     });
   }
 
+
+  get clearMessages() { return this.showMessageForm.get('clearMessages'); }
+
   createForm() {
     this.showMessageForm = this.formBuilder.group({
       messageCtrl: ['', [<any>Validators.required]],
@@ -39,23 +44,29 @@ export class ShowMessageComponent implements OnInit {
     });
   }
 
-  submit() {
-    let messages = [];
-    if (this.showMessageForm.value.clearMessages) {
-      messages = [];
-    } else {
-      messages = this.showMessageForm.value.messageCtrl;
-    }
-    console.log(this.showMessageForm.value.messageCtrl);
-    this.messageService.setMessage(this.studentID, messages);
-    this.showMessageForm.reset();
-    // console.log(this.messageCtrl.value);
-
+  hideMessage() {
+    this.show = false;
   }
 
-  onNotify(value: string): void {
-    // alert(message);
-    this.studentID = value;
+  submit() {
+    if ((this.studentID !== null) && (this.showMessageForm.valid || this.showMessageForm.value.clearMessages)) {
+      let messages = [];
+      if (this.showMessageForm.value.clearMessages) {
+        messages = [];
+      } else {
+        messages = this.showMessageForm.value.messageCtrl;
+      }
+
+      this.messageService.setMessage(this.studentID, messages);
+      this.showMessageForm.reset();
+
+      // console.log(this.showMessageForm.value.messageCtrl);
+      // console.log(this.showMessageForm.value.clearMessages);
+    }
+  }
+
+  onNotify(value: IStudent): void {
+    this.studentID = value.studentId;
   }
 
 

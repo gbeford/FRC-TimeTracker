@@ -25,7 +25,7 @@
       <button class='trackerBtn'> Submit</button>
     </div>
   </div>
-  <div *ngIf='this.show'>
+  <div *ngIf='show'>
     <div>
       <label class='infoLabel' for='student_name'>Date Range:</label>
       {{startDate | date:"MM/dd/yy"}} - {{endDate | date:"MM/dd/yy"}}

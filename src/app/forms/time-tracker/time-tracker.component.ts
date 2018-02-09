@@ -19,26 +19,20 @@ export class TimeTrackerComponent implements OnInit {
   students: IStudent[];
   selectedStudent: IStudent;
   public timeTrackerForm: FormGroup;
-
-  studentCtrl: FormControl = new FormControl();
   filteredOptions: Observable<IStudent[]>;
 
   constructor(private formBuilder: FormBuilder,
     private timeTrackerService: TimeTrackerService,
     private snackBar: MatSnackBar) { }
 
-
   ngOnInit(): void {
     this.createForm();
     this.getAllStudents();
-    this.watchStudent();
   }
 
   createForm() {
     console.log('here');
     this.timeTrackerForm = this.formBuilder.group({
-      studentCtrl: ['', [<any>Validators.required]],
-      // studentID: [''],
     });
   }
 
@@ -46,43 +40,8 @@ export class TimeTrackerComponent implements OnInit {
   getAllStudents() {
     this.timeTrackerService.getStudents().subscribe(s => {
       this.students = s;
-      this.studentAutoComplete();
     });
   }
-
-  studentAutoComplete() {
-    this.filteredOptions = this.studentCtrl.valueChanges
-      .pipe(
-        debounceTime(200),
-        startWith(this.studentCtrl.value),
-        map(val => this.displayFn(val)),
-        map(val => this.filterStudents(val))
-      );
-  }
-
-  filterStudents(fName: string): IStudent[] {
-    return fName && typeof fName === 'string' ?
-      this.students.filter(student =>
-        student.firstName.toLowerCase().indexOf(fName.toLowerCase()) === 0)
-      : this.students;
-  }
-
-  displayFn(value: any): string {
-    return value && typeof value === 'object' ? `${value.firstName} ${value.lastName}` : value;
-  }
-
-  watchStudent() {
-    this.studentCtrl.valueChanges.subscribe(s => {
-      this.selectedStudent = s;
-      this.checkIfSignedIn();
-    });
-  }
-
-
-  getStudentById(): Observable<IStudent[]> {
-    return this.timeTrackerService.getStudent(this.timeTrackerForm.controls['studentID'].value);
-  }
-
 
   checkIfSignedIn() {
     if (this.selectedStudent) {
@@ -108,16 +67,13 @@ export class TimeTrackerComponent implements OnInit {
       });
     }
 
-    this.studentCtrl.reset();
+    this.timeTrackerForm.reset();
 
   }
 
+  onNotify(value: IStudent): void {
+    this.selectedStudent = value;
+    this.checkIfSignedIn();
+  }
 
-
-  // this.getStudentInfo().subscribe(s => {
-
-  //   if () {
-  //     this.timeTrackerService.saveStudentTime(s[0].studentId, in_time, out_time, timeTotal);
-  //   }
-  // });
 }

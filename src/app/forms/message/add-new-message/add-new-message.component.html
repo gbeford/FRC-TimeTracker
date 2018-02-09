@@ -5,33 +5,13 @@
   </h2>
 
   <form [formGroup]="addMessageForm" novalidate (ngSubmit)="submit()">
-
-    <!-- <mat-input-container [ngClass]="{'error': addMessageForm.controls['messageTxtCtrl'].errors && !addMessageForm.controls['messageTxtCtrl'].errors.pristine}"> -->
-    <!-- <div *ngIf="addMessageForm.controls['messageTxtCtrl'].touched && !addMessageForm.controls['messageTxtCtrl'].valid"> -->
     <mat-form-field class="messageText">
       <textarea matInput placeholder="Add Message" matTextareaAutosize matAutosizeMinRows="2" matAutosizeMaxRows="5" formControlName="messageTxtCtrl"
         type="text" required></textarea>
-      <mat-error *ngIf="addMessageForm.hasError('required')">Please add a message</mat-error>
+      <mat-error *ngIf="messageText.invalid && (messageText.dirty || messageText.touched)">Please add a message</mat-error>
     </mat-form-field>
-
-    <div *ngIf="messageText.invalid && (messageText.dirty || messageText.touched)" class="alert alert-danger">
-
-      Message is required.
-
-    </div>
-    <!-- </div> -->
-
-
-    <!-- </mat-input-container> -->
-
-
-    <!-- <div *ngIf="addMessageForm.controls['messageTxtCtrl'].errors && !addMessageForm.controls['messageTxtCtrl'].pristine" class="error error-msg">
-      <div [hidden]="!addMessageForm.controls['messageTxtCtrl'].errors.required">Message is required.</div>
-    </div> -->
-
     <div>
       <button class='trackerBtn' type="submit" [disabled]="!messageText.valid">Submit</button>
-
     </div>
   </form>
 </div>
