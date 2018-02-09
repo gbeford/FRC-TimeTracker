@@ -14,9 +14,8 @@ export class ShowMessageComponent implements OnInit {
 
   messageList: IMessage[];
   public showMessageForm: FormGroup;
-  messageCtrl = new FormControl();
+  // messageCtrl = new FormControl();
   studentID = '';
-  message: string;
 
   constructor(private formBuilder: FormBuilder, private messageService: MessageService) { }
 
@@ -35,18 +34,22 @@ export class ShowMessageComponent implements OnInit {
 
   createForm() {
     this.showMessageForm = this.formBuilder.group({
-      messageCtrl: ['', [<any>Validators.required]]
+      messageCtrl: ['', [<any>Validators.required]],
+      clearMessages: ['']
     });
   }
 
   submit() {
-    this.message = null;
-    if (this.messageCtrl.value !== 'Remove Message') {
-      this.message = this.messageCtrl.value;
+    let messages = [];
+    if (this.showMessageForm.value.clearMessages) {
+      messages = [];
+    } else {
+      messages = this.showMessageForm.value.messageCtrl;
     }
-    this.messageService.setMessage(this.studentID, this.message);
-    this.showMessageForm.reset(this.messageCtrl);
-    console.log(this.messageCtrl.value);
+    console.log(this.showMessageForm.value.messageCtrl);
+    this.messageService.setMessage(this.studentID, messages);
+    this.showMessageForm.reset();
+    // console.log(this.messageCtrl.value);
 
   }
 

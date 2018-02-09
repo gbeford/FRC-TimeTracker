@@ -10,7 +10,7 @@ import { FormGroup, FormControl, FormBuilder, Validators } from '@angular/forms'
 })
 export class AddNewMessageComponent implements OnInit {
   public addMessageForm: FormGroup;
-  messageTxtCtrl = new FormControl();
+
 
   constructor(private formBuilder: FormBuilder, private messageService: MessageService) { }
 
@@ -19,16 +19,20 @@ export class AddNewMessageComponent implements OnInit {
     this.createForm();
   }
 
+  get messageText() { return this.addMessageForm.get('messageTxtCtrl'); }
+
   private createForm() {
     this.addMessageForm = this.formBuilder.group({
-      messageTxtCtrl: new FormControl('', Validators.required),
+      messageTxtCtrl: ['', Validators.required]
     });
   }
 
   submit() {
-    console.log(this.messageTxtCtrl.value);
+    // console.log(this.messageTxtCtrl.value);
     // this.messageService.saveMessage(this.messageTxtCtrl.value);
-    this.addMessageForm.reset();
+    if (this.addMessageForm.valid) {
+      this.addMessageForm.reset();
+    }
   }
 
 }

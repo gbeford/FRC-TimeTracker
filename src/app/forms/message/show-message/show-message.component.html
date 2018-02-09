@@ -8,20 +8,23 @@
   </div>
 
   <mat-form-field style="width: 50%;">
-    <mat-select placeholder="Select messages you want to flag the kids" [formControl]="messageCtrl" multiple>
+    <mat-select placeholder="Select messages you want to flag the kids" formControlName="messageCtrl" multiple>
       <mat-select-trigger>
-        {{messageCtrl.value ? messageCtrl.value[0] : ''}}
-        <span *ngIf="messageCtrl.value?.length > 1" class="additional-selection">
-          (+{{messageCtrl.value.length - 1}} others)
+        {{showMessageForm.controls['messageCtrl'].value ? showMessageForm.controls['messageCtrl'].value[0] : ''}}
+        <span *ngIf="showMessageForm.controls['messageCtrl'].value?.length > 1" class="additional-selection">
+          (+{{showMessageForm.controls['messageCtrl'].value.length - 1}} others)
         </span>
       </mat-select-trigger>
       <!-- <mat-option>*Select</mat-option> -->
-      <mat-option>Remove Message</mat-option>
+      <!-- <mat-option>Remove Message</mat-option> -->
       <mat-option *ngFor="let message of messageList" [value]="message.message">{{message.message}}</mat-option>
     </mat-select>
-    <mat-error *ngIf="messageCtrl.hasError('required')">Please choose at least 1 message</mat-error>
+    <mat-error *ngIf="showMessageForm.hasError('required')">Please choose at least 1 message</mat-error>
   </mat-form-field>
 
+  <div>
+    <mat-checkbox formControlName="clearMessages">Clear messages?</mat-checkbox>
+  </div>
   <div>
     <button class='trackerBtn' type="submit">Submit</button>
   </div>
