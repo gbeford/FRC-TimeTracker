@@ -86,13 +86,12 @@ export class TimeTrackerComponent implements OnInit {
   // modal
   openDialog(student): void {
     const dialogRef = this.dialog.open(TimeTrackerModalComponent, {
-      width: '250px',
+      width: '500px',
 
       // get student messages
-      data: { messages: student.messages }
+      data: { messages: student }
     });
-
-
   }
+
 
 }

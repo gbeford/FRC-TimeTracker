@@ -12,7 +12,7 @@ export class MessageListComponent implements AfterViewInit {
 
   dataSource: MatTableDataSource<any>; // MessageDataSource;
   messageList: IMessage[];
-  displayedColumns = ['message', 'sortOrder', 'show'];
+  displayedColumns = ['message'];
 
   @ViewChild(MatSort) sort: MatSort;
 

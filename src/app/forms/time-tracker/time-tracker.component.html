@@ -1,24 +1,17 @@
-<!-- {{missions | json}} -->
-<form class="form-horizontal" [formGroup]="timeTrackerForm" *ngIf="timeTrackerForm" novalidate>
+<div class="container">
+  <!-- {{missions | json}} -->
+  <form class="form-horizontal" [formGroup]="timeTrackerForm" *ngIf="timeTrackerForm" novalidate>
 
-  <H2>{{title}}</H2>
+    <H2>{{title}}</H2>
 
-<!-- <mat-form-field class="autoComplete-full-width">
-  <input matInput placeholder="Student" aria-label="Student" [matAutocomplete]="auto" [formControl]="studentCtrl" required>
-  <mat-autocomplete #auto="matAutocomplete" [displayWith]="displayFn">
-    <mat-option *ngFor="let student of filteredOptions | async" [value]="student">
-      <span>{{ student.firstName }} {{student.lastName}}</span> |
-      <small>Student ID: {{student.studentId}}</small>
-    </mat-option>
-  </mat-autocomplete>
-</mat-form-field> -->
-<div>
-  <app-auto-complete (notify)='onNotify($event)' [autoCompleteForm]="timeTrackerForm">Loading...</app-auto-complete>
+    <div>
+      <app-auto-complete (notify)='onNotify($event)' [autoCompleteForm]="timeTrackerForm">Loading...</app-auto-complete>
+    </div>
+
+    <div *ngIf='selectedStudent'>
+      <div class="mat-body-2" *ngIf="selectedStudent.status=='in'">{{selectedStudent.firstName}} signed in at {{selectedStudent.checkInTime | date:'hh:mm a'}}</div>
+      <button class='trackerBtn' type="button" (click)='save()'>{{enterBtn}}</button>
+    </div>
+
+  </form>
 </div>
-
-  <div  *ngIf='selectedStudent'>
-    <div class="mat-body-2" *ngIf="selectedStudent.status=='in'">{{selectedStudent.firstName}} signed in at {{selectedStudent.checkInTime | date:'hh:mm a'}}</div>
-    <button class='trackerBtn' type="button" (click)='save()'>{{enterBtn}}</button>
-  </div>
-
-</form>
