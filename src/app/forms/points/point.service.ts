@@ -1,7 +1,8 @@
 import { Injectable } from '@angular/core';
 import { IPoints } from '../../model/points';
-import { Observable } from '@firebase/util';
+
 import { AngularFirestore } from 'angularfire2/firestore';
+import { Observable } from 'rxjs/Observable';
 
 @Injectable()
 export class PointService {
@@ -9,9 +10,9 @@ export class PointService {
   constructor(private afs: AngularFirestore) { }
 
 
-  // get messages
+  // get points
   getPointList(): Observable<IPoints[]> {
-    const pointsCollection = this.afs.collection<IPoints>('events', ref => ref.orderBy('sortOrder'));
+    const pointsCollection = this.afs.collection<IPoints>('Events', ref => ref.orderBy('SortOrder'));
     const points = pointsCollection.valueChanges();
     return points;
   }
@@ -20,14 +21,15 @@ export class PointService {
   // CRUD
 
   savePoint(msg: string) {
-    // const date = new Date();
-    // console.log('message' + msg);
-    // const message: IMessage = {
-    //   messageId: null,
-    //   message: msg,
-    //   sortOrder: null,
-    //   show: false
-    // };
+    const date = new Date();
+    console.log('message' + msg);
+    const points: IPoints = {
+      eventId: null,
+      Points: 0,
+      Description: msg,
+      SortOrder: null,
+      Show: false
+    };
 
     // const messageCollection = this.afs.collection<IMessage>('messages');
     // messageCollection.add(message);

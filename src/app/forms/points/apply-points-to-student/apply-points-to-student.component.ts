@@ -21,24 +21,21 @@ export class ApplyPointsToStudentComponent implements OnInit {
     this.getPoints();
   }
 
-  // get list of messages
+  // get list of points
   getPoints() {
-    // this.messageService.getMessageList().subscribe(s => {
-    //   this.messageList = s;
-    //   console.log('message ', this.messageList);
-    // });
+    this.pointService.getPointList().subscribe(s => {
+      this.pointsList = s;
+      console.log('points list ', this.pointsList);
+    });
   }
 
 
   createForm() {
     this.applyPointsForm = this.formBuilder.group({
-      messageCtrl: ['', [<any>Validators.required]],
+      pointCtrl: ['', [<any>Validators.required]],
       clearMessages: ['']
     });
   }
-
-  get clearMessages() { return this.applyPointsForm.get('clearMessages'); }
-
 
   submit() {
     // if ((this.studentID !== null) && (this.showMessageForm.valid || this.showMessageForm.value.clearMessages)) {

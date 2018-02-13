@@ -35,8 +35,9 @@ import { AddNewMessageComponent } from './forms/message/add-new-message/add-new-
 import { ShowMessageComponent } from './forms/message/show-message/show-message.component';
 import { MessageService } from './forms/message/message.service';
 import { TimeTrackerModalComponent } from './forms/time-tracker/time-tracker-modal.component';
-import { ApplyPointsToStudentComponent } from 'app/forms/points/apply-points-to-student/apply-points-to-student.component';
-import { AddNewPointComponent } from 'app/forms/points/add-new-point/add-new-point.component';
+import { ApplyPointsToStudentComponent } from './forms/points/apply-points-to-student/apply-points-to-student.component';
+import { AddNewPointComponent } from './forms/points/add-new-point/add-new-point.component';
+import { PointService } from './forms/points/point.service';
 
 
 
@@ -91,7 +92,8 @@ import { AddNewPointComponent } from 'app/forms/points/add-new-point/add-new-poi
   ],
   providers: [TimeTrackerService,
     AuthService,
-    MessageService
+    MessageService,
+    PointService,
   ],
   entryComponents: [TimeTrackerModalComponent],
   bootstrap: [AppComponent]
