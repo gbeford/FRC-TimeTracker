@@ -14,6 +14,9 @@
     <a [routerLink]="['/messageStudent']" mat-menu-item *ngIf="isAdmin()">
       <span>Message Student</span>
     </a>
+    <a [routerLink]="['/applyPoints']" mat-menu-item *ngIf="isAdmin()">
+      <span>Apply Points to Student</span>
+    </a>
     <a [routerLink]="['/trackTime']" mat-menu-item *ngIf="loggedIn()">
       <span>Track Time</span>
     </a>

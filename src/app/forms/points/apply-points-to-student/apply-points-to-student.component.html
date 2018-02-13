@@ -1,0 +1,32 @@
+
+<div class="container">
+
+  <h2>
+  Apply Points To Student
+  </h2>
+
+  <form class="form-horizontal" [formGroup]="applyPointsForm" novalidate (ngSubmit)="submit()">
+    <div>
+      <app-auto-complete (notify)='onNotify($event)' [autoCompleteForm]="applyPointsForm">Loading...</app-auto-complete>
+    </div>
+    <div>
+      <mat-checkbox formControlName="clearMessages">Clear messages?</mat-checkbox>
+    </div>
+    <mat-form-field style="width: 50%;" *ngIf='!clearMessages.value'>
+      <mat-select placeholder="Add points to the kids" formControlName="messageCtrl" multiple>
+        <mat-select-trigger>
+          {{applyPointsForm.controls['messageCtrl'].value ? applyPointsForm.controls['messageCtrl'].value[0] : ''}}
+          <span *ngIf="applyPointsForm.controls['messageCtrl'].value?.length > 1" class="additional-selection">
+            (+{{applyPointsForm.controls['messageCtrl'].value.length - 1}} others)
+          </span>
+        </mat-select-trigger>
+        <mat-option *ngFor="let message of pointsList" [value]="message.message">{{message.message}}</mat-option>
+      </mat-select>
+      <mat-error *ngIf="applyPointsForm.hasError('required')">Please choose at least 1 message</mat-error>
+    </mat-form-field>
+    <div>
+      <button class='trackerBtn' type="submit" [disabled]="!applyPointsForm.valid && clearMessages.value != true">Submit</button>
+    </div>
+
+  </form>
+</div>

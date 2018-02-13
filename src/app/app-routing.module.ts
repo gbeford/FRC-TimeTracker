@@ -13,6 +13,8 @@ import { BadgeViewComponent } from './badge-view/badge-view.component';
 import { TimeTrackerComponent } from './forms/time-tracker/time-tracker.component';
 import { ShowMessageComponent } from './forms/message/show-message/show-message.component';
 import { AddNewMessageComponent } from './forms/message/add-new-message/add-new-message.component';
+import { ApplyPointsToStudentComponent } from 'app/forms/points/apply-points-to-student/apply-points-to-student.component';
+
 
 
 @NgModule({
@@ -28,8 +30,9 @@ import { AddNewMessageComponent } from './forms/message/add-new-message/add-new-
             { path: 'messageList', component: MessageListComponent },
             { path: 'badges', component: BadgeViewComponent },
             { path: 'addMessage', component: AddNewMessageComponent },
-            { path: 'test', component: TestSharedComponentsComponent },
+            { path: 'applyPoints', component: ApplyPointsToStudentComponent },
 
+            { path: 'test', component: TestSharedComponentsComponent },
             { path: '**', component: PageNotFoundComponent }
         ]),
     ],

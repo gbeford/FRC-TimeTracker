@@ -21,7 +21,6 @@ import { PageNotFoundComponent } from './page-not-found/page-not-found.component
 import { AppRoutingModule } from './app-routing.module';
 import { HomeComponent } from './home/home.component';
 import { StudentTimePointReportComponent } from './reports/student-time-point-report/student-time-point-report.component';
-import { PointsFormComponent } from './forms/points-form/points-form.component';
 import { AuthService } from './shared/auth.service';
 import { EditStudentRecordComponent } from './forms/edit-student-record/edit-student-record.component';
 import { AutoCompleteComponent } from './shared/auto-complete/auto-complete.component';
@@ -36,6 +35,10 @@ import { AddNewMessageComponent } from './forms/message/add-new-message/add-new-
 import { ShowMessageComponent } from './forms/message/show-message/show-message.component';
 import { MessageService } from './forms/message/message.service';
 import { TimeTrackerModalComponent } from './forms/time-tracker/time-tracker-modal.component';
+import { ApplyPointsToStudentComponent } from 'app/forms/points/apply-points-to-student/apply-points-to-student.component';
+import { AddNewPointComponent } from 'app/forms/points/add-new-point/add-new-point.component';
+
+
 
 
 @NgModule({
@@ -47,7 +50,6 @@ import { TimeTrackerModalComponent } from './forms/time-tracker/time-tracker-mod
     PageNotFoundComponent,
     HomeComponent,
     StudentTimePointReportComponent,
-    PointsFormComponent,
     StudentListComponent,
     EditStudentRecordComponent,
     AutoCompleteComponent,
@@ -58,6 +60,8 @@ import { TimeTrackerModalComponent } from './forms/time-tracker/time-tracker-mod
     MessageListComponent,
     BadgeViewComponent,
     TimeTrackerModalComponent,
+    ApplyPointsToStudentComponent,
+    AddNewPointComponent,
   ],
   imports: [
     BrowserModule,

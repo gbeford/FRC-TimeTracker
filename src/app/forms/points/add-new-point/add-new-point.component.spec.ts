@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { PointsFormComponent } from './points-form.component';
+import { AddNewPointComponent } from './add-new-point.component';
 
-describe('PointsFormComponent', () => {
-  let component: PointsFormComponent;
-  let fixture: ComponentFixture<PointsFormComponent>;
+describe('AddNewPointComponent', () => {
+  let component: AddNewPointComponent;
+  let fixture: ComponentFixture<AddNewPointComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ PointsFormComponent ]
+      declarations: [ AddNewPointComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(PointsFormComponent);
+    fixture = TestBed.createComponent(AddNewPointComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

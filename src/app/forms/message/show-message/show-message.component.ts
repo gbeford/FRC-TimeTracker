@@ -15,7 +15,6 @@ export class ShowMessageComponent implements OnInit {
 
   messageList: IMessage[];
   public showMessageForm: FormGroup;
-  // messageCtrl = new FormControl();
   studentID = '';
   show = true;
 
@@ -65,6 +64,7 @@ export class ShowMessageComponent implements OnInit {
     }
   }
 
+// autocomplete
   onNotify(value: IStudent): void {
     this.studentID = value.studentId;
   }
