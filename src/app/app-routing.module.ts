@@ -9,11 +9,11 @@ import { EditStudentRecordComponent } from './forms/edit-student-record/edit-stu
 import { TestSharedComponentsComponent } from './shared/test-shared-components/test-shared-components.component';
 import { MessageListComponent } from './reports/message-list/message-list.component';
 import { StudentListComponent } from './reports/student-list/student-list.component';
-import { BadgeViewComponent } from './badge-view/badge-view.component';
 import { TimeTrackerComponent } from './forms/time-tracker/time-tracker.component';
 import { ShowMessageComponent } from './forms/message/show-message/show-message.component';
 import { AddNewMessageComponent } from './forms/message/add-new-message/add-new-message.component';
 import { ApplyPointsToStudentComponent } from 'app/forms/points/apply-points-to-student/apply-points-to-student.component';
+import { BadgeViewComponent } from './forms/badge/badge-view/badge-view.component';
 
 
 

@@ -24,11 +24,9 @@ import { StudentTimePointReportComponent } from './reports/student-time-point-re
 import { AuthService } from './shared/auth.service';
 import { EditStudentRecordComponent } from './forms/edit-student-record/edit-student-record.component';
 import { AutoCompleteComponent } from './shared/auto-complete/auto-complete.component';
-import { BadgeEntryComponent } from './forms/badge-entry/badge-entry.component';
 import { TestSharedComponentsComponent } from './shared/test-shared-components/test-shared-components.component';
 import { MessageListComponent } from './reports/message-list/message-list.component';
 import { StudentListComponent } from './reports/student-list/student-list.component';
-import { BadgeViewComponent } from './badge-view/badge-view.component';
 import { TimeTrackerService } from './forms/time-tracker/time-tracker.service';
 import { TimeTrackerComponent } from './forms/time-tracker/time-tracker.component';
 import { AddNewMessageComponent } from './forms/message/add-new-message/add-new-message.component';
@@ -38,6 +36,8 @@ import { TimeTrackerModalComponent } from './forms/time-tracker/time-tracker-mod
 import { ApplyPointsToStudentComponent } from './forms/points/apply-points-to-student/apply-points-to-student.component';
 import { AddNewPointComponent } from './forms/points/add-new-point/add-new-point.component';
 import { PointService } from './forms/points/point.service';
+import { BadgeEntryComponent } from './forms/badge/badge-entry/badge-entry.component';
+import { BadgeViewComponent } from './forms/badge/badge-view/badge-view.component';
 
 
 
