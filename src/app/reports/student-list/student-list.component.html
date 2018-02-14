@@ -36,7 +36,7 @@
       <mat-cell *matCellDef="let element"> {{element.status}} {{element.checkInTime | date:"hh:mm a"}}</mat-cell>
     </ng-container>
 
-<ng-container matColumnDef="grade">
+<ng-container matColumnDef="messages">
   <mat-header-cell *matHeaderCellDef mat-sort-header> Messages </mat-header-cell>
   <mat-cell *matCellDef="let element"> {{element.messages}} </mat-cell>
 </ng-container>

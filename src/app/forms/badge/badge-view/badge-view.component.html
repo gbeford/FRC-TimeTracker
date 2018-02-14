@@ -1,8 +1,10 @@
 <h1>Badges</h1>
 <div class="container">
+  <form class="form-horizontal" [formGroup]="badgeForm" novalidate>
   <div class="col-md-12">
-    <app-auto-complete (notify)='onNotify($event)' [autoCompleteForm]="showMessageForm">Loading...</app-auto-complete>
+    <app-auto-complete (notify)='onNotify($event)' [autoCompleteForm]="badgeForm">Loading...</app-auto-complete>
   </div>
+</form>
   <div class="row">
  <div class="col-sm-6 col-md-4 col-lg-3 mt-4">
       <div class="card card-inverse card-info">
