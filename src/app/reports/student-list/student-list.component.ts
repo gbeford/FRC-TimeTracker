@@ -15,7 +15,7 @@ import { IStudent } from '../../model/student';
 export class StudentListComponent implements AfterViewInit {
   dataSource: MatTableDataSource<any>; // StudentsDataSource;
 
-  displayedColumns = ['studentId', 'status', 'lastName', 'firstName', 'email', 'grade'];
+  displayedColumns = ['studentId', 'status', 'lastName', 'firstName', 'email', 'grade', 'messages'];
   @ViewChild(MatSort) sort: MatSort;
 
   constructor(private sls: TimeTrackerService) { }
