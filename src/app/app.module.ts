@@ -38,6 +38,7 @@ import { AddNewPointComponent } from './forms/points/add-new-point/add-new-point
 import { PointService } from './forms/points/point.service';
 import { BadgeEntryComponent } from './forms/badge/badge-entry/badge-entry.component';
 import { BadgeViewComponent } from './forms/badge/badge-view/badge-view.component';
+import { CanActivateViaAuthGuardService } from './shared/can-activate-via-auth-guard.service';
 
 
 
@@ -94,6 +95,7 @@ import { BadgeViewComponent } from './forms/badge/badge-view/badge-view.componen
     AuthService,
     MessageService,
     PointService,
+    CanActivateViaAuthGuardService
   ],
   entryComponents: [TimeTrackerModalComponent],
   bootstrap: [AppComponent]

@@ -4,6 +4,7 @@ import { Observable } from 'rxjs/Observable';
 import { Injectable } from '@angular/core';
 import { AngularFirestore, AngularFirestoreCollection, AngularFirestoreDocument } from 'angularfire2/firestore';
 import { User } from './user';
+import { Router } from '@angular/router';
 
 // from https://angularfirebase.com/lessons/role-based-authorization-with-firestore-nosql-and-angular-5/#Rules-for-the-User-Document
 
@@ -12,7 +13,7 @@ export class AuthService {
 
     user$: Observable<User>;
 
-    constructor(public afAuth: AngularFireAuth, private afs: AngularFirestore) {
+    constructor(public afAuth: AngularFireAuth, private afs: AngularFirestore, private router: Router) {
         //// Get auth data, then get firestore user document || null
         this.user$ = this.afAuth.authState
             .switchMap(user => {
@@ -39,6 +40,7 @@ export class AuthService {
 
     signOut() {
         this.afAuth.auth.signOut();
+        this.router.navigate(['/']);
     }
 
     canRead(user: User): boolean {

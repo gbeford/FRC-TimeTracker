@@ -14,6 +14,7 @@ import { ShowMessageComponent } from './forms/message/show-message/show-message.
 import { AddNewMessageComponent } from './forms/message/add-new-message/add-new-message.component';
 import { ApplyPointsToStudentComponent } from 'app/forms/points/apply-points-to-student/apply-points-to-student.component';
 import { BadgeViewComponent } from './forms/badge/badge-view/badge-view.component';
+import { CanActivateViaAuthGuardService } from './shared/can-activate-via-auth-guard.service';
 
 
 
@@ -22,17 +23,17 @@ import { BadgeViewComponent } from './forms/badge/badge-view/badge-view.componen
     imports: [
         RouterModule.forRoot([
             { path: '', component: HomeComponent },
-            { path: 'trackTime', component: TimeTrackerComponent },
-            { path: 'studentTimeReport', component: StudentTimePointReportComponent },
-            { path: 'studentlist', component: StudentListComponent },
-            { path: 'studentEditForm', component: EditStudentRecordComponent },
-            { path: 'messageStudent', component: ShowMessageComponent },
-            { path: 'messageList', component: MessageListComponent },
-            { path: 'badges', component: BadgeViewComponent },
-            { path: 'addMessage', component: AddNewMessageComponent },
-            { path: 'applyPoints', component: ApplyPointsToStudentComponent },
+            { path: 'trackTime', component: TimeTrackerComponent, canActivate: [CanActivateViaAuthGuardService] },
+            { path: 'studentTimeReport', component: StudentTimePointReportComponent, canActivate: [CanActivateViaAuthGuardService] },
+            { path: 'studentlist', component: StudentListComponent, canActivate: [CanActivateViaAuthGuardService] },
+            { path: 'studentEditForm', component: EditStudentRecordComponent, canActivate: [CanActivateViaAuthGuardService] },
+            { path: 'messageStudent', component: ShowMessageComponent, canActivate: [CanActivateViaAuthGuardService] },
+            { path: 'messageList', component: MessageListComponent, canActivate: [CanActivateViaAuthGuardService] },
+            { path: 'badges', component: BadgeViewComponent, canActivate: [CanActivateViaAuthGuardService] },
+            { path: 'addMessage', component: AddNewMessageComponent, canActivate: [CanActivateViaAuthGuardService] },
+            { path: 'applyPoints', component: ApplyPointsToStudentComponent, canActivate: [CanActivateViaAuthGuardService] },
 
-            { path: 'test', component: TestSharedComponentsComponent },
+            { path: 'test', component: TestSharedComponentsComponent, canActivate: [CanActivateViaAuthGuardService] },
             { path: '**', component: PageNotFoundComponent }
         ]),
     ],
