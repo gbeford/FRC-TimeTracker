@@ -58,11 +58,12 @@ export class TimeTrackerComponent implements OnInit {
 
   save() {
     if (this.selectedStudent.status === 'out' || this.selectedStudent.status === undefined) {
-      this.timeTrackerService.saveStudentTime(this.selectedStudent);
-      this.snackBar.open(`${this.selectedStudent.firstName} signed in.`, 'Welcome!', {
-        duration: 5000, verticalPosition: 'top'
+      this.timeTrackerService.saveStudentTime(this.selectedStudent).subscribe(res => {
+        this.snackBar.open(`${this.selectedStudent.firstName} signed in.`, 'Welcome!', {
+          duration: 5000, verticalPosition: 'top'
+        });
       });
-    } else {
+     } else {
       this.timeTrackerService.updateStudentTime(this.selectedStudent);
       this.snackBar.open(`${this.selectedStudent.firstName} signed out.`, 'Bye!', {
         duration: 5000, verticalPosition: 'top'
@@ -80,6 +81,7 @@ export class TimeTrackerComponent implements OnInit {
   // autoComplete
   onNotify(value: IStudent): void {
     this.selectedStudent = value;
+    console.log('auto from time compoent ', value);
     this.checkIfSignedIn();
   }
 

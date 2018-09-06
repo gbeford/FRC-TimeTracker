@@ -21,7 +21,7 @@ export class StudentListComponent implements AfterViewInit {
   constructor(private sls: TimeTrackerService) { }
 
   ngAfterViewInit() {
-    this.sls.getAllStudents().subscribe(data => {
+    this.sls.getStudents().subscribe(data => {
       this.dataSource = new MatTableDataSource(data);
       this.dataSource.sort = this.sort;
 

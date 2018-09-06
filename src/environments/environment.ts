@@ -12,7 +12,7 @@ export const environment = {
     projectId: 'timetrackersandbox',
     storageBucket: 'timetrackersandbox.appspot.com',
     messagingSenderId: '843771130494'
-  }
+  },
   // firebase_467_timeTracker: {
   //   apiKey: 'AIzaSyDLKFASaeQE14QdTQ7CdmD1D7nFxas4gcc',
   //   authDomain: 'time-tracker-467.firebaseapp.com',
@@ -21,4 +21,8 @@ export const environment = {
   //   storageBucket: 'time-tracker-467.appspot.com',
   //   messagingSenderId: '220924576055'
   // }
+
+  studentApiUrl: 'http://localhost:5000/api/student',
+  timeTrackerApiUrl: 'http://localhost:5000/api/studenttimes',
+
 };

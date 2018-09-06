@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { IStudent } from '../../../model/student';
-import { FormGroup } from '@angular/forms';
+import { FormGroup, FormBuilder } from '@angular/forms';
 
 @Component({
   selector: 'app-badge-view',
@@ -10,12 +10,17 @@ import { FormGroup } from '@angular/forms';
 export class BadgeViewComponent implements OnInit {
   studentID = '';
   public badgeForm: FormGroup;
-  constructor() { }
+
+  constructor(private formBuilder: FormBuilder) { }
 
   ngOnInit() {
   }
 
+  createForm() {
+    this.badgeForm = this.formBuilder.group({
 
+    });
+  }
 
   // autocomplete
   onNotify(value: IStudent): void {

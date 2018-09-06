@@ -24,6 +24,7 @@ export class AutoCompleteComponent implements OnInit {
 
   constructor(private timeTrackerService: TimeTrackerService) { }
 
+
   ngOnInit() {
     this.getAllStudents();
     // this creates the control with validation
@@ -36,6 +37,7 @@ export class AutoCompleteComponent implements OnInit {
   getAllStudents() {
     this.timeTrackerService.getStudents().subscribe(s => {
       this.students = s;
+      console.log('auto', s);
       this.studentAutoComplete();
     });
   }
