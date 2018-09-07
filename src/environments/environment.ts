@@ -23,6 +23,7 @@ export const environment = {
   // }
 
   studentApiUrl: 'http://localhost:5000/api/student',
-  timeTrackerApiUrl: 'http://localhost:5000/api/studenttimes',
+  signInStudentUrl: 'http://localhost:5000/api/signIn',
+  signOutStudentUrl: 'http://localhost:5000/api/signOut',
 
 };

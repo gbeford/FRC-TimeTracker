@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators, FormControl } from '@angular/forms';
 import { IMessage } from '../../../model/message';
 import { MessageService } from '../message.service';
-import { IStudent } from 'app/model/student';
+import { IStudent } from '../../../model/student';
 
 
 

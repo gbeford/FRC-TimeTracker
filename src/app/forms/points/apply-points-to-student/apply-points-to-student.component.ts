@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, Validators, FormBuilder } from '@angular/forms';
-import { IStudent } from 'app/model/student';
-import { IPoints } from 'app/model/points';
-import { PointService } from 'app/forms/points/point.service';
+import { IStudent } from '../../../model/student';
+import { IPoints } from '../../../model/points';
+import { PointService } from '../point.service';
 
 @Component({
   selector: 'app-apply-points-to-student',

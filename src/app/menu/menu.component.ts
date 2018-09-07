@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../shared/auth.service';
 import { User } from '../shared/user';
-import { TimeTrackerService } from '../forms/time-tracker/time-tracker.service';
+import { StudentService } from '../forms/time-tracker/student.service';
 
 
 @Component({
@@ -14,7 +14,7 @@ export class MenuComponent implements OnInit {
   signedInStudents = 0;
   user: User;
 
-  constructor(private auth: AuthService, private svc: TimeTrackerService) { }
+  constructor(private auth: AuthService, private svc: StudentService) { }
 
   ngOnInit() {
     // this.auth.user$.subscribe(

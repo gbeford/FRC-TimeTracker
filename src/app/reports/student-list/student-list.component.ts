@@ -2,7 +2,7 @@ import { Component, AfterViewInit, ViewChild } from '@angular/core';
 import { MatTableDataSource, MatSort } from '@angular/material';
 import { Observable } from 'rxjs/Observable';
 import { DataSource } from '@angular/cdk/collections';
-import { TimeTrackerService } from '../../forms/time-tracker/time-tracker.service';
+import { StudentService } from '../../forms/time-tracker/student.service';
 import { IStudent } from '../../model/student';
 
 
@@ -18,7 +18,7 @@ export class StudentListComponent implements AfterViewInit {
   displayedColumns = ['studentId', 'status', 'lastName', 'firstName', 'email', 'grade', 'messages'];
   @ViewChild(MatSort) sort: MatSort;
 
-  constructor(private sls: TimeTrackerService) { }
+  constructor(private sls: StudentService) { }
 
   ngAfterViewInit() {
     this.sls.getStudents().subscribe(data => {

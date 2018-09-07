@@ -3,7 +3,7 @@ import { FormGroup, FormControl, FormBuilder, Validators } from '@angular/forms'
 import { Observable } from 'rxjs/Observable';
 import { map, tap, startWith, debounceTime } from 'rxjs/operators';
 import { MatSnackBar, MatDialog } from '@angular/material';
-import { TimeTrackerService } from './time-tracker.service';
+import { StudentService } from './student.service';
 import { IStudent } from '../../model/student';
 import { TimeTrackerModalComponent } from './time-tracker-modal.component';
 
@@ -23,7 +23,7 @@ export class TimeTrackerComponent implements OnInit {
   filteredOptions: Observable<IStudent[]>;
 
   constructor(private formBuilder: FormBuilder,
-    private timeTrackerService: TimeTrackerService,
+    private timeTrackerService: StudentService,
     private snackBar: MatSnackBar,
     public dialog: MatDialog) { }
 

@@ -24,7 +24,7 @@ import { AutoCompleteComponent } from './shared/auto-complete/auto-complete.comp
 import { TestSharedComponentsComponent } from './shared/test-shared-components/test-shared-components.component';
 import { MessageListComponent } from './reports/message-list/message-list.component';
 import { StudentListComponent } from './reports/student-list/student-list.component';
-import { TimeTrackerService } from './forms/time-tracker/time-tracker.service';
+import { StudentService } from './forms/time-tracker/student.service';
 import { TimeTrackerComponent } from './forms/time-tracker/time-tracker.component';
 import { AddNewMessageComponent } from './forms/message/add-new-message/add-new-message.component';
 import { ShowMessageComponent } from './forms/message/show-message/show-message.component';
@@ -85,7 +85,7 @@ import { HttpClientModule } from '@angular/common/http';
     AppRoutingModule,
     HttpClientModule,
   ],
-  providers: [TimeTrackerService,
+  providers: [StudentService,
     AuthService,
     MessageService,
     PointService,

@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 // import { AutoCompleteComponent } from '../auto-complete/auto-complete.component';
 import { FormBuilder, FormGroup } from '@angular/forms';
-import { IStudent } from 'app/model/student';
+import { IStudent } from '../../model/student';
 
 @Component({
   selector: 'app-test-shared-components',

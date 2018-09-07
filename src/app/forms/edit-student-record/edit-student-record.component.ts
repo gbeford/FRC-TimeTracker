@@ -4,7 +4,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, FormBuilder, Validators } from '@angular/forms';
 import { map, tap, startWith, debounceTime } from 'rxjs/operators';
 import { IStudent } from '../../model/student';
-import { TimeTrackerService } from '../time-tracker/time-tracker.service';
+import { StudentService } from '../time-tracker/student.service';
 
 
 @Component({
@@ -28,7 +28,7 @@ export class EditStudentRecordComponent implements OnInit {
   studentID = '';
 
   constructor(private formBuilder: FormBuilder,
-    private timeTrackerService: TimeTrackerService) { }
+    private timeTrackerService: StudentService) { }
 
   ngOnInit() {
     this.buildForm();

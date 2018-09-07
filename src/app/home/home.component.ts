@@ -3,7 +3,7 @@ import { MatSnackBar } from '@angular/material';
 import { AuthService } from '../shared/auth.service';
 
 import { User } from '../shared/user';
-import { TimeTrackerService } from '../forms/time-tracker/time-tracker.service';
+import { StudentService } from '../forms/time-tracker/student.service';
 
 @Component({
   selector: 'app-home',
@@ -16,7 +16,7 @@ export class HomeComponent implements OnInit {
 
   user: User;
 
-  constructor(private svc: TimeTrackerService, private snackBar: MatSnackBar,
+  constructor(private svc: StudentService, private snackBar: MatSnackBar,
     private auth: AuthService) { }
 
   ngOnInit() {

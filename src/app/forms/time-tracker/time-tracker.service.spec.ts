@@ -1,15 +1,15 @@
 import { TestBed, inject } from '@angular/core/testing';
 
-import { TimeTrackerService } from './time-tracker.service';
+import { StudentService } from './student.service';
 
 describe('TimeTrackerService', () => {
   beforeEach(() => {
     TestBed.configureTestingModule({
-      providers: [TimeTrackerService]
+      providers: [StudentService]
     });
   });
 
-  it('should be created', inject([TimeTrackerService], (service: TimeTrackerService) => {
+  it('should be created', inject([StudentService], (service: StudentService) => {
     expect(service).toBeTruthy();
   }));
 });

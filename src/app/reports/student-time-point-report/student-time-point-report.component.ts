@@ -3,7 +3,7 @@ import { FormGroup, FormControl, FormBuilder, Validators, ReactiveFormsModule } 
 import { Observable } from 'rxjs/Observable';
 import { ITimeTracker } from '../../model/time-tracker';
 import { IStudent } from '../../model/student';
-import { TimeTrackerService } from '../../forms/time-tracker/time-tracker.service';
+import { StudentService } from '../../forms/time-tracker/student.service';
 
 
 @Component({
@@ -27,7 +27,7 @@ export class StudentTimePointReportComponent implements OnInit {
 
 
   constructor(private formBuilder: FormBuilder,
-    private timeTrackerService: TimeTrackerService) { }
+    private timeTrackerService: StudentService) { }
 
   ngOnInit() {
     this.createForm();

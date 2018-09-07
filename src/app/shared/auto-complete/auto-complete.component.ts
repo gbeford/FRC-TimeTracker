@@ -3,7 +3,7 @@ import { map, tap, startWith, debounceTime } from 'rxjs/operators';
 import { Observable } from 'rxjs/Observable';
 import { Component, OnInit, EventEmitter, Output, Input } from '@angular/core';
 import { IStudent } from '../../model/student';
-import { TimeTrackerService } from '../../forms/time-tracker/time-tracker.service';
+import { StudentService } from '../../forms/time-tracker/student.service';
 
 
 
@@ -22,7 +22,7 @@ export class AutoCompleteComponent implements OnInit {
   studentCtrl: FormControl;
   student_id: number;
 
-  constructor(private timeTrackerService: TimeTrackerService) { }
+  constructor(private timeTrackerService: StudentService) { }
 
 
   ngOnInit() {

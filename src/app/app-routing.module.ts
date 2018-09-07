@@ -12,7 +12,7 @@ import { StudentListComponent } from './reports/student-list/student-list.compon
 import { TimeTrackerComponent } from './forms/time-tracker/time-tracker.component';
 import { ShowMessageComponent } from './forms/message/show-message/show-message.component';
 import { AddNewMessageComponent } from './forms/message/add-new-message/add-new-message.component';
-import { ApplyPointsToStudentComponent } from 'app/forms/points/apply-points-to-student/apply-points-to-student.component';
+import { ApplyPointsToStudentComponent } from './forms/points/apply-points-to-student/apply-points-to-student.component';
 import { BadgeViewComponent } from './forms/badge/badge-view/badge-view.component';
 
 
