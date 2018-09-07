@@ -25,5 +25,5 @@ export const environment = {
   studentApiUrl: 'http://localhost:5000/api/student',
   signInStudentUrl: 'http://localhost:5000/api/signIn',
   signOutStudentUrl: 'http://localhost:5000/api/signOut',
-
+  signOutAllStudentsUrl: 'http://localhost:5000/api/signOutAll',
 };
