@@ -48,7 +48,7 @@ export class TimeTrackerComponent implements OnInit {
   checkIfSignedIn() {
     if (this.selectedStudent) {
       console.log(this.selectedStudent);
-      if (this.selectedStudent.status === 'out' || this.selectedStudent.status === undefined) {
+      if (!this.selectedStudent.isSignedIn) {
         this.enterBtn = 'Sign in';
       } else {
         this.enterBtn = 'Sign out';
@@ -57,7 +57,7 @@ export class TimeTrackerComponent implements OnInit {
   }
 
   save() {
-    if (this.selectedStudent.status === 'out' || this.selectedStudent.status === undefined) {
+    if (!this.selectedStudent.isSignedIn) {
       this.timeTrackerService.saveStudentTime(this.selectedStudent).subscribe(res => {
         this.snackBar.open(`${this.selectedStudent.firstName} signed in.`, 'Welcome!', {
           duration: 5000, verticalPosition: 'top'

@@ -8,6 +8,6 @@ export interface IStudent {
     grade: number;
     updated?: Date;
     created?: Date;
-    signedIn?: Date;
+    isSignedIn: boolean;
     messages: string[];
 }

@@ -17,8 +17,8 @@ export class MenuComponent implements OnInit {
   constructor(private auth: AuthService, private svc: TimeTrackerService) { }
 
   ngOnInit() {
-    this.auth.user$.subscribe(
-      (user) => this.user = user);
+    // this.auth.user$.subscribe(
+    //   (user) => this.user = user);
     // this.countOfStudentsLogin();
   }
   // log in to the application
@@ -31,11 +31,13 @@ export class MenuComponent implements OnInit {
 
   // permissons to the pages
   loggedIn() {
-    return this.auth.canEdit(this.user);
+    // return this.auth.canEdit(this.user);
+    return true;
   }
 
   isAdmin() {
-    return this.auth.canAdmin(this.user);
+    // return this.auth.canAdmin(this.user);
+    return true;
   }
 
   // countOfStudentsLogin() {
