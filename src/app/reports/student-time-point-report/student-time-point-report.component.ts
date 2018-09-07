@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, FormBuilder, Validators, ReactiveFormsModule } from '@angular/forms';
 import { Observable } from 'rxjs/Observable';
 import { ITimeTracker } from '../../model/time-tracker';
-import { IStudent } from '../../model/student';
+import { Student } from '../../model/student';
 import { StudentService } from '../../forms/time-tracker/student.service';
 
 
@@ -14,7 +14,7 @@ import { StudentService } from '../../forms/time-tracker/student.service';
 export class StudentTimePointReportComponent implements OnInit {
 
   report: ITimeTracker[];
-  studentInfo: IStudent[];
+  studentInfo: Student[];
   title = 'Student Time Report';
   studentName = '';
   totalHours = 0;
@@ -64,7 +64,7 @@ export class StudentTimePointReportComponent implements OnInit {
     //     this.totalHours = parseFloat(this.totalHours.toFixed(1));
     //     console.log('point total ' + this.totalPoints);
     //     console.log('hours total ' + this.totalHours);
-      //});
+      // });
 
     // this.timeTrackerService.getStudent(this.studentID).subscribe(s => {
     //   this.studentInfo = s;
@@ -83,7 +83,7 @@ export class StudentTimePointReportComponent implements OnInit {
     this.show = false;
   }
 
-  onNotify(value: IStudent): void {
+  onNotify(value: Student): void {
     // alert(message);
     this.studentID = value.studentId;
   }

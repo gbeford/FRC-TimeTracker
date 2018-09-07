@@ -3,7 +3,7 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
 import { take } from 'rxjs/operators';
 import { IMessage } from '../../model/message';
-import { IStudent } from '../../model/student';
+import { Student } from '../../model/student';
 
 
 
@@ -14,15 +14,15 @@ export class MessageService {
 
     messageList: IMessage[];
 
-    //constructor(private afs: AngularFirestore) { }
+    // constructor(private afs: AngularFirestore) { }
 
 
     // get messages
-    //getMessageList(): Observable<IMessage[]> {
+    // getMessageList(): Observable<IMessage[]> {
         // const messagesCollection = this.afs.collection<IMessage>('messages', ref => ref.orderBy('sortOrder'));
         // const message = messagesCollection.valueChanges();
-        //return message;
-    //}
+        // return message;
+    //  }
 
 
 

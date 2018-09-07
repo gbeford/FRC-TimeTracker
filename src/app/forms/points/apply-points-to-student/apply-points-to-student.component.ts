@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, Validators, FormBuilder } from '@angular/forms';
-import { IStudent } from '../../../model/student';
+import { Student } from '../../../model/student';
 import { IPoints } from '../../../model/points';
 import { PointService } from '../point.service';
 
@@ -54,7 +54,7 @@ export class ApplyPointsToStudentComponent implements OnInit {
     // }
   }
   // autocomplete
-  onNotify(value: IStudent): void {
+  onNotify(value: Student): void {
     this.studentID = value.studentId;
   }
 

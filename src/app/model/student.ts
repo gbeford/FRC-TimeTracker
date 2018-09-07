@@ -1,6 +1,6 @@
 
 /* Defines the student entity */
-export interface IStudent {
+export class Student {
     studentId: string;
     firstName: string;
     lastName: string;
@@ -10,4 +10,11 @@ export interface IStudent {
     created?: Date;
     isSignedIn: boolean;
     messages: string[];
+
+    public get status() {
+        return this.isSignedIn ? 'Signed In' : 'Signed Out';
+    }
+
 }
+
+

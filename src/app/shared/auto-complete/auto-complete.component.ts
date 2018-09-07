@@ -2,7 +2,7 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { map, tap, startWith, debounceTime } from 'rxjs/operators';
 import { Observable } from 'rxjs/Observable';
 import { Component, OnInit, EventEmitter, Output, Input } from '@angular/core';
-import { IStudent } from '../../model/student';
+import { Student } from '../../model/student';
 import { StudentService } from '../../forms/time-tracker/student.service';
 
 
@@ -17,8 +17,8 @@ export class AutoCompleteComponent implements OnInit {
   @Input() autoCompleteForm: FormGroup;
   @Output() notify: EventEmitter<any> = new EventEmitter<any>();
 
-  filteredOptions: Observable<IStudent[]>;
-  students: IStudent[];
+  filteredOptions: Observable<Student[]>;
+  students: Student[];
   studentCtrl: FormControl;
   student_id: number;
 
@@ -57,7 +57,7 @@ export class AutoCompleteComponent implements OnInit {
     return value && typeof value === 'object' ? `${value.firstName} ${value.lastName}` : value;
   }
 
-  filterStudents(fName: string): IStudent[] {
+  filterStudents(fName: string): Student[] {
     return fName && typeof fName === 'string' ?
       this.students.filter(student =>
         student.firstName.toLowerCase().indexOf(fName.toLowerCase()) === 0)

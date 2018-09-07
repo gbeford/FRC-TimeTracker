@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { IStudent } from '../../../model/student';
+import { Student } from '../../../model/student';
 import { FormGroup, FormBuilder } from '@angular/forms';
 
 @Component({
@@ -23,7 +23,7 @@ export class BadgeViewComponent implements OnInit {
   }
 
   // autocomplete
-  onNotify(value: IStudent): void {
+  onNotify(value: Student): void {
     this.studentID = value.studentId;
   }
 

@@ -38,7 +38,7 @@ export class HomeComponent implements OnInit {
   // }
 
   logOutStudents() {
-    this.svc.logOutStudents(new Date());
+    this.svc.logOutStudents();
     this.snackBar.open('All signed in students have been signed out.', 'Okay', {
       duration: 5000, verticalPosition: 'top'
     });

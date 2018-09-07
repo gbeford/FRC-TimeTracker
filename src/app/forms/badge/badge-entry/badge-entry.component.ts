@@ -1,6 +1,6 @@
 
 import { Component, OnInit } from '@angular/core';
-import { IStudent } from '../../../model/student';
+import { Student } from '../../../model/student';
 
 
 @Component({
@@ -18,7 +18,7 @@ export class BadgeEntryComponent implements OnInit {
 
 
   // autocomplete
-  onNotify(value: IStudent): void {
+  onNotify(value: Student): void {
     this.studentID = value.studentId;
   }
 

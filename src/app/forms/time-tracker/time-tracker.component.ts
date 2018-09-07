@@ -4,7 +4,7 @@ import { Observable } from 'rxjs/Observable';
 import { map, tap, startWith, debounceTime } from 'rxjs/operators';
 import { MatSnackBar, MatDialog } from '@angular/material';
 import { StudentService } from './student.service';
-import { IStudent } from '../../model/student';
+import { Student } from '../../model/student';
 import { TimeTrackerModalComponent } from './time-tracker-modal.component';
 
 
@@ -17,10 +17,10 @@ export class TimeTrackerComponent implements OnInit {
   title = 'Hours / Points Tracker';
   enterBtn = '';
   in = '';
-  students: IStudent[];
-  selectedStudent: IStudent;
+  students: Student[];
+  selectedStudent: Student;
   public timeTrackerForm: FormGroup;
-  filteredOptions: Observable<IStudent[]>;
+  filteredOptions: Observable<Student[]>;
 
   constructor(private formBuilder: FormBuilder,
     private timeTrackerService: StudentService,
@@ -77,7 +77,7 @@ export class TimeTrackerComponent implements OnInit {
   }
 
   // autoComplete
-  onNotify(value: IStudent): void {
+  onNotify(value: Student): void {
     this.selectedStudent = value;
     console.log('auto from time compoent ', value);
     this.checkIfSignedIn();

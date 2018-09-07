@@ -12,7 +12,7 @@ import 'rxjs/add/observable/throw';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/observable/of';
 
-import { IStudent } from '../../model/student';
+import { Student } from '../../model/student';
 import { ITimeTracker } from '../../model/time-tracker';
 import { environment } from '@environment/environment';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
@@ -21,7 +21,7 @@ import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 @Injectable()
 export class StudentService {
 
-  student: IStudent[];
+  student: Student[];
   trackerRecord: ITimeTracker;
 
 
@@ -29,11 +29,13 @@ export class StudentService {
 
 
   // get student by id
-  // getStudent(studentId: string): Observable<IStudent[]> {
-  // const collection = this.afs.collection<IStudent>('students', ref => ref.where('studentId', '==', studentId));
-  // const student = collection.valueChanges();
-  // return student;
-  // }
+  getStudent(id: string): Observable<Student[]> {
+    return this.http.get<Student[]>('${environment.studentApiUrl}/$ {id}')
+      .pipe(
+        catchError(this.handleError('getStudents', []))
+      );   // ...errors if any
+
+  }
 
   // get student by date
   // getStudentByDate(studentId: string, createDate: string): Observable<IStudent[]> {
@@ -44,47 +46,23 @@ export class StudentService {
   // }
 
   // get list of all students
-  public getStudents(): Observable<IStudent[]> {
+  public getStudents(): Observable<Student[]> {
     // get request
-    return this.http.get<IStudent[]>(environment.studentApiUrl)
+    return this.http.get<Student[]>(environment.studentApiUrl)
       .pipe(
         catchError(this.handleError('getStudents', []))
       );   // ...errors if any
   }
 
 
+
+
   // log out all students still signed it. This will set's the student hours to 1
-  logOutStudents(today: Date) {
-    // const loginDate = this.formatDate(today);
-    // console.log(loginDate);
-    // const studentCollection = this.afs.collection<IStudent>('students', ref => ref.where('status', '==', 'in'));
-    // const tempStudentSub = studentCollection.valueChanges().subscribe(s => {
-    //   tempStudentSub.unsubscribe();
-    //   s.forEach(student => {
-    //     const id = student.studentId;
-    //     const timeCollection = this.afs.collection<ITimeTracker>('timeTracker', ref => ref.where('studentId', '==', id)
-    //       .where('createDate', '==', loginDate).where('outTime', '==', null));
-
-    //     const tempTimeSub = this.getCollectionWithID<ITimeTracker>(timeCollection).subscribe(recs => {
-    //       tempTimeSub.unsubscribe();
-    //       recs.forEach(timeRecord => {
-    //         this.afs.doc(`timeTracker/${(timeRecord as any).id}`).set({
-    //           outTime: today,
-    //           totalHrs: 1,
-    //           points: 0,
-    //           adminSignedOut: true
-    //         }, { merge: true });
-    //         this.afs.doc(`students/${id}`).set({
-    //           status: 'out',
-    //           checkInTime: null
-    //         }, { merge: true });
-
-    //         // TODO: send email
-
-    //       });
-    //     });
-    //   });
-    // });
+  logOutStudents() {
+    return this.http.post(environment.signOutAllStudentsUrl, {})
+      .pipe(
+        catchError(this.handleError('signInStudent', {}))
+      );
   }
 
   totalStudentsLogin() {
@@ -94,14 +72,14 @@ export class StudentService {
 
 
 
-  signIn_OutStudent(signIn: IStudent): Observable<IStudent> {
+  signIn_OutStudent(signIn: Student): Observable<Student> {
     if (!signIn.isSignedIn) {
-      return this.http.post<IStudent>(environment.signInStudentUrl, signIn.studentId)
+      return this.http.post<Student>(environment.signInStudentUrl, signIn.studentId)
         .pipe(
           catchError(this.handleError('signInStudent', signIn))
         );
     } else {
-      return this.http.post<IStudent>(environment.signOutStudentUrl, signIn.studentId)
+      return this.http.post<Student>(environment.signOutStudentUrl, signIn.studentId)
         .pipe(
           catchError(this.handleError('signInStudent', signIn))
         );

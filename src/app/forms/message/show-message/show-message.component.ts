@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators, FormControl } from '@angular/forms';
 import { IMessage } from '../../../model/message';
 import { MessageService } from '../message.service';
-import { IStudent } from '../../../model/student';
+import { Student } from '../../../model/student';
 
 
 
@@ -22,7 +22,7 @@ export class ShowMessageComponent implements OnInit {
 
   ngOnInit() {
     this.createForm();
-    //this.getMessages();
+    // this.getMessages();
   }
 
   // get list of messages
@@ -65,7 +65,7 @@ export class ShowMessageComponent implements OnInit {
   }
 
 // autocomplete
-  onNotify(value: IStudent): void {
+  onNotify(value: Student): void {
     this.studentID = value.studentId;
   }
 

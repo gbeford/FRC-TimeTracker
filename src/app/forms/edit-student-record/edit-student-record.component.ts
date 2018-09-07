@@ -3,7 +3,7 @@ import { Observable } from 'rxjs/Observable';
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, FormBuilder, Validators } from '@angular/forms';
 import { map, tap, startWith, debounceTime } from 'rxjs/operators';
-import { IStudent } from '../../model/student';
+import { Student } from '../../model/student';
 import { StudentService } from '../time-tracker/student.service';
 
 
@@ -23,8 +23,8 @@ export class EditStudentRecordComponent implements OnInit {
   student_id: string;
   show = false;
   studentCtrl: FormControl = new FormControl();
-  filteredOptions: Observable<IStudent[]>;
-  students: IStudent[];
+  filteredOptions: Observable<Student[]>;
+  students: Student[];
   studentID = '';
 
   constructor(private formBuilder: FormBuilder,
@@ -73,7 +73,7 @@ export class EditStudentRecordComponent implements OnInit {
     // });
   }
 
-  onNotify(value: IStudent): void {
+  onNotify(value: Student): void {
     // alert(message);
     this.studentID = value.studentId;
   }

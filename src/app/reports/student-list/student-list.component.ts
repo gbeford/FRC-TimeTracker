@@ -3,7 +3,7 @@ import { MatTableDataSource, MatSort } from '@angular/material';
 import { Observable } from 'rxjs/Observable';
 import { DataSource } from '@angular/cdk/collections';
 import { StudentService } from '../../forms/time-tracker/student.service';
-import { IStudent } from '../../model/student';
+import { Student } from '../../model/student';
 
 
 
@@ -12,6 +12,7 @@ import { IStudent } from '../../model/student';
   templateUrl: './student-list.component.html',
   styleUrls: ['./student-list.component.css']
 })
+
 export class StudentListComponent implements AfterViewInit {
   dataSource: MatTableDataSource<any>; // StudentsDataSource;
 
@@ -21,6 +22,13 @@ export class StudentListComponent implements AfterViewInit {
   constructor(private sls: StudentService) { }
 
   ngAfterViewInit() {
+
+    this.getStudentList();
+  }
+
+
+  public getStudentList() {
+
     this.sls.getStudents().subscribe(data => {
       this.dataSource = new MatTableDataSource(data);
       this.dataSource.sort = this.sort;
@@ -29,15 +37,18 @@ export class StudentListComponent implements AfterViewInit {
     // this.dataSource = new StudentsDataSource(this.students);
   }
 
+
 }
 
+
+
 export class StudentsDataSource extends DataSource<any> {
-  constructor(private students: Observable<IStudent[]>) {
+  constructor(private students: Observable<Student[]>) {
     super();
   }
 
   /** Connect function called by the table to retrieve one stream containing the data to render. */
-  connect(): Observable<IStudent[]> {
+  connect(): Observable<Student[]> {
     return this.students;
   }
 
