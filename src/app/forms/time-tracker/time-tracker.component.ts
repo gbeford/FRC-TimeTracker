@@ -64,7 +64,7 @@ export class TimeTrackerComponent implements OnInit {
         });
       });
      } else {
-      this.timeTrackerService.updateStudentTime(this.selectedStudent);
+      // this.timeTrackerService.updateStudentTime(this.selectedStudent);
       this.snackBar.open(`${this.selectedStudent.firstName} signed out.`, 'Bye!', {
         duration: 5000, verticalPosition: 'top'
       });

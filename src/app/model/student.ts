@@ -6,7 +6,8 @@ export interface IStudent {
     lastName: string;
     email: string;
     grade: number;
-    status?: string;
-    checkInTime?: Date;
+    updated?: Date;
+    created?: Date;
+    signedIn?: Date;
     messages: string[];
 }

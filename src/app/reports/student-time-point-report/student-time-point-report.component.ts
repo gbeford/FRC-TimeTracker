@@ -47,29 +47,29 @@ export class StudentTimePointReportComponent implements OnInit {
     // get students data
     this.startDate = this.studentTimeReportForm.controls['inDate'].value;
     this.endDate = this.studentTimeReportForm.controls['outDate'].value;
-    this.timeTrackerService.getStudentTimeTrackerInfo(this.studentID,
-      this.startDate, this.endDate).subscribe(s => {
-        this.report = s;
-        console.log('values ' + this.studentID,
-          this.studentTimeReportForm.controls['inDate'].value,
-          this.studentTimeReportForm.controls['outDate'].value);
-        console.log('report ', this.report);
+    // this.timeTrackerService.getStudentTimeTrackerInfo(this.studentID,
+    //   this.startDate, this.endDate).subscribe(s => {
+    //     this.report = s;
+    //     console.log('values ' + this.studentID,
+    //       this.studentTimeReportForm.controls['inDate'].value,
+    //       this.studentTimeReportForm.controls['outDate'].value);
+    //     console.log('report ', this.report);
 
-        for (let i = 0; i < this.report.length; i++) {
-          if (this.report[i].points !== undefined) {
-            this.totalPoints = this.totalPoints + this.report[i].points;
-            this.totalHours = this.totalHours + this.report[i].totalHrs;
-          }
-        }
-        this.totalHours = parseFloat(this.totalHours.toFixed(1));
-        console.log('point total ' + this.totalPoints);
-        console.log('hours total ' + this.totalHours);
-      });
+    //     for (let i = 0; i < this.report.length; i++) {
+    //       if (this.report[i].points !== undefined) {
+    //         this.totalPoints = this.totalPoints + this.report[i].points;
+    //         this.totalHours = this.totalHours + this.report[i].totalHrs;
+    //       }
+    //     }
+    //     this.totalHours = parseFloat(this.totalHours.toFixed(1));
+    //     console.log('point total ' + this.totalPoints);
+    //     console.log('hours total ' + this.totalHours);
+      //});
 
-    this.timeTrackerService.getStudent(this.studentID).subscribe(s => {
-      this.studentInfo = s;
-      this.studentName = this.studentInfo[0].firstName + ' ' + this.studentInfo[0].lastName + '-' + this.studentInfo[0].studentId;
-    });
+    // this.timeTrackerService.getStudent(this.studentID).subscribe(s => {
+    //   this.studentInfo = s;
+    //   this.studentName = this.studentInfo[0].firstName + ' ' + this.studentInfo[0].lastName + '-' + this.studentInfo[0].studentId;
+    // });
 
     this.show = true;
   }

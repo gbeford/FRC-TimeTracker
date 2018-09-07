@@ -19,7 +19,7 @@ export class MenuComponent implements OnInit {
   ngOnInit() {
     this.auth.user$.subscribe(
       (user) => this.user = user);
-    this.countOfStudentsLogin();
+    // this.countOfStudentsLogin();
   }
   // log in to the application
   loginWithGoogle() {
@@ -38,7 +38,7 @@ export class MenuComponent implements OnInit {
     return this.auth.canAdmin(this.user);
   }
 
-  countOfStudentsLogin() {
-    this.svc.totalStudentsLogin().subscribe(s => this.signedInStudents = s.length);
-  }
+  // countOfStudentsLogin() {
+  //   this.svc.totalStudentsLogin().subscribe(s => this.signedInStudents = s.length);
+  // }
 }

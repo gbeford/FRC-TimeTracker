@@ -1,21 +1,21 @@
 import { Injectable } from '@angular/core';
 import { IPoints } from '../../model/points';
 
-import { AngularFirestore } from 'angularfire2/firestore';
+
 import { Observable } from 'rxjs/Observable';
 
 @Injectable()
 export class PointService {
 
-  constructor(private afs: AngularFirestore) { }
+  // constructor(private afs: AngularFirestore) { }
 
 
   // get points
-  getPointList(): Observable<IPoints[]> {
-    const pointsCollection = this.afs.collection<IPoints>('Events', ref => ref.orderBy('SortOrder'));
-    const points = pointsCollection.valueChanges();
-    return points;
-  }
+  // getPointList(): Observable<IPoints[]> {
+    // const pointsCollection = this.afs.collection<IPoints>('Events', ref => ref.orderBy('SortOrder'));
+    // const points = pointsCollection.valueChanges();
+    // return points;
+  // }
 
 
   // CRUD

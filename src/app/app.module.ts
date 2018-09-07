@@ -11,9 +11,6 @@ import {
   MatDialogModule
 } from '@angular/material';
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
-import { AngularFirestoreModule } from 'angularfire2/firestore';
-import { AngularFireModule } from 'angularfire2';
-import { AngularFireAuthModule } from 'angularfire2/auth';
 import { environment } from '@environment/environment';
 import { ReportsComponent } from './reports/reports.component';
 import { MenuComponent } from './menu/menu.component';
@@ -38,7 +35,7 @@ import { AddNewPointComponent } from './forms/points/add-new-point/add-new-point
 import { PointService } from './forms/points/point.service';
 import { BadgeEntryComponent } from './forms/badge/badge-entry/badge-entry.component';
 import { BadgeViewComponent } from './forms/badge/badge-view/badge-view.component';
-
+import { HttpClientModule } from '@angular/common/http';
 
 
 
@@ -86,9 +83,7 @@ import { BadgeViewComponent } from './forms/badge/badge-view/badge-view.componen
     MatCheckboxModule,
     MatDialogModule,
     AppRoutingModule,
-    AngularFirestoreModule,
-    AngularFireModule.initializeApp(environment.firebase_467_timeTracker),
-    AngularFireAuthModule,
+    HttpClientModule,
   ],
   providers: [TimeTrackerService,
     AuthService,

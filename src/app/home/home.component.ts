@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { MatSnackBar } from '@angular/material';
 import { AuthService } from '../shared/auth.service';
-import * as firebase from 'firebase';
+
 import { User } from '../shared/user';
 import { TimeTrackerService } from '../forms/time-tracker/time-tracker.service';
 
@@ -22,7 +22,7 @@ export class HomeComponent implements OnInit {
   ngOnInit() {
     this.auth.user$.subscribe(
       (user) => this.user = user);
-    this.countOfStudentsLogin();
+    // this.countOfStudentsLogin();
   }
 
   // loginWithGoogle() {
@@ -45,8 +45,8 @@ export class HomeComponent implements OnInit {
     // msend email
   }
 
-  countOfStudentsLogin() {
-    this.svc.totalStudentsLogin().subscribe(s => this.signedInStudent = s.length);
-  }
+  // countOfStudentsLogin() {
+  //   this.svc.totalStudentsLogin().subscribe(s => this.signedInStudent = s.length);
+  // }
 
 }

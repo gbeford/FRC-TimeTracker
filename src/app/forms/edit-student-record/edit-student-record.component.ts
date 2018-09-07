@@ -55,9 +55,9 @@ export class EditStudentRecordComponent implements OnInit {
 
   retrevieStudentRecord() {
     this.create_date = this.studentEditForm.controls['createDate'].value.toISOString().split('T')[0];
-    this.timeTrackerService.getStudentByDate(this.studentID,
-      this.create_date).subscribe(s => {
-      });
+    // this.timeTrackerService.getStudentByDate(this.studentID,
+    //   this.create_date).subscribe(s => {
+    //   });
     this.show = true;
   }
 

@@ -1,8 +1,7 @@
-import { AngularFireAuth } from 'angularfire2/auth';
-import * as firebase from 'firebase/app';
+
 import { Observable } from 'rxjs/Observable';
 import { Injectable } from '@angular/core';
-import { AngularFirestore, AngularFirestoreCollection, AngularFirestoreDocument } from 'angularfire2/firestore';
+
 import { User } from './user';
 
 // from https://angularfirebase.com/lessons/role-based-authorization-with-firestore-nosql-and-angular-5/#Rules-for-the-User-Document
@@ -12,33 +11,33 @@ export class AuthService {
 
     user$: Observable<User>;
 
-    constructor(public afAuth: AngularFireAuth, private afs: AngularFirestore) {
-        //// Get auth data, then get firestore user document || null
-        this.user$ = this.afAuth.authState
-            .switchMap(user => {
-                if (user) {
-                    return this.afs.doc<User>(`users/${user.uid}`).valueChanges()
-                } else {
-                    return Observable.of(null)
-                }
-            });
-    }
+    // constructor(public afAuth: AngularFireAuth, private afs: AngularFirestore) {
+    //     //// Get auth data, then get firestore user document || null
+    //     this.user$ = this.afAuth.authState
+    //         .switchMap(user => {
+    //             if (user) {
+    //                 return this.afs.doc<User>(`users/${user.uid}`).valueChanges()
+    //             } else {
+    //                 return Observable.of(null)
+    //             }
+    //         });
+    // }
 
     ///// Login/Signup //////
     googleLogin() {
-        const provider = new firebase.auth.GoogleAuthProvider()
-        return this.oAuthLogin(provider);
+        // const provider = new firebase.auth.GoogleAuthProvider()
+        // return this.oAuthLogin(provider);
     }
 
     private oAuthLogin(provider) {
-        return this.afAuth.auth.signInWithPopup(provider)
-            .then((credential) => {
-                this.updateUserData(credential.user)
-            });
+        // return this.afAuth.auth.signInWithPopup(provider)
+        //     .then((credential) => {
+        //         this.updateUserData(credential.user)
+        //     });
     }
 
     signOut() {
-        this.afAuth.auth.signOut()
+        //this.afAuth.auth.signOut()
     }
 
     canRead(user: User): boolean {
@@ -69,16 +68,16 @@ export class AuthService {
 
     private updateUserData(user) {
         // Sets user data to firestore on login
-        const userRef: AngularFirestoreDocument<any> = this.afs.doc(`users/${user.uid}`);
-        const data: User = {
-            displayName: user.displayName,
-            uid: user.uid,
-            email: user.email,
-            lastLogin: new Date(),
-            roles: {
-                user: true
-            }
-        }
-        return userRef.set(data, { merge: true })
+        // const userRef: AngularFirestoreDocument<any> = this.afs.doc(`users/${user.uid}`);
+        // const data: User = {
+        //     displayName: user.displayName,
+        //     uid: user.uid,
+        //     email: user.email,
+        //     lastLogin: new Date(),
+        //     roles: {
+        //         user: true
+        //     }
+        // }
+        // return userRef.set(data, { merge: true })
     }
 }

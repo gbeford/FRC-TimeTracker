@@ -18,16 +18,16 @@ export class ApplyPointsToStudentComponent implements OnInit {
 
   ngOnInit() {
     this.createForm();
-    this.getPoints();
+    // this.getPoints();
   }
 
   // get list of points
-  getPoints() {
-    this.pointService.getPointList().subscribe(s => {
-      this.pointsList = s;
-      console.log('points list ', this.pointsList);
-    });
-  }
+  // getPoints() {
+  //   this.pointService.getPointList().subscribe(s => {
+  //     this.pointsList = s;
+  //     console.log('points list ', this.pointsList);
+  //   });
+  // }
 
 
   createForm() {

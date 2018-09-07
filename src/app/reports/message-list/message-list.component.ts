@@ -20,11 +20,11 @@ export class MessageListComponent implements AfterViewInit {
   constructor(private messageService: MessageService) { }
 
   ngAfterViewInit() {
-    this.messageService.getMessageList().subscribe(data => {
-      this.dataSource = new MatTableDataSource(data);
-      this.dataSource.sort = this.sort;
+    // this.messageService.getMessageList().subscribe(data => {
+    //   this.dataSource = new MatTableDataSource(data);
+    //   this.dataSource.sort = this.sort;
 
-    });
+    // });
   }
 
 }
