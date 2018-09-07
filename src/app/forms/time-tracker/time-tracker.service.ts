@@ -38,33 +38,25 @@ export class TimeTrackerService {
 
   // get student by id
   // getStudent(studentId: string): Observable<IStudent[]> {
-    // const collection = this.afs.collection<IStudent>('students', ref => ref.where('studentId', '==', studentId));
-    // const student = collection.valueChanges();
-    // return student;
+  // const collection = this.afs.collection<IStudent>('students', ref => ref.where('studentId', '==', studentId));
+  // const student = collection.valueChanges();
+  // return student;
   // }
   // get student by date
   // getStudentByDate(studentId: string, createDate: string): Observable<IStudent[]> {
-    // const collection = this.afs.collection<IStudent>('students', ref => ref.where('studentId', '==', studentId)
-    //   .where('createDate', '==', createDate));
-    // const trackerRecord = collection.valueChanges();
-    // return trackerRecord;
+  // const collection = this.afs.collection<IStudent>('students', ref => ref.where('studentId', '==', studentId)
+  //   .where('createDate', '==', createDate));
+  // const trackerRecord = collection.valueChanges();
+  // return trackerRecord;
   // }
 
   // get list of all students
   public getStudents(): Observable<IStudent[]> {
-    // const studentCollection = this.afs.collection<IStudent>('students', ref => ref.orderBy('firstName'));
-    // const students = studentCollection.valueChanges();
-
-    // ...using get request
-    const students = this.http.get(this.studentUrl)
-      // ...and calling .json() on the response to return data
-      .map((res: Response) =>
-        res.json()
-      )
-      .catch((error: any) => Observable.throw(error.json().error || 'Server error'));
-    console.log(students);
-    return students;
-    // ...errors if any
+    // get request
+    return this.http.get<IStudent[]>(this.studentUrl)
+      .pipe(
+        catchError(this.handleError('getStudents', []))
+      );   // ...errors if any
   }
 
 
@@ -151,22 +143,22 @@ export class TimeTrackerService {
 
   saveStudentTime(trackerRecord: IStudent): Observable<ITimeTracker> {
 
-      const date = new Date();
+    const date = new Date();
 
-      const trackStudentTime: ITimeTracker = {
-        studentId: trackerRecord.studentId,
-        createDate: this.formatDate(date),
-        createDateTime: date,
-        inTime: date,
-        outTime: null,
-        totalHrs: null
-      };
+    const trackStudentTime: ITimeTracker = {
+      studentId: trackerRecord.studentId,
+      createDate: this.formatDate(date),
+      createDateTime: date,
+      inTime: date,
+      outTime: null,
+      totalHrs: null
+    };
 
     console.log('trackerRecord ', trackStudentTime);
 
     return this.http.post<ITimeTracker>(this.timeTrackerUrl, trackStudentTime) // ...using post request
       .pipe(
-      catchError(this.handleError('save time', trackStudentTime))
+        catchError(this.handleError('save time', trackStudentTime))
       );
 
   }
@@ -264,7 +256,7 @@ export class TimeTrackerService {
       console.error(error); // log to console instead
 
       // TODO: better job of transforming error for user consumption
-    console.log(`${operation} failed: ${error.message}`);
+      console.log(`${operation} failed: ${error.message}`);
 
       // Let the app keep running by returning an empty result.
       return of(result as T);
