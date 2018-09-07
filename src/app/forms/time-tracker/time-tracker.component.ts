@@ -58,7 +58,7 @@ export class TimeTrackerComponent implements OnInit {
 
   save() {
     if (!this.selectedStudent.isSignedIn) {
-      this.timeTrackerService.saveStudentTime(this.selectedStudent).subscribe(res => {
+      this.timeTrackerService.signIn_OutStudent(this.selectedStudent).subscribe(res => {
         this.snackBar.open(`${this.selectedStudent.firstName} signed in.`, 'Welcome!', {
           duration: 5000, verticalPosition: 'top'
         });
