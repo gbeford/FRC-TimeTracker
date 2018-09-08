@@ -27,14 +27,13 @@ export class StudentListComponent implements AfterViewInit {
   }
 
 
-  public getStudentList() {
+  private getStudentList() {
 
     this.sls.getStudents().subscribe(data => {
       this.dataSource = new MatTableDataSource(data);
       this.dataSource.sort = this.sort;
 
     });
-    // this.dataSource = new StudentsDataSource(this.students);
   }
 
 

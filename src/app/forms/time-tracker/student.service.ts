@@ -1,16 +1,7 @@
 
 import { Injectable } from '@angular/core';
-// import { Observable } from 'rxjs/Observable';
 import { catchError, retry } from 'rxjs/operators';
 import { Observable, of } from 'rxjs';
-import { Response } from '@angular/http';
-
-// Import RxJs required methods
-import 'rxjs/add/operator/do';
-import 'rxjs/add/operator/catch';
-import 'rxjs/add/observable/throw';
-import 'rxjs/add/operator/map';
-import 'rxjs/add/observable/of';
 
 import { Student } from '../../model/student';
 import { ITimeTracker } from '../../model/time-tracker';
@@ -30,7 +21,7 @@ export class StudentService {
 
   // get student by id
   getStudent(id: string): Observable<Student[]> {
-    return this.http.get<Student[]>('${environment.studentApiUrl}/$ {id}')
+    return this.http.get<Student[]>('${environment.studentApiUrl}/${id}')
       .pipe(
         catchError(this.handleError('getStudents', []))
       );   // ...errors if any
