@@ -36,6 +36,7 @@ import { PointService } from './forms/points/point.service';
 import { BadgeEntryComponent } from './forms/badge/badge-entry/badge-entry.component';
 import { BadgeViewComponent } from './forms/badge/badge-view/badge-view.component';
 import { HttpClientModule } from '@angular/common/http';
+import { StatusPipe } from './shared/filters/status.pipe';
 
 
 
@@ -60,6 +61,7 @@ import { HttpClientModule } from '@angular/common/http';
     TimeTrackerModalComponent,
     ApplyPointsToStudentComponent,
     AddNewPointComponent,
+    StatusPipe,
   ],
   imports: [
     BrowserModule,

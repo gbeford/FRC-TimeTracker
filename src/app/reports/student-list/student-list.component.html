@@ -33,7 +33,7 @@
 
     <ng-container matColumnDef="status">
       <mat-header-cell *matHeaderCellDef mat-sort-header> Status </mat-header-cell>
-      <mat-cell *matCellDef="let element"> {{element.status}} {{element.checkInTime | date:"hh:mm a"}}</mat-cell>
+      <mat-cell *matCellDef="let element"> {{element.isSignedIn [ status ]}} {{element.checkInTime | date:"hh:mm a"}}</mat-cell>
     </ng-container>
 
 <ng-container matColumnDef="messages">
