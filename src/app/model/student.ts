@@ -8,12 +8,9 @@ export class Student {
     grade: number;
     updated?: Date;
     created?: Date;
+    signInTime?: Date;
     isSignedIn: boolean;
     messages: string[];
-
-    public get status() {
-        return this.isSignedIn ? 'Signed In' : 'Signed Out';
-    }
 
 }
 

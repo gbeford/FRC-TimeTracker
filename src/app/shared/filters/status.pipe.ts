@@ -9,9 +9,9 @@ export class StatusPipe implements PipeTransform {
     let status;
 
     if (value) {
-      status = 'Out';
-    } else {
       status = 'In';
+    } else {
+      status = 'Out';
     }
 
     return status;
