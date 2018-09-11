@@ -4,6 +4,7 @@ import { AuthService } from '../shared/auth.service';
 
 import { User } from '../shared/user';
 import { StudentService } from '../forms/time-tracker/student.service';
+import { MessageService } from '../forms/message/message.service';
 
 @Component({
   selector: 'app-home',
@@ -17,12 +18,15 @@ export class HomeComponent implements OnInit {
   user: User;
 
   constructor(private svc: StudentService, private snackBar: MatSnackBar,
-    private auth: AuthService) { }
+    private auth: AuthService, private messageService: MessageService) { }
 
   ngOnInit() {
-    this.auth.user$.subscribe(
-      (user) => this.user = user);
+    // this.auth.user$.subscribe(
+    //   (user) => this.user = user);
     // this.countOfStudentsLogin();
+    this.messageService.getMessageList().subscribe(m => {
+      console.log('messages', m);
+    });
   }
 
   // loginWithGoogle() {
