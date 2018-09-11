@@ -2,7 +2,7 @@
 import { Injectable } from '@angular/core';
 import { catchError, retry } from 'rxjs/operators';
 import { Observable, of } from 'rxjs';
-
+import { ErrorObservable } from 'rxjs/observable/ErrorObservable';
 import { Student } from '../../model/student';
 import { ITimeTracker } from '../../model/time-tracker';
 import { environment } from '@environment/environment';
@@ -84,24 +84,14 @@ export class StudentService {
   // CRUD
 
 
-  editStudentRecord(today, studentId, in_time, out_time, hours, points) {
-    const loginDate = today.toISOString().split('T')[0];
+  editStudentRecord(updateStudent: Student): Observable<void | {}> {
+    // const loginDate = today.toISOString().split('T')[0];
 
-    // const timeCollection = this.afs.collection<ITimeTracker>('timeTracker', ref => ref.where('studentId', '==', studentId)
-    //   .where('createDate', '==', loginDate));
+    return this.http.put<void>(`environment.updateStudentUrl/${updateStudent.studentId}`, updateStudent)
+      .pipe(
+        catchError(this.handleError('updateStudent'))
+      );
 
-    // this.getCollectionWithID<ITimeTracker>(timeCollection).pipe(take(1)).subscribe(recs => {
-
-    //   recs.forEach(timeRecord => {
-    //     this.afs.doc(`timeTracker/${(timeRecord as any).id}`).set({
-    //       inTime: in_time,
-    //       outTime: out_time,
-    //       totalHrs: hours,
-    //       points: points,
-    //       adminSignedOut: true
-    //     }, { merge: true });
-    //   });
-    // });
   }
 
 
