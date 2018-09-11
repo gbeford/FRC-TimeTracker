@@ -3,8 +3,8 @@ import { Injectable } from '@angular/core';
 import { catchError, retry } from 'rxjs/operators';
 import { Observable, of } from 'rxjs';
 import { ErrorObservable } from 'rxjs/observable/ErrorObservable';
-import { Student } from '../../model/student';
-import { ITimeTracker } from '../../model/time-tracker';
+import { Student } from '../model/student';
+import { ITimeTracker } from '../model/time-tracker';
 import { environment } from '@environment/environment';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 

@@ -4,7 +4,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, FormBuilder, Validators } from '@angular/forms';
 import { map, tap, startWith, debounceTime } from 'rxjs/operators';
 import { Student } from '../../model/student';
-import { StudentService } from '../time-tracker/student.service';
+import { StudentService } from '../../student/student.service';
 
 
 @Component({

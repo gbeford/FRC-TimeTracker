@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, Validators, FormBuilder } from '@angular/forms';
-import { Student } from '../../../model/student';
-import { IPoints } from '../../../model/points';
+import { Student } from 'app/model/student';
+import { IPoints } from 'app/model/points';
 import { PointService } from '../point.service';
 
 @Component({

@@ -2,8 +2,8 @@
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
 import { take } from 'rxjs/operators';
-import { IMessage } from '../../model/message';
-import { Student } from '../../model/student';
+import { IMessage } from '../model/message';
+import { Student } from '../model/student';
 
 
 

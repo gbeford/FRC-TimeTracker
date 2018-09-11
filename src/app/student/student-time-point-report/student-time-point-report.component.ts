@@ -3,7 +3,7 @@ import { FormGroup, FormControl, FormBuilder, Validators, ReactiveFormsModule } 
 import { Observable } from 'rxjs/Observable';
 import { ITimeTracker } from '../../model/time-tracker';
 import { Student } from '../../model/student';
-import { StudentService } from '../../forms/time-tracker/student.service';
+import { StudentService } from '../student.service';
 
 
 @Component({

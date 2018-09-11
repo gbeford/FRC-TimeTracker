@@ -3,7 +3,7 @@ import { MatSnackBar } from '@angular/material';
 import { AuthService } from '../shared/auth.service';
 
 import { User } from '../shared/user';
-import { StudentService } from '../forms/time-tracker/student.service';
+import { StudentService } from '../student/student.service';
 
 @Component({
   selector: 'app-home',

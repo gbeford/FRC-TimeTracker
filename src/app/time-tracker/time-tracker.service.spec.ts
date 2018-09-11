@@ -1,6 +1,6 @@
 import { TestBed, inject } from '@angular/core/testing';
 
-import { StudentService } from './student.service';
+import { StudentService } from '../student/student.service';
 
 describe('TimeTrackerService', () => {
   beforeEach(() => {
