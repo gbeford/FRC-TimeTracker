@@ -3,8 +3,8 @@ import { FormGroup, FormControl, FormBuilder, Validators } from '@angular/forms'
 import { Observable } from 'rxjs/Observable';
 import { map, tap, startWith, debounceTime } from 'rxjs/operators';
 import { MatSnackBar, MatDialog } from '@angular/material';
-import { StudentService } from './student.service';
-import { Student } from '../../model/student';
+import { StudentService } from '../student/student.service';
+import { Student } from '../model/student';
 import { TimeTrackerModalComponent } from './time-tracker-modal.component';
 
 

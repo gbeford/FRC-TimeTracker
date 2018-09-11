@@ -1,7 +1,7 @@
 
 import { Injectable } from '@angular/core';
 import { Observable, throwError } from 'rxjs';
-import { IMessage } from '../../model/message';
+import { IMessage } from '../model/message';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { catchError } from 'rxjs/operators';
 
@@ -65,5 +65,5 @@ export class MessageService {
         // return an observable with a user-facing error message
         return throwError(
             'Something bad happened; please try again later.');
-    };
+    }
 }

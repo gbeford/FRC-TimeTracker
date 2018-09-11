@@ -3,7 +3,7 @@ import { map, tap, startWith, debounceTime } from 'rxjs/operators';
 import { Observable } from 'rxjs/Observable';
 import { Component, OnInit, EventEmitter, Output, Input } from '@angular/core';
 import { Student } from '../../model/student';
-import { StudentService } from '../../forms/time-tracker/student.service';
+import { StudentService } from '../../student/student.service';
 
 
 

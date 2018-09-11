@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { IPoints } from '../../model/points';
+import { IPoints } from 'app/model/points';
 
 
 import { Observable } from 'rxjs/Observable';

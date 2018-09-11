@@ -2,7 +2,7 @@ import { Component, AfterViewInit, ViewChild } from '@angular/core';
 import { MatTableDataSource, MatSort } from '@angular/material';
 import { Observable } from 'rxjs/Observable';
 import { DataSource } from '@angular/cdk/collections';
-import { StudentService } from '../../forms/time-tracker/student.service';
+import { StudentService } from '../student.service';
 import { Student } from '../../model/student';
 
 
