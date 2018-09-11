@@ -1,4 +1,4 @@
-import { Component, OnInit, AfterViewInit, ViewChild } from '@angular/core';
+import { Component, AfterViewInit, ViewChild } from '@angular/core';
 import { MatTableDataSource, MatSort } from '@angular/material';
 import { IMessage } from '../../model/message';
 import { MessageService } from '../message.service';
@@ -12,7 +12,7 @@ export class MessageListComponent implements AfterViewInit {
 
   dataSource: MatTableDataSource<any>; // MessageDataSource;
   messageList: IMessage[];
-  displayedColumns = ['message'];
+  displayedColumns = ['messageText'];
 
   @ViewChild(MatSort) sort: MatSort;
 
@@ -20,11 +20,11 @@ export class MessageListComponent implements AfterViewInit {
   constructor(private messageService: MessageService) { }
 
   ngAfterViewInit() {
-    // this.messageService.getMessageList().subscribe(data => {
-    //   this.dataSource = new MatTableDataSource(data);
-    //   this.dataSource.sort = this.sort;
+    this.messageService.getMessageList().subscribe(data => {
+      this.dataSource = new MatTableDataSource(data);
+      this.dataSource.sort = this.sort;
 
-    // });
+    });
   }
 
 }

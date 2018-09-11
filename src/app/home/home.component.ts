@@ -1,10 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { MatSnackBar } from '@angular/material';
+import { MessageService } from 'app/message/message.service';
 import { AuthService } from '../shared/auth.service';
-
 import { User } from '../shared/user';
 import { StudentService } from '../student/student.service';
-import { MessageService } from 'app/message/message.service';
 
 @Component({
   selector: 'app-home',
@@ -24,9 +23,6 @@ export class HomeComponent implements OnInit {
     // this.auth.user$.subscribe(
     //   (user) => this.user = user);
     // this.countOfStudentsLogin();
-    this.messageService.getMessageList().subscribe(m => {
-      console.log('messages', m);
-    });
   }
 
   // loginWithGoogle() {

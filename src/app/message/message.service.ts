@@ -1,13 +1,8 @@
-
 import { Injectable } from '@angular/core';
 import { Observable, throwError } from 'rxjs';
 import { IMessage } from '../model/message';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { catchError } from 'rxjs/operators';
-
-
-
-
 
 @Injectable()
 export class MessageService {
@@ -36,7 +31,7 @@ export class MessageService {
         console.log('message' + msg);
         const message: IMessage = {
             messageId: null,
-            message: msg,
+            messageText: msg,
             sortOrder: null,
             show: false
         };
