@@ -4,6 +4,11 @@ import { Observable } from 'rxjs/Observable';
 import { take } from 'rxjs/operators';
 import { IMessage } from '../model/message';
 import { Student } from '../model/student';
+import { catchError, retry } from 'rxjs/operators';
+import { environment } from '@environment/environment';
+import { HttpClient } from '@angular/common/http';
+import { Utilities } from '../shared/utils';
+
 
 
 
@@ -14,15 +19,18 @@ export class MessageService {
 
     messageList: IMessage[];
 
-    // constructor(private afs: AngularFirestore) { }
+    constructor(private http: HttpClient) { }
 
 
     // get messages
-    // getMessageList(): Observable<IMessage[]> {
-        // const messagesCollection = this.afs.collection<IMessage>('messages', ref => ref.orderBy('sortOrder'));
-        // const message = messagesCollection.valueChanges();
-        // return message;
-    //  }
+     getMessageList(): Observable<IMessage[]> {
+         return this.http.get<IMessage[]>(environment.messageApiUrl)
+    .pipe(
+             catchError(Utilities.handleError('getStudents', []))
+    );   // ...errors if any
+
+
+     }
 
 
 
