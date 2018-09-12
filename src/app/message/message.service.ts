@@ -1,14 +1,11 @@
-
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs/Observable';
-import { take } from 'rxjs/operators';
+import { Observable, throwError } from 'rxjs';
 import { IMessage } from '../model/message';
 import { Student } from '../model/student';
 import { catchError, retry } from 'rxjs/operators';
 import { environment } from '@environment/environment';
 import { HttpClient } from '@angular/common/http';
 import { Utilities } from '../shared/utils';
-
 
 
 
@@ -22,15 +19,14 @@ export class MessageService {
     constructor(private http: HttpClient) { }
 
 
+
     // get messages
-     getMessageList(): Observable<IMessage[]> {
-         return this.http.get<IMessage[]>(environment.messageApiUrl)
-    .pipe(
-             catchError(Utilities.handleError('getStudents', []))
-    );   // ...errors if any
-
-
-     }
+    getMessageList(): Observable<{} | IMessage[]> {
+        return this.http.get<IMessage[]>(environment.messageApiUrl)
+            .pipe(
+                catchError(Utilities.handleError)
+            );   // ...errors if any
+    }
 
 
 
@@ -41,7 +37,7 @@ export class MessageService {
         console.log('message' + msg);
         const message: IMessage = {
             messageId: null,
-            message: msg,
+            messageText: msg,
             sortOrder: null,
             show: false
         };

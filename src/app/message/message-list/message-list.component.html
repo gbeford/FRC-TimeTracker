@@ -7,9 +7,9 @@
     <mat-table #table [dataSource]="dataSource" matSort>
 
       <!-- Position Column -->
-      <ng-container matColumnDef="message">
+      <ng-container matColumnDef="messageText">
         <mat-header-cell *matHeaderCellDef mat-sort-header fxFlex="100px"> Message </mat-header-cell>
-        <mat-cell *matCellDef="let element" fxFlex="100px"> {{element.message}} </mat-cell>
+        <mat-cell *matCellDef="let element" fxFlex="100px"> {{element.messageText}} </mat-cell>
       </ng-container>
 
       <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
