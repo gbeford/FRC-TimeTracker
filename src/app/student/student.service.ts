@@ -7,6 +7,7 @@ import { Student } from '../model/student';
 import { ITimeTracker } from '../model/time-tracker';
 import { environment } from '@environment/environment';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
+import { Utilities } from '../shared/utils';
 
 
 @Injectable()
@@ -23,7 +24,7 @@ export class StudentService {
   getStudent(id: string): Observable<Student[]> {
     return this.http.get<Student[]>('${environment.studentApiUrl}/${id}')
       .pipe(
-        catchError(this.handleError('getStudents', []))
+        catchError(Utilities.handleError)
       );   // ...errors if any
 
   }
@@ -41,7 +42,7 @@ export class StudentService {
     // get request
     return this.http.get<Student[]>(environment.studentApiUrl)
       .pipe(
-        catchError(this.handleError('getStudents', []))
+        catchError(Utilities.handleError)
       );   // ...errors if any
   }
 
@@ -52,7 +53,7 @@ export class StudentService {
   logOutStudents() {
     return this.http.post(environment.signOutAllStudentsUrl, {})
       .pipe(
-        catchError(this.handleError('signInStudent', {}))
+        catchError(Utilities.handleError)
       );
   }
 
@@ -67,12 +68,12 @@ export class StudentService {
     if (!signIn.isSignedIn) {
       return this.http.post<Student>(environment.signInStudentUrl, signIn.studentId)
         .pipe(
-          catchError(this.handleError('signInStudent', signIn))
+          catchError(Utilities.handleError)
         );
     } else {
       return this.http.post<Student>(environment.signOutStudentUrl, signIn.studentId)
         .pipe(
-          catchError(this.handleError('signInStudent', signIn))
+          catchError(Utilities.handleError)
         );
     }
 
@@ -89,7 +90,7 @@ export class StudentService {
 
     return this.http.put<void>(`environment.updateStudentUrl/${updateStudent.studentId}`, updateStudent)
       .pipe(
-        catchError(this.handleError('updateStudent'))
+        catchError(Utilities.handleError)
       );
 
   }
@@ -106,32 +107,6 @@ export class StudentService {
   //   return trackerInfo;
   // }
 
-
-
-
-
-
-  // generic functions
-
-  /**
- * Handle Http operation that failed.
- * Let the app continue.
- * @param operation - name of the operation that failed
- * @param result - optional value to return as the observable result
- */
-  private handleError<T>(operation = 'operation', result?: T) {
-    return (error: any): Observable<T> => {
-
-      // TODO: send the error to remote logging infrastructure
-      console.error(error); // log to console instead
-
-      // TODO: better job of transforming error for user consumption
-      console.log(`${operation} failed: ${error.message}`);
-
-      // Let the app keep running by returning an empty result.
-      return of(result as T);
-    };
-  }
 
 
 }

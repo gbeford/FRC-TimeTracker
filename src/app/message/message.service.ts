@@ -19,9 +19,8 @@ export class MessageService {
     constructor(private http: HttpClient) { }
 
 
-
     // get messages
-    getMessageList(): Observable<{} | IMessage[]> {
+    getMessageList(): Observable<IMessage[]> {
         return this.http.get<IMessage[]>(environment.messageApiUrl)
             .pipe(
                 catchError(Utilities.handleError)
@@ -51,6 +50,5 @@ export class MessageService {
         //     messages: messages
         // }, { merge: true });
     }
-
 
 }
