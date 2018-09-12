@@ -1,5 +1,4 @@
 
-import { Observable } from 'rxjs/Observable';
 import { of, throwError } from 'rxjs';
 import { HttpErrorResponse } from '@angular/common/http';
 

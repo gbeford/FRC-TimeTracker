@@ -41,6 +41,11 @@ export class MessageService {
             show: false
         };
 
+        return this.http.post<IMessage>(environment.messageApiUrl, msg)
+            .pipe(
+                catchError(Utilities.handleError)
+            );
+
         // const messageCollection = this.afs.collection<IMessage>('messages');
         // messageCollection.add(message);
     }
@@ -49,6 +54,16 @@ export class MessageService {
         // this.afs.doc(`students/${studentId}`).set({
         //     messages: messages
         // }, { merge: true });
+    }
+
+    editMessageRecord(updateMessage: IMessage): Observable<void | {}> {
+        // const loginDate = today.toISOString().split('T')[0];
+
+        return this.http.put<void>(`environment.messageApiUrl/${updateMessage.messageId}`, updateMessage)
+            .pipe(
+                catchError(Utilities.handleError)
+            );
+
     }
 
 }
