@@ -35,13 +35,13 @@ export class MessageService {
         // const date = new Date();
         console.log('message' + msg);
         const message: IMessage = {
-            messageId: null,
+            messageId: 0,
             messageText: msg,
-            sortOrder: null,
+            sortOrder: 0,
             show: false
         };
 
-        return this.http.post<IMessage>(environment.messageApiUrl, msg)
+        return this.http.post<IMessage>(environment.messageApiUrl, message)
             .pipe(
                 catchError(Utilities.handleError)
             );
