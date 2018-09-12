@@ -33,7 +33,7 @@ export class MessageService {
 
     saveMessage(msg: string) {
         // const date = new Date();
-        console.log('message' + msg);
+        console.log('message ' + msg);
         const message: IMessage = {
             messageId: 0,
             messageText: msg,

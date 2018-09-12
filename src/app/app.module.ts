@@ -12,6 +12,8 @@ import {
 } from '@angular/material';
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
 import { environment } from '@environment/environment';
+import { TitleCasePipe } from '@angular/common';
+
 import { ReportsComponent } from './reports/reports.component';
 import { MenuComponent } from './menu/menu.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
@@ -91,6 +93,7 @@ import { StatusPipe } from './shared/filters/status.pipe';
     AuthService,
     MessageService,
     PointService,
+    TitleCasePipe,
   ],
   entryComponents: [TimeTrackerModalComponent],
   bootstrap: [AppComponent]

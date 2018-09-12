@@ -1,17 +1,39 @@
 <div class="container">
+  <div class="container-add">
+    <h2>
+      Add A New Message
+    </h2>
 
-  <h2>
-    Add A New Message
-  </h2>
+    <form [formGroup]="addMessageForm" novalidate (ngSubmit)="submit()">
+      <mat-form-field class="messageText">
+        <textarea matInput placeholder="Add Message" matTextareaAutosize matAutosizeMinRows="2" matAutosizeMaxRows="5"
+          formControlName="messageTxtCtrl" type="text" required></textarea>
+        <mat-error *ngIf="messageText.invalid && (messageText.dirty || messageText.touched)">Please add a message</mat-error>
+      </mat-form-field>
+      <div>
+        <button class='trackerBtn' type="submit" [disabled]="!messageText.valid">Submit</button>
+      </div>
+    </form>
+  </div>
+  <hr>
+  <div class="container-list">
+    <h2>
+      Current Message List
+    </h2>
 
-  <form [formGroup]="addMessageForm" novalidate (ngSubmit)="submit()">
-    <mat-form-field class="messageText">
-      <textarea matInput placeholder="Add Message" matTextareaAutosize matAutosizeMinRows="2" matAutosizeMaxRows="5" formControlName="messageTxtCtrl"
-        type="text" required></textarea>
-      <mat-error *ngIf="messageText.invalid && (messageText.dirty || messageText.touched)">Please add a message</mat-error>
-    </mat-form-field>
-    <div>
-      <button class='trackerBtn' type="submit" [disabled]="!messageText.valid">Submit</button>
+    <div class="mat-elevation-z8">
+      <mat-table #table [dataSource]="dataSource" matSort>
+
+        <!-- Position Column -->
+        <ng-container matColumnDef="messageText">
+          <mat-header-cell *matHeaderCellDef mat-sort-header fxFlex="100px"> Message </mat-header-cell>
+          <mat-cell *matCellDef="let element" fxFlex="100px"> {{element.messageText}} </mat-cell>
+        </ng-container>
+
+        <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+        <mat-row *matRowDef="let row; columns: displayedColumns"></mat-row>
+
+      </mat-table>
     </div>
-  </form>
+  </div>
 </div>
