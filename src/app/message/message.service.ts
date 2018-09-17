@@ -28,6 +28,16 @@ export class MessageService {
     }
 
 
+    public getMessage(id: number): Observable<IMessage> {
+        if (id === 0) {
+            return Observable.of(this.initializeMessage());
+        }
+        // ...using get request
+        // return this.http.get<IMessage[]>(environment.messageApiUrl)
+        //     .pipe(
+        //         catchError(Utilities.handleError)
+        //     );   // ...errors if any
+    }
 
     // CRUD
 
@@ -64,6 +74,17 @@ export class MessageService {
                 catchError(Utilities.handleError)
             );
 
+    }
+
+
+    initializeMessage(): IMessage {
+        // Return an initialized object
+        return {
+            messageId: 0,
+            messageText: null,
+            sortOrder: 0,
+            show: false,
+        };
     }
 
 }

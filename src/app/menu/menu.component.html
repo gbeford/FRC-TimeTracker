@@ -8,7 +8,7 @@
     <a [routerLink]="['/']" mat-menu-item>
       <span>Home </span>
     </a>
-    <a [routerLink]="['/addMessage']" mat-menu-item *ngIf="isAdmin()">
+    <a [routerLink]="['/message']" mat-menu-item *ngIf="isAdmin()">
       <span>Add New Message</span>
     </a>
     <a [routerLink]="['/messageStudent']" mat-menu-item *ngIf="isAdmin()">

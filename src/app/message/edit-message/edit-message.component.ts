@@ -4,31 +4,39 @@ import { FormGroup, FormControl, FormBuilder, Validators } from '@angular/forms'
 import { IMessage } from '../../model/message';
 import { MatTableDataSource, MatSort } from '@angular/material';
 import { TitleCasePipe } from '@angular/common';
+import { ActivatedRoute } from '@angular/router';
 
 
 @Component({
-  selector: 'app-add-new-message',
-  templateUrl: './add-new-message.component.html',
-  styleUrls: ['./add-new-message.component.css']
+  selector: 'app-edit-message',
+  templateUrl: './edit-message.component.html',
+  styleUrls: ['./edit-message.component.css']
 })
-export class AddNewMessageComponent implements OnInit {
+export class EditMessageComponent implements OnInit {
   public addMessageForm: FormGroup;
   dataSource: MatTableDataSource<any>; // MessageDataSource;
   messageList: IMessage[];
-  displayedColumns = ['messageText'];
+  displayedColumns = ['messageId', 'messageText'];
 
   @ViewChild(MatSort) sort: MatSort;
 
 
   constructor(private formBuilder: FormBuilder, private messageService: MessageService,
     private changeDetectorRefs: ChangeDetectorRef,
-    private titlecasePipe: TitleCasePipe
-  ) { }
+    private titlecasePipe: TitleCasePipe,
+    private route: ActivatedRoute) {
+
+  }
 
 
   ngOnInit() {
     this.createForm();
     this.showMessage();
+
+    // this.route.data.subscribe(data => {
+    //   this.messageList = data['messageList'];
+    //   this.populateForm();
+    // })
   }
 
   showMessage() {
@@ -36,6 +44,7 @@ export class AddNewMessageComponent implements OnInit {
       this.dataSource = new MatTableDataSource(data);
       this.dataSource.sort = this.sort;
       this.changeDetectorRefs.detectChanges();
+      console.log('show message ', data);
     });
   }
 
@@ -47,6 +56,13 @@ export class AddNewMessageComponent implements OnInit {
     });
   }
 
+  // populateForm() {
+  //   this.addMessageForm.patchValue({
+  //     messageTxtCtrl: this.messageList.messageText,
+  //   });
+  // }
+
+
   submit() {
     // console.log(this.addMessageForm.value.messageTxtCtrl);
 
@@ -56,7 +72,10 @@ export class AddNewMessageComponent implements OnInit {
         this.showMessage();
       });
     }
-
   }
+
+
+
+
 
 }

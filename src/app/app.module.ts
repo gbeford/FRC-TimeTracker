@@ -28,7 +28,7 @@ import { MessageListComponent } from './message/message-list/message-list.compon
 import { StudentListComponent } from './student/student-list/student-list.component';
 import { StudentService } from './student/student.service';
 import { TimeTrackerComponent } from './time-tracker/time-tracker.component';
-import { AddNewMessageComponent } from './message/add-new-message/add-new-message.component';
+import { EditMessageComponent } from './message/edit-message/edit-message.component';
 import { ShowMessageComponent } from './message/show-message/show-message.component';
 import { MessageService } from './message/message.service';
 import { TimeTrackerModalComponent } from './time-tracker/time-tracker-modal.component';
@@ -56,7 +56,7 @@ import { StatusPipe } from './shared/filters/status.pipe';
     AutoCompleteComponent,
     BadgeEntryComponent,
     TestSharedComponentsComponent,
-    AddNewMessageComponent,
+    EditMessageComponent,
     ShowMessageComponent,
     MessageListComponent,
     BadgeViewComponent,

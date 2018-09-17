@@ -11,7 +11,7 @@ import { MessageListComponent } from './message/message-list/message-list.compon
 import { StudentListComponent } from './student/student-list/student-list.component';
 import { TimeTrackerComponent } from './time-tracker/time-tracker.component';
 import { ShowMessageComponent } from './message/show-message/show-message.component';
-import { AddNewMessageComponent } from './message/add-new-message/add-new-message.component';
+import { EditMessageComponent } from './message/edit-message/edit-message.component';
 import { ApplyPointsToStudentComponent } from 'points/apply-points-to-student/apply-points-to-student.component';
 import { BadgeViewComponent } from './admin/badge/badge-view/badge-view.component';
 
@@ -29,7 +29,8 @@ import { BadgeViewComponent } from './admin/badge/badge-view/badge-view.componen
             { path: 'messageStudent', component: ShowMessageComponent },
             { path: 'messageList', component: MessageListComponent },
             { path: 'badges', component: BadgeViewComponent },
-            { path: 'addMessage', component: AddNewMessageComponent },
+            { path: 'message', component: EditMessageComponent },
+            { path: 'message/:id', component: EditMessageComponent },
             { path: 'applyPoints', component: ApplyPointsToStudentComponent },
 
             { path: 'test', component: TestSharedComponentsComponent },
