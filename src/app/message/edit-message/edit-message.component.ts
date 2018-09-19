@@ -4,39 +4,29 @@ import { FormGroup, FormControl, FormBuilder, Validators } from '@angular/forms'
 import { IMessage } from '../../model/message';
 import { MatTableDataSource, MatSort } from '@angular/material';
 import { TitleCasePipe } from '@angular/common';
-import { ActivatedRoute } from '@angular/router';
-
+import { BehaviorSubject } from 'rxjs/BehaviorSubject';
 
 @Component({
   selector: 'app-edit-message',
   templateUrl: './edit-message.component.html',
-  styleUrls: ['./edit-message.component.css']
+  styleUrls: ['./edit-message.component.scss']
 })
 export class EditMessageComponent implements OnInit {
   public addMessageForm: FormGroup;
   dataSource: MatTableDataSource<any>; // MessageDataSource;
   messageList: IMessage[];
-  displayedColumns = ['messageId', 'messageText'];
+  displayedColumns = ['editMessage', 'messageText'];
 
   @ViewChild(MatSort) sort: MatSort;
 
-
   constructor(private formBuilder: FormBuilder, private messageService: MessageService,
     private changeDetectorRefs: ChangeDetectorRef,
-    private titlecasePipe: TitleCasePipe,
-    private route: ActivatedRoute) {
-
-  }
+    private titlecasePipe: TitleCasePipe) { }
 
 
   ngOnInit() {
     this.createForm();
     this.showMessage();
-
-    // this.route.data.subscribe(data => {
-    //   this.messageList = data['messageList'];
-    //   this.populateForm();
-    // })
   }
 
   showMessage() {
@@ -56,13 +46,6 @@ export class EditMessageComponent implements OnInit {
     });
   }
 
-  // populateForm() {
-  //   this.addMessageForm.patchValue({
-  //     messageTxtCtrl: this.messageList.messageText,
-  //   });
-  // }
-
-
   submit() {
     // console.log(this.addMessageForm.value.messageTxtCtrl);
 
@@ -74,7 +57,15 @@ export class EditMessageComponent implements OnInit {
     }
   }
 
-
+  update(el: IMessage, newMessage: string) {
+    if (newMessage == null) { return; }
+    console.log('popup ', newMessage);
+    console.log('element ', el.messageID);
+    // copy and mutate
+    // const copy = this.dataSource.data.slice();
+    // el.message = message;
+    // this.dataSource.update(copy);
+  }
 
 
 

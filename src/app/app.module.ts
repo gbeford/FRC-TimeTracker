@@ -13,6 +13,8 @@ import {
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
 import { environment } from '@environment/environment';
 import { TitleCasePipe } from '@angular/common';
+import { SatPopoverModule } from '@ncstate/sat-popover';
+import { InlineEditComponent } from './message/edit-message/inline-edit.component';
 
 import { ReportsComponent } from './reports/reports.component';
 import { MenuComponent } from './menu/menu.component';
@@ -64,6 +66,7 @@ import { StatusPipe } from './shared/filters/status.pipe';
     ApplyPointsToStudentComponent,
     AddNewPointComponent,
     StatusPipe,
+    InlineEditComponent,
   ],
   imports: [
     BrowserModule,
@@ -88,6 +91,7 @@ import { StatusPipe } from './shared/filters/status.pipe';
     MatDialogModule,
     AppRoutingModule,
     HttpClientModule,
+    SatPopoverModule,
   ],
   providers: [StudentService,
     AuthService,
