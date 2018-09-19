@@ -50,14 +50,15 @@ export class MessageService {
         // }, { merge: true });
     }
 
-    editMessageRecord(updateMessage: IMessage): Observable<void | {}> {
+    editMessageRecord(id: number, updateMessage: string): Observable<void | {}> {
         // const loginDate = today.toISOString().split('T')[0];
+        console.log(id);
+        console.log(updateMessage);
 
-        return this.http.put<void>(`environment.messageApiUrl/${updateMessage.messageID}`, updateMessage)
+        return this.http.put<void>(`${environment.messageApiUrl}/${id}`, updateMessage)
             .pipe(
                 catchError(Utilities.handleError)
             );
-
     }
 
 

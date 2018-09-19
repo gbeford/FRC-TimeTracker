@@ -60,11 +60,10 @@ export class EditMessageComponent implements OnInit {
   update(el: IMessage, newMessage: string) {
     if (newMessage == null) { return; }
     console.log('popup ', newMessage);
-    console.log('element ', el.messageID);
-    // copy and mutate
-    // const copy = this.dataSource.data.slice();
-    // el.message = message;
-    // this.dataSource.update(copy);
+    console.log('IMessage ', el);
+
+    this.messageService.editMessageRecord(el.messageID, newMessage).subscribe();
+
   }
 
 
