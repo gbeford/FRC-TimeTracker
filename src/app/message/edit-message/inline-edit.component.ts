@@ -45,7 +45,6 @@ export class InlineEditComponent implements OnInit {
     }
 
     onSubmit() {
-        console.log('Message id', this.p_data);
         if (this.popover) {
             this.popover.close(this.comment);
         }
