@@ -27,4 +27,5 @@ export const environment = {
   signOutStudentUrl: 'http://localhost:5000/api/student/signOut',
   signOutAllStudentsUrl: 'http://localhost:5000/api/student/signOutAll',
   messageApiUrl: 'http://localhost:5000/api/messages',
+  messageToStudentUrl: 'http://localhost:5000/api/student/AddMessageToStudent'
 };
