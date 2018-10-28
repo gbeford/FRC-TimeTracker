@@ -21,7 +21,7 @@ export class StudentService {
 
   // get student by id
   getStudent(id: string): Observable<Student[]> {
-    return this.http.get<Student[]>('${environment.studentApiUrl}/${id}')
+    return this.http.get<Student[]>(`${environment.baseUrl}${environment.studentApiUrl}/${id}`)
       .pipe(
         catchError(Utilities.handleError)
       );   // ...errors if any
@@ -39,7 +39,7 @@ export class StudentService {
   // get list of all students
   public getStudents(): Observable<Student[]> {
     // get request
-    return this.http.get<Student[]>(environment.studentApiUrl)
+    return this.http.get<Student[]>(`${environment.baseUrl}${environment.studentApiUrl}`)
       .pipe(
         catchError(Utilities.handleError)
       );   // ...errors if any
@@ -50,7 +50,7 @@ export class StudentService {
 
   // log out all students still signed it. This will set's the student hours to 1
   logOutStudents() {
-    return this.http.post(environment.signOutAllStudentsUrl, {})
+    return this.http.post(`${environment.baseUrl}${environment.signOutAllStudentsUrl}`, {})
       .pipe(
         catchError(Utilities.handleError)
       );
@@ -65,12 +65,12 @@ export class StudentService {
 
   signIn_OutStudent(signIn: Student): Observable<Student> {
     if (!signIn.isSignedIn) {
-      return this.http.post<Student>(environment.signInStudentUrl, signIn.studentId)
+      return this.http.post<Student>(`${environment.baseUrl}${environment.signInStudentUrl}`, signIn.studentId)
         .pipe(
           catchError(Utilities.handleError)
         );
     } else {
-      return this.http.post<Student>(environment.signOutStudentUrl, signIn.studentId)
+      return this.http.post<Student>(`${environment.baseUrl}${environment.signOutStudentUrl}`, signIn.studentId)
         .pipe(
           catchError(Utilities.handleError)
         );

@@ -21,7 +21,7 @@ export class MessageService {
 
     // get messages
     getMessageList(): Observable<IMessage[]> {
-        return this.http.get<IMessage[]>(environment.messageApiUrl)
+        return this.http.get<IMessage[]>(`${environment.baseUrl}${environment.messageApiUrl}`)
             .pipe(
                 catchError(Utilities.handleError)
             );   // ...errors if any
@@ -41,7 +41,7 @@ export class MessageService {
             show: false
         };
 
-        return this.http.post<IMessage>(environment.messageApiUrl, message)
+        return this.http.post<IMessage>(`${environment.baseUrl}${environment.messageApiUrl}`, message)
             .pipe(
                 catchError(Utilities.handleError)
             );
@@ -59,7 +59,7 @@ export class MessageService {
     editMessageRecord(updateMessage: IMessage): Observable<void | {}> {
         // const loginDate = today.toISOString().split('T')[0];
 
-        return this.http.put<void>(`environment.messageApiUrl/${updateMessage.messageId}`, updateMessage)
+        return this.http.put<void>(`${environment.baseUrl}${environment.messageApiUrl}/${updateMessage.messageId}`, updateMessage)
             .pipe(
                 catchError(Utilities.handleError)
             );
