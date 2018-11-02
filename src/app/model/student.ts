@@ -1,7 +1,7 @@
 
 /* Defines the student entity */
 export class Student {
-    studentId: string;
+    id: string;
     firstName: string;
     lastName: string;
     email: string;
@@ -11,7 +11,7 @@ export class Student {
     signInTime?: Date;
     isSignedIn: boolean;
     messages: string[];
-    schoolId: number;
+    studentId: number;
 }
 
 
