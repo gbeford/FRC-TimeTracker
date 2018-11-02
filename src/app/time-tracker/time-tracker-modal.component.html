@@ -1,9 +1,9 @@
 <h1 mat-dialog-title>
 
-  Hi {{data.messages.firstName}}</h1>
+  Hi {{data.student.firstName}}</h1>
 
 <div mat-dialog-content class="msgBox">
-  <ul *ngFor="let message of data.messages.messages">
+  <ul *ngFor="let message of data.student.messages">
     <li>
       {{message}} </li>
   </ul>

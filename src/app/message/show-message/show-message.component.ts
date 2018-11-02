@@ -20,20 +20,20 @@ export class ShowMessageComponent implements OnInit {
   show = true;
 
   constructor(private formBuilder: FormBuilder, private messageService: MessageService,
-    private studentService:StudentService) { }
+    private studentService: StudentService) { }
 
   ngOnInit() {
     this.createForm();
-    // this.getMessages();
+    this.getMessages();
   }
 
   // get list of messages
-  // getMessages() {
-  //   this.messageService.getMessageList().subscribe(s => {
-  //     this.messageList = s;
-  //     console.log('message ', this.messageList);
-  //   });
-  // }
+  getMessages() {
+    this.messageService.getMessageList().subscribe(s => {
+      this.messageList = s;
+      console.log('message ', this.messageList);
+    });
+  }
 
 
   get clearMessages() { return this.showMessageForm.get('clearMessages'); }

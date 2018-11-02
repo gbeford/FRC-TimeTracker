@@ -65,12 +65,12 @@ export class StudentService {
 
   signIn_OutStudent(signIn: Student): Observable<Student> {
     if (!signIn.isSignedIn) {
-      return this.http.post<Student>(`${environment.baseUrl}${environment.signInStudentUrl}`, signIn.studentId)
+      return this.http.post<Student>(`${environment.baseUrl}${environment.signInStudentUrl}`, signIn.id)
         .pipe(
           catchError(Utilities.handleError)
         );
     } else {
-      return this.http.post<Student>(`${environment.baseUrl}${environment.signOutStudentUrl}`, signIn.studentId)
+      return this.http.post<Student>(`${environment.baseUrl}${environment.signOutStudentUrl}`, signIn.id)
         .pipe(
           catchError(Utilities.handleError)
         );

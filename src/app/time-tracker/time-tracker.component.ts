@@ -89,7 +89,7 @@ export class TimeTrackerComponent implements OnInit {
       width: '500px',
 
       // get student messages
-      data: { messages: student }
+      data: { student: student }
     });
   }
 
