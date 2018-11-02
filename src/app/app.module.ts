@@ -12,6 +12,10 @@ import {
 } from '@angular/material';
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
 import { environment } from '@environment/environment';
+import { TitleCasePipe } from '@angular/common';
+import { SatPopoverModule } from '@ncstate/sat-popover';
+import { InlineEditComponent } from './message/edit-message/inline-edit.component';
+
 import { ReportsComponent } from './reports/reports.component';
 import { MenuComponent } from './menu/menu.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
@@ -26,7 +30,7 @@ import { MessageListComponent } from './message/message-list/message-list.compon
 import { StudentListComponent } from './student/student-list/student-list.component';
 import { StudentService } from './student/student.service';
 import { TimeTrackerComponent } from './time-tracker/time-tracker.component';
-import { AddNewMessageComponent } from './message/add-new-message/add-new-message.component';
+import { EditMessageComponent } from './message/edit-message/edit-message.component';
 import { ShowMessageComponent } from './message/show-message/show-message.component';
 import { MessageService } from './message/message.service';
 import { TimeTrackerModalComponent } from './time-tracker/time-tracker-modal.component';
@@ -54,7 +58,7 @@ import { StatusPipe } from './shared/filters/status.pipe';
     AutoCompleteComponent,
     BadgeEntryComponent,
     TestSharedComponentsComponent,
-    AddNewMessageComponent,
+    EditMessageComponent,
     ShowMessageComponent,
     MessageListComponent,
     BadgeViewComponent,
@@ -62,6 +66,7 @@ import { StatusPipe } from './shared/filters/status.pipe';
     ApplyPointsToStudentComponent,
     AddNewPointComponent,
     StatusPipe,
+    InlineEditComponent,
   ],
   imports: [
     BrowserModule,
@@ -86,11 +91,13 @@ import { StatusPipe } from './shared/filters/status.pipe';
     MatDialogModule,
     AppRoutingModule,
     HttpClientModule,
+    SatPopoverModule,
   ],
   providers: [StudentService,
     AuthService,
     MessageService,
     PointService,
+    TitleCasePipe,
   ],
   entryComponents: [TimeTrackerModalComponent],
   bootstrap: [AppComponent]

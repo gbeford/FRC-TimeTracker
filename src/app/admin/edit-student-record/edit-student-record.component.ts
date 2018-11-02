@@ -20,12 +20,12 @@ export class EditStudentRecordComponent implements OnInit {
   end_date: Date;
   hours: number;
   points: number;
-  student_id: string;
+  student_id: number;
   show = false;
   studentCtrl: FormControl = new FormControl();
   filteredOptions: Observable<Student[]>;
   students: Student[];
-  studentID = '';
+  studentID: number;
 
   constructor(private formBuilder: FormBuilder,
     private timeTrackerService: StudentService) { }

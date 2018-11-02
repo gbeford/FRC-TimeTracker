@@ -19,7 +19,7 @@ export class StudentTimePointReportComponent implements OnInit {
   studentName = '';
   totalHours = 0;
   totalPoints = 0;
-  studentID = '';
+  studentID: number;
   startDate: Date;
   endDate: Date;
   show = false;

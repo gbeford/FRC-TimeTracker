@@ -8,33 +8,34 @@
     <a [routerLink]="['/']" mat-menu-item>
       <span>Home </span>
     </a>
-    <a [routerLink]="['/addMessage']" mat-menu-item *ngIf="isAdmin()">
+    <a [routerLink]="['/message']" mat-menu-item *ngIf="isAdmin()">
       <span>Add New Message</span>
     </a>
     <a [routerLink]="['/messageStudent']" mat-menu-item *ngIf="isAdmin()">
       <span>Message Student</span>
     </a>
-    <a [routerLink]="['/applyPoints']" mat-menu-item *ngIf="isAdmin()">
-      <span>Apply Points to Student</span>
+    <a [routerLink]="['/studentlist']" mat-menu-item *ngIf="loggedIn()">
+      <span>Student List</span>
     </a>
+    <!-- <a [routerLink]="['/applyPoints']" mat-menu-item *ngIf="isAdmin()">
+      <span>Apply Points to Student</span>
+    </a> -->
     <a [routerLink]="['/trackTime']" mat-menu-item *ngIf="loggedIn()">
       <span>Track Time</span>
     </a>
     <a [routerLink]="['/studentTimeReport']" mat-menu-item *ngIf="loggedIn()">
       <span>Student Hours</span>
     </a>
-    <a [routerLink]="['/studentlist']" mat-menu-item *ngIf="loggedIn()">
-      <span>Student List</span>
-    </a>
+
     <!-- <a [routerLink]="['/studentEditForm']" mat-menu-item *ngIf="isAdmin()">
       <span>Edit</span>
     </a> -->
     <a [routerLink]="['/messageList']" mat-menu-item *ngIf="isAdmin()">
       <span>Message List</span>
     </a>
-    <a [routerLink]="['/badges']" mat-menu-item *ngIf="isAdmin()">
+    <!-- <a [routerLink]="['/badges']" mat-menu-item *ngIf="isAdmin()">
       <span>Badges</span>
-    </a>
+    </a> -->
 
 
   </mat-menu>

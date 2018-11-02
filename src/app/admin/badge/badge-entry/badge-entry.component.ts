@@ -9,7 +9,7 @@ import { Student } from '../../../model/student';
   styleUrls: ['./badge-entry.component.css']
 })
 export class BadgeEntryComponent implements OnInit {
-  studentID = '';
+  studentID : number;
 
   constructor() { }
 

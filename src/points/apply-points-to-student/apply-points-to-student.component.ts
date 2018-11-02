@@ -11,7 +11,7 @@ import { PointService } from '../point.service';
 })
 export class ApplyPointsToStudentComponent implements OnInit {
   public applyPointsForm: FormGroup;
-  studentID = '';
+  studentID: number;
   pointsList: IPoints[];
 
   constructor(private formBuilder: FormBuilder, private pointService: PointService) { }

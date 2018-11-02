@@ -9,8 +9,6 @@ import { Utilities } from '../shared/utils';
 
 
 
-
-
 @Injectable()
 export class MessageService {
 
@@ -28,14 +26,13 @@ export class MessageService {
     }
 
 
-
     // CRUD
 
     saveMessage(msg: string) {
         // const date = new Date();
-        console.log('message' + msg);
+        console.log('message ' + msg);
         const message: IMessage = {
-            messageId: 0,
+            messageID: 0,
             messageText: msg,
             sortOrder: 0,
             show: false
@@ -45,25 +42,30 @@ export class MessageService {
             .pipe(
                 catchError(Utilities.handleError)
             );
-
-        // const messageCollection = this.afs.collection<IMessage>('messages');
-        // messageCollection.add(message);
     }
 
-    setMessage(studentId, messages) {
-        // this.afs.doc(`students/${studentId}`).set({
-        //     messages: messages
-        // }, { merge: true });
-    }
 
-    editMessageRecord(updateMessage: IMessage): Observable<void | {}> {
+
+    editMessageRecord(id: number, updateMessage: string): Observable<void | {}> {
         // const loginDate = today.toISOString().split('T')[0];
+        console.log(id);
+        console.log(updateMessage);
 
-        return this.http.put<void>(`${environment.baseUrl}${environment.messageApiUrl}/${updateMessage.messageId}`, updateMessage)
+        return this.http.put<void>(`${environment.baseUrl}${environment.messageApiUrl}/${id}`, updateMessage)
             .pipe(
                 catchError(Utilities.handleError)
             );
+    }
 
+
+    initializeMessage(): IMessage {
+        // Return an initialized object
+        return {
+            messageID: 0,
+            messageText: null,
+            sortOrder: 0,
+            show: false,
+        };
     }
 
 }

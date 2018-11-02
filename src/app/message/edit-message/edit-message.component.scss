@@ -1,0 +1,43 @@
+/*
+.example-form {
+  min-width: 150px;
+  max-width: 500px;
+  width: 100%;
+}*/
+.container-list {
+  padding-top: 20px;
+}
+
+.container-add {
+  padding: 20px;
+}
+
+.pointer {
+  cursor: pointer;
+}
+.add-comment {
+  opacity: 0.4;
+}
+
+/* .cdk-overlay-pane  */
+.sat-popover-container.sat-popover-after.sat-popover-below {
+  padding-left: 20px;
+}
+
+/* mat-table {
+  overflow: auto;
+  max-height: 700px;
+} */
+.mat-row {
+  align-items: stretch;
+
+  .mat-cell {
+    display: flex;
+    align-items: center;
+  }
+}
+
+.mat-column-symbol,
+.mat-column-name {
+  max-width: 160px;
+}
