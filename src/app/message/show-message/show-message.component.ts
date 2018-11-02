@@ -3,6 +3,7 @@ import { FormGroup, FormBuilder, Validators, FormControl } from '@angular/forms'
 import { IMessage } from '../../model/message';
 import { MessageService } from '../message.service';
 import { Student } from '../../model/student';
+import { StudentService } from 'app/student/student.service';
 
 
 
@@ -15,10 +16,11 @@ export class ShowMessageComponent implements OnInit {
 
   messageList: IMessage[];
   public showMessageForm: FormGroup;
-  studentID = '';
+  studentID: number;
   show = true;
 
-  constructor(private formBuilder: FormBuilder, private messageService: MessageService) { }
+  constructor(private formBuilder: FormBuilder, private messageService: MessageService,
+    private studentService:StudentService) { }
 
   ngOnInit() {
     this.createForm();
@@ -56,7 +58,7 @@ export class ShowMessageComponent implements OnInit {
         messages = this.showMessageForm.value.messageCtrl;
       }
 
-      this.messageService.setMessage(this.studentID, messages);
+      this.studentService.setMessage(this.studentID, messages);
       this.showMessageForm.reset();
 
       // console.log(this.showMessageForm.value.messageCtrl);

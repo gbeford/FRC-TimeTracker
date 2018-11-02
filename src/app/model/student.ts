@@ -1,7 +1,8 @@
 
 /* Defines the student entity */
 export class Student {
-    studentId: string;
+    Id: number;
+    studentId: number;
     firstName: string;
     lastName: string;
     email: string;

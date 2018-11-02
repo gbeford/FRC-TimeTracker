@@ -44,11 +44,7 @@ export class MessageService {
             );
     }
 
-    setMessage(studentId, messages) {
-        // this.afs.doc(`students/${studentId}`).set({
-        //     messages: messages
-        // }, { merge: true });
-    }
+
 
     editMessageRecord(id: number, updateMessage: string): Observable<void | {}> {
         // const loginDate = today.toISOString().split('T')[0];

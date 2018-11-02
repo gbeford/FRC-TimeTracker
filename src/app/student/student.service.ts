@@ -94,19 +94,14 @@ export class StudentService {
 
   }
 
-  addStudentMessage():Observable
-
-  // report data
-
-  // getStudentTimeTrackerInfo(studentId: string, startDate: Date, endDate: Date): Observable<ITimeTracker[]> {
-  //   endDate = new Date(endDate.setHours(23, 59, 59, 0));
-  //   const reportCollection = this.afs.collection<ITimeTracker>('timeTracker', ref => ref.where('studentId', '==', studentId)
-  //     .where('createDateTime', '>=', startDate).where('createDateTime', '<=', endDate).orderBy('createDateTime', 'asc'));
-  //   const trackerInfo = reportCollection.valueChanges();
-
-  //   return trackerInfo;
-  // }
-
-
+  setMessage(studentId: number, messages: number[]): Observable<void | {}>  {
+    // this.afs.doc(`students/${studentId}`).set({
+    //     messages: messages
+    // }, { merge: true });
+    return this.http.post<void>(`environment.messageToStudentUrl/${studentId}`, {messages})
+    .pipe(
+      catchError(Utilities.handleError)
+    );
+}
 
 }

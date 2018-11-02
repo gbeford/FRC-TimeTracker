@@ -8,7 +8,7 @@ import { FormGroup, FormBuilder } from '@angular/forms';
   styleUrls: ['./badge-view.component.css']
 })
 export class BadgeViewComponent implements OnInit {
-  studentID = '';
+  studentID: number;
   public badgeForm: FormGroup;
 
   constructor(private formBuilder: FormBuilder) { }
