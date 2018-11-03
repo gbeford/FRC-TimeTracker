@@ -20,7 +20,7 @@ export class ShowMessageComponent implements OnInit {
   show = true;
 
   constructor(private formBuilder: FormBuilder, private messageService: MessageService,
-    private studentService:StudentService) { }
+    private studentService: StudentService) { }
 
   ngOnInit() {
     this.createForm();
