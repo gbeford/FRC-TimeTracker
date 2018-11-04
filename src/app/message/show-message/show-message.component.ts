@@ -56,6 +56,7 @@ export class ShowMessageComponent implements OnInit {
         messages = [];
       } else {
         messages = this.showMessageForm.value.messageCtrl;
+        console.log(messages);
       }
 
       this.studentService.setMessage(this.studentID, messages);
