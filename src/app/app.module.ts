@@ -33,7 +33,7 @@ import { TimeTrackerComponent } from './time-tracker/time-tracker.component';
 import { EditMessageComponent } from './message/edit-message/edit-message.component';
 import { ShowMessageComponent } from './message/show-message/show-message.component';
 import { MessageService } from './message/message.service';
-import { TimeTrackerModalComponent } from './time-tracker/time-tracker-modal.component';
+import { TimeTrackerMsgComponent } from './time-tracker/time-tracker-msg-component';
 import { ApplyPointsToStudentComponent } from 'points/apply-points-to-student/apply-points-to-student.component';
 import { AddNewPointComponent } from 'points/add-new-point/add-new-point.component';
 import { PointService } from 'points/point.service';
@@ -41,6 +41,8 @@ import { BadgeEntryComponent } from './admin/badge/badge-entry/badge-entry.compo
 import { BadgeViewComponent } from './admin/badge/badge-view/badge-view.component';
 import { HttpClientModule } from '@angular/common/http';
 import { StatusPipe } from './shared/filters/status.pipe';
+import { LoginComponent } from './login/login.component';
+import { AlertComponent } from './alert/alert.component';
 
 
 
@@ -62,11 +64,13 @@ import { StatusPipe } from './shared/filters/status.pipe';
     ShowMessageComponent,
     MessageListComponent,
     BadgeViewComponent,
-    TimeTrackerModalComponent,
+    TimeTrackerMsgComponent,
     ApplyPointsToStudentComponent,
     AddNewPointComponent,
     StatusPipe,
     InlineEditComponent,
+    LoginComponent,
+    AlertComponent,
   ],
   imports: [
     BrowserModule,
@@ -99,7 +103,7 @@ import { StatusPipe } from './shared/filters/status.pipe';
     PointService,
     TitleCasePipe,
   ],
-  entryComponents: [TimeTrackerModalComponent],
+  entryComponents: [TimeTrackerMsgComponent],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

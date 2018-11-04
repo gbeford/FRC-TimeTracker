@@ -5,7 +5,7 @@ import { map, tap, startWith, debounceTime } from 'rxjs/operators';
 import { MatSnackBar, MatDialog } from '@angular/material';
 import { StudentService } from '../student/student.service';
 import { Student } from '../model/student';
-import { TimeTrackerModalComponent } from './time-tracker-modal.component';
+import { TimeTrackerMsgComponent } from './time-tracker-msg-component';
 
 
 @Component({
@@ -85,7 +85,7 @@ export class TimeTrackerComponent implements OnInit {
 
   // modal
   openDialog(student): void {
-    const dialogRef = this.dialog.open(TimeTrackerModalComponent, {
+    const dialogRef = this.dialog.open(TimeTrackerMsgComponent, {
       width: '500px',
 
       // get student messages

@@ -4,6 +4,5 @@ import { Student } from './student';
 export interface IMessage {
     messageID: number;
     messageText: string;
-    sortOrder: number;
-    show: boolean;
+   
 }

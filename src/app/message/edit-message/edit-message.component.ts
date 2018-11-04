@@ -63,7 +63,6 @@ export class EditMessageComponent implements OnInit {
     console.log('IMessage ', el);
 
     this.messageService.editMessageRecord(el.messageID, newMessage).subscribe();
-
   }
 
 

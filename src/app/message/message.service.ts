@@ -33,9 +33,7 @@ export class MessageService {
         console.log('message ' + msg);
         const message: IMessage = {
             messageID: 0,
-            messageText: msg,
-            sortOrder: 0,
-            show: false
+            messageText: msg
         };
 
         return this.http.post<IMessage>(`${environment.baseUrl}${environment.messageApiUrl}`, message)
@@ -62,9 +60,7 @@ export class MessageService {
         // Return an initialized object
         return {
             messageID: 0,
-            messageText: null,
-            sortOrder: 0,
-            show: false,
+            messageText: null
         };
     }
 

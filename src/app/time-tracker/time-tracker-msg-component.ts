@@ -2,15 +2,15 @@ import { Component, Inject } from '@angular/core';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material';
 
 @Component({
-    selector: 'app-time-tracker-modal-component',
-    templateUrl: 'time-tracker-modal.component.html',
+    selector: 'app-time-tracker-msg-component',
+    templateUrl: 'time-tracker-msg-component.html',
     styleUrls: ['./time-tracker.component.css']
 })
 
-export class TimeTrackerModalComponent {
+export class TimeTrackerMsgComponent {
 
     constructor(
-        public dialogRef: MatDialogRef<TimeTrackerModalComponent>,
+        public dialogRef: MatDialogRef<TimeTrackerMsgComponent>,
         @Inject(MAT_DIALOG_DATA) public data: any) {
     }
 
