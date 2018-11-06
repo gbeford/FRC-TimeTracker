@@ -11,4 +11,5 @@ export const environment = {
   signOutStudentUrl: 'api/student/signOut',
   signOutAllStudentsUrl: 'api/student/signOutAll',
   messageApiUrl: 'api/messages',
+  eventApiUrl: 'api/events',
 };

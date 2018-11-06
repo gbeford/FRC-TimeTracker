@@ -12,6 +12,7 @@ export class Student {
     signInTime?: Date;
     isSignedIn: boolean;
     messages: string[];
+    eventID: number;
 }
 
 

@@ -6,6 +6,8 @@ import { MatSnackBar, MatDialog } from '@angular/material';
 import { StudentService } from '../student/student.service';
 import { Student } from '../model/student';
 import { TimeTrackerMsgComponent } from './time-tracker-msg-component';
+import { IEvent } from 'app/model/event';
+import { EventsService } from 'app/services/events.service';
 
 
 @Component({
@@ -19,22 +21,26 @@ export class TimeTrackerComponent implements OnInit {
   in = '';
   students: Student[];
   selectedStudent: Student;
+  eventList: IEvent[];
   public timeTrackerForm: FormGroup;
   filteredOptions: Observable<Student[]>;
 
   constructor(private formBuilder: FormBuilder,
     private timeTrackerService: StudentService,
     private snackBar: MatSnackBar,
-    public dialog: MatDialog) { }
+    public dialog: MatDialog,
+    private eventService: EventsService) { }
 
   ngOnInit(): void {
     this.createForm();
     this.getAllStudents();
+    this.getEvents();
   }
 
   createForm() {
     console.log('here');
     this.timeTrackerForm = this.formBuilder.group({
+      events: [''],
     });
   }
 
@@ -42,6 +48,14 @@ export class TimeTrackerComponent implements OnInit {
   getAllStudents() {
     this.timeTrackerService.getStudents().subscribe(s => {
       this.students = s;
+    });
+  }
+
+  // get list of messages
+  getEvents() {
+    this.eventService.getMEventsList().subscribe(s => {
+      this.eventList = s;
+      console.log('events ', this.eventList);
     });
   }
 

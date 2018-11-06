@@ -1,6 +1,5 @@
-import { Student } from './student';
 
-/* Defines the student entity */
+/* Defines the message entity */
 export interface IMessage {
     messageID: number;
     messageText: string;

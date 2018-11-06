@@ -1,9 +1,13 @@
 
-import { Injectable } from '@angular/core';
+import { Injectable, Component } from '@angular/core';
 import { Router, NavigationStart } from '@angular/router';
 import { Observable, Subject } from 'rxjs';
 
-@Injectable({ providedIn: 'root' })
+@Component({
+  selector: 'app-alet',
+  templateUrl: './alert.component.html',
+  styleUrls: ['./alert.component.css']
+})
 export class AlertComponent {
 
   private subject = new Subject<any>();

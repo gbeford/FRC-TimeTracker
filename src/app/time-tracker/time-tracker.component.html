@@ -3,6 +3,16 @@
   <form class="form-horizontal" [formGroup]="timeTrackerForm" *ngIf="timeTrackerForm" novalidate>
 
     <H2>{{title}}</H2>
+    <label>Event
+     
+       
+        <select id="events" formControlName="events" >
+          <option *ngFor="let e of eventList" [value]="e.eventId" >{{ e.description }}</option>
+         </select> 
+         <!-- <select ng-model="events" ng-options="e.Id for e in eventsList"></select> -->
+     </label
+     ><br/>
+    
 
     <div>
       <app-auto-complete (notify)='onNotify($event)' [autoCompleteForm]="timeTrackerForm">Loading...</app-auto-complete>

@@ -43,7 +43,8 @@ import { HttpClientModule } from '@angular/common/http';
 import { StatusPipe } from './shared/filters/status.pipe';
 import { LoginComponent } from './login/login.component';
 import { AlertComponent } from './alert/alert.component';
-
+import { AuthenticationService } from 'app/services/authentication.service';
+import { EventsService } from './services/events.service';
 
 
 @NgModule({
@@ -102,6 +103,8 @@ import { AlertComponent } from './alert/alert.component';
     MessageService,
     PointService,
     TitleCasePipe,
+    AuthenticationService,
+    EventsService,
   ],
   entryComponents: [TimeTrackerMsgComponent],
   bootstrap: [AppComponent]
