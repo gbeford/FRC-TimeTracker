@@ -11,7 +11,7 @@
          </select>  -->
 
           <select id="events" formControlName="events">
-            <option *ngFor="let e of eventList | async" [value]="e.eventID">{{ e.eventText }}</option>
+            <option *ngFor="let e of eventList | async" [value]="e.eventID">{{ e.description}}</option>
           </select>
 
      </label
