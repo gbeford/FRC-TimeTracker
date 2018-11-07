@@ -8,6 +8,7 @@ import { Student } from '../model/student';
 import { TimeTrackerMsgComponent } from './time-tracker-msg-component';
 import { IEvent } from 'app/model/event';
 import { EventsService } from 'app/services/events.service';
+import { pipe } from 'rxjs';
 
 
 @Component({
@@ -21,7 +22,7 @@ export class TimeTrackerComponent implements OnInit {
   in = '';
   students: Student[];
   selectedStudent: Student;
-  eventList: IEvent[];
+  eventList: Observable<IEvent[]>;
   public timeTrackerForm: FormGroup;
   filteredOptions: Observable<Student[]>;
 
@@ -52,11 +53,15 @@ export class TimeTrackerComponent implements OnInit {
   }
 
   // get list of messages
+  // getEvents() {
+  //   this.eventService.getMEventsList().subscribe(s => {
+  //     this.eventList = s;
+  //     console.log('events ', this.eventList);
+  //   });
+  // }
+
   getEvents() {
-    this.eventService.getMEventsList().subscribe(s => {
-      this.eventList = s;
-      console.log('events ', this.eventList);
-    });
+    this.eventList = this.eventService.getMEventsList();
   }
 
   checkIfSignedIn() {
