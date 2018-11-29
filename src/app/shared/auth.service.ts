@@ -36,9 +36,9 @@ export class AuthService {
         //     });
     }
 
-    signOut() {
-        //this.afAuth.auth.signOut()
-    }
+    // signOut() {
+    //this.afAuth.auth.signOut()
+    // }
 
     canRead(user: User): boolean {
         const allowed = ['admin', 'user'];

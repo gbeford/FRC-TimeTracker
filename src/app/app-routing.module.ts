@@ -14,6 +14,7 @@ import { ShowMessageComponent } from './message/show-message/show-message.compon
 import { EditMessageComponent } from './message/edit-message/edit-message.component';
 import { ApplyPointsToStudentComponent } from 'points/apply-points-to-student/apply-points-to-student.component';
 import { BadgeViewComponent } from './admin/badge/badge-view/badge-view.component';
+import { LoggedInGuard } from './guards/loggedIn.guard';
 
 
 
@@ -22,7 +23,7 @@ import { BadgeViewComponent } from './admin/badge/badge-view/badge-view.componen
     imports: [
         RouterModule.forRoot([
             { path: '', component: HomeComponent },
-            { path: 'trackTime', component: TimeTrackerComponent },
+            { path: 'trackTime', component: TimeTrackerComponent, canActivate: [LoggedInGuard] },
             { path: 'studentTimeReport', component: StudentTimePointReportComponent },
             { path: 'studentlist', component: StudentListComponent },
             { path: 'studentEditForm', component: EditStudentRecordComponent },

@@ -1,18 +1,20 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { first } from 'rxjs/operators';
 import { Observable } from 'rxjs';
 import { AlertService } from 'app/alert/alert.service';
 import { AuthenticationService } from 'app/services/authentication.service';
 
 
-@Component({templateUrl: 'login.component.html'})
+
+@Component({ templateUrl: 'login.component.html' })
 export class LoginComponent implements OnInit {
     loginForm: FormGroup;
     loading = false;
     submitted = false;
     returnUrl: string;
+    login = true;
+
 
     constructor(
         private formBuilder: FormBuilder,
@@ -22,9 +24,9 @@ export class LoginComponent implements OnInit {
         private alertService: AlertService
     ) {
         // redirect to home if already logged in
-        if (this.authenticationService.currentUserValue) { 
-            this.router.navigate(['/']);
-        }
+        // if (this.authenticationService.currentUserValue) {
+        //     this.router.navigate(['/']);
+        // }
     }
 
     ngOnInit() {
@@ -40,24 +42,23 @@ export class LoginComponent implements OnInit {
     // convenience getter for easy access to form fields
     get f() { return this.loginForm.controls; }
 
-    onSubmit() {
+    onSubmit(email, password) {
         this.submitted = true;
 
         // stop here if form is invalid
         if (this.loginForm.invalid) {
             return;
+        } else {
+            this.authenticationService.login(email, password).subscribe((result) => {
+                if (result) {
+                    //  show log out button
+                    this.login = false;
+                    this.loading = true;
+                }
+                this.login = true;
+            });
         }
+        this.loading = false;
 
-        this.loading = true;
-        this.authenticationService.login(this.f.username.value, this.f.password.value)
-            // .pipe(first())
-            // .subscribe(
-            //     data => {
-            //         this.router.navigate([this.returnUrl]);
-            //     },
-            //     error => {
-            //         this.alertService.error(error);
-            //         this.loading = false;
-            //     });
     }
 }
