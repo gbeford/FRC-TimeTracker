@@ -22,7 +22,7 @@ import { PageNotFoundComponent } from './page-not-found/page-not-found.component
 import { AppRoutingModule } from './app-routing.module';
 import { HomeComponent } from './home/home.component';
 import { StudentTimePointReportComponent } from './student/student-time-point-report/student-time-point-report.component';
-import { AuthService } from './shared/auth.service';
+
 import { EditStudentRecordComponent } from './admin/edit-student-record/edit-student-record.component';
 import { AutoCompleteComponent } from './shared/auto-complete/auto-complete.component';
 import { TestSharedComponentsComponent } from './shared/test-shared-components/test-shared-components.component';
@@ -41,10 +41,9 @@ import { BadgeEntryComponent } from './admin/badge/badge-entry/badge-entry.compo
 import { BadgeViewComponent } from './admin/badge/badge-view/badge-view.component';
 import { HttpClientModule } from '@angular/common/http';
 import { StatusPipe } from './shared/filters/status.pipe';
-import { LoginComponent } from './login/login.component';
 import { AlertComponent } from './alert/alert.component';
-import { AuthenticationService } from 'app/services/authentication.service';
 import { EventsService } from './services/events.service';
+import { SecurityService } from './security/security.service';
 
 
 @NgModule({
@@ -70,7 +69,6 @@ import { EventsService } from './services/events.service';
     AddNewPointComponent,
     StatusPipe,
     InlineEditComponent,
-    LoginComponent,
     AlertComponent,
   ],
   imports: [
@@ -99,12 +97,11 @@ import { EventsService } from './services/events.service';
     SatPopoverModule,
   ],
   providers: [StudentService,
-    AuthService,
     MessageService,
     PointService,
     TitleCasePipe,
-    AuthenticationService,
     EventsService,
+    SecurityService,
   ],
   entryComponents: [TimeTrackerMsgComponent],
   bootstrap: [AppComponent]
