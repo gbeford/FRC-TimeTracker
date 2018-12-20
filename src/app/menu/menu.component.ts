@@ -13,7 +13,9 @@ export class MenuComponent implements OnInit {
 
   signedInStudents = 0;
   securityObject: AppUserAuth = null;
-  constructor(private svc: StudentService, private securityService: SecurityService) { }
+  constructor(private svc: StudentService, private securityService: SecurityService) {
+    this.securityObject = securityService.securityObject;
+  }
 
   ngOnInit() {
 
