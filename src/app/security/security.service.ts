@@ -20,7 +20,7 @@ export class SecurityService {
   resetSecurityObject(): void {
     this.securityObject.userName = '';
     this.securityObject.bearerToken = '';
-    this.securityObject.isAuthentiucated = false;
+    this.securityObject.isAuthenticated = false;
 
     this.securityObject.canAccess_Admin = false;
     this.securityObject.canAccess_Student = false;

@@ -53,10 +53,10 @@
       <a (click)='logOut()'>Log Out</a>
     </div> -->
     <div>
-      <a routerLink="login" *ngIf="!securityObject.isAuthentiucated">Login</a>
+      <a routerLink="login" *ngIf="!securityObject.isAuthenticated">Login</a>
     </div>
     <div>
-      <a href="#" (onclick)="logout()" *ngIf="securityObject.isAuthentiucated"> Logout {{ securityObject.userName}}</a>
+      <a href="#" (onclick)="logout()" *ngIf="securityObject.isAuthenticated"> Logout {{ securityObject.userName}}</a>
     </div>
   </div>
   <span>

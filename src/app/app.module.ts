@@ -44,6 +44,7 @@ import { StatusPipe } from './shared/filters/status.pipe';
 import { AlertComponent } from './alert/alert.component';
 import { EventsService } from './services/events.service';
 import { SecurityService } from './security/security.service';
+import { LoginComponent } from './security/login.component';
 
 
 @NgModule({
@@ -70,6 +71,7 @@ import { SecurityService } from './security/security.service';
     StatusPipe,
     InlineEditComponent,
     AlertComponent,
+    LoginComponent,
   ],
   imports: [
     BrowserModule,
