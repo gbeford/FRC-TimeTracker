@@ -15,6 +15,7 @@ import { EditMessageComponent } from './message/edit-message/edit-message.compon
 import { ApplyPointsToStudentComponent } from 'points/apply-points-to-student/apply-points-to-student.component';
 import { BadgeViewComponent } from './admin/badge/badge-view/badge-view.component';
 import { LoginComponent } from './security/login.component';
+import { AuthGuard } from './security/auth.guard';
 
 
 
@@ -28,13 +29,29 @@ import { LoginComponent } from './security/login.component';
             { path: 'studentTimeReport', component: StudentTimePointReportComponent },
             { path: 'studentlist', component: StudentListComponent },
             { path: 'studentEditForm', component: EditStudentRecordComponent },
-            { path: 'messageStudent', component: ShowMessageComponent },
+            {
+                path: 'messageStudent',
+                component: ShowMessageComponent,
+                canActivate: [AuthGuard],
+                data: {type: 'canAccess_Admin'}
+            },
             { path: 'messageList', component: MessageListComponent },
-            { path: 'badges', component: BadgeViewComponent },
-            { path: 'message', component: EditMessageComponent },
-            { path: 'message/:id', component: EditMessageComponent },
-            { path: 'applyPoints', component: ApplyPointsToStudentComponent },
 
+            {
+                path: 'message',
+                component: EditMessageComponent,
+                canActivate: [AuthGuard],
+                data: { type  : 'canAccess_Admin'}
+            },
+            {
+                path: 'message/:id',
+                component: EditMessageComponent,
+                canActivate: [AuthGuard],
+                data: { type: 'canAccess_Admin' }
+            },
+
+            { path: 'badges', component: BadgeViewComponent },
+            { path: 'applyPoints', component: ApplyPointsToStudentComponent },
             { path: 'test', component: TestSharedComponentsComponent },
             { path: '**', component: PageNotFoundComponent }
         ]),

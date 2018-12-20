@@ -8,29 +8,29 @@
     <a [routerLink]="['/']" mat-menu-item>
       <span>Home </span>
     </a>
-    <a [routerLink]="['/message']" mat-menu-item>
+    <a [routerLink]="['/message']" *ngIf="securityObject.canAccess_Admin" mat-menu-item>
       <span>Add New Message</span>
     </a>
-    <a [routerLink]="['/messageStudent']" mat-menu-item>
+    <a [routerLink]="['/messageStudent']" *ngIf="securityObject.canAccess_Admin" mat-menu-item>
       <span>Message Student</span>
     </a>
-    <a [routerLink]="['/studentlist']" mat-menu-item>
+    <a [routerLink]="['/studentlist']" *ngIf="securityObject.canAccess_Student" mat-menu-item>
       <span>Student List</span>
     </a>
     <!-- <a [routerLink]="['/applyPoints']" mat-menu-item *ngIf="isAdmin()">
       <span>Apply Points to Student</span>
     </a> -->
-    <a [routerLink]="['/trackTime']" mat-menu-item>
+    <a [routerLink]="['/trackTime']" *ngIf="securityObject.canAccess_Student" mat-menu-item>
       <span>Track Time</span>
     </a>
-    <a [routerLink]="['/studentTimeReport']" mat-menu-item>
+    <a [routerLink]="['/studentTimeReport']" *ngIf="securityObject.canAccess_Student" mat-menu-item>
       <span>Student Hours</span>
     </a>
 
     <!-- <a [routerLink]="['/studentEditForm']" mat-menu-item *ngIf="isAdmin()">
       <span>Edit</span>
     </a> -->
-    <a [routerLink]="['/messageList']" mat-menu-item>
+    <a [routerLink]="['/messageList']" *ngIf="securityObject.canAccess_Admin" mat-menu-item>
       <span>Message List</span>
     </a>
     <!-- <a [routerLink]="['/badges']" mat-menu-item *ngIf="isAdmin()">
