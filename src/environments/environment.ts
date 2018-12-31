@@ -14,4 +14,5 @@ export const environment = {
   eventApiUrl: 'api/events',
   logInUrl: 'api/login',
   logiOutUrl: 'api/logout',
+  login: 'api/security/login_user',
 };
