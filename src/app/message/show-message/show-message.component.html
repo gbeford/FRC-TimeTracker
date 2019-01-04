@@ -1,0 +1,31 @@
+<div class="container">
+
+  <h2>
+    Message Student
+  </h2>
+
+  <form class="form-horizontal" [formGroup]="showMessageForm" novalidate (ngSubmit)="submit()">
+    <div>
+      <app-auto-complete (notify)='onNotify($event)' [autoCompleteForm]="showMessageForm">Loading...</app-auto-complete>
+    </div>
+    <div>
+      <mat-checkbox formControlName="clearMessages">Clear messages?</mat-checkbox>
+    </div>
+    <mat-form-field style="width: 50%;" *ngIf='!clearMessages.value'>
+      <mat-select placeholder="Select messages you want to flag the kids" formControlName="messageCtrl" multiple>
+        <mat-select-trigger>
+          {{showMessageForm.controls['messageCtrl'].value ? showMessageForm.controls['messageCtrl'].value[0] : ''}}
+          <span *ngIf="showMessageForm.controls['messageCtrl'].value?.length > 1" class="additional-selection">
+            (+{{showMessageForm.controls['messageCtrl'].value.length - 1}} others)
+          </span>
+        </mat-select-trigger>
+        <mat-option *ngFor="let message of messageList" [value]="message.messageID">{{message.messageText}}</mat-option>
+      </mat-select>
+      <mat-error *ngIf="showMessageForm.hasError('required')">Please choose at least 1 message</mat-error>
+    </mat-form-field>
+    <div>
+      <button class='trackerBtn' type="submit" [disabled]="!showMessageForm.valid && clearMessages.value != true">Submit</button>
+    </div>
+
+  </form>
+</div>

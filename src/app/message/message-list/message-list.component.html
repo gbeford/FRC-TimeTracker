@@ -1,0 +1,20 @@
+<div class="container">
+  <h2>
+    Message List To Show Students
+  </h2>
+
+  <div class="mat-elevation-z8">
+    <mat-table #table [dataSource]="dataSource" matSort>
+
+      <!-- Position Column -->
+      <ng-container matColumnDef="messageText">
+        <mat-header-cell *matHeaderCellDef mat-sort-header fxFlex="100px"> Message </mat-header-cell>
+        <mat-cell *matCellDef="let element" fxFlex="100px"> {{element.messageText}} </mat-cell>
+      </ng-container>
+
+      <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+      <mat-row *matRowDef="let row; columns: displayedColumns"></mat-row>
+
+    </mat-table>
+  </div>
+</div>

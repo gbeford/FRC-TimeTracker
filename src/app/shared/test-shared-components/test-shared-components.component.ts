@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 // import { AutoCompleteComponent } from '../auto-complete/auto-complete.component';
 import { FormBuilder, FormGroup } from '@angular/forms';
-import { IStudent } from 'app/model/student';
+import { Student } from '../../model/student';
 
 @Component({
   selector: 'app-test-shared-components',
@@ -19,7 +19,7 @@ export class TestSharedComponentsComponent implements OnInit {
 
   }
 
-  onNotify(message: IStudent): void {
+  onNotify(message: Student): void {
     alert(message.studentId);
   }
 

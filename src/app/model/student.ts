@@ -1,12 +1,18 @@
 
 /* Defines the student entity */
-export interface IStudent {
-    studentId: string;
+export class Student {
+    id: string;
+    studentId: number;
     firstName: string;
     lastName: string;
     email: string;
     grade: number;
-    status?: string;
-    checkInTime?: Date;
+    updated?: Date;
+    created?: Date;
+    signInTime?: Date;
+    isSignedIn: boolean;
     messages: string[];
+    eventID: number;
 }
+
+

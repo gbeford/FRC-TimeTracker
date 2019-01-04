@@ -1,52 +1,27 @@
 import { Component, OnInit } from '@angular/core';
 import { MatSnackBar } from '@angular/material';
-import { AuthService } from '../shared/auth.service';
-import * as firebase from 'firebase';
-import { User } from '../shared/user';
-import { TimeTrackerService } from '../forms/time-tracker/time-tracker.service';
+import { MessageService } from 'app/message/message.service';
+import { StudentService } from '../student/student.service';
 
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
-  styleUrls: ['./home.component.css']
+  styleUrls: ['./home.component.scss']
 })
 
 export class HomeComponent implements OnInit {
   signedInStudent: number;
 
-  user: User;
-
-  constructor(private svc: TimeTrackerService, private snackBar: MatSnackBar,
-    private auth: AuthService) { }
+  constructor(private svc: StudentService, private snackBar: MatSnackBar,
+    private messageService: MessageService) { }
 
   ngOnInit() {
-    this.auth.user$.subscribe(
-      (user) => this.user = user);
-    this.countOfStudentsLogin();
+
   }
 
-  // loginWithGoogle() {
-  //   this.auth.googleLogin();
+
+  // countOfStudentsLogin() {
+  //   this.svc.totalStudentsLogin().subscribe(s => this.signedInStudent = s.length);
   // }
-
-  canAdmin() {
-    return this.auth.canAdmin(this.user);
-  }
-
-  // logOut() {
-  //   this.auth.signOut();
-  // }
-
-  logOutStudents() {
-    this.svc.logOutStudents(new Date());
-    this.snackBar.open('All signed in students have been signed out.', 'Okay', {
-      duration: 5000, verticalPosition: 'top'
-    });
-    // msend email
-  }
-
-  countOfStudentsLogin() {
-    this.svc.totalStudentsLogin().subscribe(s => this.signedInStudent = s.length);
-  }
 
 }

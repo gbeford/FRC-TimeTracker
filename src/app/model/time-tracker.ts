@@ -9,4 +9,5 @@ export interface ITimeTracker {
     totalHrs?: number;
     points?: number;
     adminSignedOut?: boolean;
+
 }

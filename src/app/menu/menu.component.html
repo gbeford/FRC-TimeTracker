@@ -8,48 +8,55 @@
     <a [routerLink]="['/']" mat-menu-item>
       <span>Home </span>
     </a>
-    <a [routerLink]="['/addMessage']" mat-menu-item *ngIf="isAdmin()">
+    <a [routerLink]="['/message']" *ngIf="securityObject.canAccess_Admin" mat-menu-item>
       <span>Add New Message</span>
     </a>
-    <a [routerLink]="['/messageStudent']" mat-menu-item *ngIf="isAdmin()">
+    <a [routerLink]="['/messageStudent']" *ngIf="securityObject.canAccess_Admin" mat-menu-item>
       <span>Message Student</span>
     </a>
-    <a [routerLink]="['/applyPoints']" mat-menu-item *ngIf="isAdmin()">
-      <span>Apply Points to Student</span>
-    </a>
-    <a [routerLink]="['/trackTime']" mat-menu-item *ngIf="loggedIn()">
-      <span>Track Time</span>
-    </a>
-    <a [routerLink]="['/studentTimeReport']" mat-menu-item *ngIf="loggedIn()">
-      <span>Student Hours</span>
-    </a>
-    <a [routerLink]="['/studentlist']" mat-menu-item *ngIf="loggedIn()">
+    <a [routerLink]="['/studentlist']" *ngIf="securityObject.canAccess_Student" mat-menu-item>
       <span>Student List</span>
     </a>
+    <!-- <a [routerLink]="['/applyPoints']" mat-menu-item *ngIf="isAdmin()">
+      <span>Apply Points to Student</span>
+    </a> -->
+    <a [routerLink]="['/trackTime']" *ngIf="securityObject.canAccess_Student" mat-menu-item>
+      <span>Track Time</span>
+    </a>
+    <a [routerLink]="['/studentTimeReport']" *ngIf="securityObject.canAccess_Student" mat-menu-item>
+      <span>Student Hours</span>
+    </a>
+
     <!-- <a [routerLink]="['/studentEditForm']" mat-menu-item *ngIf="isAdmin()">
       <span>Edit</span>
     </a> -->
-    <a [routerLink]="['/messageList']" mat-menu-item *ngIf="isAdmin()">
+    <a [routerLink]="['/messageList']" *ngIf="securityObject.canAccess_Admin" mat-menu-item>
       <span>Message List</span>
     </a>
-    <a [routerLink]="['/badges']" mat-menu-item *ngIf="isAdmin()">
+    <!-- <a [routerLink]="['/badges']" mat-menu-item *ngIf="isAdmin()">
       <span>Badges</span>
-    </a>
+    </a> -->
 
 
   </mat-menu>
 
-  <span style="padding-left: 50px;" *ngIf="user">Welcome {{ user.displayName }}</span>
+  <!-- <span style="padding-left: 50px;" *ngIf="user">Welcome {{ user.displayName }}</span> -->
   <span class="spacer"> </span>
   {{ signedInStudents }} signed in.
   <span class="spacer"> </span>
   <span class="spacer"> </span>
   <div style="padding-right: 50px;">
-    <div>
+    <!-- <div>
       <a (click)="loginWithGoogle()" *ngIf="!user">Login</a>
     </div>
     <div *ngIf="user">
       <a (click)='logOut()'>Log Out</a>
+    </div> -->
+    <div>
+      <a routerLink="login" *ngIf="!securityObject.isAuthenticated">Login</a>
+    </div>
+    <div>
+      <a href="#" (onclick)="logout()" *ngIf="securityObject.isAuthenticated"> Logout {{ securityObject.userName}}</a>
     </div>
   </div>
   <span>

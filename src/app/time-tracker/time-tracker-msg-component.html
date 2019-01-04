@@ -1,0 +1,14 @@
+<h1 mat-dialog-title>
+
+  Hi {{data.student.firstName}}</h1>
+
+<div mat-dialog-content class="msgBox">
+  <ul *ngFor="let message of data.student.messages">
+    <li>
+      {{message}} </li>
+  </ul>
+</div>
+<div mat-dialog-actions>
+
+  <button mat-button matDialogClose cdkFocusInitial>Ok</button>
+</div>

@@ -5,20 +5,14 @@
 
 export const environment = {
   production: false,
-  firebase_467_timeTracker: {
-    apiKey: 'AIzaSyDtP3U8t0hKvhUdoRtLbT2CNuB5aVL3zEY',
-    authDomain: 'timetrackersandbox.firebaseapp.com',
-    databaseURL: 'https://timetrackersandbox.firebaseio.com',
-    projectId: 'timetrackersandbox',
-    storageBucket: 'timetrackersandbox.appspot.com',
-    messagingSenderId: '843771130494'
-  }
-  // firebase_467_timeTracker: {
-  //   apiKey: 'AIzaSyDLKFASaeQE14QdTQ7CdmD1D7nFxas4gcc',
-  //   authDomain: 'time-tracker-467.firebaseapp.com',
-  //   databaseURL: 'https://time-tracker-467.firebaseio.com',
-  //   projectId: 'time-tracker-467',
-  //   storageBucket: 'time-tracker-467.appspot.com',
-  //   messagingSenderId: '220924576055'
-  // }
+  baseUrl: 'http://localhost:5000/',
+  studentApiUrl: 'api/student',
+  signInStudentUrl: 'api/student/signIn',
+  signOutStudentUrl: 'api/student/signOut',
+  signOutAllStudentsUrl: 'api/student/signOutAll',
+  messageApiUrl: 'api/messages',
+  eventApiUrl: 'api/events',
+  logInUrl: 'api/login',
+  logiOutUrl: 'api/logout',
+  login: 'api/security/login_user',
 };

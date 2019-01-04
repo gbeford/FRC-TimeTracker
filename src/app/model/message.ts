@@ -1,7 +1,7 @@
-/* Defines the student entity */
+
+/* Defines the message entity */
 export interface IMessage {
-    messageId: string;
-    message: string;
-    sortOrder: number;
-    show: boolean;
+    messageID: number;
+    messageText: string;
+   
 }

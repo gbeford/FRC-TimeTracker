@@ -1,0 +1,31 @@
+<div class="container">
+  <!-- {{missions | json}} -->
+  <form class="form-horizontal" [formGroup]="timeTrackerForm" *ngIf="timeTrackerForm" novalidate>
+
+    <H2>{{title}}</H2>
+    <label>Event
+
+
+        <!-- <select id="events" formControlName="events" >
+          <option *ngFor="let e of eventList" [value]="e.eventId" >{{ e.description }}</option>
+         </select>  -->
+
+          <select id="events" formControlName="events">
+            <option *ngFor="let e of eventList | async" [value]="e.eventID">{{ e.description}}</option>
+          </select>
+
+     </label
+     ><br/>
+
+
+    <div>
+      <app-auto-complete (notify)='onNotify($event)' [autoCompleteForm]="timeTrackerForm">Loading...</app-auto-complete>
+    </div>
+
+    <div *ngIf='selectedStudent'>
+      <div class="mat-body-2" *ngIf="selectedStudent.isSignedIn">{{selectedStudent.firstName}} signed in at {{selectedStudent.signInTime | date:'hh:mm a'}}</div>
+      <button class='trackerBtn' type="button" (click)='save()'>{{enterBtn}}</button>
+    </div>
+
+  </form>
+</div>

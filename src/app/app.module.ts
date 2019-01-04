@@ -11,36 +11,40 @@ import {
   MatDialogModule
 } from '@angular/material';
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
-import { AngularFirestoreModule } from 'angularfire2/firestore';
-import { AngularFireModule } from 'angularfire2';
-import { AngularFireAuthModule } from 'angularfire2/auth';
 import { environment } from '@environment/environment';
+import { TitleCasePipe } from '@angular/common';
+import { SatPopoverModule } from '@ncstate/sat-popover';
+import { InlineEditComponent } from './message/edit-message/inline-edit.component';
+
 import { ReportsComponent } from './reports/reports.component';
 import { MenuComponent } from './menu/menu.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { AppRoutingModule } from './app-routing.module';
 import { HomeComponent } from './home/home.component';
-import { StudentTimePointReportComponent } from './reports/student-time-point-report/student-time-point-report.component';
-import { AuthService } from './shared/auth.service';
-import { EditStudentRecordComponent } from './forms/edit-student-record/edit-student-record.component';
+import { StudentTimePointReportComponent } from './student/student-time-point-report/student-time-point-report.component';
+
+import { EditStudentRecordComponent } from './admin/edit-student-record/edit-student-record.component';
 import { AutoCompleteComponent } from './shared/auto-complete/auto-complete.component';
 import { TestSharedComponentsComponent } from './shared/test-shared-components/test-shared-components.component';
-import { MessageListComponent } from './reports/message-list/message-list.component';
-import { StudentListComponent } from './reports/student-list/student-list.component';
-import { TimeTrackerService } from './forms/time-tracker/time-tracker.service';
-import { TimeTrackerComponent } from './forms/time-tracker/time-tracker.component';
-import { AddNewMessageComponent } from './forms/message/add-new-message/add-new-message.component';
-import { ShowMessageComponent } from './forms/message/show-message/show-message.component';
-import { MessageService } from './forms/message/message.service';
-import { TimeTrackerModalComponent } from './forms/time-tracker/time-tracker-modal.component';
-import { ApplyPointsToStudentComponent } from './forms/points/apply-points-to-student/apply-points-to-student.component';
-import { AddNewPointComponent } from './forms/points/add-new-point/add-new-point.component';
-import { PointService } from './forms/points/point.service';
-import { BadgeEntryComponent } from './forms/badge/badge-entry/badge-entry.component';
-import { BadgeViewComponent } from './forms/badge/badge-view/badge-view.component';
-import { CanActivateViaAuthGuardService } from './shared/can-activate-via-auth-guard.service';
-
-
+import { MessageListComponent } from './message/message-list/message-list.component';
+import { StudentListComponent } from './student/student-list/student-list.component';
+import { StudentService } from './student/student.service';
+import { TimeTrackerComponent } from './time-tracker/time-tracker.component';
+import { EditMessageComponent } from './message/edit-message/edit-message.component';
+import { ShowMessageComponent } from './message/show-message/show-message.component';
+import { MessageService } from './message/message.service';
+import { TimeTrackerMsgComponent } from './time-tracker/time-tracker-msg-component';
+import { ApplyPointsToStudentComponent } from 'points/apply-points-to-student/apply-points-to-student.component';
+import { AddNewPointComponent } from 'points/add-new-point/add-new-point.component';
+import { PointService } from 'points/point.service';
+import { BadgeEntryComponent } from './admin/badge/badge-entry/badge-entry.component';
+import { BadgeViewComponent } from './admin/badge/badge-view/badge-view.component';
+import { HttpClientModule } from '@angular/common/http';
+import { StatusPipe } from './shared/filters/status.pipe';
+import { AlertComponent } from './alert/alert.component';
+import { EventsService } from './services/events.service';
+import { SecurityService } from './security/security.service';
+import { LoginComponent } from './security/login.component';
 
 
 @NgModule({
@@ -57,13 +61,17 @@ import { CanActivateViaAuthGuardService } from './shared/can-activate-via-auth-g
     AutoCompleteComponent,
     BadgeEntryComponent,
     TestSharedComponentsComponent,
-    AddNewMessageComponent,
+    EditMessageComponent,
     ShowMessageComponent,
     MessageListComponent,
     BadgeViewComponent,
-    TimeTrackerModalComponent,
+    TimeTrackerMsgComponent,
     ApplyPointsToStudentComponent,
     AddNewPointComponent,
+    StatusPipe,
+    InlineEditComponent,
+    AlertComponent,
+    LoginComponent,
   ],
   imports: [
     BrowserModule,
@@ -87,17 +95,17 @@ import { CanActivateViaAuthGuardService } from './shared/can-activate-via-auth-g
     MatCheckboxModule,
     MatDialogModule,
     AppRoutingModule,
-    AngularFirestoreModule,
-    AngularFireModule.initializeApp(environment.firebase_467_timeTracker),
-    AngularFireAuthModule,
+    HttpClientModule,
+    SatPopoverModule,
   ],
-  providers: [TimeTrackerService,
-    AuthService,
+  providers: [StudentService,
     MessageService,
     PointService,
-    CanActivateViaAuthGuardService
+    TitleCasePipe,
+    EventsService,
+    SecurityService,
   ],
-  entryComponents: [TimeTrackerModalComponent],
+  entryComponents: [TimeTrackerMsgComponent],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
