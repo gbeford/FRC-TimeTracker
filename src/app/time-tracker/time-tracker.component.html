@@ -5,9 +5,9 @@
     <H2>{{title}}</H2>
     <label>Event
 
-      <select id="eventsCtrl">
-        <option *ngFor="let e of eventList | async" [value]="e.eventID"
-        [selected]="e.sortOrder == 1">{{ e.description}}</option>
+<select id="eventsCtrl" formControlName="eventsCtrl">
+        <option *ngFor="let e of eventList | async" [value]="e.eventID" [selected]="e.sortOrder == 1">{{
+          e.description}}</option>
       </select>
 
     </label><br />

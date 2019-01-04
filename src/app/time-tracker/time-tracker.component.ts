@@ -34,6 +34,7 @@ export class TimeTrackerComponent implements OnInit {
 
   ngOnInit(): void {
     this.createForm();
+    this.timeTrackerForm.controls['eventsCtrl'].setValue('1');
     this.getAllStudents();
     this.getEvents();
   }
@@ -78,7 +79,9 @@ export class TimeTrackerComponent implements OnInit {
   }
 
   save() {
-    this.timeTrackerService.signIn_OutStudent(this.selectedStudent).subscribe(res => { });
+    debugger;
+    this.timeTrackerService.signIn_OutStudent(this.selectedStudent,
+      this.timeTrackerForm.get('eventsCtrl').value).subscribe(res => { });
     if (!this.selectedStudent.isSignedIn) {
       this.snackBar.open(`${this.selectedStudent.firstName} signed in.`, 'Welcome!', {
         duration: 5000, verticalPosition: 'top'
@@ -100,7 +103,7 @@ export class TimeTrackerComponent implements OnInit {
   // autoComplete
   onNotify(value: Student): void {
     this.selectedStudent = value;
-    console.log('auto from time compoent ', value);
+    console.log('autoComplete from time component ', value);
     this.checkIfSignedIn();
   }
 

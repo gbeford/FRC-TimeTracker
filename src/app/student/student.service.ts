@@ -63,9 +63,9 @@ export class StudentService {
 
 
 
-  signIn_OutStudent(signIn: Student): Observable<Student> {
+  signIn_OutStudent(signIn: Student, eventId: number): Observable<Student> {
     if (!signIn.isSignedIn) {
-      return this.http.post<Student>(`${environment.baseUrl}${environment.signInStudentUrl}`, signIn.id)
+      return this.http.post<Student>(`${environment.baseUrl}${environment.signInStudentUrl}/${signIn.id}`, eventId as number)
         .pipe(
           catchError(Utilities.handleError)
         );
@@ -94,14 +94,14 @@ export class StudentService {
 
   }
 
-  setMessage(studentId: number, messages: number[]): Observable<void | {}>  {
+  setMessage(studentId: number, messages: number[]): Observable<void | {}> {
     // this.afs.doc(`students/${studentId}`).set({
     //     messages: messages
     // }, { merge: true });
-    return this.http.post<void>(`environment.messageToStudentUrl/${studentId}`, {messages})
-    .pipe(
-      catchError(Utilities.handleError)
-    );
-}
+    return this.http.post<void>(`environment.messageToStudentUrl/${studentId}`, { messages })
+      .pipe(
+        catchError(Utilities.handleError)
+      );
+  }
 
 }
