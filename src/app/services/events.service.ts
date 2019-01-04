@@ -14,7 +14,7 @@ export class EventsService {
   constructor(private http: HttpClient) { }
 
   // get events
-  getMEventsList(): Observable<IEvent[]> {
+  getEventsList(): Observable<IEvent[]> {
     return this.http.get<IEvent[]>(`${environment.baseUrl}${environment.eventApiUrl}`)
       .pipe(
         tap(ev => console.log('service', ev)),

@@ -12,8 +12,8 @@ import { StudentListComponent } from './student/student-list/student-list.compon
 import { TimeTrackerComponent } from './time-tracker/time-tracker.component';
 import { ShowMessageComponent } from './message/show-message/show-message.component';
 import { EditMessageComponent } from './message/edit-message/edit-message.component';
-import { ApplyPointsToStudentComponent } from 'points/apply-points-to-student/apply-points-to-student.component';
-import { BadgeViewComponent } from './admin/badge/badge-view/badge-view.component';
+// import { ApplyPointsToStudentComponent } from 'points/apply-points-to-student/apply-points-to-student.component';
+// import { BadgeViewComponent } from './admin/badge/badge-view/badge-view.component';
 import { LoginComponent } from './security/login.component';
 import { AuthGuard } from './security/auth.guard';
 
@@ -25,33 +25,57 @@ import { AuthGuard } from './security/auth.guard';
         RouterModule.forRoot([
             { path: '', component: HomeComponent },
             { path: 'login', component: LoginComponent },
-            { path: 'trackTime', component: TimeTrackerComponent},
-            { path: 'studentTimeReport', component: StudentTimePointReportComponent },
-            { path: 'studentlist', component: StudentListComponent },
-            { path: 'studentEditForm', component: EditStudentRecordComponent },
+            {
+                path: 'trackTime',
+                component: TimeTrackerComponent,
+                canActivate: [AuthGuard],
+                data: { claim: 'canAccess_Student' }
+            },
+            {
+                path: 'studentTimeReport',
+                component: StudentTimePointReportComponent,
+                canActivate: [AuthGuard],
+                data: { claim: 'canAccess_Student' } },
+            {
+                path: 'studentlist',
+                component: StudentListComponent,
+                canActivate: [AuthGuard],
+                data: { claim: 'canAccess_Student' }
+            },
+            {
+                path: 'studentEditForm',
+                component: EditStudentRecordComponent,
+                canActivate: [AuthGuard],
+                data: { claim: 'canAccess_Admin' }
+            },
             {
                 path: 'messageStudent',
                 component: ShowMessageComponent,
                 canActivate: [AuthGuard],
-                data: {type: 'canAccess_Admin'}
+                data: { claim: 'canAccess_Admin' }
             },
-            { path: 'messageList', component: MessageListComponent },
+            {
+                path: 'messageList',
+                component: MessageListComponent,
+                canActivate: [AuthGuard],
+                data: { claim: 'canAccess_Student' }
+            },
 
             {
                 path: 'message',
                 component: EditMessageComponent,
                 canActivate: [AuthGuard],
-                data: { type  : 'canAccess_Admin'}
+                data: { claim: 'canAccess_Admin' }
             },
             {
                 path: 'message/:id',
                 component: EditMessageComponent,
                 canActivate: [AuthGuard],
-                data: { type: 'canAccess_Admin' }
+                data: { claim: 'canAccess_Admin' }
             },
 
-            { path: 'badges', component: BadgeViewComponent },
-            { path: 'applyPoints', component: ApplyPointsToStudentComponent },
+            // { path: 'badges', component: BadgeViewComponent },
+            // { path: 'applyPoints', component: ApplyPointsToStudentComponent },
             { path: 'test', component: TestSharedComponentsComponent },
             { path: '**', component: PageNotFoundComponent }
         ]),

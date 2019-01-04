@@ -41,7 +41,8 @@ export class TimeTrackerComponent implements OnInit {
   createForm() {
     console.log('here');
     this.timeTrackerForm = this.formBuilder.group({
-      events: [''],
+      eventsCtrl: ['', [<any>Validators.required]]
+
     });
   }
 
@@ -52,16 +53,17 @@ export class TimeTrackerComponent implements OnInit {
     });
   }
 
-  // get list of messages
+  // get list of events
   // getEvents() {
-  //   this.eventService.getMEventsList().subscribe(s => {
+  //   this.eventService.getEventsList().subscribe(s => {
   //     this.eventList = s;
   //     console.log('events ', this.eventList);
   //   });
   // }
 
   getEvents() {
-    this.eventList = this.eventService.getMEventsList();
+    this.eventList = this.eventService.getEventsList();
+    console.log('events ', this.eventList);
   }
 
   checkIfSignedIn() {

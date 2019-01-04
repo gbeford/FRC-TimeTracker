@@ -22,19 +22,21 @@ export class LoginComponent implements OnInit {
 
   login(form: NgForm) {
     if (form.valid) {
-    this.securityService.login(this.user).subscribe(
-      resp => {
-        this.securityObject = resp;
-        if (this.returnUrl) {
-          this.router.navigateByUrl(this.returnUrl);
+      this.securityService.login(this.user).subscribe(
+        resp => {
+          this.securityObject = resp;
+          if (this.returnUrl) {
+            this.router.navigateByUrl(this.returnUrl);
+          } else {
+            this.router.navigateByUrl('/studentlist');
+          }
+        },
+        // handles the error
+        () => {
+          // Initialize security object to display error message
+          this.securityObject = new AppUserAuth();
         }
-      },
-      // handles the error
-      () => {
-        // Initialize security object to display error message
-        this.securityObject = new AppUserAuth();
-      }
-    );
+      );
     }
     form.reset();
   }
