@@ -3,6 +3,8 @@ import { AppUser } from './app-user';
 import { AppUserAuth } from './app-user-auth';
 import { SecurityService } from './security.service';
 import { ActivatedRoute, Router } from '@angular/router';
+import { NgForm } from '@angular/forms';
+import { formArrayNameProvider } from '@angular/forms/src/directives/reactive_directives/form_group_name';
 
 @Component({
   selector: 'app-login',
@@ -18,7 +20,8 @@ export class LoginComponent implements OnInit {
     private route: ActivatedRoute,
     private router: Router) { }
 
-  login() {
+  login(form: NgForm) {
+    if (form.valid) {
     this.securityService.login(this.user).subscribe(
       resp => {
         this.securityObject = resp;
@@ -32,6 +35,8 @@ export class LoginComponent implements OnInit {
         this.securityObject = new AppUserAuth();
       }
     );
+    }
+    form.reset();
   }
 
   ngOnInit() {

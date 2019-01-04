@@ -10,12 +10,12 @@
 <!-- TEMPORARY CODE TO VIEW SECURTY OBJECT-->
 <div class="row">
   <div class="col-xs-12">
-    <label> {{securityObject | json}}</label>
+    <!-- REMOVE WHEN DONE-->
+    <!-- <label> {{securityObject | json}}</label> -->
   </div>
 </div>
 
-
-<form>
+<form #loginForm="ngForm" (ngSubmit)="login(loginForm)">
   <div class="row">
     <div class="col-xs-12 col-sm-6">
       <div class="panel panel-primary">
@@ -26,26 +26,33 @@
           <div class="form-group">
             <label for="userName">User Name</label>
             <div class="input-group">
-              <input id="userName" name="userName" class="form-control"
-              required [(ngModel)]="user.userName" autofocus="autofocus" />
+              <input id="userName" name="userName" class="form-control" required [(ngModel)]="user.userName" autofocus="autofocus"
+                #userName="ngModel" />
               <span class="input-group-addon">
                 <i class="glyphicon glyphicon-envelope"></i>
               </span>
+            </div>
+            <div *ngIf="!userName.valid && userName.touched">
+              User name is required!
             </div>
           </div>
           <div class="form-group">
             <label for="password"> Password</label>
             <div class="input-group">
-              <input id="password" name="password" class="form-control"
-              required [(ngModel)]="user.password" type="password" />
+              <input id="password" name="password" class="form-control" required [(ngModel)]="user.password" type="password"
+                #password="ngModel" />
               <span class="input-group-addon">
                 <i class="glyphicon glyphicon-lock"></i>
               </span>
             </div>
+            <div *ngIf="!password.valid && password.touched">
+              Password is required!
+            </div>
           </div>
         </div>
         <div class="panel-footer">
-          <button class="btn btn-primary" (click)="login()">Login</button>
+          <!-- <button class="btn btn-primary" (click)="login()">Login</button> -->
+          <button class="btn btn-primary" type="submit" [disabled]="!loginForm.form.valid">Login </button>
         </div>
       </div>
     </div>
