@@ -5,7 +5,7 @@ import { Observable, of } from 'rxjs';
 import { Student } from '../model/student';
 import { ITimeTracker } from '../model/time-tracker';
 import { environment } from '@environment/environment';
-import { HttpClient, HttpErrorResponse } from '@angular/common/http';
+import { HttpClient, HttpErrorResponse, HttpHeaders } from '@angular/common/http';
 import { Utilities } from '../shared/utils';
 
 
@@ -64,13 +64,21 @@ export class StudentService {
 
 
   signIn_OutStudent(signIn: Student, eventId: number): Observable<Student> {
+    const httpHeaders = new HttpHeaders({
+      'Content-Type': 'application/json',
+      'Cache-Control': 'no-cache'
+    });
+    const options = {
+      headers: httpHeaders
+    };
+
     if (!signIn.isSignedIn) {
-      return this.http.post<Student>(`${environment.baseUrl}${environment.signInStudentUrl}/${signIn.id}`, eventId as number)
+      return this.http.post<Student>(`${environment.baseUrl}${environment.signInStudentUrl}/${signIn.id}`, eventId as number, options)
         .pipe(
           catchError(Utilities.handleError)
         );
     } else {
-      return this.http.post<Student>(`${environment.baseUrl}${environment.signOutStudentUrl}`, signIn.id)
+      return this.http.post<Student>(`${environment.baseUrl}${environment.signOutStudentUrl}`, signIn.id, options)
         .pipe(
           catchError(Utilities.handleError)
         );
