@@ -79,7 +79,7 @@ export class TimeTrackerComponent implements OnInit {
   }
 
   save() {
-    debugger;
+    // debugger;
     this.timeTrackerService.signIn_OutStudent(this.selectedStudent,
       this.timeTrackerForm.get('eventsCtrl').value).subscribe(res => { });
     if (!this.selectedStudent.isSignedIn) {
@@ -98,6 +98,7 @@ export class TimeTrackerComponent implements OnInit {
       this.openDialog(this.selectedStudent);
     }
     this.timeTrackerForm.reset();
+    this.getAllStudents(); // reload the student list
   }
 
   // autoComplete
