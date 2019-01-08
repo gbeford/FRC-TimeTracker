@@ -95,7 +95,7 @@ export class StudentService {
   editStudentRecord(updateStudent: Student): Observable<void | {}> {
     // const loginDate = today.toISOString().split('T')[0];
 
-    return this.http.put<void>(`environment.updateStudentUrl/${updateStudent.studentId}`, updateStudent)
+    return this.http.put<void>(`${environment.baseUrl}updateStudentUrl/${updateStudent.studentId}`, updateStudent)
       .pipe(
         catchError(Utilities.handleError)
       );
@@ -106,7 +106,7 @@ export class StudentService {
     // this.afs.doc(`students/${studentId}`).set({
     //     messages: messages
     // }, { merge: true });
-    return this.http.post<void>(`environment.messageToStudentUrl/${studentId}`, { messages })
+    return this.http.post<void>(`${environment.baseUrl}${environment.addMessagesToStudentUrl}/${studentId}`, messages )
       .pipe(
         catchError(Utilities.handleError)
       );

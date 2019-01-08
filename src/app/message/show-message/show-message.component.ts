@@ -59,8 +59,9 @@ export class ShowMessageComponent implements OnInit {
         console.log(messages);
       }
 
-      this.studentService.setMessage(this.studentID, messages);
-      this.showMessageForm.reset();
+      this.studentService.setMessage(this.studentID, messages).subscribe(res => {
+        this.showMessageForm.reset();
+      });
 
       // console.log(this.showMessageForm.value.messageCtrl);
       // console.log(this.showMessageForm.value.clearMessages);
@@ -69,7 +70,7 @@ export class ShowMessageComponent implements OnInit {
 
 // autocomplete
   onNotify(value: Student): void {
-    this.studentID = value.studentId;
+    this.studentID = value.id;
   }
 
 

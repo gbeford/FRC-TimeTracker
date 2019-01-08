@@ -12,6 +12,7 @@ export class AlertComponent {
 
   private subject = new Subject<any>();
     private keepAfterNavigationChange = false;
+    public message: string;
 
     constructor(private router: Router) {
         // clear alert message on route change
