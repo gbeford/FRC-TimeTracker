@@ -14,7 +14,11 @@ export class StudentService {
 
   student: Student[];
   trackerRecord: ITimeTracker;
-
+  // const httpOptions = {
+  //   headers: new HttpHeaders({
+  //     'Content-Type': 'application/json'
+  //   })
+  // };
 
   constructor(private http: HttpClient) { }
 

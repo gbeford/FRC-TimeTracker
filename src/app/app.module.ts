@@ -45,6 +45,7 @@ import { AlertComponent } from './alert/alert.component';
 import { EventsService } from './services/events.service';
 import { SecurityService } from './security/security.service';
 import { LoginComponent } from './security/login.component';
+import { HttpInterceptorModule } from './security/http-interceptor';
 
 
 @NgModule({
@@ -97,6 +98,7 @@ import { LoginComponent } from './security/login.component';
     AppRoutingModule,
     HttpClientModule,
     SatPopoverModule,
+    HttpInterceptorModule
   ],
   providers: [StudentService,
     MessageService,
