@@ -6,4 +6,10 @@ export const environment = {
   signOutStudentUrl: 'api/student/signOut',
   signOutAllStudentsUrl: 'api/student/signOutAll',
   messageApiUrl: 'api/messages',
+  eventApiUrl: 'api/events',
+  logInUrl: 'api/login',
+  logiOutUrl: 'api/logout',
+  login: 'api/security/login_user',
+  addMessagesToStudentUrl: 'api/Student/AddMessagesToStudent',
+  removeMessageFromStudent: 'api/Student/RemoveMessageFromStudent'
 };

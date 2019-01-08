@@ -93,11 +93,12 @@ export class TimeTrackerComponent implements OnInit {
     }
 
     console.log('student message ', this.selectedStudent);
-    if (this.selectedStudent.messages && this.selectedStudent.messages.length > 0) {
+    if (this.selectedStudent.messages.length > 0) {
 
       this.openDialog(this.selectedStudent);
     }
     this.timeTrackerForm.reset();
+    this.timeTrackerForm.controls['eventsCtrl'].setValue('1'); // reselect first value
     this.getAllStudents(); // reload the student list
   }
 

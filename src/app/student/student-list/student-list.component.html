@@ -6,8 +6,8 @@
             The actual rendered columns are set as a property on the row definition" -->
 
     <!-- Position Column -->
-    <ng-container matColumnDef="studenId">
-      <mat-header-cell *matHeaderCellDef mat-sort-header fxFlex="100px"> Student Id </mat-header-cell>
+    <ng-container matColumnDef="studentId">
+      <mat-header-cell *matHeaderCellDef mat-sort-header fxFlex="100px"> School Id </mat-header-cell>
       <mat-cell *matCellDef="let element" fxFlex="100px"> {{element.studentId}} </mat-cell>
     </ng-container>
 
@@ -38,7 +38,7 @@
 
 <ng-container matColumnDef="messages">
   <mat-header-cell *matHeaderCellDef mat-sort-header> Messages </mat-header-cell>
-  <mat-cell *matCellDef="let element"> {{element.messages}} </mat-cell>
+  <mat-cell *matCellDef="let element"> {{element.messages.join(' ')}} </mat-cell>
 </ng-container>
     <!-- <ng-container matColumnDef="controls">
       <mat-header-cell *matHeaderCellDef> controls </mat-header-cell>
