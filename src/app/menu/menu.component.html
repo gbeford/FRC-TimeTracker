@@ -35,12 +35,12 @@
       <a [routerLink]="['/studentTimeReport']" *hasClaim="'canAccess_Student'" mat-menu-item>
         <span>Student Hours</span>
       </a>
-    </ng-container> -->
+    </ng-container>
     <ng-container *ngIf="securityObject.isAuthenticated">
       <a [routerLink]="['/studentEditForm']" *hasClaim="'canAccess_Admin'" mat-menu-item>
         <span>Edit</span>
       </a>
-    </ng-container>
+    </ng-container>-->
     <ng-container *ngIf="securityObject.isAuthenticated">
       <a [routerLink]="['/messageList']" *hasClaim="'canAccess_Admin'" mat-menu-item>
         <span>Message List</span>
