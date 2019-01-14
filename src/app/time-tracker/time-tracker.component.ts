@@ -14,7 +14,7 @@ import { pipe } from 'rxjs';
 @Component({
   selector: 'app-tracker',
   templateUrl: './time-tracker.component.html',
-  styleUrls: ['./time-tracker.component.css']
+  styleUrls: ['./time-tracker.component.scss']
 })
 export class TimeTrackerComponent implements OnInit {
   title = 'Hours / Points Tracker';
