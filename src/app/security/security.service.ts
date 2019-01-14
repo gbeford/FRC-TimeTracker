@@ -52,14 +52,14 @@ export class SecurityService {
         }
       }
     }
-    //return this.isClaimValid(claimType, claimValue);
+    // return this.isClaimValid(claimType, claimValue);
     return ret;
   }
 
   private isClaimValid(claimType: string, claimValue?: string): boolean {
     let ret = false;
     let auth: AppUserAuth = null;
-    debugger
+
     // Retrieve secrity object
     auth = this.securityObject;
     if (auth) {

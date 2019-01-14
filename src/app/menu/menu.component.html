@@ -8,37 +8,44 @@
     <a [routerLink]="['/']" mat-menu-item>
       <span>Home </span>
     </a>
-<ng-container *ngIf="securityObject.isAuthenticated">
-<a [routerLink]="['/message']" *hasClaim="'canAccess_Admin'"  mat-menu-item>
-      <span>Add New Message</span>
-    </a>
-</ng-container>
-    <a [routerLink]="['/messageStudent']" mat-menu-item>
-      <span>Message Student</span>
-    </a>
     <ng-container *ngIf="securityObject.isAuthenticated">
-<a [routerLink]="['/studentlist']" *hasClaim="['canAccess_Student', 'canAccess_Admin']" mat-menu-item>
+      <a [routerLink]="['/message']" *hasClaim="'canAccess_Admin'" mat-menu-item>
+        <span>Add New Message</span>
+      </a>
+    </ng-container>
+    <ng-container *ngIf="securityObject.isAuthenticated">
+      <a [routerLink]="['/messageStudent']" *hasClaim="'canAccess_Admin'" mat-menu-item>
+        <span>Message Student</span>
+      </a>
+    </ng-container>
+    <ng-container *ngIf="securityObject.isAuthenticated">
+      <a [routerLink]="['/studentlist']" *hasClaim="['canAccess_Student', 'canAccess_Admin']" mat-menu-item>
         <span>Student List</span>
       </a>
     </ng-container>
     <!-- <a [routerLink]="['/applyPoints']" mat-menu-item *ngIf="isAdmin()">
       <span>Apply Points to Student</span>
     </a> -->
-<ng-container *ngIf="securityObject.isAuthenticated">
-<a [routerLink]="['/trackTime']" *hasClaim="'canAccess_Student'" mat-menu-item>
-      <span>Track Time</span>
-    </a>
-</ng-container>
-    <a [routerLink]="['/studentTimeReport']" mat-menu-item>
-      <span>Student Hours</span>
-    </a>
-
-    <!-- <a [routerLink]="['/studentEditForm']" mat-menu-item *ngIf="isAdmin()">
-      <span>Edit</span>
-    </a> -->
-    <a [routerLink]="['/messageList']" mat-menu-item>
-      <span>Message List</span>
-    </a>
+    <ng-container *ngIf="securityObject.isAuthenticated">
+      <a [routerLink]="['/trackTime']" *hasClaim="'canAccess_Student'" mat-menu-item>
+        <span>Track Time</span>
+      </a>
+    </ng-container>
+    <ng-container *ngIf="securityObject.isAuthenticated">
+      <a [routerLink]="['/studentTimeReport']" *hasClaim="'canAccess_Student'" mat-menu-item>
+        <span>Student Hours</span>
+      </a>
+    </ng-container>
+    <ng-container *ngIf="securityObject.isAuthenticated">
+      <a [routerLink]="['/studentEditForm']" *hasClaim="'canAccess_Admin'" mat-menu-item>
+        <span>Edit</span>
+      </a>
+    </ng-container>
+    <ng-container *ngIf="securityObject.isAuthenticated">
+      <a [routerLink]="['/messageList']" *hasClaim="'canAccess_Admin'" mat-menu-item>
+        <span>Message List</span>
+      </a>
+    </ng-container>
     <!-- <a [routerLink]="['/badges']" mat-menu-item *ngIf="isAdmin()">
       <span>Badges</span>
     </a> -->
