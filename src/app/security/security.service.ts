@@ -23,11 +23,61 @@ export class SecurityService {
     this.securityObject.userName = '';
     this.securityObject.bearerToken = '';
     this.securityObject.isAuthenticated = false;
-
-    this.securityObject.canAccess_Admin = false;
-    this.securityObject.canAccess_Student = false;
+    this.securityObject.claims = [];
 
     localStorage.removeItem('bearerToken');
+  }
+
+  // This method can be called a couple of different ways
+  // *hasClaim="'claimType'" // Assumes claimValue is true
+  // *hasClaim="'claimType:value'" // Compares claimValue to value
+  // *hasClaim="['claimType1', 'claimType2:value', 'claimType13']"
+  hasClaim(claimType: any, claimValue?: any) {
+    let ret = false;
+
+    // See if an array of values was passed in.
+    if (typeof claimType === 'string') {
+      ret = this.isClaimValid(claimType, claimValue);
+      console.log('String ret claim ', claimType + ' value ' + claimValue);
+    } else {
+      const claims: string[] = claimType;
+      if (claims) {
+        console.log('Claims ', claims);
+        for (let i = 0; i < claims.length; i++) {
+          ret = this.isClaimValid(claims[i]);
+          // If one is successful, then let them in
+          if (ret) {
+            break;
+          }
+        }
+      }
+    }
+    return this.isClaimValid(claimType, claimValue);
+  }
+
+  private isClaimValid(claimType: string, claimValue?: string): boolean {
+    let ret = false;
+    let auth: AppUserAuth = null;
+debugger
+    // Retrieve secrity object
+    auth = this.securityObject;
+    if (auth) {
+      // See if the claim type has a value
+      // *hasClaim = "'claimType:value'"
+      if (claimType.indexOf(':') >= 0) {
+        const words: string[] = claimType.split(':');
+        claimType = words[0].toLowerCase();
+        claimType = words[1];
+      } else {
+        claimType = claimType.toLowerCase();
+        // Either get the claim value or assume 'true'
+        claimValue = claimValue ? claimValue : 'true';
+      }
+      ret = auth.claims.find(c =>
+        c.claimType.toLowerCase() === claimType &&
+        c.claimValue === claimValue) != null;
+    }
+    return ret;
   }
 
   login(entity: AppUser): Observable<AppUserAuth> {

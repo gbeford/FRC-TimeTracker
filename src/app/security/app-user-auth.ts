@@ -1,8 +1,9 @@
+import { AppUserClaim } from './app-user-claim';
+
 export class AppUserAuth {
 
     userName = '';
     bearerToken = '';
     isAuthenticated = false;
-    canAccess_Student = false;
-    canAccess_Admin = false;
+    claims: AppUserClaim[] = [];
 }

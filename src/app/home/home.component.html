@@ -3,11 +3,11 @@
   <a (click)='logOut()'>Log Out</a>
 </div> -->
 
-<h1 >There are currently {{signedInStudent}} students signed in.</h1>
+<h1>There are currently {{signedInStudent}} students signed in.</h1>
 
 
-<div >
-  <button >Log Out Students</button>
+<div>
+<button (click)='logOutAllStudents()' *hasClaim="'canAccess_Admin:true'">Log Out Students</button>
 </div>
 <img src="assets/images/change.jpg" alt="change" width="100%" height="100%">
 <footer>

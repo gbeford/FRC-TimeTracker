@@ -46,6 +46,7 @@ import { EventsService } from './services/events.service';
 import { SecurityService } from './security/security.service';
 import { LoginComponent } from './security/login.component';
 import { HttpInterceptorModule } from './security/http-interceptor';
+import { HasClaimDirective } from './security/has-claim.directive';
 
 
 @NgModule({
@@ -73,6 +74,7 @@ import { HttpInterceptorModule } from './security/http-interceptor';
     InlineEditComponent,
     AlertComponent,
     LoginComponent,
+    HasClaimDirective,
   ],
   imports: [
     BrowserModule,

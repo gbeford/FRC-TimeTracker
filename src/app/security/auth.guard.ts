@@ -16,11 +16,11 @@ export class AuthGuard implements CanActivate {
     const claim: string = next.data['claim'];
 
     if (this.securityService.securityObject.isAuthenticated
-      && this.securityService.securityObject[claim]) {
+      && this.securityService.hasClaim(claim)) {
       return true;
     } else {
       this.router.navigate(['login'],
-      {queryParams: { returnUrl: state.url }});
+        { queryParams: { returnUrl: state.url } });
     }
   }
 }
