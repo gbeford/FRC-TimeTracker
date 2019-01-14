@@ -23,19 +23,19 @@
         <span>Student List</span>
       </a>
     </ng-container>
-    <!-- <a [routerLink]="['/applyPoints']" mat-menu-item *ngIf="isAdmin()">
-      <span>Apply Points to Student</span>
-    </a> -->
+
     <ng-container *ngIf="securityObject.isAuthenticated">
       <a [routerLink]="['/trackTime']" *hasClaim="'canAccess_Student'" mat-menu-item>
         <span>Track Time</span>
       </a>
     </ng-container>
-    <ng-container *ngIf="securityObject.isAuthenticated">
+
+    <!--       TODO: need to re-wire back up for page to work again       -->
+    <!-- <ng-container *ngIf="securityObject.isAuthenticated">
       <a [routerLink]="['/studentTimeReport']" *hasClaim="'canAccess_Student'" mat-menu-item>
         <span>Student Hours</span>
       </a>
-    </ng-container>
+    </ng-container> -->
     <ng-container *ngIf="securityObject.isAuthenticated">
       <a [routerLink]="['/studentEditForm']" *hasClaim="'canAccess_Admin'" mat-menu-item>
         <span>Edit</span>
@@ -48,6 +48,9 @@
     </ng-container>
     <!-- <a [routerLink]="['/badges']" mat-menu-item *ngIf="isAdmin()">
       <span>Badges</span>
+    </a> -->
+    <!-- <a [routerLink]="['/applyPoints']" mat-menu-item *ngIf="isAdmin()">
+      <span>Apply Points to Student</span>
     </a> -->
 
 

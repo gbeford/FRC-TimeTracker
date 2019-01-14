@@ -19,6 +19,7 @@ import { pipe } from 'rxjs';
 export class TimeTrackerComponent implements OnInit {
   title = 'Hours / Points Tracker';
   enterBtn = '';
+  signedIn = false;
   in = '';
   students: Student[];
   selectedStudent: Student;
@@ -51,17 +52,11 @@ export class TimeTrackerComponent implements OnInit {
   getAllStudents() {
     this.timeTrackerService.getStudents().subscribe(s => {
       this.students = s;
+      this.selectedStudent = null;
     });
   }
 
-  // get list of events
-  // getEvents() {
-  //   this.eventService.getEventsList().subscribe(s => {
-  //     this.eventList = s;
-  //     console.log('events ', this.eventList);
-  //   });
-  // }
-
+  // this function is using asyc pipe
   getEvents() {
     this.eventList = this.eventService.getEventsList();
     console.log('events ', this.eventList);
@@ -72,8 +67,10 @@ export class TimeTrackerComponent implements OnInit {
       console.log(this.selectedStudent);
       if (!this.selectedStudent.isSignedIn) {
         this.enterBtn = 'Sign in';
+        this.timeTrackerForm.get('eventsCtrl').enable();
       } else {
         this.enterBtn = 'Sign out';
+        this.timeTrackerForm.get('eventsCtrl').disable();
       }
     }
   }
@@ -82,24 +79,27 @@ export class TimeTrackerComponent implements OnInit {
     // debugger;
     this.timeTrackerService.signIn_OutStudent(this.selectedStudent,
       this.timeTrackerForm.get('eventsCtrl').value).subscribe(res => { });
-    if (!this.selectedStudent.isSignedIn) {
-      this.snackBar.open(`${this.selectedStudent.firstName} signed in.`, 'Welcome!', {
-        duration: 5000, verticalPosition: 'top'
-      });
-    } else {
-      this.snackBar.open(`${this.selectedStudent.firstName} signed out.`, 'Bye!', {
-        duration: 5000, verticalPosition: 'top'
-      });
-    }
+    {
+      if (!this.selectedStudent.isSignedIn) {
+        this.snackBar.open(`${this.selectedStudent.firstName} signed in.`, 'Welcome!', {
+          duration: 5000, verticalPosition: 'top'
+        });
+      } else {
+        this.snackBar.open(`${this.selectedStudent.firstName} signed out.`, 'Bye!', {
+          duration: 5000, verticalPosition: 'top'
+        });
+      }
 
-    console.log('student message ', this.selectedStudent);
-    if (this.selectedStudent.messages.length > 0) {
-
-      this.openDialog(this.selectedStudent);
+      console.log('student message ', this.selectedStudent);
+      if (this.selectedStudent.messages) {
+        if (this.selectedStudent.messages.length > 0) {
+          this.openDialog(this.selectedStudent);
+        }
+      }
+      this.timeTrackerForm.reset();
+      this.timeTrackerForm.controls['eventsCtrl'].setValue('1'); // reselect default value we want to show
+      this.getAllStudents(); // reload the student list
     }
-    this.timeTrackerForm.reset();
-    this.timeTrackerForm.controls['eventsCtrl'].setValue('1'); // reselect first value
-    this.getAllStudents(); // reload the student list
   }
 
   // autoComplete

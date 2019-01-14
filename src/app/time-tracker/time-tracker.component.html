@@ -5,7 +5,7 @@
     <H2>{{title}}</H2>
     <label>Event
 
-<select id="eventsCtrl" formControlName="eventsCtrl">
+      <select id="eventsCtrl" formControlName="eventsCtrl" [disabled]='this.signedIn'>
         <option *ngFor="let e of eventList | async" [value]="e.eventID" [selected]="e.sortOrder == 1">{{
           e.description}}</option>
       </select>
