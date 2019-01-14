@@ -42,11 +42,13 @@ import { BadgeViewComponent } from './admin/badge/badge-view/badge-view.componen
 import { HttpClientModule } from '@angular/common/http';
 import { StatusPipe } from './shared/filters/status.pipe';
 import { AlertComponent } from './alert/alert.component';
-import { EventsService } from './services/events.service';
+
 import { SecurityService } from './security/security.service';
 import { LoginComponent } from './security/login.component';
 import { HttpInterceptorModule } from './security/http-interceptor';
 import { HasClaimDirective } from './security/has-claim.directive';
+import { AddEditEventComponent } from './events/add-edit-event.component';
+import { EventsService } from './events/events.service';
 
 
 @NgModule({
@@ -75,6 +77,7 @@ import { HasClaimDirective } from './security/has-claim.directive';
     AlertComponent,
     LoginComponent,
     HasClaimDirective,
+    AddEditEventComponent,
   ],
   imports: [
     BrowserModule,

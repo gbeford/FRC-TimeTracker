@@ -1,0 +1,58 @@
+<div class="container">
+  <div class="container-add">
+    <h2>
+      Add A New Message
+    </h2>
+
+    <form [formGroup]="addEventForm" novalidate (ngSubmit)="submit()">
+      <mat-form-field class="messageText">
+        <textarea matInput placeholder="Add Message" matTextareaAutosize matAutosizeMinRows="2" matAutosizeMaxRows="5"
+          formControlName="eventsTxtCtrl" type="text" required></textarea>
+<mat-error *ngIf="eventText.invalid && (eventText.dirty || eventText.touched)">Please add a message</mat-error>
+      </mat-form-field>
+      <div>
+<button class='trackerBtn' type="submit" [disabled]="!eventText.valid">Submit</button>
+      </div>
+    </form>
+  </div>
+  <hr>
+  <div class="container-list">
+    <h2>
+      Current Event List
+    </h2>
+
+    <div class="mat-elevation-z8">
+      <mat-table class="pointer" #table [dataSource]="dataSource" matSort>
+
+
+        <!-- Edit Message text Column -->
+        <ng-container matColumnDef="editMessage">
+          <mat-header-cell *matHeaderCellDef mat-sort-header> Edit Message </mat-header-cell>
+          <mat-cell *matCellDef="let element" [satPopoverAnchorFor]="p" (click)="p.open()">
+            <ng-container *ngIf="element.messageID">
+              <mat-icon>create</mat-icon> &nbsp;{{element.messageID}}
+            </ng-container>
+            <!-- <span class="add-comment" *ngIf="!element.messageText">
+              Modify comment
+            </span> -->
+
+            <sat-popover #p hasBackdrop xAlign="start" yAlign="start" (closed)="update(element, $event)">
+<app-inline-edit [value]="element.eventText"></app-inline-edit>
+            </sat-popover>
+
+          </mat-cell>
+        </ng-container>
+
+        <!-- Message text Column -->
+<ng-container matColumnDef="eventText">
+          <mat-header-cell *matHeaderCellDef mat-sort-header fxFlex="100px"> Message </mat-header-cell>
+<mat-cell *matCellDef="let message" fxFlex="100px"> {{message.eventText}} </mat-cell>
+        </ng-container>
+
+        <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+        <mat-row *matRowDef="let row; columns: displayedColumns"></mat-row>
+
+      </mat-table>
+    </div>
+  </div>
+</div>

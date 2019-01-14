@@ -7,8 +7,10 @@ import { StudentService } from '../student/student.service';
 import { Student } from '../model/student';
 import { TimeTrackerMsgComponent } from './time-tracker-msg-component';
 import { IEvent } from 'app/model/event';
-import { EventsService } from 'app/services/events.service';
+
 import { pipe } from 'rxjs';
+import { EventsService } from 'app/events/events.service';
+
 
 
 @Component({
