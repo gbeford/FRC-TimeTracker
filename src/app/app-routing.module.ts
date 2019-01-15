@@ -16,6 +16,7 @@ import { EditMessageComponent } from './message/edit-message/edit-message.compon
 // import { BadgeViewComponent } from './admin/badge/badge-view/badge-view.component';
 import { LoginComponent } from './security/login.component';
 import { AuthGuard } from './security/auth.guard';
+import { AddEditEventComponent } from './events/add-edit-event.component';
 
 
 
@@ -70,6 +71,18 @@ import { AuthGuard } from './security/auth.guard';
             {
                 path: 'message/:id',
                 component: EditMessageComponent,
+                canActivate: [AuthGuard],
+                data: { claim: 'canAccess_Admin' }
+            },
+            {
+                path: 'event',
+                component: AddEditEventComponent,
+                canActivate: [AuthGuard],
+                data: { claim: 'canAccess_Admin' }
+            },
+            {
+                path: 'event/:id',
+                component: AddEditEventComponent,
                 canActivate: [AuthGuard],
                 data: { claim: 'canAccess_Admin' }
             },

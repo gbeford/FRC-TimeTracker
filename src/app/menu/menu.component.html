@@ -8,6 +8,11 @@
     <a [routerLink]="['/']" mat-menu-item>
       <span>Home </span>
     </a>
+<ng-container *ngIf="securityObject.isAuthenticated">
+  <a [routerLink]="['/event']" *hasClaim="'canAccess_Admin'" mat-menu-item>
+    <span>Add New Event</span>
+  </a>
+</ng-container>
     <ng-container *ngIf="securityObject.isAuthenticated">
       <a [routerLink]="['/message']" *hasClaim="'canAccess_Admin'" mat-menu-item>
         <span>Add New Message</span>

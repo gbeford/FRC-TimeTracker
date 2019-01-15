@@ -12,8 +12,8 @@ import { IEvent } from 'app/model/event';
 })
 export class AddEditEventComponent implements OnInit {
   public addEventForm: FormGroup;
-  dataSource: MatTableDataSource<any>; // MessageDataSource;
-  messageList: IEvent[];
+  dataSource: MatTableDataSource<any>; // EventDataSource;
+  eventList: IEvent[];
   displayedColumns = ['editMessage', 'eventText'];
 
   @ViewChild(MatSort) sort: MatSort;
@@ -46,19 +46,20 @@ export class AddEditEventComponent implements OnInit {
   }
 
   submit() {
-    // console.log(this.addMessageForm.value.messageTxtCtrl);
+    console.log(this.addEventForm.value.eventsTxtCtrl);
 
     if (this.addEventForm.valid) {
       this.eventService.saveEvent(
         this.titlecasePipe.transform(
           this.addEventForm.value.eventsTxtCtrl)).subscribe(res => {
-        this.addEventForm.reset();
+            this.addEventForm.reset();
             this.showEvents();
-      });
+          });
     }
   }
 
   update(el: IEvent, newEvent: string) {
+    debugger
     if (newEvent == null) { return; }
     console.log('popup ', newEvent);
     console.log('IMessage ', el);

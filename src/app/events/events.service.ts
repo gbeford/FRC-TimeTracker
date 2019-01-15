@@ -36,7 +36,7 @@ export class EventsService {
       sortOrder: 0
     };
 
-    return this.http.post<IEvent>(`${environment.baseUrl}${environment.messageApiUrl}`, event)
+    return this.http.post<IEvent>(`${environment.baseUrl}${environment.eventApiUrl}`, event)
       .pipe(
         catchError(Utilities.handleError)
       );
@@ -48,7 +48,7 @@ export class EventsService {
     console.log(id);
     console.log(updateEvent);
 
-    return this.http.put<void>(`${environment.baseUrl}${environment.messageApiUrl}/${id}`, updateEvent)
+    return this.http.put<void>(`${environment.baseUrl}${environment.eventApiUrl}/${id}`, updateEvent)
       .pipe(
         catchError(Utilities.handleError)
       );
