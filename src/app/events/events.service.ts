@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { environment } from '@environment/environment';
 import { Utilities } from 'app/shared/utils';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { catchError, tap } from 'rxjs/operators';
 import { IEvent } from '../model/event';
 import { Observable } from 'rxjs';
@@ -44,16 +44,20 @@ export class EventsService {
 
 
   editEventRecord(id: number, updateEvent: string): Observable<void | {}> {
-    // const loginDate = today.toISOString().split('T')[0];
-    console.log(id);
-    console.log(updateEvent);
-
-    return this.http.put<void>(`${environment.baseUrl}${environment.eventApiUrl}/${id}`, updateEvent)
+    console.log('Update event ' + id + ' new text ' + updateEvent);
+    const headers = new HttpHeaders().set('Content-Type', 'application/json');
+    debugger
+    return this.http.put<void>(`${environment.baseUrl}${environment.eventApiUrl}/${id}`, updateEvent, { headers })
       .pipe(
         catchError(Utilities.handleError)
       );
   }
 
-
+  deleteEventRecord(id: number): Observable<void | {}> {
+    return this.http.delete<void>(`${environment.baseUrl}${environment.eventApiUrl}/${id}`)
+      .pipe(
+        catchError(Utilities.handleError)
+      );
+  }
 
 }

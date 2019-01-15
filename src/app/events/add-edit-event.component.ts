@@ -13,8 +13,8 @@ import { IEvent } from 'app/model/event';
 export class AddEditEventComponent implements OnInit {
   public addEventForm: FormGroup;
   dataSource: MatTableDataSource<any>; // EventDataSource;
-  eventList: IEvent[];
-  displayedColumns = ['editMessage', 'eventText'];
+  // eventList: IEvent[];
+  displayedColumns = ['editMessage', 'eventText', 'removeEvent'];
 
   @ViewChild(MatSort) sort: MatSort;
 
@@ -47,7 +47,7 @@ export class AddEditEventComponent implements OnInit {
 
   submit() {
     console.log(this.addEventForm.value.eventsTxtCtrl);
-
+    // debugger
     if (this.addEventForm.valid) {
       this.eventService.saveEvent(
         this.titlecasePipe.transform(
@@ -59,14 +59,20 @@ export class AddEditEventComponent implements OnInit {
   }
 
   update(el: IEvent, newEvent: string) {
-    debugger
     if (newEvent == null) { return; }
-    console.log('popup ', newEvent);
-    console.log('IMessage ', el);
+    console.log('New text from popup box ', newEvent);
+    console.log('IEvent ', el);
 
     this.eventService.editEventRecord(el.eventID, newEvent).subscribe();
   }
 
-
+  deleteEvent(el: number) {
+    console.log('delete id ', el);
+    this.eventService.deleteEventRecord(el).subscribe((data) => {
+      alert('Record Deleted');
+      this.showEvents();
+      this.addEventForm.reset();
+    });
+  }
 
 }

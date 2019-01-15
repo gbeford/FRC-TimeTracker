@@ -6,6 +6,10 @@ import { MatTableDataSource, MatSort } from '@angular/material';
 import { TitleCasePipe } from '@angular/common';
 import { BehaviorSubject } from 'rxjs/BehaviorSubject';
 
+
+// https://www.npmjs.com/package/@ncstate/sat-popover
+// https://stackblitz.com/edit/inline-edit-mat-table?file=app%2Fapp.component.html
+
 @Component({
   selector: 'app-edit-message',
   templateUrl: './edit-message.component.html',
@@ -14,8 +18,8 @@ import { BehaviorSubject } from 'rxjs/BehaviorSubject';
 export class EditMessageComponent implements OnInit {
   public addMessageForm: FormGroup;
   dataSource: MatTableDataSource<any>; // MessageDataSource;
-  messageList: IMessage[];
-  displayedColumns = ['editMessage', 'messageText'];
+  // messageList: IMessage[];
+  displayedColumns = ['editMessage', 'messageText', 'removeMessage'];
 
   @ViewChild(MatSort) sort: MatSort;
 
@@ -65,6 +69,13 @@ export class EditMessageComponent implements OnInit {
     this.messageService.editMessageRecord(el.messageID, newMessage).subscribe();
   }
 
-
+  deleteMessage(el: number) {
+    console.log('delete id ', el);
+    this.messageService.deleteMessageRecord(el).subscribe((data) => {
+      alert('Record Deleted');
+      this.showMessage();
+      this.addMessageForm.reset();
+    });
+  }
 
 }

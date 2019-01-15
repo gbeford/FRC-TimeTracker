@@ -45,10 +45,17 @@ export class MessageService {
 
     editMessageRecord(id: number, updateMessage: string): Observable<void | {}> {
         // const loginDate = today.toISOString().split('T')[0];
-        console.log(id);
-        console.log(updateMessage);
-
+        // console.log(id);
+        // console.log(updateMessage);
+        debugger
         return this.http.put<void>(`${environment.baseUrl}${environment.messageApiUrl}/${id}`, updateMessage)
+            .pipe(
+                catchError(Utilities.handleError)
+            );
+    }
+
+    deleteMessageRecord(id: number): Observable<void | {}> {
+        return this.http.delete<void>(`${environment.baseUrl}${environment.messageApiUrl}/${id}`)
             .pipe(
                 catchError(Utilities.handleError)
             );
