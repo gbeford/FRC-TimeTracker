@@ -47,8 +47,14 @@ export class MessageService {
         // const loginDate = today.toISOString().split('T')[0];
         // console.log(id);
         // console.log(updateMessage);
-        debugger
-        return this.http.put<void>(`${environment.baseUrl}${environment.messageApiUrl}/${id}`, updateMessage)
+        debugger;
+
+        const data: IMessage = {
+            messageID: id,
+            messageText: updateMessage
+        };
+
+        return this.http.put<void>(`${environment.baseUrl}${environment.messageApiUrl}/${id}`, data)
             .pipe(
                 catchError(Utilities.handleError)
             );

@@ -62,7 +62,8 @@ export class AddEditEventComponent implements OnInit {
     if (newEvent == null) { return; }
     console.log('New text from popup box ', newEvent);
     console.log('IEvent ', el);
-
+    this.showEvents();
+    this.addEventForm.reset();
     this.eventService.editEventRecord(el.eventID, newEvent).subscribe();
   }
 

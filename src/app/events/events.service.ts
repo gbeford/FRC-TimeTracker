@@ -45,9 +45,16 @@ export class EventsService {
 
   editEventRecord(id: number, updateEvent: string): Observable<void | {}> {
     console.log('Update event ' + id + ' new text ' + updateEvent);
-    const headers = new HttpHeaders().set('Content-Type', 'application/json');
-    debugger
-    return this.http.put<void>(`${environment.baseUrl}${environment.eventApiUrl}/${id}`, updateEvent, { headers })
+
+    debugger;
+    const data: IEvent = {
+      eventID: id,
+      description: updateEvent,
+      show: true,
+      sortOrder: 0
+    };
+
+    return this.http.put(`${environment.baseUrl}${environment.eventApiUrl}/${id}`, data)
       .pipe(
         catchError(Utilities.handleError)
       );

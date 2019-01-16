@@ -66,7 +66,9 @@ export class EditMessageComponent implements OnInit {
     console.log('popup ', newMessage);
     console.log('IMessage ', el);
 
-    this.messageService.editMessageRecord(el.messageID, newMessage).subscribe();
+    this.messageService.editMessageRecord(el.messageID, newMessage).subscribe(res => {
+      this.showMessage();
+    });
   }
 
   deleteMessage(el: number) {
