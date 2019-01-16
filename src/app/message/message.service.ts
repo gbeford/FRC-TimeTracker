@@ -29,7 +29,6 @@ export class MessageService {
 
     saveMessage(msg: string) {
         // const date = new Date();
-        console.log('message ' + msg);
         const message: IMessage = {
             messageID: 0,
             messageText: msg
@@ -44,11 +43,6 @@ export class MessageService {
 
 
     editMessageRecord(id: number, updateMessage: string): Observable<void | {}> {
-        // const loginDate = today.toISOString().split('T')[0];
-        // console.log(id);
-        // console.log(updateMessage);
-        debugger;
-
         const data: IMessage = {
             messageID: id,
             messageText: updateMessage

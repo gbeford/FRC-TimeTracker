@@ -14,7 +14,7 @@ export class AddEditEventComponent implements OnInit {
   public addEventForm: FormGroup;
   dataSource: MatTableDataSource<any>; // EventDataSource;
   // eventList: IEvent[];
-  displayedColumns = ['editMessage', 'eventText', 'removeEvent'];
+  displayedColumns = ['editEvent', 'eventText', 'removeEvent'];
 
   @ViewChild(MatSort) sort: MatSort;
 
@@ -33,11 +33,12 @@ export class AddEditEventComponent implements OnInit {
       this.dataSource = new MatTableDataSource(data);
       this.dataSource.sort = this.sort;
       this.changeDetectorRefs.detectChanges();
-      console.log('show events ', data);
     });
   }
 
-  get eventText() { return this.addEventForm.get('eventsTxtCtrl'); }
+  get eventText() {
+    return this.addEventForm.get('eventsTxtCtrl');
+  }
 
   private createForm() {
     this.addEventForm = this.formBuilder.group({
@@ -46,8 +47,8 @@ export class AddEditEventComponent implements OnInit {
   }
 
   submit() {
-    console.log(this.addEventForm.value.eventsTxtCtrl);
-    // debugger
+    console.log('Submit ', this.addEventForm.value.eventsTxtCtrl);
+
     if (this.addEventForm.valid) {
       this.eventService.saveEvent(
         this.titlecasePipe.transform(
@@ -60,15 +61,12 @@ export class AddEditEventComponent implements OnInit {
 
   update(el: IEvent, newEvent: string) {
     if (newEvent == null) { return; }
-    console.log('New text from popup box ', newEvent);
-    console.log('IEvent ', el);
-    this.showEvents();
-    this.addEventForm.reset();
-    this.eventService.editEventRecord(el.eventID, newEvent).subscribe();
+    this.eventService.editEventRecord(el.eventID, newEvent).subscribe(res => {
+      this.showEvents();
+    });
   }
 
   deleteEvent(el: number) {
-    console.log('delete id ', el);
     this.eventService.deleteEventRecord(el).subscribe((data) => {
       alert('Record Deleted');
       this.showEvents();

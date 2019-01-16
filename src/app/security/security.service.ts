@@ -38,11 +38,10 @@ export class SecurityService {
     // See if an array of values was passed in.
     if (typeof claimType === 'string') {
       ret = this.isClaimValid(claimType, claimValue);
-      console.log('String ret claim ', claimType + ' value ' + claimValue);
     } else {
       const claims: string[] = claimType;
       if (claims) {
-        console.log('Claims ', claims);
+       // console.log('Claims ', claims);
         for (let i = 0; i < claims.length; i++) {
           ret = this.isClaimValid(claims[i]);
           // If one is successful, then let them in

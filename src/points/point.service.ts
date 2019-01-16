@@ -22,7 +22,6 @@ export class PointService {
 
   savePoint(msg: string) {
     const date = new Date();
-    console.log('message' + msg);
     const points: IPoints = {
       eventId: null,
       Points: 0,

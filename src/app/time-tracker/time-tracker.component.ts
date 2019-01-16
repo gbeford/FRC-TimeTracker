@@ -43,7 +43,6 @@ export class TimeTrackerComponent implements OnInit {
   }
 
   createForm() {
-    console.log('here');
     this.timeTrackerForm = this.formBuilder.group({
       eventsCtrl: ['', [<any>Validators.required]]
 
@@ -61,12 +60,10 @@ export class TimeTrackerComponent implements OnInit {
   // this function is using asyc pipe
   getEvents() {
     this.eventList = this.eventService.getEventsList();
-    console.log('events ', this.eventList);
   }
 
   checkIfSignedIn() {
     if (this.selectedStudent) {
-      console.log(this.selectedStudent);
       if (!this.selectedStudent.isSignedIn) {
         this.enterBtn = 'Sign in';
         this.timeTrackerForm.get('eventsCtrl').enable();
@@ -92,7 +89,6 @@ export class TimeTrackerComponent implements OnInit {
         });
       }
 
-      console.log('student message ', this.selectedStudent);
       if (this.selectedStudent.messages) {
         if (this.selectedStudent.messages.length > 0) {
           this.openDialog(this.selectedStudent);
@@ -107,7 +103,6 @@ export class TimeTrackerComponent implements OnInit {
   // autoComplete
   onNotify(value: Student): void {
     this.selectedStudent = value;
-    console.log('autoComplete from time component ', value);
     this.checkIfSignedIn();
   }
 

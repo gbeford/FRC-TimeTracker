@@ -38,7 +38,6 @@ export class EditMessageComponent implements OnInit {
       this.dataSource = new MatTableDataSource(data);
       this.dataSource.sort = this.sort;
       this.changeDetectorRefs.detectChanges();
-      console.log('show message ', data);
     });
   }
 
@@ -51,8 +50,6 @@ export class EditMessageComponent implements OnInit {
   }
 
   submit() {
-    // console.log(this.addMessageForm.value.messageTxtCtrl);
-
     if (this.addMessageForm.valid) {
       this.messageService.saveMessage(this.titlecasePipe.transform(this.addMessageForm.value.messageTxtCtrl)).subscribe(res => {
         this.addMessageForm.reset();
@@ -63,16 +60,12 @@ export class EditMessageComponent implements OnInit {
 
   update(el: IMessage, newMessage: string) {
     if (newMessage == null) { return; }
-    console.log('popup ', newMessage);
-    console.log('IMessage ', el);
-
     this.messageService.editMessageRecord(el.messageID, newMessage).subscribe(res => {
       this.showMessage();
     });
   }
 
   deleteMessage(el: number) {
-    console.log('delete id ', el);
     this.messageService.deleteMessageRecord(el).subscribe((data) => {
       alert('Record Deleted');
       this.showMessage();

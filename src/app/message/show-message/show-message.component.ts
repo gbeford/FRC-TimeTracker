@@ -31,7 +31,6 @@ export class ShowMessageComponent implements OnInit {
   getMessages() {
     this.messageService.getMessageList().subscribe(s => {
       this.messageList = s;
-      console.log('message ', this.messageList);
     });
   }
 
@@ -56,15 +55,11 @@ export class ShowMessageComponent implements OnInit {
         messages = [];
       } else {
         messages = this.showMessageForm.value.messageCtrl;
-        console.log(messages);
       }
 
       this.studentService.setMessage(this.studentID, messages).subscribe(res => {
         this.showMessageForm.reset();
       });
-
-      // console.log(this.showMessageForm.value.messageCtrl);
-      // console.log(this.showMessageForm.value.clearMessages);
     }
   }
 

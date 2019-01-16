@@ -14,7 +14,7 @@ import { MatAutocompleteModule } from '@angular/material/autocomplete';
 import { environment } from '@environment/environment';
 import { TitleCasePipe } from '@angular/common';
 import { SatPopoverModule } from '@ncstate/sat-popover';
-import { InlineEditComponent } from './message/edit-message/inline-edit.component';
+import { InlineEditComponent } from './shared/inline-edit/inline-edit.component';
 
 import { ReportsComponent } from './reports/reports.component';
 import { MenuComponent } from './menu/menu.component';
@@ -49,6 +49,7 @@ import { HttpInterceptorModule } from './security/http-interceptor';
 import { HasClaimDirective } from './security/has-claim.directive';
 import { AddEditEventComponent } from './events/add-edit-event.component';
 import { EventsService } from './events/events.service';
+
 
 
 @NgModule({

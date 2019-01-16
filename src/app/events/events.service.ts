@@ -19,19 +19,21 @@ export class EventsService {
   getEventsList(): Observable<IEvent[]> {
     return this.http.get<IEvent[]>(`${environment.baseUrl}${environment.eventApiUrl}`)
       .pipe(
-        tap(ev => console.log('service', ev)),
+        tap(ev =>
+          console.log('get events service ', ev)),
         catchError(Utilities.handleError)
       );   // ...errors if any
   }
 
   // CRUD
 
-  saveEvent(msg: string) {
+  saveEvent(newEvent: string) {
     // const date = new Date();
-    console.log('message ' + msg);
+    debugger
+    console.log('event ' + newEvent);
     const event: IEvent = {
       eventID: 0,
-      description: msg,
+      description: newEvent,
       show: true,
       sortOrder: 0
     };
@@ -44,9 +46,6 @@ export class EventsService {
 
 
   editEventRecord(id: number, updateEvent: string): Observable<void | {}> {
-    console.log('Update event ' + id + ' new text ' + updateEvent);
-
-    debugger;
     const data: IEvent = {
       eventID: id,
       description: updateEvent,
