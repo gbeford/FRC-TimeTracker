@@ -13,7 +13,6 @@ import { IEvent } from 'app/model/event';
 export class AddEditEventComponent implements OnInit {
   public addEventForm: FormGroup;
   dataSource: MatTableDataSource<any>; // EventDataSource;
-  // eventList: IEvent[];
   displayedColumns = ['editEvent', 'eventText', 'removeEvent'];
 
   @ViewChild(MatSort) sort: MatSort;
@@ -47,7 +46,7 @@ export class AddEditEventComponent implements OnInit {
   }
 
   submit() {
-    console.log('Submit ', this.addEventForm.value.eventsTxtCtrl);
+   // console.log('Submit ', this.addEventForm.value.eventsTxtCtrl);
 
     if (this.addEventForm.valid) {
       this.eventService.saveEvent(

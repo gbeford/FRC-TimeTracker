@@ -28,9 +28,7 @@ export class EventsService {
   // CRUD
 
   saveEvent(newEvent: string) {
-    // const date = new Date();
-    debugger
-    console.log('event ' + newEvent);
+    // console.log('event ' + newEvent);
     const event: IEvent = {
       eventID: 0,
       description: newEvent,
