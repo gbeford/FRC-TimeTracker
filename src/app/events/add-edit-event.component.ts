@@ -60,7 +60,7 @@ export class AddEditEventComponent implements OnInit {
 
   update(el: IEvent, newEvent: string) {
     if (newEvent == null) { return; }
-    this.eventService.editEventRecord(el.eventID, newEvent).subscribe(res => {
+    this.eventService.editEventRecord(el.eventID, this.titlecasePipe.transform(newEvent)).subscribe(res => {
       this.showEvents();
     });
   }

@@ -60,7 +60,7 @@ export class EditMessageComponent implements OnInit {
 
   update(el: IMessage, newMessage: string) {
     if (newMessage == null) { return; }
-    this.messageService.editMessageRecord(el.messageID, newMessage).subscribe(res => {
+    this.messageService.editMessageRecord(el.messageID, this.titlecasePipe.transform(newMessage)).subscribe(res => {
       this.showMessage();
     });
   }
