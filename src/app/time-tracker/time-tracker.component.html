@@ -19,7 +19,7 @@
 
     <div *ngIf='selectedStudent'>
       <div class="mat-body-2" *ngIf="selectedStudent.isSignedIn">{{selectedStudent.firstName}} signed in at
-        {{selectedStudent.signInTime | date:'hh:mm a'}}</div>
+        <time>{{selectedStudent.signInTime | date:'hh:mm a'}}</time></div>
       <button class='trackerBtn' type="button" (click)='save()'>{{enterBtn}}</button>
     </div>
 

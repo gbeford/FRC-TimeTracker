@@ -86,6 +86,10 @@ import { AddEditEventComponent } from './events/add-edit-event.component';
                 canActivate: [AuthGuard],
                 data: { claim: 'canAccess_Admin' }
             },
+            {
+                path: 'test',
+                component: TestSharedComponentsComponent,
+            },
 
             // { path: 'badges', component: BadgeViewComponent },
             // { path: 'applyPoints', component: ApplyPointsToStudentComponent },

@@ -1,12 +1,9 @@
-<div class="container">
-  <div>
-    <div class="col-xs-12">
-      <div class="alert alert-danger" *ngIf="securityObject && !securityObject.isAuthenticated">
-        <p>Invalid User Name / Password.</p>
-      </div>
+<div>
+  <div class="col-xs-12">
+    <div class="alert alert-danger" *ngIf="securityObject && !securityObject.isAuthenticated">
+      <p>Invalid User Name / Password.</p>
     </div>
   </div>
-
 
   <form #loginForm="ngForm" (ngSubmit)="login(loginForm)">
     <div class="row">

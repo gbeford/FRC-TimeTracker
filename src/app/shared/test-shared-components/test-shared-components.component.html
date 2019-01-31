@@ -1,9 +1,14 @@
 <form class="example-form" [formGroup]="testPage">
   <p>
-  test-shared-components works!
-</p>
+    test-shared-components works!
+  </p>
+  <!-- alert box -->
+  <div>
+    <app-alert-message *ngIf="success" [alertMessage]="alertmessage"> </app-alert-message>
+  </div>
 
-<div>
-  <app-auto-complete (notify)='onNotify($event)' [autoCompleteForm]="testPage">Loading...</app-auto-complete>
-</div>
+  <!-- student auto complete -->
+  <div>
+    <app-auto-complete (notify)='onNotify($event)' [autoCompleteForm]="testPage">Loading...</app-auto-complete>
+  </div>
 </form>

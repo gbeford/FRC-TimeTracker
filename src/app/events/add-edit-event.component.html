@@ -1,5 +1,12 @@
 <div class="container">
   <div class="container-add">
+<!-- <div class="alert alert-success" *ngIf="this.success" role="alert">
+{{this.alertMessage}}
+</div> -->
+<div>
+<app-alert-message *ngIf="this.success" [alertMessage]="this.alertMessage"> </app-alert-message>
+</div>
+
     <h2>
       Add A New Event
     </h2>

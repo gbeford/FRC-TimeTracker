@@ -49,6 +49,11 @@ import { HttpInterceptorModule } from './security/http-interceptor';
 import { HasClaimDirective } from './security/has-claim.directive';
 import { AddEditEventComponent } from './events/add-edit-event.component';
 import { EventsService } from './events/events.service';
+import { SignUpFormComponent } from './sign-up-form/sign-up-form.component';
+import { ApparelOrderFormComponent } from './apparel/apparel-order-form/apparel-order-form.component';
+import { ApparelOrdersReportComponent } from './apparel/apparel-orders-report/apparel-orders-report.component';
+import { AlertMessageComponent } from './shared/alert-message/alert-message.component';
+
 
 
 
@@ -79,6 +84,10 @@ import { EventsService } from './events/events.service';
     LoginComponent,
     HasClaimDirective,
     AddEditEventComponent,
+    SignUpFormComponent,
+    ApparelOrderFormComponent,
+    ApparelOrdersReportComponent,
+    AlertMessageComponent,
   ],
   imports: [
     BrowserModule,

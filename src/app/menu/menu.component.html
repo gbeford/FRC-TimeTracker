@@ -8,11 +8,11 @@
     <a [routerLink]="['/']" mat-menu-item>
       <span>Home </span>
     </a>
-<ng-container *ngIf="securityObject.isAuthenticated">
-  <a [routerLink]="['/event']" *hasClaim="'canAccess_Admin'" mat-menu-item>
-    <span>Add New Event</span>
-  </a>
-</ng-container>
+    <ng-container *ngIf="securityObject.isAuthenticated">
+      <a [routerLink]="['/event']" *hasClaim="'canAccess_Admin'" mat-menu-item>
+        <span>Add New Event</span>
+      </a>
+    </ng-container>
     <ng-container *ngIf="securityObject.isAuthenticated">
       <a [routerLink]="['/message']" *hasClaim="'canAccess_Admin'" mat-menu-item>
         <span>Add New Message</span>
@@ -34,6 +34,11 @@
         <span>Track Time</span>
       </a>
     </ng-container>
+
+    <a [routerLink]="['/test']" mat-menu-item>
+      <span>Test</span>
+    </a>
+
 
     <!--       TODO: need to re-wire back up for page to work again       -->
     <!-- <ng-container *ngIf="securityObject.isAuthenticated">

@@ -11,6 +11,9 @@ import { Student } from '../../model/student';
 export class TestSharedComponentsComponent implements OnInit {
 
   public testPage: FormGroup;
+  alertmessage: string;
+  success = false;
+
 
   constructor(private formBuilder: FormBuilder) { }
 
@@ -21,6 +24,8 @@ export class TestSharedComponentsComponent implements OnInit {
 
   onNotify(message: Student): void {
     alert(message.studentId);
+    this.alertmessage = 'SUCCESS';
+    this.success = true;
   }
 
   buildForm() {

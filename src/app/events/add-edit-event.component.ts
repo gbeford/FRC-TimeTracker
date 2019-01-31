@@ -14,6 +14,10 @@ export class AddEditEventComponent implements OnInit {
   public addEventForm: FormGroup;
   dataSource: MatTableDataSource<any>; // EventDataSource;
   displayedColumns = ['editEvent', 'eventText', 'removeEvent'];
+  success = false;
+  error = false;
+  alertMessage: string;
+
 
   @ViewChild(MatSort) sort: MatSort;
 
@@ -26,6 +30,8 @@ export class AddEditEventComponent implements OnInit {
     this.createForm();
     this.showEvents();
   }
+
+
 
   showEvents() {
     this.eventService.getEventsList().subscribe(data => {
@@ -46,7 +52,7 @@ export class AddEditEventComponent implements OnInit {
   }
 
   submit() {
-   // console.log('Submit ', this.addEventForm.value.eventsTxtCtrl);
+    // console.log('Submit ', this.addEventForm.value.eventsTxtCtrl);
 
     if (this.addEventForm.valid) {
       this.eventService.saveEvent(
@@ -54,6 +60,8 @@ export class AddEditEventComponent implements OnInit {
           this.addEventForm.value.eventsTxtCtrl)).subscribe(res => {
             this.addEventForm.reset();
             this.showEvents();
+            this.alertMessage = 'Event was added successfully.';
+            this.success = true;
           });
     }
   }
@@ -67,7 +75,8 @@ export class AddEditEventComponent implements OnInit {
 
   deleteEvent(el: number) {
     this.eventService.deleteEventRecord(el).subscribe((data) => {
-      alert('Record Deleted');
+      this.alertMessage = 'Event was deleted successfully.';
+      this.success = true;
       this.showEvents();
       this.addEventForm.reset();
     });
