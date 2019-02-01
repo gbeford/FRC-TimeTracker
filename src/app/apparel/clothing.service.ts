@@ -10,7 +10,7 @@ export class ClothingService {
   constructor() { }
 
   getClothingSize() {
-    this.size = ['S', 'M', 'L,', 'XL'];
+    this.size = ['S', 'M', 'L', 'XL'];
     return this.size;
   }
 }

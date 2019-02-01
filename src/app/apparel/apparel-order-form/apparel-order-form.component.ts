@@ -16,7 +16,7 @@ sizes: string[];
     this.getSizes();
   }
 
-  getSizes(){
+  getSizes() {
 
    this.sizes =  this.clothingService.getClothingSize();
   }
