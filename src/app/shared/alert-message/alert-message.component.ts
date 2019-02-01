@@ -1,4 +1,4 @@
-import { Component, OnInit, ElementRef, ViewChild, Input } from '@angular/core';
+import { Component, OnInit, ElementRef, ViewChild, Input, AfterViewInit } from '@angular/core';
 
 @Component({
   selector: 'app-alert-message',
@@ -19,8 +19,11 @@ export class AlertMessageComponent implements OnInit {
 
 
   ngOnInit() {
+    // setTimeout(() => { this.alert.nativeElement.classList.remove().fadeOut(); }, 1000);
+
   }
 
-
-
+  ngAfterViedwInit() {
+    setTimeout(() => { this.alert.nativeElement.classList.remove(); }, 1000);
+  }
 }

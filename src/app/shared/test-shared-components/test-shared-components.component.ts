@@ -23,7 +23,7 @@ export class TestSharedComponentsComponent implements OnInit {
   }
 
   onNotify(message: Student): void {
-    alert(message.studentId);
+    //  alert(message.studentId);
     this.alertmessage = 'SUCCESS';
     this.success = true;
   }

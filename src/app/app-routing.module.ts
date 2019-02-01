@@ -17,6 +17,7 @@ import { EditMessageComponent } from './message/edit-message/edit-message.compon
 import { LoginComponent } from './security/login.component';
 import { AuthGuard } from './security/auth.guard';
 import { AddEditEventComponent } from './events/add-edit-event.component';
+import { ApparelOrderFormComponent } from './apparel/apparel-order-form/apparel-order-form.component';
 
 
 
@@ -90,6 +91,11 @@ import { AddEditEventComponent } from './events/add-edit-event.component';
                 path: 'test',
                 component: TestSharedComponentsComponent,
             },
+            {
+                path: 'apparel',
+                component: ApparelOrderFormComponent,
+            },
+
 
             // { path: 'badges', component: BadgeViewComponent },
             // { path: 'applyPoints', component: ApplyPointsToStudentComponent },
