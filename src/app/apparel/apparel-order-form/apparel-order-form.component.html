@@ -1,33 +1,60 @@
 <h1>Shrewsbury Robotics Optional Apparel Order Form</h1>
-<div class="row">
-  <div class="col">
 
-    <img src="/assets/images/long_sleeve.png" alt="long sleeve">
-  </div>
-  <div class=" col">
-    <label>Long Sleeve </label>
-    <select id="genderCtrl">
-      <option>Mens</option>
-      <option>Womens</option>
-    </select>
-    <br />
-    <label>Size</label>
-    <select id="sizeCtrl">
-      <option *ngFor="let s of sizes" [value]="s"> {{s}}</option>
-    </select>
 
+
+
+<div class="container">
+  <div class="card">
+    <div class="container-fliud">
+      <div class="wrapper row">
+        <div class="preview col-md-5">
+
+          <div class="preview-pic tab-content">
+            <div class="tab-pane active" id="pic-1"><img src="/assets/images/long_sleeve.png" /></div>
+          </div>
+        </div>
+        <div class="details col-md-5">
+          <h3 class="product-title">Long Sleeve T-shirt</h3>
+          <div class="rating">
+            <div class="stars">
+              <span class="fa fa-star checked"></span>
+              <span class="fa fa-star checked"></span>
+              <span class="fa fa-star checked"></span>
+              <span class="fa fa-star"></span>
+              <span class="fa fa-star"></span>
+            </div>
+            <!-- <span class="review-no">41 reviews</span> -->
+          </div>
+          <p class="product-description">Grey long sleeve t-shirt with "Property of 467 Shrewsbury Robotics" saying on
+            the front.
+            Offered in performance (drifit) or cotton.</p>
+          <h4 class="price">price: <span>$10</span></h4>
+          <span>Add $2.50 per for the XXL size</span>
+          <!-- <p class="vote"><strong>91%</strong> of buyers enjoyed this product! <strong>(87 votes)</strong></p> -->
+          <h5 class="colors">gender:
+            <select id="genderCtrl">
+              <option>Mens</option>
+              <option>Womens</option>
+            </select>
+          </h5>
+          <h5 class="sizes">sizes:
+            <select id="sizeCtrl">
+              <option *ngFor="let s of sizes" [value]="s"> {{s}}</option>
+            </select>
+          </h5>
+          <h5 class="colors">Type:
+            <mat-checkbox aria-label="shirt type Drifit">Drifit</mat-checkbox>
+            <mat-checkbox aria-label="shirt type Cotton">Cotton</mat-checkbox>
+          </h5>
+          <h5 class="colors">quanity:
+            <input type='number'>
+          </h5>
+          <div class="action">
+            <button class="add-to-cart btn btn-default" type="button">add to cart</button>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
-  <div class="col">
-    <label>Type</label>
-    <mat-checkbox aria-label="shirt type Drifit">Drifit</mat-checkbox>
-    <mat-checkbox aria-label="shirt type Cotton">Cotton</mat-checkbox>
-  </div>
-  <div class="col">
-    <label>Price</label>
-    <label>$10.00 </label>
-    <label>Add $2.50 per for the XXL size</label>
-  </div>
-  <div class="col">
-    <label>Qty____</label>
-  </div>
+  <hr>
 </div>
