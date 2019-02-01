@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ClothingService } from '../clothing.service';
 
 @Component({
   selector: 'app-apparel-order-form',
@@ -7,9 +8,17 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ApparelOrderFormComponent implements OnInit {
 
-  constructor() { }
+sizes: string[];
+
+  constructor(private clothingService: ClothingService ) { }
 
   ngOnInit() {
+    this.getSizes();
+  }
+
+  getSizes(){
+
+   this.sizes =  this.clothingService.getClothingSize();
   }
 
 }

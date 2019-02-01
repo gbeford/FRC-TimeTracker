@@ -1,19 +1,29 @@
 <h1>Shrewsbury Robotics Optional Apparel Order Form</h1>
-<div class="row">
+<div class="row" >
   <div class="col">
 
-    <img src="/assets/images/long-sleeve.png" alt="long sleeve">
+    <img src="/assets/images/long_sleeve.png" alt="long sleeve">
   </div>
   <div class=" col">
-    <label>Long Sleeve </label>
-    <p>Mens S M L XL 2XL </p>
-    <p>Womens: S M L XL</p>
+      <label>Long Sleeve </label>
+       <select id="genderCtrl">
+          <option>Mens</option> 
+          <option>Womens</option>
+        </select>
+      <br/>
+      <label>Size</label>
+    <select id="sizeCtrl">
+      <option *ngFor="let s of sizes" [value]="s"> {{s}}</option>
+      </select>
+    
   </div>
   <div class="col">
+      <label>Type</label>
     <mat-checkbox aria-label="shirt type Drifit">Drifit</mat-checkbox>
     <mat-checkbox aria-label="shirt type Cotton">Cotton</mat-checkbox>
   </div>
   <div class="col">
+      <label>Price</label>
     <label>$10.00 </label>
     <label>Add $2.50 per for the XXL size</label>
   </div>
