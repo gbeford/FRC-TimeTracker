@@ -15,10 +15,17 @@ export class LoginComponent implements OnInit {
   user: AppUser = new AppUser();
   securityObject: AppUserAuth = null;
   returnUrl: string;
+  signUpBox = false;
 
   constructor(private securityService: SecurityService,
     private route: ActivatedRoute,
     private router: Router) { }
+
+
+
+  ngOnInit() {
+    this.returnUrl = this.route.snapshot.queryParamMap.get('returnUrl');
+  }
 
   login(form: NgForm) {
     if (form.valid) {
@@ -41,8 +48,9 @@ export class LoginComponent implements OnInit {
     form.reset();
   }
 
-  ngOnInit() {
-    this.returnUrl = this.route.snapshot.queryParamMap.get('returnUrl');
-  }
 
+
+  showSignUpBox() {
+    this.signUpBox = true;
+  }
 }

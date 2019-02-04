@@ -87,18 +87,16 @@
             <!-- Button -->
             <div class="col-sm-12 controls">
               <button class="btn btn-success" type="submit" [disabled]="!loginForm.form.valid">Login </button>
-              <a id="btn-fblogin" href="#" class="btn btn-primary">Login with Facebook</a>
-
             </div>
           </div>
+          <br />
 
-
-<!-- SignUp formm -->
-          <div class="form-group">
+          <!-- SignUp formm -->
+          <div class="form-group signup">
             <div class="col-md-12 control">
               <div style="border-top: 1px solid#888; padding-top:15px; font-size:85%">
                 Don't have an account!
-                <a href="#" onClick="$('#loginbox').hide(); $('#signupbox').show()">
+                <a onClick="showSignUpBox()">
                   Sign Up Here
                 </a>
               </div>
@@ -108,7 +106,9 @@
       </div>
     </div>
   </div>
-  <div id="signupbox" style="display:none; margin-top:50px" class="mainbox col-md-6 col-md-offset-3 col-sm-8 col-sm-offset-2">
+
+  <!-- sign up form -->
+  <div id="signupbox" *ngif="signUpBox" style="margin-top:50px" class="mainbox col-md-6 col-md-offset-3 col-sm-8 col-sm-offset-2">
     <div class="panel panel-info">
       <div class="panel-heading">
         <div class="panel-title">Sign Up</div>
