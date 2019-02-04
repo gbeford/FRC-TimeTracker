@@ -4,7 +4,7 @@ import { ClothingService } from '../clothing.service';
 @Component({
   selector: 'app-apparel-order-form',
   templateUrl: './apparel-order-form.component.html',
-  styleUrls: ['./apparel-order-form.component.css']
+  styleUrls: ['./apparel-order-form.component.scss']
 })
 export class ApparelOrderFormComponent implements OnInit {
 
