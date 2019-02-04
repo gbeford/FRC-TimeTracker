@@ -22,7 +22,6 @@ export class LoginComponent implements OnInit {
     private router: Router) { }
 
 
-
   ngOnInit() {
     this.returnUrl = this.route.snapshot.queryParamMap.get('returnUrl');
   }
@@ -49,8 +48,16 @@ export class LoginComponent implements OnInit {
   }
 
 
-
   showSignUpBox() {
     this.signUpBox = true;
   }
+
+  signIn() {
+    this.signUpBox = false;
+  }
+
+  forgetPassword() {
+    // TODO send password to user
+  }
+
 }
