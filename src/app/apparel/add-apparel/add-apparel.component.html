@@ -1,20 +1,28 @@
 <!-- add form -->
 
-<form role="form" class="col-md-9 go-right">
+<form role="form" class="col-md-9 go-right" [formGroup]="apparelForm" *ngIf="apparelForm" novalidate>
   <h2>Add Apparel Item</h2>
-
   <div class="row">
     <div class="col-xs-9 col-sm-9 col-md-9">
       <div class="form-group">
         <label for="item">Item</label>
-        <input id="item" name="item" type="text" class="form-control" formControlName="itemCtrl" required>
+        <input id="item" name="item" type="text" class="form-control" formControlName="itemCtrl" [ngClass]="{ 'is-invalid': f.itemCtrl.touched && f.itemCtrl.errors }">
+          <div *ngIf="f.itemCtrl.invalid && (f.itemCtrl.dirty || f.itemCtrl.touched)" class="invalid-feedback">
+            <div *ngIf="f.itemCtrl.errors.required">Clothing item is required.
+            </div>
+          </div>
       </div>
     </div>
+
     <div class="col-xs-9 col-sm-9 col-md-9">
       <div class="form-group">
         <label for="description">Item Description</label>
         <textarea id="description" name="description" type="text" class="form-control" formControlName="descCtrl"
-          required></textarea>
+          [ngClass]="{ 'is-invalid': f.descCtrl.touched && f.descCtrl.errors }"></textarea>
+          <div *ngIf="f.descCtrl.invalid && (f.descCtrl.dirty || f.descCtrl.touched)" class="invalid-feedback">
+            <div *ngIf="f.descCtrl.errors.required">Clothing description is required.
+            </div>
+          </div>
       </div>
     </div>
   </div>
@@ -22,8 +30,7 @@
     <div class="col-xs-2 col-sm-2 col-md-2">
       <div class="form-group">
         <label for="gender">Gender</label>
-        <!-- <input id="gender" name="gender" class="form-control" formControlName="genderCtrl" required> -->
-        <select id="gender" formControlName="genderCtrl" class="form-control" required>
+        <select id="gender" formControlName="genderCtrl" class="form-control" formControlName="genderCtrl">
           <option> Male</option>
           <option> Female</option>
         </select>
@@ -32,7 +39,7 @@
     <div class="col-xs-2 col-sm-2 col-md-2">
       <div class="form-group">
         <label for="size">Size</label>
-        <select id="gender" formControlName="genderCtrl" class="form-control" required>
+        <select id="gender" formControlName="genderCtrl" class="form-control" formControlName="sizeCtrl">
           <option> XS</option>
           <option> S</option>
           <option> M</option>
@@ -45,7 +52,7 @@
     <div class="col-xs-2 col-sm-2 col-md-2">
       <div class="form-group">
         <label for="price">Price</label>
-        <input id="price" name="price" class="form-control" required>
+        <input id="price" name="price" type="number" class="form-control" formControlName="priceCtrl">
       </div>
     </div>
   </div>
@@ -56,5 +63,5 @@
       </div>
     </div>
   </div>
-  <button class="btn btn-primary">Submit </button>
+  <button class="btn btn-primary" >Submit </button>
 </form>

@@ -37,7 +37,8 @@ export class TimeTrackerComponent implements OnInit {
 
   ngOnInit(): void {
     this.createForm();
-    this.timeTrackerForm.controls['eventsCtrl'].setValue('1');
+    this.timeTrackerForm.controls['eventsCtrl'].setValue('1'); // set dropdown default
+    // [selected]="e.sortOrder == 1"  removed from html as above seems to work
     this.getAllStudents();
     this.getEvents();
   }

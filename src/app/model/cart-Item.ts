@@ -1,6 +1,6 @@
 import { BPClient } from 'blocking-proxy';
 
-/* Defines the cart itevm entity */
+/* Defines the cart item entity */
 export interface ICartItem {
     apparelID: number;
     item: string;

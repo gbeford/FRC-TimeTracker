@@ -1,27 +1,29 @@
-<div class="container">
-  <!-- {{missions | json}} -->
-  <form class="form-horizontal" [formGroup]="timeTrackerForm" *ngIf="timeTrackerForm" novalidate>
+<!-- {{missions | json}} -->
+<form class="form-horizontal" class="col-md-9 go-right" [formGroup]="timeTrackerForm" *ngIf="timeTrackerForm"
+  novalidate>
 
-    <H2>{{title}}</H2>
-    <label>Event
+  <H2>{{title}}</H2>
 
-      <select id="eventsCtrl" formControlName="eventsCtrl" [disabled]='this.signedIn'>
-        <option *ngFor="let e of eventList | async" [value]="e.eventID" [selected]="e.sortOrder == 1">{{
-          e.description}}</option>
-      </select>
-
-    </label><br />
-
-
-    <div>
+  <div class="row">
+    <div class="col-xs-4 col-sm-4 col-md-4">
+      <div class="form-group">
+        <label for="event">Event</label>
+        <select id="eventsCtrl" formControlName="eventsCtrl" class="form-control" [disabled]='this.signedIn'>
+          <option *ngFor="let e of eventList | async" [value]="e.eventID">{{
+            e.description}}</option>
+        </select>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-xs-12 col-sm-12 col-md-12">
       <app-auto-complete (notify)='onNotify($event)' [autoCompleteForm]="timeTrackerForm">Loading...</app-auto-complete>
     </div>
+  </div>
 
-    <div *ngIf='selectedStudent'>
-      <div class="mat-body-2" *ngIf="selectedStudent.isSignedIn">{{selectedStudent.firstName}} signed in at
-        <time>{{selectedStudent.signInTime | date:'hh:mm a'}}</time></div>
-      <button class='trackerBtn' type="button" (click)='save()'>{{enterBtn}}</button>
-    </div>
-
-  </form>
-</div>
+  <div *ngIf='selectedStudent'>
+    <div class="mat-body-2" *ngIf="selectedStudent.isSignedIn">{{selectedStudent.firstName}} signed in at
+      <time>{{selectedStudent.signInTime | date:'hh:mm a'}}</time></div>
+    <button class='trackerBtn' type="button" (click)='save()'>{{enterBtn}}</button>
+  </div>
+</form>
