@@ -1,6 +1,8 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { ImageUploadServiceService } from './image-upload-service.service';
 
+// https://medium.freecodecamp.org/how-to-make-image-upload-easy-with-angular-1ed14cb2773b
+// https://www.academind.com/learn/angular/snippets/angular-image-upload-made-easy/
 
 @Component({
   selector: 'app-image-upload',
