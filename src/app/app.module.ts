@@ -53,6 +53,8 @@ import { SignUpFormComponent } from './sign-up-form/sign-up-form.component';
 import { ApparelOrderFormComponent } from './apparel/apparel-order-form/apparel-order-form.component';
 import { ApparelOrdersReportComponent } from './apparel/apparel-orders-report/apparel-orders-report.component';
 import { AlertMessageComponent } from './shared/alert-message/alert-message.component';
+import { AddApparelComponent } from './apparel/add-apparel/add-apparel.component';
+import { ImageUploadComponent } from './shared/image-upload/image-upload.component';
 
 
 
@@ -88,6 +90,8 @@ import { AlertMessageComponent } from './shared/alert-message/alert-message.comp
     ApparelOrderFormComponent,
     ApparelOrdersReportComponent,
     AlertMessageComponent,
+    AddApparelComponent,
+    ImageUploadComponent,
   ],
   imports: [
     BrowserModule,

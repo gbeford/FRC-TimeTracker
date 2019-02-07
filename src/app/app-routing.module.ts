@@ -18,6 +18,8 @@ import { LoginComponent } from './security/login.component';
 import { AuthGuard } from './security/auth.guard';
 import { AddEditEventComponent } from './events/add-edit-event.component';
 import { ApparelOrderFormComponent } from './apparel/apparel-order-form/apparel-order-form.component';
+import { AddApparelComponent } from './apparel/add-apparel/add-apparel.component';
+
 
 
 
@@ -94,6 +96,10 @@ import { ApparelOrderFormComponent } from './apparel/apparel-order-form/apparel-
             {
                 path: 'apparel',
                 component: ApparelOrderFormComponent,
+            },
+            {
+                path: 'editApparel',
+                component: AddApparelComponent,
             },
 
 

@@ -1,11 +1,12 @@
 /* Defines the apparel entity */
 export interface IApparel {
-    apparelID: number;
+    apparelId: number;
     item: string;
     description: string;
-    price: number;
     gender: string;
+    price: number;
     size: string;
     type: string;
     quantity: number;
+
 }

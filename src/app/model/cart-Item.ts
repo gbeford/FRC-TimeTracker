@@ -1,3 +1,5 @@
+import { BPClient } from 'blocking-proxy';
+
 /* Defines the cart itevm entity */
 export interface ICartItem {
     apparelID: number;
@@ -8,4 +10,5 @@ export interface ICartItem {
     size: string;
     type: string;
     quantity: number;
+    displayName: boolean;
 }

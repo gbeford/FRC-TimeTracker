@@ -23,7 +23,12 @@ export class TestSharedComponentsComponent implements OnInit {
   }
 
   onNotify(message: Student): void {
-    //  alert(message.studentId);
+    // show that your able to pull out the student information
+    // from the shared component
+    // alert(message.firstName + ' ' + message.lastName);
+
+    // show alert message works when student is selected
+    // from the shared component
     this.alertmessage = 'SUCCESS';
     this.success = true;
   }
@@ -35,5 +40,15 @@ export class TestSharedComponentsComponent implements OnInit {
     });
   }
 
+  alerttNotify() {
+    this.success = false;
+  }
+
+  uploadNotify() {
+
+  }
+  getImage() {
+
+  }
 
 }

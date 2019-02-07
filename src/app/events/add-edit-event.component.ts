@@ -13,9 +13,9 @@ import { IEvent } from 'app/model/event';
 export class AddEditEventComponent implements OnInit {
   public addEventForm: FormGroup;
   dataSource: MatTableDataSource<any>; // EventDataSource;
-  displayedColumns = ['editEvent', 'eventText', 'removeEvent'];
+  displayedColumns = ['editEvent', 'eventId', 'eventText', 'removeEvent'];
   success = false;
-  error = false;
+  error = false;  // TODO set error alert when add/delete doesnt work
   alertMessage: string;
 
 
@@ -31,6 +31,9 @@ export class AddEditEventComponent implements OnInit {
     this.showEvents();
   }
 
+  alerttNotify() {
+    this.success = false;
+  }
 
 
   showEvents() {

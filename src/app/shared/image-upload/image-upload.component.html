@@ -1,0 +1,20 @@
+<!-- <input type="file" name="file" accept="image/*" (change)="this.processFile($event)">
+<label for="file">Choose a file</label>
+<br />
+<span>Only PNG,GIF,JPG,JPEG files allowed.</span> -->
+<!-- <input style="display: none" type="file" (change)="processFile($event)" #fileInput>
+<button (click)="fileInput.click()">Select File</button>
+<button (click)="onUpload()">Upload!</button> -->
+
+<br />
+<label for="file-upload" class="custom-file-upload">
+  <span id="file-selected"></span>
+  <svg xmlns="http://www.w3.org/2000/svg" width="20" height="17" viewBox="0 0 20 17">
+    <path d="M10 0l-5.2 4.9h3.3v5.1h3.8v-5.1h3.3l-5.2-4.9zm9.3 11.5l-3.2-2.1h-2l3.4 2.6h-3.5c-.1 0-.2.1-.2.1l-.8 2.3h-6l-.8-2.2c-.1-.1-.1-.2-.2-.2h-3.6l3.4-2.6h-2l-3.2 2.1c-.4.3-.7 1-.6 1.5l.6 3.1c.1.5.7.9 1.2.9h16.3c.6 0 1.1-.4 1.3-.9l.6-3.1c.1-.5-.2-1.2-.7-1.5z" /></svg>
+  <span>Choose a file&hellip;</span>
+</label>
+<input id="file-upload" type="file" accept="image/*" (change)="this.processFile($event)" />
+<br />
+{{this.filename}}
+<!-- <hr>
+<input type="file"> -->

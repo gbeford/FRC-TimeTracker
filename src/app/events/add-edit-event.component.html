@@ -1,11 +1,12 @@
 <div class="container">
   <div class="container-add">
-<!-- <div class="alert alert-success" *ngIf="this.success" role="alert">
+    <!-- <div class="alert alert-success" *ngIf="this.success" role="alert">
 {{this.alertMessage}}
 </div> -->
-<div>
-<app-alert-message *ngIf="this.success" [alertMessage]="this.alertMessage"> </app-alert-message>
-</div>
+    <div>
+      <app-alert-message *ngIf="this.success" [alertMessage]="this.alertMessage" (notify)='alerttNotify($event)'>
+      </app-alert-message>
+    </div>
 
     <h2>
       Add A New Event
@@ -43,6 +44,12 @@
               <app-inline-edit [value]="element.description"></app-inline-edit>
             </sat-popover>
           </mat-cell>
+        </ng-container>
+
+        <!-- Event Id  Column -->
+        <ng-container matColumnDef="eventId">
+          <mat-header-cell *matHeaderCellDef mat-sort-header fxFlex="100px"> Event Id </mat-header-cell>
+          <mat-cell *matCellDef="let event" fxFlex="100px"> {{event.eventID}}</mat-cell>
         </ng-container>
 
         <!-- Event text Column -->

@@ -4,7 +4,8 @@
   </p>
   <!-- alert box -->
   <div>
-    <app-alert-message *ngIf="success" [alertMessage]="alertmessage"> </app-alert-message>
+    <app-alert-message *ngIf="success" [alertMessage]="alertmessage" (notify)='alerttNotify($event)'>
+    </app-alert-message>
   </div>
 
   <!-- student auto complete -->
@@ -15,3 +16,7 @@
 
 <hr>
 
+
+
+<app-image-upload (notify)='uploadNotify($event)'></app-image-upload>
+<button (click)="getImage()">get image</button>
