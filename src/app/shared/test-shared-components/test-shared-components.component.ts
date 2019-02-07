@@ -45,10 +45,8 @@ export class TestSharedComponentsComponent implements OnInit {
   }
 
   uploadNotify() {
-
+    alert('image was selected');
   }
-  getImage() {
 
-  }
 
 }

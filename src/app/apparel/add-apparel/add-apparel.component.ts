@@ -12,4 +12,8 @@ export class AddApparelComponent implements OnInit {
   ngOnInit() {
   }
 
+  uploadNotify() {
+    alert('image was selected');
+  }
+
 }

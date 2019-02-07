@@ -98,7 +98,7 @@ import { AddApparelComponent } from './apparel/add-apparel/add-apparel.component
                 component: ApparelOrderFormComponent,
             },
             {
-                path: 'editApparel',
+                path: 'addApparel',
                 component: AddApparelComponent,
             },
 

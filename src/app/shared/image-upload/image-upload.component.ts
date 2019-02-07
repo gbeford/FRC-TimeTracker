@@ -19,7 +19,6 @@ export class ImageUploadComponent {
   constructor(private imageService: ImageUploadServiceService) { }
 
   processFile(event) {
-
     this.selectedFile = <File>event.target.files[0];
     console.log(this.selectedFile);
     this.filename = this.selectedFile.name;

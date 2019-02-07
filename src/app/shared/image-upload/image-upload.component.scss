@@ -9,8 +9,18 @@ input[type="file"] {
   cursor: pointer;
 }
 
-// ::-webkit-file-upload-button {
-//   background: black;
-//   color: red;
-//   padding: 1em;
-// }
+.btn-secondary {
+  color: #fff;
+  background-color: #6c757d;
+  border-color: #6c757d;
+}
+
+.btn-secondary:hover {
+  color: #fff;
+  background-color: #5d6266;
+  border-color: #5d6266;
+}
+
+path {
+  fill: white;
+}
