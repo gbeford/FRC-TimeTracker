@@ -1,7 +1,7 @@
-
-
 <mat-toolbar color="">
-
+  <span class="colonial">
+    <img class="colonialImg" src="/assets/images/colonial.png">
+  </span>
   <button mat-icon-button [matMenuTriggerFor]="appMenu">
     <mat-icon>menu</mat-icon>
   </button>
@@ -79,16 +79,15 @@
   {{ signedInStudents }} signed in.
   <span class="spacer"> </span>
   <span class="spacer"> </span>
-  <div style="padding-right: 50px;">
+  <div style="padding-right: 70px;">
     <div>
       <a routerLink="login" *ngIf="!securityObject.isAuthenticated">Login</a>
     </div>
     <div>
-      <a href="#" (onclick)="logout()" *ngIf="securityObject.isAuthenticated"> Logout {{ securityObject.userName}}</a>
+      <a href="#" (onclick)="logout()" *ngIf="securityObject.isAuthenticated"> Logout &nbsp;{{
+        securityObject.userName}}</a>
     </div>
   </div>
-  <span>
-    <img class="colonialImg" src="/assets/images/colonial.png">
-  </span>
 
+  <span class="glyphicon glyphicon-shopping-cart cart"></span>
 </mat-toolbar>

@@ -1,5 +1,10 @@
 @import '../../styles';
 
+
+a {
+  color: $primary-blue;
+}
+
 .spacer {
   -webkit-box-flex: 1;
   -ms-flex: 1 1 auto;
@@ -7,19 +12,19 @@
 }
 
 .mat-menu-content:not(:empty) {
-  padding-top: 1px; 
-  padding-bottom: 1px; 
+  padding-top: 1px;
+  padding-bottom: 1px;
 }
 
 
 .mat-menu-content {
-  padding-top: 1px; 
-  padding-bottom: 1px; 
+  padding-top: 1px;
+  padding-bottom: 1px;
 }
 
 .mat-toolbar,
 .mat-menu-content {
-  // background-color: $primary-blue;
+  background-color: $primary-gray;
   color: $primary-blue;
 }
 
@@ -49,7 +54,15 @@
   padding-bottom: 3px;
 }
 
-a {
-  color: $primary-blue;
+.colonial {
+  margin-right: 30px;
 }
 
+.cart {
+  font-size: 25px;
+  padding-right: 15px;
+}
+
+.login {
+  margin-right: 25x;
+}

@@ -16,6 +16,6 @@ export const environment = {
   logiOutUrl: 'api/logout',
   login: 'api/security/login_user',
   addMessagesToStudentUrl: 'api/Student/AddMessagesToStudent',
-  removeMessageFromStudent: 'api/Student/RemoveMessageFromStudent'
-
+  removeMessageFromStudent: 'api/Student/RemoveMessageFromStudent',
+  apparelApiUrl: 'api/messages'
 };

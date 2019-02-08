@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { ClothingService } from '../clothing.service';
+import { IApparel } from 'app/model/apparel';
 
 @Component({
   selector: 'app-add-apparel',
@@ -10,11 +12,18 @@ export class AddApparelComponent implements OnInit {
 
   public apparelForm: FormGroup;
   public submitted: boolean;
+  item: {};
+  formObj: IApparel;
+  sizeList: ['S', 'M'];
 
 
-  constructor(private formBuilder: FormBuilder) { }
+
+
+  constructor(private formBuilder: FormBuilder, private apparelService: ClothingService) { }
 
   ngOnInit() {
+    // this.sizeList = this.apparelService.getClothingSize();
+    console.log(this.sizeList);
     this.createForm();
   }
 
@@ -32,27 +41,29 @@ export class AddApparelComponent implements OnInit {
 
     });
   }
-// convenience getter for easy access to form fields
+  // convenience getter for easy access to form fields
   get f() { return this.apparelForm.controls; }
-
 
   save() {
     this.submitted = true;
-    if (this.apparelForm.dirty && this.apparelForm.valid) {
-  //     // copy the form values over the team object values
-  //     let t = Object.assign({}, this.team, this.teamEditForm.value);
-  //     this.teamService.saveTeam(t).subscribe(
-  //       resp => {
-  //         this.resp = resp
-  //         this.router.navigate(['/teams']);
-  //       },
-  //       err => {
-  //         this.err = <any>err
-  //         console.log(err);
-  //       }
-  //     );
+
+    if (this.apparelForm.valid) {
+      this.formObj = {
+        apparelId: null,
+        quantity: null,
+        item: this.apparelForm.value.itemCtrl,
+        description: this.apparelForm.value.descCtrl,
+        gender: this.apparelForm.value.genderCtrl,
+        price: this.apparelForm.value.priceCtrl,
+        size: this.apparelForm.value.sizeCtrl,
+        type: this.apparelForm.value.typeCtrl
+      };
+      this.apparelService.saveApparelItem(
+        this.formObj).subscribe(res => {
+          this.apparelForm.reset();
+        });
     }
-   }
+  }
 
 
 }

@@ -3,9 +3,17 @@
 $primary-blue:#2A4283;
 $secondary-blue:rgb(51, 78, 155);
 $primary-yellow:rgb(221, 204, 120);
+$primary-gray: #eee;
+;
+
 //---------------------------------------------------------
 html {
   font: 500 14px/32px Roboto, "Helvetica Neue", sans-serif;
+}
+
+html,
+body {
+  height: 100%
 }
 
 a {
@@ -25,6 +33,18 @@ h2 {
   border-radius: $radius;
 }
 
+// this removes the arrows in the number box
+input[type='number'] {
+  -moz-appearance: textfield;
+}
+
+// this remove the arrows in the number box
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
 .trackerBtn {
   background-color: $primary-blue;
   color: $primary-yellow;
@@ -39,12 +59,15 @@ h2 {
   font-size: 13px;
   font-weight: bold;
   margin: 15px 2px;
+
   &:hover {
     background-color: $secondary-blue;
   }
+
   &:active {
     transform: translateY(4px);
   }
+
   &:disabled {
     cursor: default;
     background-color: #f0f0f0;
@@ -63,7 +86,7 @@ h2 {
 }
 
 footer {
-  background-color: rgb(245, 245, 245);
+  background-color: $primary-gray;
   color: $primary-blue;
   height: 50px;
   width: 100%;
