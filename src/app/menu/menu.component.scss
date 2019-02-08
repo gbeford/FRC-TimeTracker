@@ -6,36 +6,50 @@
   flex: 1 1 auto;
 }
 
+.mat-menu-content:not(:empty) {
+  padding-top: 1px; 
+  padding-bottom: 1px; 
+}
+
+
+.mat-menu-content {
+  padding-top: 1px; 
+  padding-bottom: 1px; 
+}
+
 .mat-toolbar,
 .mat-menu-content {
-  background-color: $primary-blue;
-  color: $primary-yellow;
+  // background-color: $primary-blue;
+  color: $primary-blue;
 }
 
 // button in the hamburger menu (round circle)
 .mat-icon-button {
-  background-color: $secondary-blue;
+  // background-color: $secondary-blue;
   height: 36px;
   line-height: 30px;
+  color: $primary-blue;
 }
 
 .mat-toolbar-row,
 .mat-toolbar-single-row {
-  height: 100px;
+  height: 80px;
   font: 500 14px/32px Roboto, "Helvetica Neue", sans-serif;
 }
 
 .mat-menu-item {
   color: $primary-blue;
+  height: 38px;
 }
 
 .colonialImg {
   //background: url('/assets/images/colonial.png') no-repeat;
   width: auto;
-  height: 80px;
+  height: 70px;
   padding-bottom: 3px;
 }
 
 a {
-  color: #ddcc78;
+  color: $primary-blue;
 }
+

@@ -1,3 +1,5 @@
+
+
 <mat-toolbar color="">
 
   <button mat-icon-button [matMenuTriggerFor]="appMenu">
@@ -78,12 +80,6 @@
   <span class="spacer"> </span>
   <span class="spacer"> </span>
   <div style="padding-right: 50px;">
-    <!-- <div>
-      <a (click)="loginWithGoogle()" *ngIf="!user">Login</a>
-    </div>
-    <div *ngIf="user">
-      <a (click)='logOut()'>Log Out</a>
-    </div> -->
     <div>
       <a routerLink="login" *ngIf="!securityObject.isAuthenticated">Login</a>
     </div>
