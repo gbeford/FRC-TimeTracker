@@ -6,7 +6,7 @@
     <div class="col-xs-9 col-sm-9 col-md-9">
       <div class="form-group">
         <label for="item">Item</label>
-        <input id="item" name="item" type="text" class="form-control" formControlName="itemCtrl" [ngClass]="{ 'is-invalid': f.itemCtrl.touched && f.itemCtrl.errors }">
+        <input id="item" name="item" type="text" class="form-control" formControlName="itemCtrl" [ngClass]="{ 'is-invalid': apparelForm.controls['itemCtrl'].touched && apparelForm.controls['itemCtrl'].errors }">
         <div *ngIf="apparelForm.controls['itemCtrl'].invalid && (apparelForm.controls['itemCtrl'].dirty || apparelForm.controls['itemCtrl'].touched)"
           class="invalid-feedback">
           <div *ngIf="apparelForm.controls['itemCtrl'].errors.required">Clothing item is required.
@@ -19,7 +19,7 @@
       <div class="form-group">
         <label for="description">Item Description</label>
         <textarea id="description" name="description" type="text" class="form-control" formControlName="descCtrl"
-          [ngClass]="{ 'is-invalid': f.descCtrl.touched && f.descCtrl.errors }"></textarea>
+          [ngClass]="{ 'is-invalid': apparelForm.controls['descCtrl'].touched && apparelForm.controls['descCtrl'].errors }"></textarea>
         <div *ngIf="apparelForm.controls['descCtrl'].invalid && (apparelForm.controls['descCtrl'].dirty || apparelForm.controls['descCtrl'].touched)"
           class="invalid-feedback">
           <div *ngIf="apparelForm.controls['descCtrl'].errors.required">Clothing description is required.
@@ -32,7 +32,7 @@
     <div class="col-xs-2 col-sm-2 col-md-2">
       <div class="form-group">
         <label for="gender">Type</label>
-        <select id="gender" formControlName="typeCtrl" class="form-control" formControlName="typeCtrl" [ngClass]="{ 'is-invalid': f.typeCtrl.touched && f.typeCtrl.errors }">
+        <select id="gender" formControlName="typeCtrl" class="form-control" formControlName="typeCtrl" [ngClass]="{ 'is-invalid': apparelForm.controls['typeCtrl'].touched && apparelForm.controls['typeCtrl'].errors }">
           <option>Cotton </option>
           <option>DriFit </option>
         </select>
@@ -46,7 +46,7 @@
     <div class="col-xs-2 col-sm-2 col-md-2">
       <div class="form-group">
         <label for="gender">Gender</label>
-        <select id="gender" formControlName="genderCtrl" class="form-control" formControlName="genderCtrl" [ngClass]="{ 'is-invalid': f.genderCtrl.touched && f.genderCtrl.errors }">
+        <select id="gender" formControlName="genderCtrl" class="form-control" formControlName="genderCtrl" [ngClass]="{ 'is-invalid': apparelForm.controls['genderCtrl'].touched && apparelForm.controls['genderCtrl'].errors }">
           <option> Male</option>
           <option> Female</option>
         </select>
@@ -60,7 +60,7 @@
     <div class="col-xs-2 col-sm-2 col-md-2">
       <div class="form-group">
         <label for="size">Size</label>
-        <select id="gender" formControlName="sizeCtrl" class="form-control" formControlName="sizeCtrl" [ngClass]="{ 'is-invalid': f.sizeCtrl.touched && f.sizeCtrl.errors }">
+        <select id="size" formControlName="sizeCtrl" class="form-control" formControlName="sizeCtrl" [ngClass]="{ 'is-invalid': apparelForm.controls['sizeCtrl'].touched && apparelForm.controls['sizeCtrl'].errors }">
           <option *ngFor="let sizes of sizeList" value={{sizes}}>{{sizes}}</option>
 
           <!-- <option> XS</option>
@@ -70,7 +70,7 @@
           <option> XL</option>
           <option>XXL</option> -->
         </select>
-        <div *ngFor="let sizes of sizeList">{{ sizes }}</div>
+
         <div *ngIf="apparelForm.controls['sizeCtrl'].invalid && (apparelForm.controls['sizeCtrl'].dirty || apparelForm.controls['sizeCtrl'].touched)"
           class="invalid-feedback">
           <div *ngIf="apparelForm.controls['sizeCtrl'].errors.required">Size is required.
@@ -81,7 +81,7 @@
     <div class="col-xs-2 col-sm-2 col-md-2">
       <div class="form-group">
         <label for="price">Price</label>
-        <input id="price" name="price" type="number" class="form-control" formControlName="priceCtrl" [ngClass]="{ 'is-invalid': f.priceCtrl.touched && f.priceCtrl.errors }">
+        <input id="price" name="price" type="number" class="form-control" formControlName="priceCtrl" [ngClass]="{ 'is-invalid': apparelForm.controls['priceCtrl'].touched && apparelForm.controls['priceCtrl'].errors }">
         <div *ngIf="apparelForm.controls['priceCtrl'].invalid && (apparelForm.controls['priceCtrl'].dirty || apparelForm.controls['priceCtrl'].touched)"
           class="invalid-feedback">
           <div *ngIf="apparelForm.controls['priceCtrl'].errors.required">Price is required.

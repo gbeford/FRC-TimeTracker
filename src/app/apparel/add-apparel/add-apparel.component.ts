@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit} from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ClothingService } from '../clothing.service';
 import { IApparel } from 'app/model/apparel';
@@ -14,16 +14,13 @@ export class AddApparelComponent implements OnInit {
   public submitted: boolean;
   item: {};
   formObj: IApparel;
-  sizeList: ['S', 'M'];
-
-
-
+  sizeList = [];
 
   constructor(private formBuilder: FormBuilder, private apparelService: ClothingService) { }
 
   ngOnInit() {
-    // this.sizeList = this.apparelService.getClothingSize();
-    console.log(this.sizeList);
+    this.sizeList = this.apparelService.getClothingSize();
+    console.log('Size list', this.sizeList);
     this.createForm();
   }
 
@@ -36,6 +33,7 @@ export class AddApparelComponent implements OnInit {
       itemCtrl: ['', [<any>Validators.required]],
       descCtrl: ['', [<any>Validators.required]],
       genderCtrl: ['', [<any>Validators.required]],
+      typeCtrl: ['', [<any>Validators.required]],
       sizeCtrl: ['', [<any>Validators.required]],
       priceCtrl: ['', [<any>Validators.required]],
 
