@@ -44,7 +44,7 @@ export class AddApparelComponent implements OnInit {
 
   save() {
     this.submitted = true;
-
+debugger
     if (this.apparelForm.valid) {
       this.formObj = {
         apparelId: null,

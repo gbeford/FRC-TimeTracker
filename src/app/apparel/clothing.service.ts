@@ -24,7 +24,7 @@ export class ClothingService {
 
 //
 
-// get messages
+// get apparel item
 getApparelList(): Observable <IApparel[] > {
   return this.http.get<IApparel[]>(`${environment.baseUrl}${environment.apparelApiUrl}`)
     .pipe(
@@ -36,7 +36,7 @@ getApparelList(): Observable <IApparel[] > {
 // CRUD
 
   saveApparelItem(apparelItem: IApparel) {
-
+debugger
   return this.http.post<IApparel>(`${environment.baseUrl}${environment.apparelApiUrl}`, apparelItem)
     .pipe(
       catchError(Utilities.handleError)

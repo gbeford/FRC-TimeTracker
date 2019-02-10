@@ -1,6 +1,6 @@
 <!-- add form -->
 
-<form role="form" class="col-md-9 go-right" [formGroup]="apparelForm" *ngIf="apparelForm" novalidate>
+<form role="form" class="col-md-9 go-right" [formGroup]="apparelForm"  (ngSubmit)="save()">
   <h2>Add Apparel Item</h2>
   <div class="row">
     <div class="col-xs-9 col-sm-9 col-md-9">
@@ -97,5 +97,5 @@
       </div>
     </div>
   </div>
-  <button class="btn btn-primary">Submit </button>
+  <button class="btn btn-primary" [disabled]="!apparelForm.valid">Submit </button>
 </form>
