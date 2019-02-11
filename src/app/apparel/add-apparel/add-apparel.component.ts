@@ -1,4 +1,4 @@
-import { Component, OnInit} from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ClothingService } from '../clothing.service';
 import { IApparel } from 'app/model/apparel';
@@ -15,6 +15,7 @@ export class AddApparelComponent implements OnInit {
   item: {};
   formObj: IApparel;
   sizeList = [];
+  imageList = {};
 
   constructor(private formBuilder: FormBuilder, private apparelService: ClothingService) { }
 
@@ -44,17 +45,17 @@ export class AddApparelComponent implements OnInit {
 
   save() {
     this.submitted = true;
-debugger
     if (this.apparelForm.valid) {
       this.formObj = {
-        apparelId: null,
+        apparelId: 0,
         quantity: null,
         item: this.apparelForm.value.itemCtrl,
         description: this.apparelForm.value.descCtrl,
         gender: this.apparelForm.value.genderCtrl,
         price: this.apparelForm.value.priceCtrl,
         size: this.apparelForm.value.sizeCtrl,
-        type: this.apparelForm.value.typeCtrl
+        type: this.apparelForm.value.typeCtrl,
+        apparelImageId: this.apparelForm.value.imageCtrl
       };
       this.apparelService.saveApparelItem(
         this.formObj).subscribe(res => {
@@ -63,5 +64,8 @@ debugger
     }
   }
 
+  getImageList() {
+    this.imageList = this.apparelService.getImageList();
+  }
 
 }

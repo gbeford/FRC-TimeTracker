@@ -20,10 +20,6 @@ export class ClothingService {
     return this.size;
   }
 
-
-
-//
-
 // get apparel item
 getApparelList(): Observable <IApparel[] > {
   return this.http.get<IApparel[]>(`${environment.baseUrl}${environment.apparelApiUrl}`)
@@ -32,12 +28,20 @@ getApparelList(): Observable <IApparel[] > {
     );   // ...errors if any
 }
 
+  getImageList(): Observable < IApparel[] > {
+      return this.http.get<IApparel[]>(`${environment.baseUrl}${environment.apparelApiUrl}`)
+        .pipe(
+          catchError(Utilities.handleError)
+        );   // ...errors if any
+    }
+
+
 
 // CRUD
 
   saveApparelItem(apparelItem: IApparel) {
-debugger
-  return this.http.post<IApparel>(`${environment.baseUrl}${environment.apparelApiUrl}`, apparelItem)
+    debugger;
+    return this.http.post<IApparel>(`${environment.baseUrl}${environment.apparelApiUrl}`, apparelItem)
     .pipe(
       catchError(Utilities.handleError)
     );
