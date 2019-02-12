@@ -21,7 +21,7 @@ export class AddApparelComponent implements OnInit {
 
   ngOnInit() {
     this.sizeList = this.apparelService.getClothingSize();
-    this.getImageList();
+    this.getImageText();
     this.createForm();
   }
 
@@ -54,7 +54,6 @@ export class AddApparelComponent implements OnInit {
         type: this.apparelForm.value.typeCtrl,
         apparelImageId: this.apparelForm.value.imageCtrl
       };
-      debugger;
       this.apparelService.saveApparelItem(
         this.formObj).subscribe(res => {
           this.apparelForm.reset();
@@ -62,7 +61,7 @@ export class AddApparelComponent implements OnInit {
     }
   }
 
-  getImageList() {
+  getImageText() {
     // debugger
     this.apparelService.getImageNames().subscribe(data => {
       this.imageList = data;
