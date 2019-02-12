@@ -31,8 +31,6 @@ export class ImageUploadFormComponent implements OnInit {
   createForm() {
     this.ImageForm = this.formBuilder.group({
       itemCtrl: ['', [<any>Validators.required]],
-
-      // imageCtrl: ['', [<any>Validators.required]],
     });
   }
 
@@ -43,7 +41,6 @@ export class ImageUploadFormComponent implements OnInit {
   processFile(event) {
     this.selectedFile = <File>event.target.files[0];
     this.filename = this.selectedFile.name;
-    // return this.selectedFile;
   }
 
 

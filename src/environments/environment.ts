@@ -18,5 +18,6 @@ export const environment = {
   addMessagesToStudentUrl: 'api/Student/AddMessagesToStudent',
   removeMessageFromStudent: 'api/Student/RemoveMessageFromStudent',
   apparelApiUrl: 'api/apparel',
-  imageApiUrl: 'api/apparelImage'
+  imageApiUrl: 'api/apparelImage',
+  imageNameApiUrl: 'api/apparelImage/GetImageNames'
 };

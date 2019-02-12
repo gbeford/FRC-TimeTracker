@@ -6,6 +6,7 @@ export interface IApparelImage {
 
     apparelImageId: number;
     filename: string;
+    imageName: string;
     image: BinaryData;
 
 }

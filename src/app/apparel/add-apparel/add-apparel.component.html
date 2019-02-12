@@ -1,6 +1,6 @@
 <!-- add form -->
 
-<form role="form" class="col-md-9 go-right" [formGroup]="apparelForm"  (ngSubmit)="save()">
+<form role="form" class="col-md-9 go-right" [formGroup]="apparelForm" (ngSubmit)="save()">
   <h2>Add Apparel Item</h2>
   <div class="row">
     <div class="col-xs-9 col-sm-9 col-md-9">
@@ -89,19 +89,19 @@
         <app-image-upload (notify)='uploadNotify($event)'></app-image-upload>
       </div>
     </div> -->
-<div class="col-xs-2 col-sm-2 col-md-2">
-  <div class="form-group">
-    <label for="gender">Image</label>
-<select id="gender" formControlName="imageCtrl" class="form-control" formControlName="imageCtrl" [ngClass]="{ 'is-invalid': apparelForm.controls['imageCtrl'].touched && apparelForm.controls['imageCtrl'].errors }">
-<option *ngFor="let images of imageList" value={{images.apparelImageId}}>{{images.description}}</option>
-    </select>
-<div *ngIf="apparelForm.controls['genderCtrl'].invalid && (apparelForm.controls['imageCtrl'].dirty || apparelForm.controls['imageCtrl'].touched)"
-      class="invalid-feedback">
-<div *ngIf="apparelForm.controls['imageCtrl'].errors.required">Image is required.
+    <div class="col-xs-2 col-sm-2 col-md-2">
+      <div class="form-group">
+        <label for="gender">Image</label>
+        <select id="gender" formControlName="imageCtrl" class="form-control" formControlName="imageCtrl" [ngClass]="{ 'is-invalid': apparelForm.controls['imageCtrl'].touched && apparelForm.controls['imageCtrl'].errors }">
+          <option *ngFor="let images of imageList" value={{images.apparelImageId}}>{{images.imageName}}</option>
+        </select>
+        <div *ngIf="apparelForm.controls['genderCtrl'].invalid && (apparelForm.controls['imageCtrl'].dirty || apparelForm.controls['imageCtrl'].touched)"
+          class="invalid-feedback">
+          <div *ngIf="apparelForm.controls['imageCtrl'].errors.required">Image is required.
+          </div>
+        </div>
       </div>
     </div>
-  </div>
-</div>
 
   </div>
   <button class="btn btn-primary" [disabled]="!apparelForm.valid">Submit </button>

@@ -36,11 +36,17 @@ export class ClothingService {
       );   // ...errors if any
   }
 
+  getImageNames(): Observable<IApparelImage[]> {
+    return this.http.get<IApparelImage[]>(`${environment.baseUrl}${environment.imageNameApiUrl}`)
+      .pipe(
+        catchError(Utilities.handleError)
+      );   // ...errors if any
+  }
+
 
   // CRUD
 
   saveApparelItem(apparelItem: IApparel) {
-    // debugger;
     return this.http.post<IApparel>(`${environment.baseUrl}${environment.apparelApiUrl}`, apparelItem)
       .pipe(
         catchError(Utilities.handleError)
@@ -51,7 +57,7 @@ export class ClothingService {
     // this.http is the injected HttpClient
     this.http.post(`${environment.baseUrl}${environment.imageApiUrl}`, uploadImage)
       .subscribe(event => {
-        console.log(event); // handle event here
+        // console.log(event); // handle event here
       });
   }
 

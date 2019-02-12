@@ -15,7 +15,7 @@ export class AddApparelComponent implements OnInit {
   item: {};
   formObj: IApparel;
   sizeList = [];
-  imageList = {};
+  imageList = [];
 
   constructor(private formBuilder: FormBuilder, private apparelService: ClothingService) { }
 
@@ -54,6 +54,7 @@ export class AddApparelComponent implements OnInit {
         type: this.apparelForm.value.typeCtrl,
         apparelImageId: this.apparelForm.value.imageCtrl
       };
+      debugger;
       this.apparelService.saveApparelItem(
         this.formObj).subscribe(res => {
           this.apparelForm.reset();
@@ -62,11 +63,9 @@ export class AddApparelComponent implements OnInit {
   }
 
   getImageList() {
-    debugger
-
-
-    this.apparelService.getImages().subscribe(data => {
-      // this.imageList = data.filename;
+    // debugger
+    this.apparelService.getImageNames().subscribe(data => {
+      this.imageList = data;
       console.log(data);
     });
   }
