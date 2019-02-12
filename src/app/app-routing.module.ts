@@ -19,6 +19,7 @@ import { AuthGuard } from './security/auth.guard';
 import { AddEditEventComponent } from './events/add-edit-event.component';
 import { ApparelOrderFormComponent } from './apparel/apparel-order-form/apparel-order-form.component';
 import { AddApparelComponent } from './apparel/add-apparel/add-apparel.component';
+import { ImageUploadFormComponent } from './apparel/image-upload-form.component';
 
 
 
@@ -101,6 +102,11 @@ import { AddApparelComponent } from './apparel/add-apparel/add-apparel.component
                 path: 'addApparel',
                 component: AddApparelComponent,
             },
+            {
+                path: 'addImage',
+                component: ImageUploadFormComponent,
+            },
+
 
 
             // { path: 'badges', component: BadgeViewComponent },

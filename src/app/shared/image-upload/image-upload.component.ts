@@ -25,14 +25,10 @@ export class ImageUploadComponent {
   }
 
 
-  // onUpload() {
-  //   // this.http is the injected HttpClient
-  //   const uploadData = new FormData();
-  //   uploadData.append('myFile', this.selectedFile, this.selectedFile.name);
-  //   this.http.post('my-backend.com/file-upload', uploadData)
-  //     .subscribe(event => {
-  //       console.log(event); // handle event here
-  //     });
-  // }
+  onUpload() {
+    // this.http is the injected HttpClient
+    // this.http.post('my-backend.com/file-upload', this.selectedFile)
+    //   .subscribe(...);
+  }
 
 }

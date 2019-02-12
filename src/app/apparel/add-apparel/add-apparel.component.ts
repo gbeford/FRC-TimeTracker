@@ -21,13 +21,10 @@ export class AddApparelComponent implements OnInit {
 
   ngOnInit() {
     this.sizeList = this.apparelService.getClothingSize();
-    console.log('Size list', this.sizeList);
+    this.getImageList();
     this.createForm();
   }
 
-  uploadNotify() {
-    alert('image was selected');
-  }
 
   createForm() {
     this.apparelForm = this.formBuilder.group({
@@ -37,7 +34,7 @@ export class AddApparelComponent implements OnInit {
       typeCtrl: ['', [<any>Validators.required]],
       sizeCtrl: ['', [<any>Validators.required]],
       priceCtrl: ['', [<any>Validators.required]],
-
+      imageCtrl: ['', [<any>Validators.required]],
     });
   }
   // convenience getter for easy access to form fields
@@ -65,7 +62,13 @@ export class AddApparelComponent implements OnInit {
   }
 
   getImageList() {
-    this.imageList = this.apparelService.getImageList();
+    debugger
+
+
+    this.apparelService.getImages().subscribe(data => {
+      // this.imageList = data.filename;
+      console.log(data);
+    });
   }
 
 }

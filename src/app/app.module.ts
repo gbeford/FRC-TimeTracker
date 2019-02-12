@@ -55,6 +55,7 @@ import { ApparelOrdersReportComponent } from './apparel/apparel-orders-report/ap
 import { AlertMessageComponent } from './shared/alert-message/alert-message.component';
 import { AddApparelComponent } from './apparel/add-apparel/add-apparel.component';
 import { ImageUploadComponent } from './shared/image-upload/image-upload.component';
+import { ImageUploadFormComponent } from './apparel/image-upload-form.component';
 
 
 
@@ -92,6 +93,7 @@ import { ImageUploadComponent } from './shared/image-upload/image-upload.compone
     AlertMessageComponent,
     AddApparelComponent,
     ImageUploadComponent,
+    ImageUploadFormComponent,
   ],
   imports: [
     BrowserModule,
