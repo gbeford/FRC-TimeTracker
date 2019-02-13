@@ -52,6 +52,8 @@ export class ImageUploadFormComponent implements OnInit {
       uploadData.append(this.imageName, this.selectedFile, this.filename);
 
       this.clothingService.saveImage(uploadData);
+      this.filename = '';
+      this.ImageForm.reset();
     }
   }
 

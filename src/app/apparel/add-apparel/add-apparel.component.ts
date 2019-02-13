@@ -14,13 +14,13 @@ export class AddApparelComponent implements OnInit {
   public submitted: boolean;
   item: {};
   formObj: IApparel;
-  sizeList = [];
+  // sizeList = [];
   imageList = [];
 
   constructor(private formBuilder: FormBuilder, private apparelService: ClothingService) { }
 
   ngOnInit() {
-    this.sizeList = this.apparelService.getClothingSize();
+    // this.sizeList = this.apparelService.getClothingSize();
     this.getImageText();
     this.createForm();
   }
@@ -30,11 +30,12 @@ export class AddApparelComponent implements OnInit {
     this.apparelForm = this.formBuilder.group({
       itemCtrl: ['', [<any>Validators.required]],
       descCtrl: ['', [<any>Validators.required]],
-      genderCtrl: ['', [<any>Validators.required]],
       typeCtrl: ['', [<any>Validators.required]],
-      sizeCtrl: ['', [<any>Validators.required]],
+      upChargeCtrl: [''],
       priceCtrl: ['', [<any>Validators.required]],
       imageCtrl: ['', [<any>Validators.required]],
+      nameChargeCtl: [''],
+      // genderCtrl: ['', [<any>Validators.required]],
     });
   }
   // convenience getter for easy access to form fields
@@ -48,11 +49,13 @@ export class AddApparelComponent implements OnInit {
         quantity: null,
         item: this.apparelForm.value.itemCtrl,
         description: this.apparelForm.value.descCtrl,
-        gender: this.apparelForm.value.genderCtrl,
+        gender: null,
+        size: null,
         price: this.apparelForm.value.priceCtrl,
-        size: this.apparelForm.value.sizeCtrl,
+        upCharge: this.apparelForm.value.upChargeCtrl ? this.apparelForm.value.upChargeCtrl : null,
         type: this.apparelForm.value.typeCtrl,
-        apparelImageId: this.apparelForm.value.imageCtrl
+        apparelImageId: this.apparelForm.value.imageCtrl,
+        nameCharge: this.apparelForm.value.nameChargeCtl ? this.apparelForm.value.nameChargeCtl : null,
       };
       this.apparelService.saveApparelItem(
         this.formObj).subscribe(res => {

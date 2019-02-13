@@ -9,5 +9,6 @@ export interface IApparel {
     size: string;
     type: string;
     quantity: number;
-
+    upCharge: number;
+    nameCharge: number;
 }

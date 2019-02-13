@@ -34,7 +34,7 @@
         <label for="gender">Type</label>
         <select id="gender" formControlName="typeCtrl" class="form-control" formControlName="typeCtrl" [ngClass]="{ 'is-invalid': apparelForm.controls['typeCtrl'].touched && apparelForm.controls['typeCtrl'].errors }">
           <option>Cotton </option>
-          <option>DriFit </option>
+          <option>Dri Fit </option>
         </select>
         <div *ngIf="apparelForm.controls['typeCtrl'].invalid && (apparelForm.controls['typeCtrl'].dirty || apparelForm.controls['typeCtrl'].touched)"
           class="invalid-feedback">
@@ -43,7 +43,7 @@
         </div>
       </div>
     </div>
-    <div class="col-xs-2 col-sm-2 col-md-2">
+    <!-- <div class="col-xs-2 col-sm-2 col-md-2">
       <div class="form-group">
         <label for="gender">Gender</label>
         <select id="gender" formControlName="genderCtrl" class="form-control" formControlName="genderCtrl" [ngClass]="{ 'is-invalid': apparelForm.controls['genderCtrl'].touched && apparelForm.controls['genderCtrl'].errors }">
@@ -56,21 +56,24 @@
           </div>
         </div>
       </div>
-    </div>
-    <div class="col-xs-2 col-sm-2 col-md-2">
+    </div> -->
+    <div class="col-xs-3 col-sm-3 col-md-3">
       <div class="form-group">
-        <label for="size">Size</label>
-        <select id="size" formControlName="sizeCtrl" class="form-control" formControlName="sizeCtrl" [ngClass]="{ 'is-invalid': apparelForm.controls['sizeCtrl'].touched && apparelForm.controls['sizeCtrl'].errors }">
-          <option *ngFor="let sizes of sizeList" value={{sizes}}>{{sizes}}</option>
+        <label for="gender">Image</label>
+        <select id="gender" formControlName="imageCtrl" class="form-control" formControlName="imageCtrl" [ngClass]="{ 'is-invalid': apparelForm.controls['imageCtrl'].touched && apparelForm.controls['imageCtrl'].errors }">
+          <option *ngFor="let images of imageList" value={{images.apparelImageId}}>{{images.imageName}}</option>
         </select>
-
-        <div *ngIf="apparelForm.controls['sizeCtrl'].invalid && (apparelForm.controls['sizeCtrl'].dirty || apparelForm.controls['sizeCtrl'].touched)"
+        <div *ngIf="apparelForm.controls['imageCtrl'].invalid && (apparelForm.controls['imageCtrl'].dirty || apparelForm.controls['imageCtrl'].touched)"
           class="invalid-feedback">
-          <div *ngIf="apparelForm.controls['sizeCtrl'].errors.required">Size is required.
+          <div *ngIf="apparelForm.controls['imageCtrl'].errors.required">Image is required.
           </div>
         </div>
       </div>
     </div>
+
+  </div>
+  <div class="row">
+
     <div class="col-xs-2 col-sm-2 col-md-2">
       <div class="form-group">
         <label for="price">Price</label>
@@ -82,27 +85,19 @@
         </div>
       </div>
     </div>
-  </div>
-  <div class="row">
-    <!-- <div class="col-xs-6 col-sm-6 col-md-6">
-      <div class="form-group">
-        <app-image-upload (notify)='uploadNotify($event)'></app-image-upload>
-      </div>
-    </div> -->
+
     <div class="col-xs-2 col-sm-2 col-md-2">
       <div class="form-group">
-        <label for="gender">Image</label>
-        <select id="gender" formControlName="imageCtrl" class="form-control" formControlName="imageCtrl" [ngClass]="{ 'is-invalid': apparelForm.controls['imageCtrl'].touched && apparelForm.controls['imageCtrl'].errors }">
-          <option *ngFor="let images of imageList" value={{images.apparelImageId}}>{{images.imageName}}</option>
-        </select>
-        <div *ngIf="apparelForm.controls['genderCtrl'].invalid && (apparelForm.controls['imageCtrl'].dirty || apparelForm.controls['imageCtrl'].touched)"
-          class="invalid-feedback">
-          <div *ngIf="apparelForm.controls['imageCtrl'].errors.required">Image is required.
-          </div>
-        </div>
+        <label for="upCharge">Up Charge XXL +</label>
+        <input id="upCharge" name="upCharge" type="number" class="form-control" formControlName="upChargeCtrl">
       </div>
     </div>
-
+    <div class="col-xs-2 col-sm-2 col-md-2">
+      <div class="form-group">
+        <label for="nameCharge">Name Charge </label>
+        <input id="nameCharge" name="nameCharge" type="number" class="form-control" formControlName="nameChargeCtl">
+      </div>
+    </div>
   </div>
   <button class="btn btn-primary" [disabled]="!apparelForm.valid">Submit </button>
 </form>
