@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ClothingService } from '../clothing.service';
 import { IApparel } from 'app/model/apparel';
@@ -16,12 +16,15 @@ export class AddApparelComponent implements OnInit {
   formObj: IApparel;
   // sizeList = [];
   imageList = [];
+  filename: string;
+
+  @ViewChild('fileInput') fileInput: ElementRef;
 
   constructor(private formBuilder: FormBuilder, private apparelService: ClothingService) { }
 
   ngOnInit() {
     // this.sizeList = this.apparelService.getClothingSize();
-    this.getImageText();
+    // this.getImageText();
     this.createForm();
   }
 
@@ -33,8 +36,9 @@ export class AddApparelComponent implements OnInit {
       typeCtrl: ['', [<any>Validators.required]],
       upChargeCtrl: [''],
       priceCtrl: ['', [<any>Validators.required]],
-      imageCtrl: ['', [<any>Validators.required]],
+      imageCtrl: null,
       nameChargeCtl: [''],
+      canHaveNameCtl: [''],
       // genderCtrl: ['', [<any>Validators.required]],
     });
   }
@@ -54,22 +58,47 @@ export class AddApparelComponent implements OnInit {
         price: this.apparelForm.value.priceCtrl,
         upCharge: this.apparelForm.value.upChargeCtrl ? this.apparelForm.value.upChargeCtrl : null,
         type: this.apparelForm.value.typeCtrl,
-        apparelImageId: this.apparelForm.value.imageCtrl,
+        apparelImageId: 0,
         nameCharge: this.apparelForm.value.nameChargeCtl ? this.apparelForm.value.nameChargeCtl : null,
+        canHaveName: this.apparelForm.value.canHaveNameCtl ? this.apparelForm.value.canHaveNameCtl : 0,
+        filename: this.apparelForm.value.imageCtrl.filename,
+        contentType: this.apparelForm.value.imageCtrl.contentType,
+        image: this.apparelForm.value.imageCtrl.value
       };
       this.apparelService.saveApparelItem(
         this.formObj).subscribe(res => {
+          this.apparelForm.get('imageCtrl').setValue(null);
+          this.fileInput.nativeElement.value = '';
+          this.filename = '';
           this.apparelForm.reset();
         });
     }
   }
 
-  getImageText() {
-    // debugger
-    this.apparelService.getImageNames().subscribe(data => {
-      this.imageList = data;
-      console.log(data);
-    });
+
+  processFile(event) {
+    const reader = new FileReader();
+    if (event.target.files && event.target.files.length > 0) {
+      const file = event.target.files[0];
+      reader.readAsDataURL(file);
+      reader.onload = () => {
+        this.apparelForm.get('imageCtrl').setValue({
+          filename: file.name,
+          contentType: file.type,
+          value: reader.result
+        });
+      };
+      this.filename = file.name;
+    }
   }
+
+
+  // getImageText() {
+  //   // debugger
+  //   this.apparelService.getImageNames().subscribe(data => {
+  //     this.imageList = data;
+  //     console.log(data);
+  //   });
+  // }
 
 }

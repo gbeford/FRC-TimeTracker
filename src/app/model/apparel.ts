@@ -1,3 +1,5 @@
+import { BinaryData } from 'fs';
+
 /* Defines the apparel entity */
 export interface IApparel {
     apparelId: number;
@@ -11,4 +13,8 @@ export interface IApparel {
     quantity: number;
     upCharge: number;
     nameCharge: number;
+    canHaveName: boolean;
+    filename: string;
+    image: any;
+    contentType: string;
 }

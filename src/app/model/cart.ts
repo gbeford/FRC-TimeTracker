@@ -2,7 +2,7 @@
 export interface ICart {
     studentID: number;
     cartItems: {};
-    displayName: string;  // this is for the name on the arm
+    sleeveName: string;  // this is for the name on the arm
 }
 
 

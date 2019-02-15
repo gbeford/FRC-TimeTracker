@@ -36,6 +36,14 @@ export class ClothingService {
       );   // ...errors if any
   }
 
+
+  // getImagesById(imageId): Observable<IApparelImage[]> {
+  //   return this.http.get<IApparelImage[]>(`${environment.baseUrl}${environment.imageApiUrl}`)
+  //     .pipe(
+  //       catchError(Utilities.handleError)
+  //     );   // ...errors if any
+  // }
+
   getImageNames(): Observable<IApparelImage[]> {
     return this.http.get<IApparelImage[]>(`${environment.baseUrl}${environment.imageNameApiUrl}`)
       .pipe(
@@ -59,6 +67,10 @@ export class ClothingService {
       .subscribe(event => {
         // console.log(event); // handle event here
       });
+  }
+
+  saveCartItem() {
+
   }
 
   // editApparelRecord(id: number, updateMessage: string): Observable < void | {} > {

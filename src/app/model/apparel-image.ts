@@ -8,5 +8,5 @@ export interface IApparelImage {
     filename: string;
     imageName: string;
     image: BinaryData;
-
+    contentType: string;
 }
