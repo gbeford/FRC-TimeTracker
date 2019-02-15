@@ -3,6 +3,10 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ClothingService } from '../clothing.service';
 import { IApparel } from 'app/model/apparel';
 
+
+// https://nehalist.io/uploading-files-in-angular2/
+
+
 @Component({
   selector: 'app-add-apparel',
   templateUrl: './add-apparel.component.html',

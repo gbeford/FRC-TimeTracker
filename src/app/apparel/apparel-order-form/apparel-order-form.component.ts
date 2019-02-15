@@ -4,6 +4,8 @@ import { IApparelImage } from 'app/model/apparel-image';
 import { IApparel } from 'app/model/apparel';
 import { FormGroup, Validators, FormBuilder } from '@angular/forms';
 
+// http://learningprogramming.net/mean-stack/angular-6/build-shopping-cart-in-angular-6/
+
 @Component({
   selector: 'app-apparel-order-form',
   templateUrl: './apparel-order-form.component.html',
@@ -12,7 +14,7 @@ import { FormGroup, Validators, FormBuilder } from '@angular/forms';
 export class ApparelOrderFormComponent implements OnInit {
 
   sizes: string[];
-  imageData: IApparelImage;
+  // imageData: IApparelImage;
   imageSrc: string;
   imageBase64: string;
   apparealData: IApparel[];
@@ -25,7 +27,7 @@ export class ApparelOrderFormComponent implements OnInit {
 
   ngOnInit() {
     this.getSizes();
-    this.getImageList();
+    // this.getImageList();
     this.getAppareal();
     this.createForm();
   }
@@ -34,13 +36,13 @@ export class ApparelOrderFormComponent implements OnInit {
     this.sizes = this.clothingService.getClothingSize();
   }
 
-  getImageList() {
-    this.clothingService.getImages().subscribe(data => {
-      this.imageData = data[0];
-      this.imageSrc = 'data:' + this.imageData.contentType + ';base64,' + this.imageData.image;
-      console.log('Image', data);
-    });
-  }
+  // getImageList() {
+  //   this.clothingService.getImages().subscribe(data => {
+  //     this.imageData = data[0];
+  //     this.imageSrc = 'data:' + this.imageData.contentType + ';base64,' + this.imageData.image;
+  //     console.log('Image', data);
+  //   });
+  // }
 
   // getImageListById(imageId) {
   //   this.clothingService.getImagesById(imageId).subscribe(data => {
@@ -54,12 +56,6 @@ export class ApparelOrderFormComponent implements OnInit {
   getAppareal() {
     this.clothingService.getApparelList().subscribe(data => {
       this.apparealData = data;
-      // this.imageId = this.apparealData.find(item => item.apparelImageId)
-      // console.log('image id ', imageId);
-      // this.getImageListById(this.apparealData.apparelImageId);
-
-      //  this.imageSrc
-      console.log('Apparel', this.apparealData);
     });
   }
 
@@ -83,22 +79,22 @@ export class ApparelOrderFormComponent implements OnInit {
 
   save() {
 
-    // if (this.apparelForm.valid) {
-    //   this.formObj = {
-    //     apparelId: 0,
-    //     quantity: null,
-    //     item: this.apparelForm.value.itemCtrl,
-    //     description: this.apparelForm.value.descCtrl,
-    //     gender: null,
-    //     size: null,
-    //     price: this.apparelForm.value.priceCtrl,
-    //     upCharge: this.apparelForm.value.upChargeCtrl ? this.apparelForm.value.upChargeCtrl : null,
-    //     type: this.apparelForm.value.typeCtrl,
-    //     apparelImageId: this.apparelForm.value.imageCtrl,
-    //     nameCharge: this.apparelForm.value.nameChargeCtl ? this.apparelForm.value.nameChargeCtl : null,
-    //     canHaveName: this.apparelForm.value.canHaveNameCtl ? this.apparelForm.value.canHaveNameCtl : 0,
-      //};
-      // this.clothingService.saveCartItem(
+    if (this.apparelForm.valid) {
+      this.formObj = {
+        apparelId: 0,
+        quantity: null,
+        item: this.apparelForm.value.itemCtrl,
+        description: this.apparelForm.value.descCtrl,
+        gender: null,
+        size: null,
+        price: this.apparelForm.value.priceCtrl,
+        upCharge: this.apparelForm.value.upChargeCtrl ? this.apparelForm.value.upChargeCtrl : null,
+        type: this.apparelForm.value.typeCtrl,
+        apparelImageId: this.apparelForm.value.imageCtrl,
+        nameCharge: this.apparelForm.value.nameChargeCtl ? this.apparelForm.value.nameChargeCtl : null,
+        canHaveName: this.apparelForm.value.canHaveNameCtl ? this.apparelForm.value.canHaveNameCtl : 0,
+      };
+      this.clothingService.saveCartItem(
       // this.formObj).subscribe(res => {
       //   this.apparelForm.reset();
       //  });

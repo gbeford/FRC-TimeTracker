@@ -3,12 +3,10 @@ import { BPClient } from 'blocking-proxy';
 /* Defines the cart item entity */
 export interface ICartItem {
     apparelID: number;
-    // item: string;
-    // description: string;
-    // price: number;
+    upCharge: number;
+    nameCharge: number;
     gender: string;
     size: string;
-    // type: string;
     quantity: number;
-    displayName: boolean;
+    sleeveName: string;  // this is for the name on the arm
 }
