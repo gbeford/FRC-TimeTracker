@@ -33,7 +33,7 @@ export class StudentHoursReportComponent implements OnInit {
         this.studentAttendanceForm.value.startDateCtrl.toISOString(), this.studentAttendanceForm.value.endDateCtrl.toISOString())
         .subscribe(
           data => {
-            console.log('hours ', data);
+            // console.log('hours ', data);
             this.dataSource = new MatTableDataSource(data);
             this.dataSource.sort = this.sort;
           });

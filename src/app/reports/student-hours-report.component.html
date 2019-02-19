@@ -25,52 +25,52 @@
   </div>
   <button class='trackerBtn' type="submit" [disabled]="!studentAttendanceForm.valid">Submit</button>
 </form>
-<div>
-  <div *ngIf="dataSource">
-    <div class="row">
-      <hr class="col-xs-12 col-sm-12 col-md-12">
-    </div>
-    <div class="row">
-      <div class="col-xs-12 col-sm-12 col-md-12">
-        <mat-table #table [dataSource]="dataSource" matSort>
 
-          <!--- Note that these columns can be defined in any order.
+<div [hidden]="!dataSource">
+  <div class="row">
+    <hr class="col-xs-12 col-sm-12 col-md-12">
+  </div>
+  <div class="row">
+    <div class="col-xs-12 col-sm-12 col-md-12">
+      <mat-table #table [dataSource]="dataSource" matSort>
+
+        <!--- Note that these columns can be defined in any order.
             The actual rendered columns are set as a property on the row definition" -->
 
-          <!-- Position Column -->
-          <ng-container matColumnDef="studentId">
-            <mat-header-cell *matHeaderCellDef mat-sort-header fxFlex="100px"> School Id </mat-header-cell>
-            <mat-cell *matCellDef="let element" fxFlex="100px"> {{element.studentId}} </mat-cell>
-          </ng-container>
+        <!-- Position Column -->
+        <ng-container matColumnDef="studentId">
+          <mat-header-cell *matHeaderCellDef mat-sort-header fxFlex="100px"> School Id </mat-header-cell>
+          <mat-cell *matCellDef="let element" fxFlex="100px"> {{element.studentId}} </mat-cell>
+        </ng-container>
 
-          <ng-container matColumnDef="firstName">
-            <mat-header-cell *matHeaderCellDef mat-sort-header> First Name </mat-header-cell>
-            <mat-cell *matCellDef="let element"> {{element.firstName}} </mat-cell>
-          </ng-container>
+        <ng-container matColumnDef="firstName">
+          <mat-header-cell *matHeaderCellDef mat-sort-header> First Name </mat-header-cell>
+          <mat-cell *matCellDef="let element"> {{element.firstName}} </mat-cell>
+        </ng-container>
 
-          <ng-container matColumnDef="lastName">
-            <mat-header-cell *matHeaderCellDef mat-sort-header> Last Name </mat-header-cell>
-            <mat-cell *matCellDef="let element"> {{element.lastName}} </mat-cell>
-          </ng-container>
-          <ng-container matColumnDef="createDateTime">
-            <mat-header-cell *matHeaderCellDef mat-sort-header> Created Date </mat-header-cell>
-            <mat-cell *matCellDef="let element"> {{element.times.createDateTime | date:'MMM d, y h:mm:ss a'}}
-            </mat-cell>
-          </ng-container>
+        <ng-container matColumnDef="lastName">
+          <mat-header-cell *matHeaderCellDef mat-sort-header> Last Name </mat-header-cell>
+          <mat-cell *matCellDef="let element"> {{element.lastName}} </mat-cell>
+        </ng-container>
+        <ng-container matColumnDef="createDateTime">
+          <mat-header-cell *matHeaderCellDef mat-sort-header> Created Date </mat-header-cell>
+          <mat-cell *matCellDef="let element"> {{element.times.createDateTime | date:'MMM d, y h:mm:ss a'}}
+          </mat-cell>
+        </ng-container>
 
-          <ng-container matColumnDef="checkIn">
-            <mat-header-cell *matHeaderCellDef mat-sort-header> Check In </mat-header-cell>
-            <mat-cell *matCellDef="let element"> {{element.times.checkIn | date:'MMM d, y h:mm:ss a'}} </mat-cell>
-          </ng-container>
+        <ng-container matColumnDef="checkIn">
+          <mat-header-cell *matHeaderCellDef mat-sort-header> Check In </mat-header-cell>
+          <mat-cell *matCellDef="let element"> {{element.times.checkIn | date:'MMM d, y h:mm:ss a'}} </mat-cell>
+        </ng-container>
 
-          <ng-container matColumnDef="checkOut">
-            <mat-header-cell *matHeaderCellDef mat-sort-header> Check Out </mat-header-cell>
-            <mat-cell *matCellDef="let element"> {{element.times.checkOut| date:'MMM d, y h:mm:ss a'}} </mat-cell>
-          </ng-container>
+        <ng-container matColumnDef="checkOut">
+          <mat-header-cell *matHeaderCellDef mat-sort-header> Check Out </mat-header-cell>
+          <mat-cell *matCellDef="let element"> {{element.times.checkOut| date:'MMM d, y h:mm:ss a'}} </mat-cell>
+        </ng-container>
 
-          <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
-          <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
-        </mat-table>
-      </div>
+        <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+        <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+      </mat-table>
     </div>
   </div>
+</div>

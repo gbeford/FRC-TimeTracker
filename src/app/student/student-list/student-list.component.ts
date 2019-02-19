@@ -22,7 +22,6 @@ export class StudentListComponent implements AfterViewInit {
   constructor(private sls: StudentService) { }
 
   ngAfterViewInit() {
-
     this.getStudentList();
   }
 
@@ -37,17 +36,3 @@ export class StudentListComponent implements AfterViewInit {
 
 }
 
-
-
-// export class StudentsDataSource extends DataSource<any> {
-//   constructor(private students: Observable<Student[]>) {
-//     super();
-//   }
-
-  /** Connect function called by the table to retrieve one stream containing the data to render. */
-  // connect(): Observable<Student[]> {
-  //   return this.students;
-  // }
-
-  // disconnect() { }
-//}
