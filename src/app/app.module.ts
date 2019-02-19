@@ -16,13 +16,11 @@ import { TitleCasePipe } from '@angular/common';
 import { SatPopoverModule } from '@ncstate/sat-popover';
 import { InlineEditComponent } from './shared/inline-edit/inline-edit.component';
 
-import { ReportsComponent } from './reports/reports.component';
 import { MenuComponent } from './menu/menu.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { AppRoutingModule } from './app-routing.module';
 import { HomeComponent } from './home/home.component';
 import { StudentTimePointReportComponent } from './student/student-time-point-report/student-time-point-report.component';
-
 import { EditStudentRecordComponent } from './admin/edit-student-record/edit-student-record.component';
 import { AutoCompleteComponent } from './shared/auto-complete/auto-complete.component';
 import { TestSharedComponentsComponent } from './shared/test-shared-components/test-shared-components.component';
@@ -42,7 +40,6 @@ import { BadgeViewComponent } from './admin/badge/badge-view/badge-view.componen
 import { HttpClientModule } from '@angular/common/http';
 import { StatusPipe } from './shared/filters/status.pipe';
 import { AlertComponent } from './alert/alert.component';
-
 import { SecurityService } from './security/security.service';
 import { LoginComponent } from './security/login.component';
 import { HttpInterceptorModule } from './security/http-interceptor';
@@ -56,6 +53,8 @@ import { AlertMessageComponent } from './shared/alert-message/alert-message.comp
 import { AddApparelComponent } from './apparel/add-apparel/add-apparel.component';
 import { ImageUploadComponent } from './shared/image-upload/image-upload.component';
 import { ImageUploadFormComponent } from './apparel/image-upload-form.component';
+import { StudentHoursReportComponent } from './reports/student-hours-report.component';
+import { ReportsService } from './reports/reports.service';
 
 
 
@@ -64,7 +63,6 @@ import { ImageUploadFormComponent } from './apparel/image-upload-form.component'
   declarations: [
     AppComponent,
     TimeTrackerComponent,
-    ReportsComponent,
     MenuComponent,
     PageNotFoundComponent,
     HomeComponent,
@@ -94,6 +92,7 @@ import { ImageUploadFormComponent } from './apparel/image-upload-form.component'
     AddApparelComponent,
     ImageUploadComponent,
     ImageUploadFormComponent,
+    StudentHoursReportComponent,
   ],
   imports: [
     BrowserModule,
@@ -127,6 +126,7 @@ import { ImageUploadFormComponent } from './apparel/image-upload-form.component'
     TitleCasePipe,
     EventsService,
     SecurityService,
+    ReportsService,
   ],
   entryComponents: [TimeTrackerMsgComponent],
   bootstrap: [AppComponent]

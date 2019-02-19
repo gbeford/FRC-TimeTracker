@@ -19,5 +19,6 @@ export const environment = {
   removeMessageFromStudent: 'api/Student/RemoveMessageFromStudent',
   apparelApiUrl: 'api/apparel',
   imageApiUrl: 'api/apparelImage',
-  imageNameApiUrl: 'api/apparelImage/GetImageNames'
+  imageNameApiUrl: 'api/apparelImage/GetImageNames',
+  studentAttendanceUrl: 'api/Reports/Attendance'
 };

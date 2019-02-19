@@ -69,9 +69,12 @@ export class ClothingService {
       });
   }
 
-  saveCartItem() {
-
-  }
+  // saveCartItem(cartItem: IApparel) {
+  //   return this.http.post<IApparel>(`${environment.baseUrl}${environment.apparelApiUrl}`, apparelItem)
+  //     .pipe(
+  //       catchError(Utilities.handleError)
+  //     );
+  // }
 
   // editApparelRecord(id: number, updateMessage: string): Observable < void | {} > {
   //   const data: IMessage = {

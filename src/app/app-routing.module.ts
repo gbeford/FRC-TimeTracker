@@ -20,6 +20,7 @@ import { AddEditEventComponent } from './events/add-edit-event.component';
 import { ApparelOrderFormComponent } from './apparel/apparel-order-form/apparel-order-form.component';
 import { AddApparelComponent } from './apparel/add-apparel/add-apparel.component';
 import { ImageUploadFormComponent } from './apparel/image-upload-form.component';
+import { StudentHoursReportComponent } from './reports/student-hours-report.component';
 
 
 
@@ -105,6 +106,10 @@ import { ImageUploadFormComponent } from './apparel/image-upload-form.component'
             {
                 path: 'addImage',
                 component: ImageUploadFormComponent,
+            },
+            {
+                path: 'attendance',
+                component: StudentHoursReportComponent,
             },
 
 

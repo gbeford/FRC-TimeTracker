@@ -80,25 +80,25 @@ export class ApparelOrderFormComponent implements OnInit {
   save() {
 
     if (this.apparelForm.valid) {
-      this.formObj = {
-        apparelId: 0,
-        quantity: null,
-        item: this.apparelForm.value.itemCtrl,
-        description: this.apparelForm.value.descCtrl,
-        gender: null,
-        size: null,
-        price: this.apparelForm.value.priceCtrl,
-        upCharge: this.apparelForm.value.upChargeCtrl ? this.apparelForm.value.upChargeCtrl : null,
-        type: this.apparelForm.value.typeCtrl,
-        apparelImageId: this.apparelForm.value.imageCtrl,
-        nameCharge: this.apparelForm.value.nameChargeCtl ? this.apparelForm.value.nameChargeCtl : null,
-        canHaveName: this.apparelForm.value.canHaveNameCtl ? this.apparelForm.value.canHaveNameCtl : 0,
-      };
-      this.clothingService.saveCartItem(
+      // this.formObj = {
+      //   apparelId: 0,
+      //   quantity: null,
+      //   item: this.apparelForm.value.itemCtrl,
+      //   description: this.apparelForm.value.descCtrl,
+      //   gender: null,
+      //   size: null,
+      //   price: this.apparelForm.value.priceCtrl,
+      //   upCharge: this.apparelForm.value.upChargeCtrl ? this.apparelForm.value.upChargeCtrl : null,
+      //   type: this.apparelForm.value.typeCtrl,
+      //   apparelImageId: this.apparelForm.value.imageCtrl,
+      //   nameCharge: this.apparelForm.value.nameChargeCtl ? this.apparelForm.value.nameChargeCtl : null,
+      //   canHaveName: this.apparelForm.value.canHaveNameCtl ? this.apparelForm.value.canHaveNameCtl : 0,
+      // };
+      // this.clothingService.saveCartItem(
       // this.formObj).subscribe(res => {
       //   this.apparelForm.reset();
       //  });
-   // }
+   }
   }
 
 
