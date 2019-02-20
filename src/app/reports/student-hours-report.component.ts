@@ -1,7 +1,7 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { FormGroup, Validators, FormBuilder } from '@angular/forms';
 import { ReportsService } from './reports.service';
-import { MatSort, MatTableDataSource } from '@angular/material';
+import { MatSort, MatTableDataSource, PageEvent } from '@angular/material';
 
 @Component({
   selector: 'app-student-hours-report',
@@ -15,10 +15,22 @@ export class StudentHoursReportComponent implements OnInit {
   displayedColumns = ['studentId', 'firstName', 'lastName', 'createDateTime', 'checkIn', 'checkOut'];
   @ViewChild(MatSort) sort: MatSort;
 
+  // MatPaginator Inputs
+  length = 100;
+  pageSize = 10;
+  pageSizeOptions: number[] = [5, 10, 25, 100];
+
+  pageEvent: PageEvent;
+
   constructor(private formBuilder: FormBuilder, private reportService: ReportsService) { }
 
   ngOnInit() {
     this.createForm();
+  }
+
+  // MatPaginator Output
+  setPageSizeOptions(setPageSizeOptionsInput: string) {
+    this.pageSizeOptions = setPageSizeOptionsInput.split(',').map(str => +str);
   }
 
   createForm() {

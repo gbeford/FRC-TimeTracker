@@ -2,11 +2,13 @@
   <span class="colonial">
     <img class="colonialImg" src="/assets/images/colonial.png">
   </span>
+
   <button mat-icon-button [matMenuTriggerFor]="appMenu">
     <mat-icon>menu</mat-icon>
   </button>
 
   <mat-menu #appMenu="matMenu">
+    <button mat-menu-item [matMenuTriggerFor]="reports">Reports</button>
     <a [routerLink]="['/']" mat-menu-item>
       <span>Home </span>
     </a>
@@ -26,12 +28,6 @@
       </a>
     </ng-container>
     <ng-container *ngIf="securityObject.isAuthenticated">
-      <a [routerLink]="['/studentlist']" *hasClaim="['canAccess_Student', 'canAccess_Admin']" mat-menu-item>
-        <span>Student List</span>
-      </a>
-    </ng-container>
-
-    <ng-container *ngIf="securityObject.isAuthenticated">
       <a [routerLink]="['/trackTime']" *hasClaim="'canAccess_Student'" mat-menu-item>
         <span>Track Time</span>
       </a>
@@ -46,16 +42,34 @@
     <a [routerLink]="['/addImage']" mat-menu-item>
       <span>Add Image</span>
     </a>
-    <a [routerLink]="['/attendance']" mat-menu-item>
+    <!-- <a [routerLink]="['/attendance']" mat-menu-item>
       <span>Attendance</span>
-    </a>
+    </a> -->
     <a [routerLink]="['/test']" mat-menu-item>
       <span>Test</span>
     </a>
+  </mat-menu>
+
+  <mat-menu #reports="matMenu">
+    <button mat-menu-item [routerLink]="['/attendance']">Attendance</button>
+    <ng-container *ngIf="securityObject.isAuthenticated">
+      <a [routerLink]="['/messageList']" *hasClaim="'canAccess_Admin'" mat-menu-item>
+        <span>Message List</span>
+      </a>
+    </ng-container>
+    <ng-container *ngIf="securityObject.isAuthenticated">
+      <a [routerLink]="['/studentlist']" *hasClaim="['canAccess_Student', 'canAccess_Admin']" mat-menu-item>
+        <span>Student List</span>
+      </a>
+    </ng-container>
+  </mat-menu>
 
 
-    <!--       TODO: need to re-wire back up for page to work again       -->
-    <!-- <ng-container *ngIf="securityObject.isAuthenticated">
+
+
+
+  <!--       TODO: need to re-wire back up for page to work again       -->
+  <!-- <ng-container *ngIf="securityObject.isAuthenticated">
       <a [routerLink]="['/studentTimeReport']" *hasClaim="'canAccess_Student'" mat-menu-item>
         <span>Student Hours</span>
       </a>
@@ -65,20 +79,16 @@
         <span>Edit</span>
       </a>
     </ng-container>-->
-    <ng-container *ngIf="securityObject.isAuthenticated">
-      <a [routerLink]="['/messageList']" *hasClaim="'canAccess_Admin'" mat-menu-item>
-        <span>Message List</span>
-      </a>
-    </ng-container>
-    <!-- <a [routerLink]="['/badges']" mat-menu-item *ngIf="isAdmin()">
+
+  <!-- <a [routerLink]="['/badges']" mat-menu-item *ngIf="isAdmin()">
       <span>Badges</span>
     </a> -->
-    <!-- <a [routerLink]="['/applyPoints']" mat-menu-item *ngIf="isAdmin()">
+  <!-- <a [routerLink]="['/applyPoints']" mat-menu-item *ngIf="isAdmin()">
       <span>Apply Points to Student</span>
     </a> -->
 
 
-  </mat-menu>
+
 
   <!-- <span style="padding-left: 50px;" *ngIf="user">Welcome {{ user.displayName }}</span> -->
   <span class="spacer"> </span>

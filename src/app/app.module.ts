@@ -7,8 +7,7 @@ import { AppComponent } from './app.component';
 import {
   MatToolbarModule, MatButtonModule, MatMenuModule, MatIconModule, MatDatepickerModule, MatSelectModule,
   MatFormFieldModule, MatNativeDateModule, MatInputModule, MatSnackBarModule, MatTableModule, MatSortModule,
-  MatCheckboxModule,
-  MatDialogModule
+  MatCheckboxModule, MatDialogModule, MatPaginatorModule
 } from '@angular/material';
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
 import { environment } from '@environment/environment';
@@ -115,6 +114,7 @@ import { ReportsService } from './reports/reports.service';
     MatSortModule,
     MatCheckboxModule,
     MatDialogModule,
+    MatPaginatorModule,
     AppRoutingModule,
     HttpClientModule,
     SatPopoverModule,
