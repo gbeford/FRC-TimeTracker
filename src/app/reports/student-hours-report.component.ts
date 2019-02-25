@@ -3,6 +3,9 @@ import { FormGroup, Validators, FormBuilder } from '@angular/forms';
 import { ReportsService } from './reports.service';
 import { MatSort, MatTableDataSource, PageEvent } from '@angular/material';
 
+// https://material.angular.io/components/paginator/examples
+
+
 @Component({
   selector: 'app-student-hours-report',
   templateUrl: './student-hours-report.component.html',
@@ -16,9 +19,9 @@ export class StudentHoursReportComponent implements OnInit {
   @ViewChild(MatSort) sort: MatSort;
 
   // MatPaginator Inputs
-  length = 100;
-  pageSize = 10;
-  pageSizeOptions: number[] = [5, 10, 25, 100];
+  // length = 100;
+  // pageSize = 10;
+  // pageSizeOptions: number[] = [5, 10, 25, 100];
 
   pageEvent: PageEvent;
 
@@ -29,9 +32,9 @@ export class StudentHoursReportComponent implements OnInit {
   }
 
   // MatPaginator Output
-  setPageSizeOptions(setPageSizeOptionsInput: string) {
-    this.pageSizeOptions = setPageSizeOptionsInput.split(',').map(str => +str);
-  }
+  // setPageSizeOptions(setPageSizeOptionsInput: string) {
+  //   this.pageSizeOptions = setPageSizeOptionsInput.split(',').map(str => +str);
+  // }
 
   createForm() {
     this.studentAttendanceForm = this.formBuilder.group({
