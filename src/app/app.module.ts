@@ -120,7 +120,8 @@ import { ReportsService } from './reports/reports.service';
     SatPopoverModule,
     HttpInterceptorModule
   ],
-  providers: [StudentService,
+  providers: [
+    StudentService,
     MessageService,
     PointService,
     TitleCasePipe,
