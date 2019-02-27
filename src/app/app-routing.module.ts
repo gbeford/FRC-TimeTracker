@@ -21,6 +21,7 @@ import { ApparelOrderFormComponent } from './apparel/apparel-order-form/apparel-
 import { AddApparelComponent } from './apparel/add-apparel/add-apparel.component';
 import { ImageUploadFormComponent } from './apparel/image-upload-form.component';
 import { StudentHoursReportComponent } from './reports/student-hours-report.component';
+import { CartComponent } from './apparel/cart.component';
 
 
 
@@ -111,7 +112,7 @@ import { StudentHoursReportComponent } from './reports/student-hours-report.comp
                 path: 'attendance',
                 component: StudentHoursReportComponent,
             },
-
+            { path: 'cart', component: CartComponent },
 
 
             // { path: 'badges', component: BadgeViewComponent },

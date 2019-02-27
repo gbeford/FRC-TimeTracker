@@ -29,6 +29,14 @@ export class ClothingService {
       );   // ...errors if any
   }
 
+  // get apparel by id
+  getApparelItem(id: string): Observable<IApparel[]> {
+    return this.http.get<IApparel[]>(`${environment.baseUrl}${environment.apparelApiUrl}/${id}`)
+      .pipe(
+        catchError(Utilities.handleError)
+      );   // ...errors if any
+  }
+
   getImages(): Observable<IApparelImage[]> {
     return this.http.get<IApparelImage[]>(`${environment.baseUrl}${environment.imageApiUrl}`)
       .pipe(
@@ -36,20 +44,13 @@ export class ClothingService {
       );   // ...errors if any
   }
 
-
-  // getImagesById(imageId): Observable<IApparelImage[]> {
-  //   return this.http.get<IApparelImage[]>(`${environment.baseUrl}${environment.imageApiUrl}`)
-  //     .pipe(
-  //       catchError(Utilities.handleError)
-  //     );   // ...errors if any
-  // }
-
   getImageNames(): Observable<IApparelImage[]> {
     return this.http.get<IApparelImage[]>(`${environment.baseUrl}${environment.imageNameApiUrl}`)
       .pipe(
         catchError(Utilities.handleError)
       );   // ...errors if any
   }
+
 
 
   // CRUD

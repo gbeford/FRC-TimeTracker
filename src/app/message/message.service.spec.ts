@@ -3,6 +3,9 @@ import { MessageService } from './message.service';
 import { of } from 'rxjs';
 
 // https://scotch.io/tutorials/testing-angular-with-jasmine-and-karma-part-1
+// https://www.ng-conf.org/2019/angulars-httpclient-testing-depth/
+// https://assertible.com/blog/4-common-api-errors-how-to-test-them
+
 
 describe('MessageService', () => {
     let messageService: MessageService,

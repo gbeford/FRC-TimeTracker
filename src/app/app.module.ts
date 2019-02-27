@@ -54,6 +54,7 @@ import { ImageUploadComponent } from './shared/image-upload/image-upload.compone
 import { ImageUploadFormComponent } from './apparel/image-upload-form.component';
 import { StudentHoursReportComponent } from './reports/student-hours-report.component';
 import { ReportsService } from './reports/reports.service';
+import { CartComponent } from './apparel/cart.component';
 
 
 
@@ -92,6 +93,7 @@ import { ReportsService } from './reports/reports.service';
     ImageUploadComponent,
     ImageUploadFormComponent,
     StudentHoursReportComponent,
+    CartComponent,
   ],
   imports: [
     BrowserModule,
