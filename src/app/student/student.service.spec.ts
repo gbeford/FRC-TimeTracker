@@ -6,7 +6,7 @@ import { TestBed, inject, async } from '@angular/core/testing';
 import { of } from 'rxjs';
 import { StudentService } from './student.service';
 
-describe('MessageService', () => {
+describe('StudentService', () => {
     let studentService: StudentService,
         mockHttp;
 
