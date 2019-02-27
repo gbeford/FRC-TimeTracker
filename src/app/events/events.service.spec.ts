@@ -86,19 +86,19 @@ describe('EventsService', () => {
 
 
 
-  //   fit('should throw error properly',
-  //     async(
-  //       inject([HttpClient, eventService], (http: HttpClient) => {
-  //         const err = { status: 404, statusText: 'Not Found' };
-  //         spyOn(http, 'get').and.throwError(JSON.stringify(err));
-  //         eventService.getEventsList();
-  //         expect(eventService.getEventsList).toThrow(JSON.stringify(err));
-  //       }
-  //       )
-  //     )
-  //   );
+    //   fit('should throw error properly',
+    //     async(
+    //       inject([HttpClient, eventService], (http: HttpClient) => {
+    //         const err = { status: 404, statusText: 'Not Found' };
+    //         spyOn(http, 'get').and.throwError(JSON.stringify(err));
+    //         eventService.getEventsList();
+    //         expect(eventService.getEventsList).toThrow(JSON.stringify(err));
+    //       }
+    //       )
+    //     )
+    //   );
 
-  // });
+  });
 
 
 
