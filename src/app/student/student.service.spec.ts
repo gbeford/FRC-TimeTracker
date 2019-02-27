@@ -2,7 +2,7 @@ import { TestBed, inject, async } from '@angular/core/testing';
 import { of } from 'rxjs';
 import { StudentService } from './student.service';
 
-describe('MessageService', () => {
+describe('StudentService', () => {
     let studentService: StudentService,
         mockHttp;
 
@@ -30,9 +30,6 @@ describe('MessageService', () => {
                 email: 'jdoe@shrewsburyrobotics.org',
                 grade: 10,
                 isSignedIn: false,
-                // updated?: Date,
-                // created?: Date,
-                // signInTime?: Date,
                 messages: ['Go see Carol', 'Sign up for emails'],
                 eventID: 1
             },
@@ -83,5 +80,32 @@ describe('MessageService', () => {
 
             expect(response).toEqual(studentResponse);
         });
+
+        fit('should fail due to trying to access wrong id', () => {
+            const studentResponse = {
+                id: 12,
+                studentId: 122321,
+                firstName: 'John',
+                lastName: 'Doe',
+                email: 'jdoe@shrewsburyrobotics.org',
+                grade: 10,
+                isSignedIn: false,
+                created: '2/21/19',
+                signInTime: '2/21/19',
+                messages: ['Go see Carol', 'Sign up for emails'],
+                eventID: 1
+            };
+            let response;
+
+            spyOn(studentService, 'getStudent').and.returnValue(of(studentResponse));
+
+            studentService.getStudent('4').subscribe(res => {
+                response = res;
+            });
+
+            expect(response).toEqual(studentResponse);
+        });
+
+
     });
 });
