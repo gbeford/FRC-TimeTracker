@@ -5,8 +5,6 @@ import { environment } from '@environment/environment';
 import { IEvent } from 'app/model/event';
 import { HttpErrorResponse } from '@angular/common/http';
 
-
-
 describe('EventsService', () => {
   let eventService: EventsService,
     mockHttp;

@@ -1,8 +1,4 @@
 import { TestBed, inject, async } from '@angular/core/testing';
-
-// import { HttpClientTestingModule, HttpTestingController } from '@angular/common/http/testing';
-// import { HttpModule } from '@angular/http';
-// import { HttpClient } from '@angular/common/http';
 import { of } from 'rxjs';
 import { StudentService } from './student.service';
 
@@ -22,8 +18,6 @@ describe('MessageService', () => {
     it('should be created', () => {
         expect(studentService).toBeTruthy();
     });
-
-
 
     describe('getStudents', () => {
         fit('should return a collection of students', () => {
