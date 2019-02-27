@@ -1,9 +1,10 @@
 import { TestBed, inject, async } from '@angular/core/testing';
 import { EventsService } from './events.service';
-import { Observable, of } from 'rxjs';
+import { of } from 'rxjs';
 import { environment } from '@environment/environment';
 import { IEvent } from 'app/model/event';
-import { HttpErrorResponse } from '@angular/common/http';
+import { HttpClient, HttpClientModule } from '@angular/common/http';
+
 
 describe('EventsService', () => {
   let eventService: EventsService,
@@ -11,6 +12,7 @@ describe('EventsService', () => {
 
   beforeEach(() => {
     TestBed.configureTestingModule({  // sets up the service we want to test
+      imports: [HttpClientModule],
       providers: [EventsService]  // with MessageService set in providers
     });
     mockHttp = jasmine.createSpyObj('mockHttp', ['delete', 'post', 'put', 'get']);
@@ -83,36 +85,20 @@ describe('EventsService', () => {
     });
 
 
-    // fit('should return error if cannot get Events', () => {
-    //   mockHttp.get.and.returnValue(of(false));
 
-    //   eventService.saveEvent('pie')
-    //     .subscribe(() => {
-    //     }, error => {
-    //       expect(error.error.type).toBe('ERROR');
-    //       // console.log(error.error.type);
-    //       Observable.throw(error);
-    //     });
+  //   fit('should throw error properly',
+  //     async(
+  //       inject([HttpClient, eventService], (http: HttpClient) => {
+  //         const err = { status: 404, statusText: 'Not Found' };
+  //         spyOn(http, 'get').and.throwError(JSON.stringify(err));
+  //         eventService.getEventsList();
+  //         expect(eventService.getEventsList).toThrow(JSON.stringify(err));
+  //       }
+  //       )
+  //     )
+  //   );
 
-    //   const request = (mockHttp.get).toHaveBeenCalledWith(`${environment.baseUrl}${environment.eventApiUrl}`);
-    //   request.error(new ErrorEvent('ERROR'));
-    //   mockHttp.verify();
-    // });
-
-
-    // it('should throw error properly',
-    //   async(
-    //     inject([HttpClient, eventService], (http: HttpClient, apiService: ApiService) => {
-    //       const err = { status: 404, statusText: 'Not Found' };
-    //       spyOn(http, 'get').and.throwError(JSON.stringify(err))
-    //       apiService.get('testUrl');
-    //       expect(apiService.get).toThrow(JSON.stringify(err));
-    //     }
-    //     )
-    //   )
-    // );
-
-  });
+  // });
 
 
 

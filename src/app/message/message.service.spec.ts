@@ -1,8 +1,5 @@
-import { TestBed, inject, async } from '@angular/core/testing';
+import { TestBed } from '@angular/core/testing';
 import { MessageService } from './message.service';
-import { HttpClientTestingModule, HttpTestingController } from '@angular/common/http/testing';
-import { HttpModule } from '@angular/http';
-import { HttpClient } from '@angular/common/http';
 import { of } from 'rxjs';
 
 // https://scotch.io/tutorials/testing-angular-with-jasmine-and-karma-part-1
