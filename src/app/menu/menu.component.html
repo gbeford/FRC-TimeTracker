@@ -8,10 +8,13 @@
   </button>
 
   <mat-menu #appMenu="matMenu">
-    <button mat-menu-item [matMenuTriggerFor]="reports">Reports</button>
     <a [routerLink]="['/']" mat-menu-item>
       <span>Home </span>
     </a>
+    <!-- <button mat-menu-item [matMenuTriggerFor]="admin">Admin</button> -->
+    <ng-container *ngIf="securityObject.isAuthenticated">
+      <button mat-menu-item [matMenuTriggerFor]="reports">Reports</button>
+    </ng-container>
     <ng-container *ngIf="securityObject.isAuthenticated">
       <a [routerLink]="['/event']" *hasClaim="'canAccess_Admin'" mat-menu-item>
         <span>Add New Event</span>
@@ -33,25 +36,32 @@
       </a>
     </ng-container>
 
-    <a [routerLink]="['/apparel']" mat-menu-item>
+    <!-- <a [routerLink]="['/apparel']" mat-menu-item>
       <span>Apparel</span>
     </a>
+
+    <a [routerLink]="['/test']" mat-menu-item>
+      <span>Test</span>
+    </a>-->
+  </mat-menu>
+
+
+  <mat-menu #admin="matMenu">
     <a [routerLink]="['/addApparel']" mat-menu-item>
       <span>Add Apparel</span>
     </a>
     <a [routerLink]="['/addImage']" mat-menu-item>
       <span>Add Image</span>
     </a>
-    <!-- <a [routerLink]="['/attendance']" mat-menu-item>
-      <span>Attendance</span>
-    </a> -->
-    <a [routerLink]="['/test']" mat-menu-item>
-      <span>Test</span>
-    </a>
   </mat-menu>
 
+
   <mat-menu #reports="matMenu">
-    <button mat-menu-item [routerLink]="['/attendance']">Attendance</button>
+    <ng-container *ngIf="securityObject.isAuthenticated">
+      <a [routerLink]="['/attendance']" *hasClaim="'canAccess_Admin'" mat-menu-item>
+        <span>Attendance</span>
+      </a>
+    </ng-container>
     <ng-container *ngIf="securityObject.isAuthenticated">
       <a [routerLink]="['/messageList']" *hasClaim="'canAccess_Admin'" mat-menu-item>
         <span>Message List</span>
@@ -63,7 +73,6 @@
       </a>
     </ng-container>
   </mat-menu>
-
 
 
 
