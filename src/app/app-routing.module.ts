@@ -17,7 +17,7 @@ import { EditMessageComponent } from './message/edit-message/edit-message.compon
 import { LoginComponent } from './security/login.component';
 import { AuthGuard } from './security/auth.guard';
 import { AddEditEventComponent } from './events/add-edit-event.component';
-import { ApparelOrderFormComponent } from './apparel/apparel-order-form/apparel-order-form.component';
+import { ApparelOrderFormComponent } from './apparel/apparel-order-form/apparel-store-front.component';
 import { AddApparelComponent } from './apparel/add-apparel/add-apparel.component';
 import { ImageUploadFormComponent } from './apparel/image-upload-form.component';
 import { StudentHoursReportComponent } from './reports/student-hours-report.component';
@@ -42,7 +42,8 @@ import { CartComponent } from './apparel/cart.component';
                 path: 'studentTimeReport',
                 component: StudentTimePointReportComponent,
                 canActivate: [AuthGuard],
-                data: { claim: 'canAccess_Student' } },
+                data: { claim: 'canAccess_Student' }
+            },
             {
                 path: 'studentlist',
                 component: StudentListComponent,
@@ -112,8 +113,6 @@ import { CartComponent } from './apparel/cart.component';
                 path: 'attendance',
                 component: StudentHoursReportComponent,
             },
-            { path: 'cart', component: CartComponent },
-
 
             // { path: 'badges', component: BadgeViewComponent },
             // { path: 'applyPoints', component: ApplyPointsToStudentComponent },

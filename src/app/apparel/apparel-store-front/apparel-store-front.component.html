@@ -2,7 +2,7 @@
 
 
 
-<form role="form" class="col-md-9 go-right" [formGroup]="apparelForm" (ngSubmit)="save()">
+<form role="form" class="col-md-9 go-right" [formGroup]="apparelForm" (ngSubmit)="addToCart()">
   <div class="container">
 
     <div class="card" *ngFor="let apparel of this.apparealData">
@@ -59,18 +59,13 @@
               </select>
             </h5>
             <div class="action">
-              <!-- <button class="add-to-cart btn btn-default" type="button">add to cart</button> -->
-              <a class="add-to-cart btn btn-default" [routerLink]="['/cart', { id:this.apparel.apparelId}]">Buy Now</a>
+              <button class="add-to-cart btn btn-default" type="button" (click)="addItemToCart(apparel)">add
+                to cart</button>
             </div>
           </div>
         </div>
       </div>
-
-
     </div>
-
-
     <hr>
-
   </div>
 </form>

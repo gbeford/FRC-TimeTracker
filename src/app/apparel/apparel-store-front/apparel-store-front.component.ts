@@ -1,15 +1,15 @@
 import { Component, OnInit } from '@angular/core';
 import { ClothingService } from '../clothing.service';
-import { IApparelImage } from 'app/model/apparel-image';
 import { IApparel } from 'app/model/apparel';
 import { FormGroup, Validators, FormBuilder } from '@angular/forms';
+import { Observable } from 'rxjs';
 
 // http://learningprogramming.net/mean-stack/angular-6/build-shopping-cart-in-angular-6/
 
 @Component({
-  selector: 'app-apparel-order-form',
-  templateUrl: './apparel-order-form.component.html',
-  styleUrls: ['./apparel-order-form.component.scss']
+  selector: 'app-apparel-store-front',
+  templateUrl: './apparel-store-front.component.html',
+  styleUrls: ['./apparel-store-front.component.scss']
 })
 export class ApparelOrderFormComponent implements OnInit {
 
@@ -21,9 +21,10 @@ export class ApparelOrderFormComponent implements OnInit {
   public apparelForm: FormGroup;
   formObj: IApparel;
   imageId: number;
+  public apparel: Observable<IApparel[]>;
 
-
-  constructor(private clothingService: ClothingService, private formBuilder: FormBuilder) { }
+  constructor(private clothingService: ClothingService,
+    private formBuilder: FormBuilder) { }
 
   ngOnInit() {
     this.getSizes();
@@ -67,7 +68,7 @@ export class ApparelOrderFormComponent implements OnInit {
       typeCtrl: [''],
       upChargeCtrl: [''],
       priceCtrl: [''],
-     // imageCtrl: [''],
+      // imageCtrl: [''],
       nameChargeCtl: [''],
       canHaveNameCtl: [''],
       genderCtrl: ['', [<any>Validators.required]],
@@ -77,7 +78,7 @@ export class ApparelOrderFormComponent implements OnInit {
     });
   }
 
-  save() {
+  public addItemToCart(apparel: IApparel): void {
 
     if (this.apparelForm.valid) {
       // this.formObj = {
@@ -98,8 +99,9 @@ export class ApparelOrderFormComponent implements OnInit {
       // this.formObj).subscribe(res => {
       //   this.apparelForm.reset();
       //  });
-   }
+    }
   }
+
 
 
 
