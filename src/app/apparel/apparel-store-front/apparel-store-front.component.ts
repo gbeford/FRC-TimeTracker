@@ -85,27 +85,19 @@ export class ApparelStoreFrontComponent implements OnInit {
     debugger;
 
     if (this.apparelForm.valid) {
-      this.formObj = {
-        this.item = new CartItem();
-      //   apparelId: 0,
-      //   quantity: null,
-      //   item: this.apparelForm.value.itemCtrl,
-      //   description: this.apparelForm.value.descCtrl,
-      //   gender: null,
-      //   size: null,
-      //   price: this.apparelForm.value.priceCtrl,
-      //   upCharge: this.apparelForm.value.upChargeCtrl ? this.apparelForm.value.upChargeCtrl : null,
-      //   type: this.apparelForm.value.typeCtrl,
-      //   apparelImageId: this.apparelForm.value.imageCtrl,
-      //   nameCharge: this.apparelForm.value.nameChargeCtl ? this.apparelForm.value.nameChargeCtl : null,
-      //   canHaveName: this.apparelForm.value.canHaveNameCtl ? this.apparelForm.value.canHaveNameCtl : 0,
-     };
-      // this.clothingService.saveCartItem(
-      // this.formObj).subscribe(res => {
-      //   this.apparelForm.reset();
+      this.item = new CartItem();
+      this.item.apparelID = apparelId;
+      this.item.upCharge = this.apparelForm.value.upChargeCtrl ? this.apparelForm.value.upChargeCtrl : null;
+      this.item.nameCharge = this.apparelForm.value.nameChargeCtl ? this.apparelForm.value.nameChargeCtl : null;
+      this.item.gender = this.apparelForm.value.genderCtrl;
+      this.item.size = this.apparelForm.value.sizeCtrl;
+      this.item.quantity = this.apparelForm.value.quantityCtrl;
+      this.item.sleeveName = this.apparelForm.value.sleeveNameCtrl;
+
       this.shoppingCartService.addItem(this.item);
       console.log('item added ', apparelId);
-       }
+    }
+    //   this.apparelForm.reset();
 
     }
 

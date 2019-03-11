@@ -60,7 +60,6 @@ import { CheckoutComponent } from './apparel/checkout/checkout.component';
 
 
 
-
 @NgModule({
   declarations: [
     AppComponent,

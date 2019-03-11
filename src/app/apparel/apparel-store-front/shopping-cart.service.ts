@@ -3,7 +3,7 @@ import { IApparel } from 'app/model/apparel';
 import { ShoppingCart } from 'app/model/shopping-cart';
 import { Observer, Observable } from 'rxjs';
 import { ClothingService } from '../clothing.service';
-import { StorageService } from './storage.service';
+
 import { CartItem } from 'app/model/cart-Item';
 
 // https://github.com/jonsamwell/angular-simple-shopping-cart
@@ -16,16 +16,15 @@ import { CartItem } from 'app/model/cart-Item';
   providedIn: 'root'
 })
 export class ShoppingCartService {
-  private storage: Storage;
-  private subscriptionObservable: Observable<ShoppingCart>;
-  private subscribers: Array<Observer<ShoppingCart>> = new Array<Observer<ShoppingCart>>();
+  // private storage: Storage;
+  // private subscriptionObservable: Observable<ShoppingCart>;
+  // private subscribers: Array<Observer<ShoppingCart>> = new Array<Observer<ShoppingCart>>();
   // private clothingItems: IApparel[];
 
   private newCartItems = [];
 
 
-  constructor(private storageService: StorageService,
-    private clothingService: ClothingService) {
+  constructor(private clothingService: ClothingService) {
 
     // this.subscriptionObservable = new Observable<ShoppingCart>((observer: Observer<ShoppingCart>) => {
     //   this.subscribers.push(observer);
@@ -46,11 +45,11 @@ export class ShoppingCartService {
     // cart.items = cart.items.filter((cartItem) => cartItem.quantity > 0);
     // if (cart.items.length === 0) {
     //   // cart.deliveryOptionId = undefined;
-    }
+  }
 
-    //this.calculateCart(cart);
-    // this.save(cart);
-    // this.dispatch(cart);
+  // this.calculateCart(cart);
+  // this.save(cart);
+  // this.dispatch(cart);
   // }
 
   // private calculateCart(cart: ShoppingCart): void {
