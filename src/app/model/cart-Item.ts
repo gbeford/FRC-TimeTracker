@@ -3,8 +3,8 @@ import { IApparel } from './apparel';
 
 /* Defines the cart item entity */
 export class CartItem {
-    // apparel: IApparel;
-    apparelID: number;
+    apparel: IApparel;
+    // apparelID: number;
     upCharge: number;
     nameCharge: number;
     gender: string;

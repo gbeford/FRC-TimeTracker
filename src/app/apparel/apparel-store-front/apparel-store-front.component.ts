@@ -81,12 +81,12 @@ export class ApparelStoreFrontComponent implements OnInit {
     });
   }
 
-  public addItemToCart(apparelId: number) {
+  public addItemToCart(apparel: IApparel) {
     debugger;
 
     if (this.apparelForm.valid) {
       this.item = new CartItem();
-      this.item.apparelID = apparelId;
+      this.item.apparel = apparel;
       this.item.upCharge = this.apparelForm.value.upChargeCtrl ? this.apparelForm.value.upChargeCtrl : null;
       this.item.nameCharge = this.apparelForm.value.nameChargeCtl ? this.apparelForm.value.nameChargeCtl : null;
       this.item.gender = this.apparelForm.value.genderCtrl;
@@ -95,11 +95,11 @@ export class ApparelStoreFrontComponent implements OnInit {
       this.item.sleeveName = this.apparelForm.value.sleeveNameCtrl;
 
       this.shoppingCartService.addItem(this.item);
-      console.log('item added ', apparelId);
+      console.log('item added ', this.item);
     }
     //   this.apparelForm.reset();
 
-    }
+  }
 
 
 

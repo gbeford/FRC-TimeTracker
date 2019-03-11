@@ -16,23 +16,10 @@ import { CartItem } from 'app/model/cart-Item';
   providedIn: 'root'
 })
 export class ShoppingCartService {
-  // private storage: Storage;
-  // private subscriptionObservable: Observable<ShoppingCart>;
-  // private subscribers: Array<Observer<ShoppingCart>> = new Array<Observer<ShoppingCart>>();
-  // private clothingItems: IApparel[];
 
   private newCartItems = [];
 
-
   constructor(private clothingService: ClothingService) {
-
-    // this.subscriptionObservable = new Observable<ShoppingCart>((observer: Observer<ShoppingCart>) => {
-    //   this.subscribers.push(observer);
-    //   observer.next(this.retrieve());
-    //   return () => {
-    //     this.subscribers = this.subscribers.filter((obs) => obs !== observer);
-    //   };
-    // });
   }
 
   public addItem(item: CartItem): void {
