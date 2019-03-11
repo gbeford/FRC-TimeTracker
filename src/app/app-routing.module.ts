@@ -17,11 +17,11 @@ import { EditMessageComponent } from './message/edit-message/edit-message.compon
 import { LoginComponent } from './security/login.component';
 import { AuthGuard } from './security/auth.guard';
 import { AddEditEventComponent } from './events/add-edit-event.component';
-import { ApparelOrderFormComponent } from './apparel/apparel-order-form/apparel-store-front.component';
+import { ApparelStoreFrontComponent } from './apparel/apparel-store-front/apparel-store-front.component';
 import { AddApparelComponent } from './apparel/add-apparel/add-apparel.component';
 import { ImageUploadFormComponent } from './apparel/image-upload-form.component';
 import { StudentHoursReportComponent } from './reports/student-hours-report.component';
-import { CartComponent } from './apparel/cart.component';
+
 
 
 
@@ -99,7 +99,7 @@ import { CartComponent } from './apparel/cart.component';
             },
             {
                 path: 'apparel',
-                component: ApparelOrderFormComponent,
+                component: ApparelStoreFrontComponent,
             },
             {
                 path: 'addApparel',

@@ -1,12 +1,16 @@
-import { ICartItem } from './cart-Item';
+import { CartItem } from './cart-Item';
 
 /* Defines the cart entity */
-export interface IShoppingCart {
+export class ShoppingCart {
     studentID: number;
-    items: ICartItem[];
+    items: CartItem[];
     grossTotal: number;
     itemsTotal: number;
+
+
+    public updateFrom(src: ShoppingCart) {
+        this.items = src.items;
+        this.grossTotal = src.grossTotal;
+        this.itemsTotal = src.itemsTotal;
+    }
 }
-
-
-

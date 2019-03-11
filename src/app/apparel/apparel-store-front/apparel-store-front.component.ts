@@ -3,6 +3,7 @@ import { ClothingService } from '../clothing.service';
 import { IApparel } from 'app/model/apparel';
 import { FormGroup, Validators, FormBuilder } from '@angular/forms';
 import { Observable } from 'rxjs';
+import { ShoppingCartService } from './shopping-cart.service';
 
 // http://learningprogramming.net/mean-stack/angular-6/build-shopping-cart-in-angular-6/
 
@@ -11,7 +12,7 @@ import { Observable } from 'rxjs';
   templateUrl: './apparel-store-front.component.html',
   styleUrls: ['./apparel-store-front.component.scss']
 })
-export class ApparelOrderFormComponent implements OnInit {
+export class ApparelStoreFrontComponent implements OnInit {
 
   sizes: string[];
   // imageData: IApparelImage;
@@ -24,7 +25,7 @@ export class ApparelOrderFormComponent implements OnInit {
   public apparel: Observable<IApparel[]>;
 
   constructor(private clothingService: ClothingService,
-    private formBuilder: FormBuilder) { }
+    private formBuilder: FormBuilder, private shoppingCartService: ShoppingCartService) { }
 
   ngOnInit() {
     this.getSizes();
@@ -78,7 +79,8 @@ export class ApparelOrderFormComponent implements OnInit {
     });
   }
 
-  public addItemToCart(apparel: IApparel): void {
+  public addItemToCart(apparel: IApparel) {
+    debugger;
 
     if (this.apparelForm.valid) {
       // this.formObj = {
@@ -99,11 +101,10 @@ export class ApparelOrderFormComponent implements OnInit {
       // this.formObj).subscribe(res => {
       //   this.apparelForm.reset();
       //  });
+      this.shoppingCartService.addItem(apparel, this.apparelForm.value.quanityCtrl);
+      console.log('item added ', apparel);
     }
   }
-
-
-
 
 
 

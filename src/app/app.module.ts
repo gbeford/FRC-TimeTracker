@@ -46,7 +46,7 @@ import { HasClaimDirective } from './security/has-claim.directive';
 import { AddEditEventComponent } from './events/add-edit-event.component';
 import { EventsService } from './events/events.service';
 import { SignUpFormComponent } from './sign-up-form/sign-up-form.component';
-import { ApparelOrderFormComponent } from './apparel/apparel-store-front/apparel-store-front.component';
+import { ApparelStoreFrontComponent } from './apparel/apparel-store-front/apparel-store-front.component';
 import { ApparelOrdersReportComponent } from './apparel/apparel-orders-report/apparel-orders-report.component';
 import { AlertMessageComponent } from './shared/alert-message/alert-message.component';
 import { AddApparelComponent } from './apparel/add-apparel/add-apparel.component';
@@ -54,6 +54,8 @@ import { ImageUploadComponent } from './shared/image-upload/image-upload.compone
 import { ImageUploadFormComponent } from './apparel/image-upload-form.component';
 import { StudentHoursReportComponent } from './reports/student-hours-report.component';
 import { ReportsService } from './reports/reports.service';
+import { OrderConfirmationComponent } from './apparel/order-confirmation/order-confirmation.component';
+import { CheckoutComponent } from './apparel/checkout/checkout.component';
 
 
 
@@ -86,14 +88,15 @@ import { ReportsService } from './reports/reports.service';
     HasClaimDirective,
     AddEditEventComponent,
     SignUpFormComponent,
-    ApparelOrderFormComponent,
+    ApparelStoreFrontComponent,
     ApparelOrdersReportComponent,
     AlertMessageComponent,
     AddApparelComponent,
     ImageUploadComponent,
     ImageUploadFormComponent,
     StudentHoursReportComponent,
-    CartComponent,
+    OrderConfirmationComponent,
+    CheckoutComponent,
   ],
   imports: [
     BrowserModule,
