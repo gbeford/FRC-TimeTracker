@@ -5,6 +5,7 @@ import { IApparel } from './apparel';
 export class CartItem {
     apparel: IApparel;
     // apparelID: number;
+    totalItemPrice: number;
     upCharge: number;
     nameCharge: number;
     gender: string;

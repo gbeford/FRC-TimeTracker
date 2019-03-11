@@ -18,6 +18,8 @@ import { CartItem } from 'app/model/cart-Item';
 export class ShoppingCartService {
 
   private newCartItems = [];
+  private shoppingCart: ShoppingCart;
+  private itemTotal: number;
 
   constructor(private clothingService: ClothingService) {
   }
@@ -26,13 +28,24 @@ export class ShoppingCartService {
     debugger;
 
     if (item) {
+      const price = item.apparel.price * item.quantity;
+      item.totalItemPrice = price + item.apparel.nameCharge + item.apparel.upCharge;
       this.newCartItems.push(item);
     }
-    // item.quantity += quantity;
-    // cart.items = cart.items.filter((cartItem) => cartItem.quantity > 0);
-    // if (cart.items.length === 0) {
-    //   // cart.deliveryOptionId = undefined;
+    console.log('Service ', this.newCartItems);
+
+    this.shoppingCart = new ShoppingCart;
+    this.shoppingCart.items = this.newCartItems;
+    for (let i = 0; i <= this.newCartItems.length; i++) {
+      this.shoppingCart.grossTotal = this.newCartItems[i].totalItemPrice + this.shoppingCart.grossTotal;
+    }
+    console.log('shopping cart total ', this.shoppingCart.grossTotal);
   }
+  // item.quantity += quantity;
+  // cart.items = cart.items.filter((cartItem) => cartItem.quantity > 0);
+  // if (cart.items.length === 0) {
+  //   // cart.deliveryOptionId = undefined;
+  // }
 
   // this.calculateCart(cart);
   // this.save(cart);
