@@ -4,6 +4,7 @@ import { IApparel } from 'app/model/apparel';
 import { FormGroup, Validators, FormBuilder } from '@angular/forms';
 import { Observable } from 'rxjs';
 import { ShoppingCartService } from './shopping-cart.service';
+import { CartItem } from 'app/model/cart-Item';
 
 // http://learningprogramming.net/mean-stack/angular-6/build-shopping-cart-in-angular-6/
 
@@ -23,6 +24,7 @@ export class ApparelStoreFrontComponent implements OnInit {
   formObj: IApparel;
   imageId: number;
   public apparel: Observable<IApparel[]>;
+  item: CartItem;
 
   constructor(private clothingService: ClothingService,
     private formBuilder: FormBuilder, private shoppingCartService: ShoppingCartService) { }
@@ -79,11 +81,12 @@ export class ApparelStoreFrontComponent implements OnInit {
     });
   }
 
-  public addItemToCart(apparel: IApparel) {
+  public addItemToCart(apparelId: number) {
     debugger;
 
     if (this.apparelForm.valid) {
-      // this.formObj = {
+      this.formObj = {
+        this.item = new CartItem();
       //   apparelId: 0,
       //   quantity: null,
       //   item: this.apparelForm.value.itemCtrl,
@@ -96,15 +99,16 @@ export class ApparelStoreFrontComponent implements OnInit {
       //   apparelImageId: this.apparelForm.value.imageCtrl,
       //   nameCharge: this.apparelForm.value.nameChargeCtl ? this.apparelForm.value.nameChargeCtl : null,
       //   canHaveName: this.apparelForm.value.canHaveNameCtl ? this.apparelForm.value.canHaveNameCtl : 0,
-      // };
+     };
       // this.clothingService.saveCartItem(
       // this.formObj).subscribe(res => {
       //   this.apparelForm.reset();
-      //  });
-      this.shoppingCartService.addItem(apparel, this.apparelForm.value.quanityCtrl);
-      console.log('item added ', apparel);
+      this.shoppingCartService.addItem(this.item);
+      console.log('item added ', apparelId);
+       }
+
     }
-  }
+
 
 
 

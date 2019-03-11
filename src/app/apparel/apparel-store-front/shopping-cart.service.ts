@@ -8,7 +8,8 @@ import { CartItem } from 'app/model/cart-Item';
 
 // https://github.com/jonsamwell/angular-simple-shopping-cart
 
-const CART_KEY = 'cart';
+// const CART_KEY = 'cart';
+
 
 
 @Injectable({
@@ -18,57 +19,58 @@ export class ShoppingCartService {
   private storage: Storage;
   private subscriptionObservable: Observable<ShoppingCart>;
   private subscribers: Array<Observer<ShoppingCart>> = new Array<Observer<ShoppingCart>>();
-  private clothingItems: IApparel[];
+  // private clothingItems: IApparel[];
+
+  private newCartItems = [];
+
+
   constructor(private storageService: StorageService,
     private clothingService: ClothingService) {
 
-    this.subscriptionObservable = new Observable<ShoppingCart>((observer: Observer<ShoppingCart>) => {
-      this.subscribers.push(observer);
-      observer.next(this.retrieve());
-      return () => {
-        this.subscribers = this.subscribers.filter((obs) => obs !== observer);
-      };
-    });
+    // this.subscriptionObservable = new Observable<ShoppingCart>((observer: Observer<ShoppingCart>) => {
+    //   this.subscribers.push(observer);
+    //   observer.next(this.retrieve());
+    //   return () => {
+    //     this.subscribers = this.subscribers.filter((obs) => obs !== observer);
+    //   };
+    // });
   }
 
-  public addItem(apparel: IApparel, quantity: number): void {
+  public addItem(item: CartItem): void {
     debugger;
-    const cart = this.retrieve();
-    let item = cart.items.find((p) => p.apparelID === apparel.apparelId);
-    if (item === undefined) {
-      item = new CartItem();
-      item.apparelID = apparel.apparelId;
-      cart.items.push(item);
+
+    if (item) {
+      this.newCartItems.push(item);
     }
-    item.quantity += quantity;
-    cart.items = cart.items.filter((cartItem) => cartItem.quantity > 0);
-    if (cart.items.length === 0) {
-      // cart.deliveryOptionId = undefined;
+    // item.quantity += quantity;
+    // cart.items = cart.items.filter((cartItem) => cartItem.quantity > 0);
+    // if (cart.items.length === 0) {
+    //   // cart.deliveryOptionId = undefined;
     }
 
-    this.calculateCart(cart);
+    //this.calculateCart(cart);
     // this.save(cart);
     // this.dispatch(cart);
-  }
+  // }
 
-  private calculateCart(cart: ShoppingCart): void {
-    cart.itemsTotal = cart.items
-      .map((item) => item.quantity * this.clothingItems.find((p) => p.apparelId === item.apparelID).price)
-      .reduce((previous, current) => previous + current, 0);
+  // private calculateCart(cart: ShoppingCart): void {
+  //   cart.itemsTotal = cart.items
+  //     .map((item) => item.quantity * this.clothingItems.find((p) => p.apparelId === item.apparelID).price)
+  //     .reduce((previous, current) => previous + current, 0);
 
-    // add up charge and name charge here?
-    cart.grossTotal = cart.itemsTotal;
-  }
+  //   // add up charge and name charge here?
+  //   cart.grossTotal = cart.itemsTotal;
+  // }
 
-  private retrieve(): ShoppingCart {
-    const cart = new ShoppingCart();
-    const storedCart = this.storage.getItem(CART_KEY);
-    if (storedCart) {
-      cart.updateFrom(JSON.parse(storedCart));
-    }
+  // private retrieve(): ShoppingCart {
+  //   const cart = new ShoppingCart();
+  //   const storedCart = this.storage.getItem(CART_KEY);
+  //   if (storedCart) {
+  //     cart.updateFrom(JSON.parse(storedCart));
+  //   }
 
-    return cart;
-  }
+  //   return cart;
+  // }
 
 
 }
