@@ -56,7 +56,7 @@ import { StudentHoursReportComponent } from './reports/student-hours-report.comp
 import { ReportsService } from './reports/reports.service';
 import { OrderConfirmationComponent } from './apparel/order-confirmation/order-confirmation.component';
 import { CheckoutComponent } from './apparel/checkout/checkout.component';
-
+// import { Angular5Csv } from 'angular5-csv/dist/Angular5-csv';
 
 
 
@@ -96,6 +96,7 @@ import { CheckoutComponent } from './apparel/checkout/checkout.component';
     StudentHoursReportComponent,
     OrderConfirmationComponent,
     CheckoutComponent,
+
   ],
   imports: [
     BrowserModule,
@@ -122,7 +123,8 @@ import { CheckoutComponent } from './apparel/checkout/checkout.component';
     AppRoutingModule,
     HttpClientModule,
     SatPopoverModule,
-    HttpInterceptorModule
+    HttpInterceptorModule,
+    // Angular5Csv
   ],
   providers: [
     StudentService,

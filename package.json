@@ -24,6 +24,7 @@
     "@angular/platform-browser-dynamic": "^7.0.2",
     "@angular/router": "^7.0.2",
     "@ncstate/sat-popover": "^3.0.0",
+    "angular5-csv": "^0.2.11",
     "bootstrap": "^3.4.0",
     "core-js": "^2.5.7",
     "jquery": "^3.3.1",

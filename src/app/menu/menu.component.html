@@ -36,6 +36,12 @@
       </a>
     </ng-container>
 
+
+      <a [routerLink]="['/attendance']" mat-menu-item>
+        <span>Attendance</span>
+      </a>
+
+
     <a [routerLink]="['/apparel']" mat-menu-item>
       <span>Apparel</span>
     </a>
@@ -43,6 +49,7 @@
     <a [routerLink]="['/test']" mat-menu-item>
       <span>Test</span>
     </a>
+
   </mat-menu>
 
 
@@ -57,11 +64,11 @@
 
 
   <mat-menu #reports="matMenu">
-    <ng-container *ngIf="securityObject.isAuthenticated">
+    <!-- <ng-container *ngIf="securityObject.isAuthenticated">
       <a [routerLink]="['/attendance']" *hasClaim="'canAccess_Admin'" mat-menu-item>
         <span>Attendance</span>
       </a>
-    </ng-container>
+    </ng-container> -->
     <ng-container *ngIf="securityObject.isAuthenticated">
       <a [routerLink]="['/messageList']" *hasClaim="'canAccess_Admin'" mat-menu-item>
         <span>Message List</span>
