@@ -96,7 +96,7 @@ export class ApparelStoreFrontComponent implements OnInit {
       this.shoppingCartService.addItem(this.item);
       console.log('item added ', this.item);
     }
-    //   this.apparelForm.reset();
+    this.apparelForm.reset();
 
   }
 

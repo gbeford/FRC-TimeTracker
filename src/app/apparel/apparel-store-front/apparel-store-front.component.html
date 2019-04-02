@@ -1,10 +1,10 @@
 <h1>Shrewsbury Robotics Optional Apparel Order Form</h1>
 
 
-<form role="form" class="col-md-9 go-right" [formGroup]="apparelForm">
+<form role="form" class="col-md-9 go-right" *ngFor="let apparel of this.apparealData" [formGroup]="apparelForm">
   <div class="container">
 
-    <div class="card" *ngFor="let apparel of this.apparealData">
+    <div class="card" >
 
       <div class="container-fliud">
         <div class="wrapper row">
@@ -34,7 +34,7 @@
             </h5>
             <div *ngIf="this.apparel.nameCharge">
               <h5 class="colors">Name on sleeve</h5>
-              <mat-checkbox aria-label="shirt can have name on sleeve" id="canHaveName" name="canHaveName"
+              <mat-checkbox aria-label="shirt can have name on sleeve" name="canHaveName"
                 formControlName="canHaveNameCtl">Yes</mat-checkbox>
               <div>
                 <span><i>Additonal {{this.apparel.nameCharge | currency}} for name on
