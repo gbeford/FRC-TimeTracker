@@ -82,7 +82,6 @@ export class ApparelStoreFrontComponent implements OnInit {
   }
 
   public addItemToCart(apparel: IApparel) {
-    debugger;
 
     if (this.apparelForm.valid) {
       this.item = new CartItem();

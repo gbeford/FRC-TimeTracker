@@ -4,13 +4,13 @@ import { CartItem } from './cart-Item';
 export class ShoppingCart {
     studentID: number;
     items: CartItem[];
-    grossTotal: number;
+    grossTotal = 0;
     itemsTotal: number;
 
 
-    public updateFrom(src: ShoppingCart) {
-        this.items = src.items;
-        this.grossTotal = src.grossTotal;
-        this.itemsTotal = src.itemsTotal;
-    }
+    // public updateFrom(src: ShoppingCart) {
+    //     this.items = src.items;
+    //     this.grossTotal = src.grossTotal;
+    //     this.itemsTotal = src.itemsTotal;
+    // }
 }

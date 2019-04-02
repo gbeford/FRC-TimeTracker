@@ -17,7 +17,7 @@ import { CartItem } from 'app/model/cart-Item';
 })
 export class ShoppingCartService {
 
-  private newCartItems = [];
+  private newCartItems: CartItem[] = [];
   private shoppingCart: ShoppingCart;
   private itemTotal: number;
 
@@ -29,14 +29,17 @@ export class ShoppingCartService {
 
     if (item) {
       const price = item.apparel.price * item.quantity;
-      item.totalItemPrice = price + item.apparel.nameCharge + item.apparel.upCharge;
+      item.totalItemPrice = price + item.apparel.nameCharge;
+      if (item.size === 'XXL') {
+        item.totalItemPrice = item.totalItemPrice + item.apparel.upCharge;
+        }
       this.newCartItems.push(item);
     }
     console.log('Service ', this.newCartItems);
 
     this.shoppingCart = new ShoppingCart;
     this.shoppingCart.items = this.newCartItems;
-    for (let i = 0; i <= this.newCartItems.length; i++) {
+    for (let i = 0; i < this.newCartItems.length; i++) {
       this.shoppingCart.grossTotal = this.newCartItems[i].totalItemPrice + this.shoppingCart.grossTotal;
     }
     console.log('shopping cart total ', this.shoppingCart.grossTotal);

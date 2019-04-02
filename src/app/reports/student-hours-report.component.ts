@@ -83,7 +83,7 @@ export class StudentHoursReportComponent implements OnInit {
     this.reportResults.map(r => {
 
       for (let i = 0; i < this.reportResults.length; i++) {
-
+// create class to create the new object
         r.createDate = r.times[i].createDateTime;
         r.checkIn = r.times[i].checkIn;
         r.checkOut = r.times[i].checkOut;
