@@ -7,7 +7,7 @@ import { AppComponent } from './app.component';
 import {
   MatToolbarModule, MatButtonModule, MatMenuModule, MatIconModule, MatDatepickerModule, MatSelectModule,
   MatFormFieldModule, MatNativeDateModule, MatInputModule, MatSnackBarModule, MatTableModule, MatSortModule,
-  MatCheckboxModule, MatDialogModule, MatPaginatorModule
+  MatCheckboxModule, MatDialogModule, MatPaginatorModule, MatBadgeModule
 } from '@angular/material';
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
 import { environment } from '@environment/environment';
@@ -120,6 +120,7 @@ import { CheckoutComponent } from './apparel/checkout/checkout.component';
     MatCheckboxModule,
     MatDialogModule,
     MatPaginatorModule,
+    MatBadgeModule,
     AppRoutingModule,
     HttpClientModule,
     SatPopoverModule,

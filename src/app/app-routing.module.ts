@@ -21,6 +21,7 @@ import { ApparelStoreFrontComponent } from './apparel/apparel-store-front/appare
 import { AddApparelComponent } from './apparel/add-apparel/add-apparel.component';
 import { ImageUploadFormComponent } from './apparel/image-upload-form.component';
 import { StudentHoursReportComponent } from './reports/student-hours-report.component';
+import { OrderConfirmationComponent } from './apparel/order-confirmation/order-confirmation.component';
 
 
 
@@ -112,6 +113,10 @@ import { StudentHoursReportComponent } from './reports/student-hours-report.comp
             {
                 path: 'attendance',
                 component: StudentHoursReportComponent,
+            },
+            {
+            path: 'order',
+            component: OrderConfirmationComponent,
             },
 
             // { path: 'badges', component: BadgeViewComponent },

@@ -26,6 +26,7 @@ export class ApparelStoreFrontComponent implements OnInit {
   public apparel: Observable<IApparel[]>;
   item: CartItem;
 
+
   constructor(private clothingService: ClothingService,
     private formBuilder: FormBuilder, private shoppingCartService: ShoppingCartService) { }
 
@@ -94,6 +95,7 @@ export class ApparelStoreFrontComponent implements OnInit {
       this.item.sleeveName = this.apparelForm.value.sleeveNameCtrl;
 
       this.shoppingCartService.addItem(this.item);
+
       console.log('item added ', this.item);
     }
     this.apparelForm.reset();

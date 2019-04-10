@@ -111,7 +111,7 @@
   {{ signedInStudents }} signed in.
   <span class="spacer"> </span>
   <span class="spacer"> </span>
-  <div style="padding-right: 70px;">
+  <div style="padding-right: 60px;">
     <div>
       <a routerLink="login" *ngIf="!securityObject.isAuthenticated">Login</a>
     </div>
@@ -121,5 +121,9 @@
     </div>
   </div>
 
-  <span class="glyphicon glyphicon-shopping-cart cart"></span>
+   <a [routerLink]="['/order']" >
+   <mat-icon matBadge="{{cartSize}}" matBadgeColor="accent" matBadgeSize="small" matBadgePosition="above after">shopping_cart</mat-icon>
+    </a>
+
+
 </mat-toolbar>

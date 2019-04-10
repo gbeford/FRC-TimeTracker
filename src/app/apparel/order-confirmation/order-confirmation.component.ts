@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { ShoppingCartService } from '../apparel-store-front/shopping-cart.service';
+
+import { ShoppingCart } from 'app/model/shopping-cart';
 
 @Component({
   selector: 'app-order-confirmation',
@@ -7,9 +10,17 @@ import { Component, OnInit } from '@angular/core';
 })
 export class OrderConfirmationComponent implements OnInit {
 
-  constructor() { }
+  shoppingCartItems: ShoppingCart;
+  constructor(private shoppingCartService: ShoppingCartService) { }
 
   ngOnInit() {
+    this.getItems();
+
+  }
+
+  getItems() {
+    this.shoppingCartItems = this.shoppingCartService.retrieveShoppingCart();
+    console.log('retrive order ', this.shoppingCartItems);
   }
 
 }
