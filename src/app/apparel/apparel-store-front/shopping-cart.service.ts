@@ -23,14 +23,23 @@ export class ShoppingCartService {
   }
 
   public addItem(item: CartItem): void {
-    // debugger;
-
+    // TODO   Fix grossTotal and Upcharge charging when shouldnt
+    debugger;
     if (item) {
-      const price = item.apparel.price * item.quantity;
-      item.totalItemPrice = price + item.apparel.nameCharge;
+      item.totalItemPrice = item.apparel.price * item.quantity;
+
       if (item.size === 'XXL') {
-        item.totalItemPrice = item.totalItemPrice + item.apparel.upCharge;
+        item.upCharge = item.apparel.upCharge;
+      } else {
+        item.upCharge = 0;
       }
+
+      if (item.sleeveName != null) {
+        item.nameCharge = item.apparel.nameCharge;
+      } else {
+        item.nameCharge = 0;
+      }
+
       this.newCartItems.push(item);
     }
     console.log('Service ', this.newCartItems);
@@ -59,5 +68,9 @@ export class ShoppingCartService {
     return JSON.parse(sessionStorage.getItem('shoppingItems'));  // retrieven from session
   }
 
+  orderItems() {
+    // Add code to save order
+    sessionStorage.removeItem('shoppingItems');
+  }
 
 }

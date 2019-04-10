@@ -93,7 +93,6 @@ export class ApparelStoreFrontComponent implements OnInit {
       this.item.size = this.apparelForm.value.sizeCtrl;
       this.item.quantity = this.apparelForm.value.quantityCtrl;
       this.item.sleeveName = this.apparelForm.value.sleeveNameCtrl;
-
       this.shoppingCartService.addItem(this.item);
 
       console.log('item added ', this.item);

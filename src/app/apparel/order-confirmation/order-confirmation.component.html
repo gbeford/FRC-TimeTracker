@@ -8,8 +8,12 @@
 <!-- list items to buy
 this is where they have the option to remove any items they do not want
 this will show all items and total charges -->
+<div *ngIf="!this.shoppingCartItems" >
 
-<div class="container">
+<h2>Your Shopping Cart is empty.</h2>
+</div>
+
+<div class="container" *ngIf="this.shoppingCartItems">
   <div class="row">
     <div class="col-xs-12 col-md-3 col-lg-3 pull-left">
       <div class="panel panel-default height">
@@ -59,7 +63,7 @@ this will show all items and total charges -->
                   <td class="text-right">{{cartItem.totalItemPrice}}</td>
                   <td class="text-center">{{cartItem.apparel.nameCharge}}</td>
                   <td class="text-center">{{cartItem.apparel.upCharge}}</td>
-                  <td class="text-right">{{cartItem.totalItemPrice + cartItem.apparel.nameCharge + cartItem.apparel.upCharge}}</td>
+                  <td class="text-right">{{cartItem.totalItemPrice + cartItem.nameCharge + cartItem.upCharge}}</td>
                 </tr>
               </tbody>
               <tbody>
