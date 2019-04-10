@@ -23,4 +23,5 @@ export class OrderConfirmationComponent implements OnInit {
     console.log('retrive order ', this.shoppingCartItems);
   }
 
+
 }
