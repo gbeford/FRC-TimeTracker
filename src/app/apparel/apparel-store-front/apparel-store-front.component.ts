@@ -3,7 +3,7 @@ import { ClothingService } from '../clothing.service';
 import { IApparel } from 'app/model/apparel';
 import { FormGroup, Validators, FormBuilder } from '@angular/forms';
 import { Observable } from 'rxjs';
-import { ShoppingCartService } from './shopping-cart.service';
+import { ShoppingCartService } from '../shopping-cart.service';
 import { CartItem } from 'app/model/cart-Item';
 
 // http://learningprogramming.net/mean-stack/angular-6/build-shopping-cart-in-angular-6/

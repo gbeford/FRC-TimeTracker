@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { StudentService } from '../student/student.service';
 import { SecurityService } from 'app/security/security.service';
 import { AppUserAuth } from 'app/security/app-user-auth';
-import { ShoppingCartService } from 'app/apparel/apparel-store-front/shopping-cart.service';
+import { ShoppingCartService } from 'app/apparel/shopping-cart.service';
 
 
 @Component({

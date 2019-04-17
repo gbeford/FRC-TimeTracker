@@ -2,9 +2,10 @@ import { Injectable } from '@angular/core';
 import { IApparel } from 'app/model/apparel';
 import { ShoppingCart } from 'app/model/shopping-cart';
 import { Observer, Observable, BehaviorSubject } from 'rxjs';
-import { ClothingService } from '../clothing.service';
+
 
 import { CartItem } from 'app/model/cart-Item';
+import { ClothingService } from './clothing.service';
 
 
 
