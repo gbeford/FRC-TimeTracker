@@ -25,7 +25,6 @@ export class ShoppingCartService {
 
   public addItem(item: CartItem): void {
     // TODO   Fix grossTotal and Upcharge charging when shouldnt
-    debugger;
     if (item) {
       item.totalItemPrice = item.apparel.price * item.quantity;
 

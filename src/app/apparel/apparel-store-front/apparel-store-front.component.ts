@@ -25,16 +25,18 @@ export class ApparelStoreFrontComponent implements OnInit {
   imageId: number;
   public apparel: Observable<IApparel[]>;
   item: CartItem;
-
+  cartSize = 0;
 
   constructor(private clothingService: ClothingService,
-    private formBuilder: FormBuilder, private shoppingCartService: ShoppingCartService) { }
+    private formBuilder: FormBuilder,
+    private shoppingCartService: ShoppingCartService) { }
 
   ngOnInit() {
     this.getSizes();
     // this.getImageList();
     this.getAppareal();
     this.createForm();
+    this.getCartNumber();
   }
 
   getSizes() {
@@ -99,6 +101,12 @@ export class ApparelStoreFrontComponent implements OnInit {
     }
     this.apparelForm.reset();
 
+  }
+
+  getCartNumber() {
+    this.shoppingCartService.itemCount.subscribe(c => {
+      this.cartSize = c;
+    });
   }
 
 

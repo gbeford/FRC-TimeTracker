@@ -1,69 +1,86 @@
-<h1>Shrewsbury Robotics Optional Apparel Order Form</h1>
-
-
-<form role="form" class="col-md-9 go-right" *ngFor="let apparel of this.apparealData" [formGroup]="apparelForm">
   <div class="container">
 
-    <div class="card" >
+    <h1>Shrewsbury Robotics Optional Apparel Order Form</h1>
+    <div style="background-color: #ffffff;" class="d-flex flex-row">
+      <div class="col">
+        <span> Added To Cart</span>
+      </div>
+      <div class="col">
+        <span>Cart subtotal ( </span>{{cartSize}} <span>item): $whatever</span>
 
-      <div class="container-fliud">
-        <div class="wrapper row">
-          <div class="preview col-md-5">
-            <div class="preview-pic tab-content">
-              <div class="tab-pane active" id="pic-1">
-                <!-- <img [src]="'data:image/png;base64,'+ this.imageData.image" /> -->
-                <img [src]=this.apparel.image />
+      </div>
+      <div class="col">
+        <button type="button" [routerLink]="['/order-confirm']">View Cart Items</button>
+      </div>
+    </div>
+
+
+    <form role="form" class="col" *ngFor="let apparel of this.apparealData" [formGroup]="apparelForm">
+
+
+      <!-- <div class="container-fliud"> -->
+
+      <div class="card">
+        <div class="row">
+          <div class="col">
+            <div class="">
+              <h3 class="">{{apparel.item}}</h3>
+              <p class="product-description">{{this.apparel.description}}</p>
+              <h6>Price: <span>{{this.apparel.price | currency}}</span></h6>
+              <span *ngIf="this.apparel.upCharge"><i>Add {{this.apparel.upCharge | currency}} per for the XXL
+                  size</i></span>
+              <h6>gender:&nbsp;
+                <select id="gender" formControlName="genderCtrl">
+                  <option>Mens</option>
+                  <option>Womens</option>
+                </select>
+              </h6>
+              <h6 class="sizes">sizes:&nbsp;
+                <select id="sizeCtrl" formControlName="sizeCtrl">
+                  <option *ngFor="let s of sizes" [value]="s"> {{s}}</option>
+                </select>
+              </h6>
+              <div *ngIf="this.apparel.nameCharge" class="mb-2">
+                <h6 class="mr-1" style="display: inline-block;">Name On Sleeve ?</h6>
+                <mat-checkbox aria-label="shirt can have name on sleeve" name="canHaveName"
+                  formControlName="canHaveNameCtl">Yes</mat-checkbox>
+                <div>
+                  <span><i>Additonal {{this.apparel.nameCharge | currency}} for name on
+                      sleeve</i></span>
+                </div>
+                <div>
+                  <h6>Name To Put On Sleeve: </h6>
+                  <input class="form-control" name='nameOnSleeve' type='text' formControlName="sleeveNameCtrl">
+                </div>
+              </div>
+              <!-- <h5 class="price">Type:
+            {{this.apparel.type}}
+          </h5> -->
+              <h6>QUANTITY: &nbsp;
+                <select id="quantity" formControlName="quantityCtrl">
+                  <option>1</option>
+                  <option>2</option>
+                  <option>3</option>
+                  <option>4</option>
+                  <option>5</option>
+                </select>
+              </h6>
+              <div class="action pt-2">
+                <button class="add-to-cart btn btn-default" type="button" (click)="addItemToCart(apparel)">add to
+                  cart</button>
               </div>
             </div>
           </div>
-          <div class="details col-md-5">
-            <h3 class="product-title">{{apparel.item}}</h3>
-            <p class="product-description">{{this.apparel.description}}</p>
-            <h4 class="price">price: <span>{{this.apparel.price | currency}}</span></h4>
-            <span *ngIf="this.apparel.upCharge"><i>Add {{this.apparel.upCharge | currency}} per for the XXL size</i></span>
-            <h5 class="colors">gender:&nbsp;
-              <select id="gender" formControlName="genderCtrl">
-                <option>Mens</option>
-                <option>Womens</option>
-              </select>
-            </h5>
-            <h5 class="sizes">sizes:&nbsp;
-              <select id="sizeCtrl" formControlName="sizeCtrl">
-                <option *ngFor="let s of sizes" [value]="s"> {{s}}</option>
-              </select>
-            </h5>
-            <div *ngIf="this.apparel.nameCharge">
-              <h5 class="colors">Name on sleeve</h5>
-              <mat-checkbox aria-label="shirt can have name on sleeve" name="canHaveName"
-                formControlName="canHaveNameCtl">Yes</mat-checkbox>
-              <div>
-                <span><i>Additonal {{this.apparel.nameCharge | currency}} for name on
-                    sleeve</i></span>
-              </div>
-              <div>
-                <h5 class="colors">Name on Sleeve: </h5>
-                <input class="form-control" name='nameOnSleeve' type='text' formControlName="sleeveNameCtrl">
-              </div>
-            </div>
-            <!-- <h5 class="price">Type:
-            {{this.apparel.type}}
-          </h5> -->
-            <h5 class="colors">QUANTITY: &nbsp;
-              <select id="quantity" formControlName="quantityCtrl">
-                <option>1</option>
-                <option>2</option>
-                <option>3</option>
-                <option>4</option>
-                <option>5</option>
-              </select>
-            </h5>
-            <div class="action">
-              <button class="add-to-cart btn btn-default" type="button" (click)="addItemToCart(apparel)">add to cart</button>
+          <div class="col">
+            <div>
+              <!-- <img [src]="'data:image/png;base64,'+ this.imageData.image" /> -->
+              <img [src]=this.apparel.image />
             </div>
           </div>
         </div>
       </div>
-    </div>
-    <hr>
+      <!-- </div> -->
+      <!-- <hr> -->
+
+    </form>
   </div>
-</form>

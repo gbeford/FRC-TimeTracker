@@ -115,7 +115,7 @@ import { OrderConfirmationComponent } from './apparel/order-confirmation/order-c
                 component: StudentHoursReportComponent,
             },
             {
-            path: 'order',
+            path: 'order-confirm',
             component: OrderConfirmationComponent,
             },
 
