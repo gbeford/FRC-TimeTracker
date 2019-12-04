@@ -80,7 +80,6 @@ export class ApparelStoreFrontComponent implements OnInit {
       typeCtrl: [''],
       upChargeCtrl: [''],
       priceCtrl: [''],
-      // imageCtrl: [''],
       nameChargeCtl: [''],
       canHaveNameCtl: [''],
       genderCtrl: ['', [<any>Validators.required]],
@@ -91,7 +90,6 @@ export class ApparelStoreFrontComponent implements OnInit {
   }
 
   public addItemToCart(apparel: IApparel) {
-    debugger;
     this.submitted = true;
     if (this.apparelForm.valid && this.submitted) {
       if (this.apparelForm.value.canHaveNameCtl === true && this.apparelForm.value.sleeveNameCtrl === '') {
@@ -108,13 +106,11 @@ export class ApparelStoreFrontComponent implements OnInit {
       this.item.quantity = this.apparelForm.value.quantityCtrl;
       this.item.sleeveName = this.apparelForm.value.sleeveNameCtrl;
       this.item.nameOnSleeve = this.apparelForm.value.canHaveNameCtl;
-      // console.log('this.apparelForm.value.canHaveNameCtl', this.apparelForm.value.canHaveNameCtl);
       this.shoppingCartService.addItem(this.item);
 
       this.showBox = true;
-
-      console.log('item added ', this.item);
     }
+
     this.apparelForm.reset();
     this.submitted = false;
   }
@@ -123,10 +119,6 @@ export class ApparelStoreFrontComponent implements OnInit {
   get f() { return this.apparelForm.controls; }
 
   getCartDetails() {
-    // this.shoppingCartService.itemCount.subscribe(c => {
-    //   this.cartSize = c;
-    // });
-
     this.shoppingCartService.tempShoppingCartItem
       .subscribe(s => {
         if (s.apparel !== undefined) {
@@ -134,7 +126,6 @@ export class ApparelStoreFrontComponent implements OnInit {
           this.itemsSelected = s.apparel.item;
           this.itemQuanitySelected = s.quantity;
         }
-        console.log('s', s);
       });
   }
 
