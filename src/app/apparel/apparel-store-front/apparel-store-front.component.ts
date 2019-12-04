@@ -127,7 +127,7 @@ export class ApparelStoreFrontComponent implements OnInit {
     //   this.cartSize = c;
     // });
 
-    this.shoppingCartService.tempShoppingCart
+    this.shoppingCartService.tempShoppingCartItem
       .subscribe(s => {
         if (s.apparel !== undefined) {
           this.itemsSelectedTotal = s.totalItemAddedToCartCharge;

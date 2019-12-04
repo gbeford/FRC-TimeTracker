@@ -17,11 +17,14 @@ export class ShoppingCartService {
   private newCartItems: CartItem[] = [];
   private shoppingCart: ShoppingCart;
   private itemTotal: number;
-  cart = new BehaviorSubject(new ShoppingCart);
+  cart: BehaviorSubject<ShoppingCart>;
   order: ShoppingCart[];
-  tempShoppingCart = new BehaviorSubject(new CartItem);
+  tempShoppingCartItem = new BehaviorSubject(new CartItem);
 
   constructor(private clothingService: ClothingService) {
+    debugger
+    this.setUpCart();
+    this.cart = new BehaviorSubject<ShoppingCart>(this.shoppingCart);
   }
 
   public addItem(item: CartItem): void {
@@ -45,46 +48,28 @@ export class ShoppingCartService {
     }
     console.log('newCartItems ', this.newCartItems);
 
-    // behavior subject to subscribe to for the item count in the shopping cart in the menu
-    // this.itemCount.next(this.newCartItems.length);
-
-    const tempShoppingCart = sessionStorage.getItem('shoppingItems');
-    if (tempShoppingCart === null) {
-      this.shoppingCart = new ShoppingCart();
-      // sessionStorage.removeItem('shoppingItems');
-    } else {
-      this.shoppingCart = JSON.parse(tempShoppingCart) as ShoppingCart;
-    }
+    this.setUpCart();
 
     this.shoppingCart.items = this.newCartItems;
 
+    // add shopping cart to the behavior subject for use in other pages
     this.cart.next(this.shoppingCart);
 
     if (this.shoppingCart.items) {
       let up_charge = 0;
       let name_charge = 0;
-      // let total_item_added_to_cart = 0;
 
       for (const i of this.shoppingCart.items) {
         up_charge = i.quantity * i.upCharge;
         name_charge = i.quantity * i.nameCharge;
         item.totalItemAddedToCartCharge = up_charge + name_charge + i.totalItemPrice;
       }
-      // behavior subject to subscribe to get the gross total of the item added to cart
-      this.tempShoppingCart.next(item);
+      // behavior subject to subscribe to get the what item was just added to the cart
+      this.tempShoppingCartItem.next(item);
     }
 
-
-
-    console.log('this.shoppingCart.items', this.shoppingCart.items);
-
-    // for (let i = 0; i < this.newCartItems.length; i++) {
-    //   this.shoppingCart.grossTotal = this.newCartItems[i].totalItemAddedToCartCharge + this.shoppingCart.grossTotal;
-    // }
-
-    console.log('shopping cart total ', this.shoppingCart.grossTotal);
-    // sessionStorage.removeItem('shoppingItems');
-    sessionStorage.setItem('shoppingItems', JSON.stringify(this.shoppingCart)); // add to session
+// add to session
+    sessionStorage.setItem('shoppingItems', JSON.stringify(this.shoppingCart));
   }
 
   clearOutCart() {
@@ -101,5 +86,15 @@ export class ShoppingCartService {
     // Add code to save order
     sessionStorage.removeItem('shoppingItems');
   }
+
+  setUpCart() {
+     const tempShoppingCart = sessionStorage.getItem('shoppingItems');
+    if (tempShoppingCart === null) {
+      this.shoppingCart = new ShoppingCart();
+    } else {
+      this.shoppingCart = JSON.parse(tempShoppingCart) as ShoppingCart;
+    }
+  }
+  
 
 }

@@ -31,25 +31,17 @@ export class MenuComponent implements OnInit {
       console.log('c', c.items);
       if (c.items !== undefined) {
         this.cartSize = c.items.length;
+      } else {
+        this.cartSize = 0;
       }
 
     });
 
-    // console.log('count', this.getItems());
 
     // countOfStudentsLogin() {
     //   this.svc.totalStudentsLogin().subscribe(s => this.signedInStudents = s.length);
     // }
   }
-
-
-  // getItems() {
-  //   this.shoppingCartItems = this.cartService.retrieveShoppingCart();
-  //   // used if the page gets refreshed
-  //   if (this.shoppingCartItems !== null) {
-  //     this.cartSize = this.shoppingCartItems.items.length;
-  //   }
-  // }
 
 
   logout(): void {
