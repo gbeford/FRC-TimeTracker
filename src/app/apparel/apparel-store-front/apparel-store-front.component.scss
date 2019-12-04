@@ -11,13 +11,17 @@ h6 {
 
 .card {
   margin-top: 25px;
-  background: #fff;
+  // background: #abbdd8;
+   //background: #e9eff8;
+  background: #dce3ec;
   padding: 2em;
   line-height: 1.5em;
 }
 
 img {
-  max-width: 100%;
+  // max-width: 100%;
+  width: 393px;
+  height:395px;
 }
 
 // make input into a line for name on sleeve
@@ -37,29 +41,17 @@ select.form-control:focus {
   box-shadow: none;
 }
 
-
 span {
-  color: #b36800;
+  //color: #b36800;
+  color: #17a2b8
 }
 
-// button
-.add-to-cart,
-.like {
-  background: #999999;
-  padding: 1.2em 1.5em;
-  border: none;
-  text-transform: UPPERCASE;
-  font-weight: bold;
-  color: #fff;
-  -webkit-transition: background .3s ease;
-  transition: background .3s ease;
-}
-
-.add-to-cart:hover,
-.like:hover {
-  background: #4cb5f5;
-
-  color: #fff;
+.card-alert{
+ // background-color: #dce3ec;
+ height:55px;
+ border-radius: .35rem;
+ background-clip: border-box;
+ border: 1px solid #dce3ec;
 }
 
 // .not-available {

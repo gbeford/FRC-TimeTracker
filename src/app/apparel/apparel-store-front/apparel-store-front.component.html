@@ -1,7 +1,8 @@
   <div class="container">
 
-    <h1>Shrewsbury Robotics Optional Apparel Order Form</h1>
-    <div style="background-color: #ffffff;" class="d-flex flex-row">
+    <h1 class="my-4">Shrewsbury Robotics Optional Apparel Order Form</h1>
+    <div class="p-2 card-alert" >
+    <div class="row d-flex justify-content-between">
       <div class="col">
         <span> Added To Cart</span>
       </div>
@@ -10,16 +11,12 @@
 
       </div>
       <div class="col">
-        <button type="button" [routerLink]="['/order-confirm']">View Cart Items</button>
+        <button class="btn btn-info float-right" [routerLink]="['/order-confirm']">View Cart Items</button>
       </div>
     </div>
-
+  </div>
 
     <form role="form" class="col" *ngFor="let apparel of this.apparealData" [formGroup]="apparelForm">
-
-
-      <!-- <div class="container-fliud"> -->
-
       <div class="card">
         <div class="row">
           <div class="col">
@@ -66,7 +63,7 @@
                 </select>
               </h6>
               <div class="action pt-2">
-                <button class="add-to-cart btn btn-default" type="button" (click)="addItemToCart(apparel)">add to
+                <button class="btn btn-secondary" type="button" (click)="addItemToCart(apparel)">add to
                   cart</button>
               </div>
             </div>
@@ -79,8 +76,5 @@
           </div>
         </div>
       </div>
-      <!-- </div> -->
-      <!-- <hr> -->
-
     </form>
   </div>

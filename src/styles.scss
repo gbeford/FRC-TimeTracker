@@ -14,8 +14,8 @@ $primary-gray: #eee;
 
 html,
 body {
-  height: 100%;
-  background-color: #dddddd;
+  height: 100vh;
+  background-color: #fdfdfd;
 }
 
 a {
@@ -94,6 +94,7 @@ footer {
   color: $primary-blue;
   height: 50px;
   width: 100%;
+  margin-top: 40px;
 }
 
 .footer {

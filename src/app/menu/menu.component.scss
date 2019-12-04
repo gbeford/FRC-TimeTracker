@@ -24,7 +24,8 @@ a {
 
 .mat-toolbar,
 .mat-menu-content {
-  background-color: $primary-gray;
+  // background-color: #dce3ec;
+  background-color: #eee;
   color: $primary-blue;
 }
 
@@ -38,7 +39,7 @@ a {
 
 .mat-toolbar-row,
 .mat-toolbar-single-row {
-  height: 80px;
+  height: 70px;
   font: 500 14px/32px Roboto, "Helvetica Neue", sans-serif;
 }
 
