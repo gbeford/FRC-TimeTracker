@@ -19,6 +19,7 @@ export class ShoppingCartService {
   private itemTotal: number;
   itemCount: BehaviorSubject<number> = new BehaviorSubject<number>(0);
   order: ShoppingCart[];
+  tempShoppingCart: BehaviorSubject<number> = new BehaviorSubject<number>(0);
 
   constructor(private clothingService: ClothingService) {
   }
@@ -49,7 +50,7 @@ export class ShoppingCartService {
 
     const tempShoppingCart = sessionStorage.getItem('shoppingItems');
     if (tempShoppingCart === null) {
-      this.shoppingCart = new ShoppingCart;
+      this.shoppingCart = new ShoppingCart();
     } else {
       this.shoppingCart = JSON.parse(tempShoppingCart) as ShoppingCart;
     }
@@ -58,6 +59,8 @@ export class ShoppingCartService {
     for (let i = 0; i < this.newCartItems.length; i++) {
       this.shoppingCart.grossTotal = this.newCartItems[i].totalItemPrice + this.shoppingCart.grossTotal;
     }
+
+    this.tempShoppingCart.next(this.shoppingCart.grossTotal);
     console.log('shopping cart total ', this.shoppingCart.grossTotal);
     sessionStorage.setItem('shoppingItems', JSON.stringify(this.shoppingCart)); // add to session
   }

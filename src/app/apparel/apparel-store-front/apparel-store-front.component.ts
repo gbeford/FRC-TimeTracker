@@ -26,6 +26,7 @@ export class ApparelStoreFrontComponent implements OnInit {
   public apparel: Observable<IApparel[]>;
   item: CartItem;
   cartSize = 0;
+  shoppingCart = 0;
 
   constructor(private clothingService: ClothingService,
     private formBuilder: FormBuilder,
@@ -107,6 +108,11 @@ export class ApparelStoreFrontComponent implements OnInit {
     this.shoppingCartService.itemCount.subscribe(c => {
       this.cartSize = c;
     });
+
+    this.shoppingCartService.tempShoppingCart
+      .subscribe(s => {
+        this.shoppingCart = s;
+      });
   }
 
 
