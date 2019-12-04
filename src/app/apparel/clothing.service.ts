@@ -1,11 +1,11 @@
 import { Injectable } from '@angular/core';
 import { environment } from '@environment/environment';
-import { IApparel } from 'app/model/apparel';
+import { IApparel } from 'app/apparel/apparel-model';
 import { catchError, retry } from 'rxjs/operators';
 import { HttpClient } from '@angular/common/http';
 import { Utilities } from '../shared/utils';
 import { Observable, throwError } from 'rxjs';
-import { IApparelImage } from 'app/model/apparel-image';
+import { IApparelImage } from 'app/apparel/apparel-image-model';
 
 @Injectable({
   providedIn: 'root'

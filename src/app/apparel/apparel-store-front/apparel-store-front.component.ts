@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ClothingService } from '../clothing.service';
-import { IApparel } from 'app/model/apparel';
+import { IApparel } from 'app/apparel/apparel-model';
 import { FormGroup, Validators, FormBuilder } from '@angular/forms';
 import { Observable } from 'rxjs';
 import { ShoppingCartService } from '../shopping-cart.service';
@@ -26,7 +26,10 @@ export class ApparelStoreFrontComponent implements OnInit {
   public apparel: Observable<IApparel[]>;
   item: CartItem;
   cartSize = 0;
-  shoppingCart = 0;
+  itemsSelected: string;
+  itemsSelectedTotal = 0;
+  itemQuanitySelected = 0;
+  showBox = false;
 
   constructor(private clothingService: ClothingService,
     private formBuilder: FormBuilder,
@@ -86,7 +89,6 @@ export class ApparelStoreFrontComponent implements OnInit {
   }
 
   public addItemToCart(apparel: IApparel) {
-
     if (this.apparelForm.valid) {
       this.item = new CartItem();
       this.item.apparel = apparel;
@@ -98,10 +100,11 @@ export class ApparelStoreFrontComponent implements OnInit {
       this.item.sleeveName = this.apparelForm.value.sleeveNameCtrl;
       this.shoppingCartService.addItem(this.item);
 
+      this.showBox = true;
+
       console.log('item added ', this.item);
     }
     this.apparelForm.reset();
-
   }
 
   getCartNumber() {
@@ -111,7 +114,12 @@ export class ApparelStoreFrontComponent implements OnInit {
 
     this.shoppingCartService.tempShoppingCart
       .subscribe(s => {
-        this.shoppingCart = s;
+        if (s.apparel !== undefined) {
+          this.itemsSelectedTotal = s.totalItemAddedToCartCharge;
+          this.itemsSelected = s.apparel.item;
+          this.itemQuanitySelected = s.quantity;
+        }
+        console.log('s', s);
       });
   }
 

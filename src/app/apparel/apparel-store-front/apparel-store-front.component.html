@@ -1,31 +1,32 @@
   <div class="container">
-
+    <!-- TODO: VALIDATION -->
     <h1 class="my-4">Shrewsbury Robotics Optional Apparel Order Form</h1>
-    <div class="p-2 card-alert" >
-    <div class="row d-flex justify-content-between">
-      <div class="col">
-        <span> Added To Cart</span>
-      </div>
-      <div class="col">
-        <span>Cart subtotal ( </span>{{cartSize}} <span>item): ${{shoppingCart}}</span>
 
-      </div>
-      <div class="col">
-        <button class="btn btn-info float-right" [routerLink]="['/order-confirm']">View Cart Items</button>
+    <div *ngIf="showBox" class="p-2 card-alert">
+      <div class="row d-flex justify-content-between">
+        <div class="col">
+          Added To Your Cart <span class="teal font-weight-bold"> {{itemsSelected}}</span>
+        </div>
+        <div class="col pl-5">
+          Cart subtotal ( <span class="teal font-weight-bold">{{itemQuanitySelected}} </span> item): <span
+            class="teal font-weight-bold pl-2">{{itemsSelectedTotal | currency:'USD'}}</span>
+        </div>
+        <div class="col">
+          <button class="btn btn-info float-right" [routerLink]="['/order-confirm']">View Cart Items</button>
+        </div>
       </div>
     </div>
-  </div>
 
     <form role="form" class="col" *ngFor="let apparel of this.apparealData" [formGroup]="apparelForm">
       <div class="card">
         <div class="row">
           <div class="col">
-            <div class="">
-              <h3 class="">{{apparel.item}}</h3>
-              <p class="product-description">{{this.apparel.description}}</p>
-              <h6>Price: <span>{{this.apparel.price | currency}}</span></h6>
-              <span *ngIf="this.apparel.upCharge"><i>Add {{this.apparel.upCharge | currency}} per for the XXL
-                  size</i></span>
+            <h3>{{apparel.item}}</h3>
+            <p class="product-description">{{this.apparel.description}}</p>
+            <h6>Price: <span class="teal font-weight-bold">{{this.apparel.price | currency}}</span></h6>
+            <span *ngIf="this.apparel.upCharge" class="teal"><i>Add {{this.apparel.upCharge | currency}} per for the XXL
+                size</i></span>
+            <div *ngIf="apparel.item !== '467 Baseball Hat'">
               <h6>gender:&nbsp;
                 <select id="gender" formControlName="genderCtrl">
                   <option>Mens</option>
@@ -37,35 +38,40 @@
                   <option *ngFor="let s of sizes" [value]="s"> {{s}}</option>
                 </select>
               </h6>
-              <div *ngIf="this.apparel.nameCharge" class="mb-2">
-                <h6 class="mr-1" style="display: inline-block;">Name On Sleeve ?</h6>
-                <mat-checkbox aria-label="shirt can have name on sleeve" name="canHaveName"
-                  formControlName="canHaveNameCtl">Yes</mat-checkbox>
-                <div>
-                  <span><i>Additonal {{this.apparel.nameCharge | currency}} for name on
-                      sleeve</i></span>
-                </div>
-                <div>
-                  <h6>Name To Put On Sleeve: </h6>
-                  <input class="form-control" name='nameOnSleeve' type='text' formControlName="sleeveNameCtrl">
-                </div>
+              <div class="error"
+                *ngIf="apparelForm.get('sizeCtrl').hasError('required') && apparelForm.get('sizeCtrl').touched">
+                Name is required
               </div>
-              <!-- <h5 class="price">Type:
-            {{this.apparel.type}}
-          </h5> -->
-              <h6>QUANTITY: &nbsp;
-                <select id="quantity" formControlName="quantityCtrl">
-                  <option>1</option>
-                  <option>2</option>
-                  <option>3</option>
-                  <option>4</option>
-                  <option>5</option>
-                </select>
-              </h6>
-              <div class="action pt-2">
-                <button class="btn btn-secondary" type="button" (click)="addItemToCart(apparel)">add to
-                  cart</button>
+            </div>
+            <div *ngIf="apparel.nameCharge" class="mb-2">
+              <h6 class="mr-1" style="display: inline-block;">Name On Sleeve ?</h6>
+              <mat-checkbox aria-label="shirt can have name on sleeve" name="canHaveName"
+                formControlName="canHaveNameCtl">Yes</mat-checkbox>
+              <div>
+                <span class="teal"><i>Additonal {{this.apparel.nameCharge | currency}} for name on
+                    sleeve</i></span>
               </div>
+              <div>
+                <h6>Name To Put On Sleeve: </h6>
+                <input class="form-control" name='nameOnSleeve' type='text' formControlName="sleeveNameCtrl">
+              </div>
+            </div>
+            <!-- <div
+              *ngIf="apparelForm.get('canHaveNameCtl').value === 'Yes' && apparelForm.sleeveNameCtrl.value === null'>
+              <p> please enter a name</p>
+            </div> -->
+            <h6>QUANTITY: &nbsp;
+              <select id="quantity" formControlName="quantityCtrl">
+                <option>1</option>
+                <option>2</option>
+                <option>3</option>
+                <option>4</option>
+                <option>5</option>
+              </select>
+            </h6>
+            <div class="action pt-2">
+              <button class="btn btn-secondary" type="button" (click)="addItemToCart(apparel)">add to
+                cart</button>
             </div>
           </div>
           <div class="col">

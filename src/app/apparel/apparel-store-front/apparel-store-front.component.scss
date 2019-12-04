@@ -7,13 +7,14 @@
 h6 {
   text-transform: UPPERCASE;
   font-weight: bold;
+  line-height: 2em;
 }
 
 .card {
   margin-top: 25px;
   // background: #abbdd8;
-   //background: #e9eff8;
-  background: #dce3ec;
+  //background: #e9eff8;
+  background: #ffffff;
   padding: 2em;
   line-height: 1.5em;
 }
@@ -21,7 +22,7 @@ h6 {
 img {
   // max-width: 100%;
   width: 393px;
-  height:395px;
+  height: 395px;
 }
 
 // make input into a line for name on sleeve
@@ -41,17 +42,17 @@ select.form-control:focus {
   box-shadow: none;
 }
 
-span {
-  //color: #b36800;
+span.teal{
+//color: #b36800;
   color: #17a2b8
 }
 
-.card-alert{
- // background-color: #dce3ec;
- height:55px;
- border-radius: .35rem;
- background-clip: border-box;
- border: 1px solid #dce3ec;
+.card-alert {
+  background-color: #ffffff;
+  height: 55px;
+  border-radius: .35rem;
+  background-clip: border-box;
+  border: 1px solid #eee;
 }
 
 // .not-available {

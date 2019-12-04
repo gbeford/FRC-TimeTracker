@@ -1,7 +1,7 @@
 import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ClothingService } from '../clothing.service';
-import { IApparel } from 'app/model/apparel';
+import { IApparel } from 'app/apparel/apparel-model';
 
 
 // https://nehalist.io/uploading-files-in-angular2/
