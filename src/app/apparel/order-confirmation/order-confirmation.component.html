@@ -1,5 +1,3 @@
-<h1>Confirm your order</h1>
-
 {{this.shoppingCartItems | json}}
 
 <!-- <ul>
@@ -8,21 +6,20 @@
 <!-- list items to buy
 this is where they have the option to remove any items they do not want
 this will show all items and total charges -->
-<div *ngIf="!this.shoppingCartItems" >
+<div *ngIf="!this.shoppingCartItems">
 
-<h2>Your Shopping Cart is empty.</h2>
+  <h2>Your Shopping Cart is empty.</h2>
 </div>
 
 <div class="container" *ngIf="this.shoppingCartItems">
+  <h1>Confirm your order</h1>
   <div class="row">
     <div class="col-xs-12 col-md-3 col-lg-3 pull-left">
       <div class="panel panel-default height">
-        <div class="panel-heading">Billing Details</div>
         <div class="panel-body">
           <strong>Today's Date:</strong> &nbsp;
-          <span>April 10, 2019</span> &nbsp;
-          <strong>Student Name:</strong><br>
-          Bob Smith<br>
+          <span>{{today | date:'MM-dd-yyyy'}}</span> &nbsp;
+          <strong>Student Name:</strong> Bob Smith
         </div>
       </div>
     </div>
@@ -60,10 +57,10 @@ this will show all items and total charges -->
                   <td class="text-center">{{cartItem.size}}</td>
                   <td class="text-center">{{cartItem.sleeveName}}</td>
                   <td class="text-center">{{cartItem.quantity}}</td>
-                  <td class="text-right">{{cartItem.totalItemPrice}}</td>
-                  <td class="text-center">{{cartItem.nameCharge}}</td>
-                  <td class="text-center">{{cartItem.upCharge}}</td>
-                  <td class="text-right">{{cartItem.totalItemPrice + cartItem.nameCharge + cartItem.upCharge}}</td>
+                  <td class="text-right">{{cartItem.totalItemPrice | currency}}</td>
+                  <td class="text-center">{{cartItem.nameCharge | currency}}</td>
+                  <td class="text-center">{{cartItem.upCharge | currency}}</td>
+                  <td class="text-right">{{cartItem.totalItemAddedToCartCharge | currency}}</td>
                 </tr>
               </tbody>
               <tbody>
@@ -77,12 +74,12 @@ this will show all items and total charges -->
                   <td class="emptyrow"></td>
                   <td class="emptyrow"></td>
                   <td class="emptyrow text-center"><strong>Grand Total</strong></td>
-                  <td class="emptyrow text-right">{{this.shoppingCartItems.grossTotal}}</td>
+                  <td class="emptyrow text-right">{{grossTotal | currency}}</td>
                 </tr>
               </tbody>
             </table>
           </div>
-          <button class="trackerBtn" style="float:right">Order</button>
+          <button class="btn btn-secondary" style="float:right" (click)="order()">Order</button>
         </div>
       </div>
     </div>

@@ -30,6 +30,8 @@ export class ApparelStoreFrontComponent implements OnInit {
   itemsSelectedTotal = 0;
   itemQuanitySelected = 0;
   showBox = false;
+  submitted = false;
+  hasError = false;
 
   constructor(private clothingService: ClothingService,
     private formBuilder: FormBuilder,
@@ -40,7 +42,7 @@ export class ApparelStoreFrontComponent implements OnInit {
     // this.getImageList();
     this.getAppareal();
     this.createForm();
-    this.getCartNumber();
+    this.getCartDetails();
   }
 
   getSizes() {
@@ -82,22 +84,31 @@ export class ApparelStoreFrontComponent implements OnInit {
       nameChargeCtl: [''],
       canHaveNameCtl: [''],
       genderCtrl: ['', [<any>Validators.required]],
-      quantityCtrl: [<any>Validators.required],
-      sizeCtrl: [<any>Validators.required],
+      quantityCtrl: ['', [<any>Validators.required]],
+      size: ['', [<any>Validators.required]],
       sleeveNameCtrl: [''],
     });
   }
 
   public addItemToCart(apparel: IApparel) {
-    if (this.apparelForm.valid) {
+    debugger;
+    this.submitted = true;
+    if (this.apparelForm.valid && this.submitted) {
+      if (this.apparelForm.value.canHaveNameCtl === true && this.apparelForm.value.sleeveNameCtrl === '') {
+        this.hasError = true;
+        return this.apparelForm.invalid === false;
+
+      }
       this.item = new CartItem();
       this.item.apparel = apparel;
       this.item.upCharge = this.apparelForm.value.upChargeCtrl ? this.apparelForm.value.upChargeCtrl : null;
       this.item.nameCharge = this.apparelForm.value.nameChargeCtl ? this.apparelForm.value.nameChargeCtl : null;
       this.item.gender = this.apparelForm.value.genderCtrl;
-      this.item.size = this.apparelForm.value.sizeCtrl;
+      this.item.size = this.apparelForm.value.size;
       this.item.quantity = this.apparelForm.value.quantityCtrl;
       this.item.sleeveName = this.apparelForm.value.sleeveNameCtrl;
+      this.item.nameOnSleeve = this.apparelForm.value.canHaveNameCtl;
+      // console.log('this.apparelForm.value.canHaveNameCtl', this.apparelForm.value.canHaveNameCtl);
       this.shoppingCartService.addItem(this.item);
 
       this.showBox = true;
@@ -105,12 +116,16 @@ export class ApparelStoreFrontComponent implements OnInit {
       console.log('item added ', this.item);
     }
     this.apparelForm.reset();
+    this.submitted = false;
   }
 
-  getCartNumber() {
-    this.shoppingCartService.itemCount.subscribe(c => {
-      this.cartSize = c;
-    });
+  // convenience getter for easy access to form fields
+  get f() { return this.apparelForm.controls; }
+
+  getCartDetails() {
+    // this.shoppingCartService.itemCount.subscribe(c => {
+    //   this.cartSize = c;
+    // });
 
     this.shoppingCartService.tempShoppingCart
       .subscribe(s => {

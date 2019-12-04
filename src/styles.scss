@@ -14,8 +14,11 @@ $primary-gray: #eee;
 
 html,
 body {
-  height: 100vh;
   background-color: #dce3ec;
+}
+
+.pageHeight{
+  height: 100vh;
 }
 
 a {

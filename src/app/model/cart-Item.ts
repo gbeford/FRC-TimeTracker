@@ -8,9 +8,10 @@ export class CartItem {
     totalItemPrice: number;
     upCharge: number;
     nameCharge: number;
-    gender?: string;
+    gender: string;
     size: string;
     quantity: number;
+    nameOnSleeve: boolean;
     sleeveName: string;  // this is for the name on the arm
     totalItemAddedToCartCharge?: number; // this the total of the item added to the cart
     // itemsSelected?: []; // this is for the items added to the cart

@@ -22,6 +22,7 @@ import { AddApparelComponent } from './apparel/add-apparel/add-apparel.component
 import { ImageUploadFormComponent } from './apparel/image-upload-form.component';
 import { StudentHoursReportComponent } from './reports/student-hours-report.component';
 import { OrderConfirmationComponent } from './apparel/order-confirmation/order-confirmation.component';
+import { CheckoutComponent } from './apparel/checkout/checkout.component';
 
 
 
@@ -115,8 +116,12 @@ import { OrderConfirmationComponent } from './apparel/order-confirmation/order-c
                 component: StudentHoursReportComponent,
             },
             {
-            path: 'order-confirm',
-            component: OrderConfirmationComponent,
+                path: 'order-confirm',
+                component: OrderConfirmationComponent,
+            },
+            {
+                path: 'checkout',
+                component: CheckoutComponent,
             },
 
             // { path: 'badges', component: BadgeViewComponent },

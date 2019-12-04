@@ -34,14 +34,15 @@
                 </select>
               </h6>
               <h6 class="sizes">sizes:&nbsp;
-                <select id="sizeCtrl" formControlName="sizeCtrl">
+                <select id="sizeCtrl" formControlName="size">
                   <option *ngFor="let s of sizes" [value]="s"> {{s}}</option>
                 </select>
               </h6>
-              <div class="error"
-                *ngIf="apparelForm.get('sizeCtrl').hasError('required') && apparelForm.get('sizeCtrl').touched">
-                Name is required
+
+              <div *ngIf="submitted && f.size.errors" class="invalid-feedback">
+                <div *ngIf="f.size.errors.required"> Size Is Required</div>
               </div>
+
             </div>
             <div *ngIf="apparel.nameCharge" class="mb-2">
               <h6 class="mr-1" style="display: inline-block;">Name On Sleeve ?</h6>
@@ -53,13 +54,13 @@
               </div>
               <div>
                 <h6>Name To Put On Sleeve: </h6>
-                <input class="form-control" name='nameOnSleeve' type='text' formControlName="sleeveNameCtrl">
+                <input class="form-control" name='nameOnSleeve' type='text' formControlName="sleeveNameCtrl"
+                  [ngClass]="{ 'is-invalid': submitted && f.size.errors }">
               </div>
             </div>
-            <!-- <div
-              *ngIf="apparelForm.get('canHaveNameCtl').value === 'Yes' && apparelForm.sleeveNameCtrl.value === null'>
-              <p> please enter a name</p>
-            </div> -->
+            <div *ngIf="hasError" class="text-danger">
+              <p> Name Is Required</p>
+            </div>
             <h6>QUANTITY: &nbsp;
               <select id="quantity" formControlName="quantityCtrl">
                 <option>1</option>

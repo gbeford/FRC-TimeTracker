@@ -17,7 +17,7 @@ export class ShoppingCartService {
   private newCartItems: CartItem[] = [];
   private shoppingCart: ShoppingCart;
   private itemTotal: number;
-  itemCount: BehaviorSubject<number> = new BehaviorSubject<number>(0);
+  cart = new BehaviorSubject(new ShoppingCart);
   order: ShoppingCart[];
   tempShoppingCart = new BehaviorSubject(new CartItem);
 
@@ -26,9 +26,6 @@ export class ShoppingCartService {
 
   public addItem(item: CartItem): void {
     console.log('item', item);
-    // TODO   Fix grossTotal and Upcharge charging when shouldnt
-    // this.shoppingCart.grossTotal = 0;
-    // this.newCartItems = [];
     if (item) {
       item.totalItemPrice = item.apparel.price * item.quantity;
 
@@ -49,17 +46,19 @@ export class ShoppingCartService {
     console.log('newCartItems ', this.newCartItems);
 
     // behavior subject to subscribe to for the item count in the shopping cart in the menu
-    this.itemCount.next(this.newCartItems.length);
+    // this.itemCount.next(this.newCartItems.length);
 
     const tempShoppingCart = sessionStorage.getItem('shoppingItems');
     if (tempShoppingCart === null) {
       this.shoppingCart = new ShoppingCart();
-      sessionStorage.removeItem('shoppingItems');
+      // sessionStorage.removeItem('shoppingItems');
     } else {
       this.shoppingCart = JSON.parse(tempShoppingCart) as ShoppingCart;
     }
 
     this.shoppingCart.items = this.newCartItems;
+
+    this.cart.next(this.shoppingCart);
 
     if (this.shoppingCart.items) {
       let up_charge = 0;
@@ -79,15 +78,20 @@ export class ShoppingCartService {
 
     console.log('this.shoppingCart.items', this.shoppingCart.items);
 
-    for (let i = 0; i < this.newCartItems.length; i++) {
-      this.shoppingCart.grossTotal = this.newCartItems[i].totalItemAddedToCartCharge + this.shoppingCart.grossTotal;
-    }
+    // for (let i = 0; i < this.newCartItems.length; i++) {
+    //   this.shoppingCart.grossTotal = this.newCartItems[i].totalItemAddedToCartCharge + this.shoppingCart.grossTotal;
+    // }
 
     console.log('shopping cart total ', this.shoppingCart.grossTotal);
+    // sessionStorage.removeItem('shoppingItems');
     sessionStorage.setItem('shoppingItems', JSON.stringify(this.shoppingCart)); // add to session
   }
 
-
+  clearOutCart() {
+    this.shoppingCart = new ShoppingCart;
+    sessionStorage.removeItem('shoppingItems');
+    this.cart.next(this.shoppingCart);
+  }
 
   retrieveShoppingCart(): ShoppingCart {
     return JSON.parse(sessionStorage.getItem('shoppingItems'));  // retrieven from session
