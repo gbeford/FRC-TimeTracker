@@ -22,18 +22,23 @@ export class OrderConfirmationComponent implements OnInit {
   }
 
   getItems() {
-    this.shoppingCartItems = this.shoppingCartService.retrieveShoppingCart();
-    this.grossTotal = 0;
-    if (this.shoppingCartItems) {
+  this.grossTotal = 0;
+    this.shoppingCartService.cart.subscribe(c => {
+
+      this.shoppingCartItems = c;
+
+      if (this.shoppingCartItems) {
       for (const i of this.shoppingCartItems.items) {
         this.grossTotal = i.totalItemAddedToCartCharge + this.grossTotal;
       }
     }
+    });
+
     console.log('retrive order ', this.shoppingCartItems);
   }
 
   order() {
-    debugger;
+
     // TODO: Save order to api
 
     // clear out page after order has been saved
@@ -42,6 +47,9 @@ export class OrderConfirmationComponent implements OnInit {
     this.router.navigate(['/checkout']);
   }
 
+  remove(item: number) {
+     this.shoppingCartService.removeItemFromCart(item);
+  }
 
   getToDate() {
     this.today = Date.now();

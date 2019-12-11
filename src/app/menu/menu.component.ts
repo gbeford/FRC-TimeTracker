@@ -27,8 +27,7 @@ export class MenuComponent implements OnInit {
   ngOnInit() {
 
     this.cartService.cart.subscribe(c => {
-      console.log('c', c.items);
-      if (c.items !== undefined) {
+        if (c.items !== undefined) {
         this.cartSize = c.items.length;
       } else {
         this.cartSize = 0;

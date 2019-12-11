@@ -61,6 +61,12 @@ this will show all items and total charges -->
                   <td class="text-center">{{cartItem.nameCharge | currency}}</td>
                   <td class="text-center">{{cartItem.upCharge | currency}}</td>
                   <td class="text-right">{{cartItem.totalItemAddedToCartCharge | currency}}</td>
+                  <td>
+                    <div (click)="remove(cartItem.apparel.apparelId)" class="pointer">
+                      <img src="../../../assets/images/circle-trashCan.png" style="width: 30px; height: 30px"
+                        alt="delete">
+                    </div>
+                  </td>
                 </tr>
               </tbody>
               <tbody>

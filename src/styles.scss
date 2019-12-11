@@ -1,5 +1,7 @@
 @import '../src/assets/scss/variables.scss';
 @import '../src/assets/scss/typography.scss';
+@import '../src/assets/scss/form.scss';
+
 
 /* You can add global styles to this file, and also import other style files */
 
@@ -25,15 +27,6 @@ body {
   ;
 }
 
-a {
-  cursor: pointer;
-}
-
-// h1,
-// h2 {
-//   margin-bottom: 30px;
-//   margin-top: 15px;
-// }
 
 @mixin border-radius($radius) {
   -webkit-border-radius: $radius;
@@ -42,17 +35,7 @@ a {
   border-radius: $radius;
 }
 
-// this removes the arrows in the number box
-input[type='number'] {
-  -moz-appearance: textfield;
-}
 
-// this remove the arrows in the number box
-input::-webkit-outer-spin-button,
-input::-webkit-inner-spin-button {
-  -webkit-appearance: none;
-  margin: 0;
-}
 
 .trackerBtn {
   background-color: $primary-blue;
@@ -87,26 +70,8 @@ input::-webkit-inner-spin-button {
   }
 }
 
-.mat-cell,
-.mat-header-cell {
-  padding: 0 1em 0 1em;
-}
 
-.messageText {
-  width: 55%;
-}
-
-
-
-.form-control {
-  height: 25px;
-}
-
-// override bootstrap validation
-.form-control.is-invalid,
-.was-validated .form-control:invalid {
-  background-position: right calc(.575em + .1875rem) center;
-}
+// footer stuff
 
 footer {
   background-color: $primary-gray;

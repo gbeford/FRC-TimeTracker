@@ -74,6 +74,16 @@ export class ShoppingCartService {
   clearOutCart() {
     this.shoppingCart = new ShoppingCart;
     sessionStorage.removeItem('shoppingItems');
+     // update menu shopping cart number
+    this.cart.next(this.shoppingCart);
+  }
+
+  removeItemFromCart(item: number) {
+    const itemIndex = this.shoppingCart.items.findIndex(i => i.apparel.apparelId === item);
+    this.shoppingCart.items.splice(itemIndex, 1);
+    sessionStorage.setItem('shoppingItems', JSON.stringify(this.shoppingCart));
+
+    // update menu shopping cart number
     this.cart.next(this.shoppingCart);
   }
 

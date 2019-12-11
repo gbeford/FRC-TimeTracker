@@ -1,0 +1,35 @@
+.form-control {
+  height: 25px;
+}
+
+// override bootstrap validation
+.form-control.is-invalid,
+.was-validated .form-control:invalid {
+  background-position: right calc(.575em + .1875rem) center;
+}
+
+a,
+.pointer {
+  cursor: pointer;
+}
+
+// this removes the arrows in the number box
+input[type='number'] {
+  -moz-appearance: textfield;
+}
+
+// this remove the arrows in the number box
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+.mat-cell,
+.mat-header-cell {
+  padding: 0 1em 0 1em;
+}
+
+.messageText {
+  width: 55%;
+}
