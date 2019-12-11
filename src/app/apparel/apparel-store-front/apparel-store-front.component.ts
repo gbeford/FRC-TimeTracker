@@ -82,41 +82,50 @@ export class ApparelStoreFrontComponent implements OnInit {
       priceCtrl: [''],
       nameChargeCtl: [''],
       canHaveNameCtl: [''],
-      genderCtrl: ['', [<any>Validators.required]],
-      quantityCtrl: ['', [<any>Validators.required]],
-      size: ['', [<any>Validators.required]],
+      genderCtrl: ['', Validators.required],
+      quantityCtrl: ['', Validators.required],
+      size: ['', Validators.required],
       sleeveNameCtrl: [''],
     });
   }
 
+  // convenience getter for easy access to form fields
+  get f() { return this.apparelForm.controls; }
+
   public addItemToCart(apparel: IApparel) {
     this.submitted = true;
-    if (this.apparelForm.valid && this.submitted) {
-      if (this.apparelForm.value.canHaveNameCtl === true && this.apparelForm.value.sleeveNameCtrl === '') {
-        this.hasError = true;
-        return this.apparelForm.invalid === false;
-
-      }
-      this.item = new CartItem();
-      this.item.apparel = apparel;
-      this.item.upCharge = this.apparelForm.value.upChargeCtrl ? this.apparelForm.value.upChargeCtrl : null;
-      this.item.nameCharge = this.apparelForm.value.nameChargeCtl ? this.apparelForm.value.nameChargeCtl : null;
-      this.item.gender = this.apparelForm.value.genderCtrl;
-      this.item.size = this.apparelForm.value.size;
-      this.item.quantity = this.apparelForm.value.quantityCtrl;
-      this.item.sleeveName = this.apparelForm.value.sleeveNameCtrl;
-      this.item.nameOnSleeve = this.apparelForm.value.canHaveNameCtl;
-      this.shoppingCartService.addItem(this.item);
-
-      this.showBox = true;
+    debugger;
+    // stop here if form is invalid
+    if (this.apparelForm.invalid) {
+      return;
     }
+
+    // validate if checkbox for name is selected that a name is in the name input
+    if (this.apparelForm.value.canHaveNameCtl === true &&
+      (this.apparelForm.value.sleeveNameCtrl === null || this.apparelForm.value.sleeveNameCtrl === '')) {
+      this.hasError = true;
+      return this.apparelForm.invalid === false;
+
+    }
+    this.item = new CartItem();
+    this.item.apparel = apparel;
+    this.item.upCharge = this.apparelForm.value.upChargeCtrl ? this.apparelForm.value.upChargeCtrl : null;
+    this.item.nameCharge = this.apparelForm.value.nameChargeCtl ? this.apparelForm.value.nameChargeCtl : null;
+    this.item.gender = this.apparelForm.value.genderCtrl;
+    this.item.size = this.apparelForm.value.size;
+    this.item.quantity = this.apparelForm.value.quantityCtrl;
+    this.item.sleeveName = this.apparelForm.value.sleeveNameCtrl;
+    this.item.nameOnSleeve = this.apparelForm.value.canHaveNameCtl;
+    this.shoppingCartService.addItem(this.item);
+
+    this.showBox = true;
+
 
     this.apparelForm.reset();
     this.submitted = false;
   }
 
-  // convenience getter for easy access to form fields
-  get f() { return this.apparelForm.controls; }
+
 
   getCartDetails() {
     this.shoppingCartService.tempShoppingCartItem

@@ -1,5 +1,4 @@
   <div class="container">
-    <!-- TODO: VALIDATION -->
     <h1 class="my-4">Shrewsbury Robotics Optional Apparel Order Form</h1>
 
     <div *ngIf="showBox" class="p-2 card-alert">
@@ -17,8 +16,8 @@
       </div>
     </div>
 
-    <form role="form" class="col" *ngFor="let apparel of this.apparealData" [formGroup]="apparelForm">
-      <div class="card">
+    <form [formGroup]="apparelForm">
+      <div *ngFor="let apparel of this.apparealData" class="card">
         <div class="row">
           <div class="col">
             <h3>{{apparel.item}}</h3>
@@ -31,81 +30,91 @@
                 <span class="teal font-weight-bold">{{this.apparel.price | currency}}</span>
               </div>
             </div>
-            <div *ngIf="apparel.item !== '467 Baseball Hat'">
-              <div class="row">
-                <div class="col-3">
-                  <h6>gender: </h6>
-                </div>
-                <div class="col pt-2">
-                  <select id="gender" formControlName="genderCtrl">
-                    <option>Mens</option>
-                    <option>Womens</option>
-                  </select>
-                </div>
+            <!-- <div *ngIf="apparel.item !== '467 Baseball Hat'"> -->
+            <div class="row">
+              <div class="col-3">
+                <h6>gender: </h6>
               </div>
-
-              <div class="row">
-                <div class="col-3">
-                  <h6 class="sizes">sizes:</h6>
+              <div class="col-3 pt-1">
+                <select class="form-control" formControlName="genderCtrl"
+                  [ngClass]="{ 'is-invalid':submitted && f.genderCtrl.invalid }" required>
+                  <option selected disabled value="">Choose...</option>
+                  <option>Mens</option>
+                  <option>Womens</option>
+                </select>
+                <div *ngIf="f.genderCtrl.invalid" class="invalid-feedback">
+                  <div *ngIf="f.genderCtrl.errors.required" style="width: 250px;">Gender is required</div>
                 </div>
-                <div class="col-2 pt-2">
-                  <select id="sizeCtrl" formControlName="size">
-                    <option *ngFor="let s of sizes" [value]="s"> {{s}}</option>
-                  </select>
-                </div>
-                <div class="col-4 pt-2">
-                  <span *ngIf="this.apparel.upCharge" class="teal">Add {{this.apparel.upCharge | currency}} for
-                    XXL</span>
-                </div>
-              </div>
-              <div *ngIf="submitted && f.size.errors" class="invalid-feedback">
-                <div *ngIf="f.size.errors.required"> Size Is Required</div>
               </div>
             </div>
+
+            <div class="row">
+              <div class="col-3">
+                <h6 class="sizes">sizes:</h6>
+              </div>
+              <div class="col-3 pt-1">
+                <select class="form-control" formControlName="size"
+                  [ngClass]="{ 'is-invalid':submitted && f.size.invalid }">
+                  <option selected disabled value="">Choose...</option>
+                  <option *ngFor="let s of sizes" [value]="s"> {{s}}</option>
+                </select>
+                <div *ngIf="f.size.invalid" class="invalid-feedback">
+                  <div *ngIf="f.size.errors.required">Size is required</div>
+                </div>
+              </div>
+              <div class="col pt-2">
+                <span *ngIf="this.apparel.upCharge" class="teal small-text">Add {{this.apparel.upCharge | currency}} for
+                  XXL</span>
+              </div>
+            </div>
+            <!-- <div *ngIf="f.size.errors" class="invalid-feedback">
+              <div *ngIf="f.size.errors"> Size Is Required</div>
+            </div> -->
+            <!-- </div> -->
             <div *ngIf="apparel.nameCharge" class="mb-2">
-              <div class="row">
+              <div class="row pt-2">
                 <div class="col-3">
                   <h6 class="mr-1" style="display: inline-block;">Add Name?</h6>
                 </div>
-                <div class="col pt-2">
+                <div class="col pt-1">
                   <mat-checkbox aria-label="shirt can have name on sleeve" name="canHaveName"
                     formControlName="canHaveNameCtl">Yes</mat-checkbox>
                 </div>
               </div>
-              <!-- <div>
-                <span class="teal">Additonal {{this.apparel.nameCharge | currency}} for name on
-                  sleeve</span>
-              </div> -->
-
               <div class="row">
-                <div class="col-3 pt-2">
+                <div class="col-3 pt-3">
                   <h6>Name: </h6>
                 </div>
-                <div class="col-5">
-                  <input class="form-control" name='nameOnSleeve' type='text' formControlName="sleeveNameCtrl"
-                    [ngClass]="{ 'is-invalid': submitted && f.size.errors }">
+                <div class="col-5 pt-2">
+                  <input class="form-control name" name='nameOnSleeve' type='text' formControlName="sleeveNameCtrl"
+                    [ngClass]="{ 'is-invalid':hasError }">
                 </div>
                 <div class="col pt-3">
-                  <span class="teal">Additonal {{this.apparel.nameCharge | currency}} </span>
+                  <span class="teal small-text">Additonal {{this.apparel.nameCharge | currency}} </span>
                 </div>
               </div>
 
             </div>
-            <div *ngIf="hasError" class="text-danger">
+            <div *ngIf="hasError" class="invalid-feedback">
               <p> Name Is Required</p>
             </div>
             <div class="row">
               <div class="col-3">
                 <h6>QUANTITY: </h6>
               </div>
-              <div class="col pt-2">
-                <select id="quantity" formControlName="quantityCtrl">
+              <div class="col-3 pt-1">
+                <select class="form-control" formControlName="quantityCtrl"
+                  [ngClass]="{ 'is-invalid':submitted && f.quantityCtrl.invalid }">
+                  <option selected disabled value="">Choose...</option>
                   <option>1</option>
                   <option>2</option>
                   <option>3</option>
                   <option>4</option>
                   <option>5</option>
                 </select>
+                <div *ngIf="f.quantityCtrl.invalid" class="invalid-feedback">
+                  <div *ngIf="f.quantityCtrl.errors.required" style="width: 250px;">Quanity is required</div>
+                </div>
               </div>
             </div>
             <div class="action pt-2 d-flex justify-content-end">

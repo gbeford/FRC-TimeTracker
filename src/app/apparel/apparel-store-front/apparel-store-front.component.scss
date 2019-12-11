@@ -27,7 +27,7 @@ img {
 
 // make input into a line for name on sleeve
 input[type="text"],
-select.form-control {
+select.form-control.name {
   background: transparent;
   border: none;
   border-bottom: 1px solid #000000;
@@ -35,6 +35,12 @@ select.form-control {
   box-shadow: none;
   border-radius: 0;
 }
+
+// validation for name line
+// input[type="text"],
+// select.form-control.is-invalid {
+//   border-bottom: 1px solid #dc3545;
+// }
 
 input[type="text"]:focus,
 select.form-control:focus {
@@ -45,9 +51,12 @@ select.form-control:focus {
 span.teal {
   //color: #b36800;
   color: #17a2b8;
+}
+
+
+.small-text {
   font-size: 14px;
   font-weight: bold;
-  //   font-style: italic;
 }
 
 .card-alert {

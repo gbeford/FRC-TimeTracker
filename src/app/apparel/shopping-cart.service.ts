@@ -22,7 +22,6 @@ export class ShoppingCartService {
   tempShoppingCartItem = new BehaviorSubject(new CartItem);
 
   constructor(private clothingService: ClothingService) {
-    debugger
     this.setUpCart();
     this.cart = new BehaviorSubject<ShoppingCart>(this.shoppingCart);
   }
@@ -95,6 +94,6 @@ export class ShoppingCartService {
       this.shoppingCart = JSON.parse(tempShoppingCart) as ShoppingCart;
     }
   }
-  
+
 
 }

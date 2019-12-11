@@ -14,11 +14,15 @@ $primary-gray: #eee;
 
 html,
 body {
+  height: 100%;
+  margin: 0;
   background-color: #dce3ec;
 }
 
-.pageHeight{
-  height: 100vh;
+.pageHeight {
+  min-height: calc(100vh - 70px);
+  padding-bottom: 20px;
+  ;
 }
 
 a {
@@ -92,12 +96,24 @@ input::-webkit-inner-spin-button {
   width: 55%;
 }
 
+
+
+.form-control {
+  height: 25px;
+}
+
+// override bootstrap validation
+.form-control.is-invalid,
+.was-validated .form-control:invalid {
+  background-position: right calc(.575em + .1875rem) center;
+}
+
 footer {
   background-color: $primary-gray;
   color: $primary-blue;
   height: 50px;
   width: 100%;
-  margin-top: 40px;
+  //margin-top: 40px;
 }
 
 .footer {
