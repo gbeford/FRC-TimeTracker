@@ -4,7 +4,7 @@ import { IApparel } from 'app/apparel/apparel-model';
 import { FormGroup, Validators, FormBuilder } from '@angular/forms';
 import { Observable } from 'rxjs';
 import { ShoppingCartService } from '../shopping-cart.service';
-import { CartItem } from 'app/model/cart-Item';
+import { CartItem } from 'app/apparel/cart-Item';
 
 // http://learningprogramming.net/mean-stack/angular-6/build-shopping-cart-in-angular-6/
 
@@ -119,8 +119,6 @@ export class ApparelStoreFrontComponent implements OnInit {
     this.shoppingCartService.addItem(this.item);
 
     this.showBox = true;
-
-
     this.apparelForm.reset();
     this.submitted = false;
   }

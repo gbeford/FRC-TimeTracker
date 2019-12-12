@@ -1,11 +1,10 @@
 import { BPClient } from 'blocking-proxy';
-import { IApparel } from '../apparel/apparel-model';
+import { IApparel } from './apparel-model';
 
 /* Defines the cart item entity */
 export class CartItem {
     apparel: IApparel;
-    // apparelID: number;
-    totalItemPrice: number;
+    price: number;
     upCharge: number;
     nameCharge: number;
     gender: string;

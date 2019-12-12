@@ -70,32 +70,6 @@ export class ClothingService {
       });
   }
 
-  // saveCartItem(cartItem: IApparel) {
-  //   return this.http.post<IApparel>(`${environment.baseUrl}${environment.apparelApiUrl}`, apparelItem)
-  //     .pipe(
-  //       catchError(Utilities.handleError)
-  //     );
-  // }
-
-  // editApparelRecord(id: number, updateMessage: string): Observable < void | {} > {
-  //   const data: IMessage = {
-  //     messageID: id,
-  //     messageText: updateMessage
-  //   };
-
-  //   return this.http.put<void>(`${environment.baseUrl}${environment.apparelApiUrl}/${id}`, data)
-  //     .pipe(
-  //       catchError(Utilities.handleError)
-  //     );
-  // }
-
-  // deleteMessageRecord(id: number): Observable < void | {} > {
-  //   return this.http.delete<void>(`${environment.baseUrl}${environment.apparelApiUrl}/${id}`)
-  //     .pipe(
-  //       catchError(Utilities.handleError)
-  //     );
-  // }
-
 
 
 }

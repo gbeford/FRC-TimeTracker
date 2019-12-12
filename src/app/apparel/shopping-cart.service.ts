@@ -1,11 +1,12 @@
 import { Injectable } from '@angular/core';
-import { IApparel } from 'app/apparel/apparel-model';
 import { ShoppingCart } from 'app/apparel/shopping-cart-model';
 import { Observer, Observable, BehaviorSubject } from 'rxjs';
-
-
-import { CartItem } from 'app/model/cart-Item';
+import { HttpClient } from '@angular/common/http';
+import { CartItem } from 'app/apparel/cart-Item';
 import { ClothingService } from './clothing.service';
+import { environment } from '@environment/environment';
+import { Utilities } from 'app/shared/utils';
+import { catchError, tap } from 'rxjs/operators';
 
 
 
@@ -14,14 +15,13 @@ import { ClothingService } from './clothing.service';
 })
 export class ShoppingCartService {
 
-  private newCartItems: CartItem[] = [];
   private shoppingCart: ShoppingCart;
   private itemTotal: number;
   cart: BehaviorSubject<ShoppingCart>;
   order: ShoppingCart[];
   tempShoppingCartItem = new BehaviorSubject(new CartItem);
 
-  constructor(private clothingService: ClothingService) {
+  constructor(private clothingService: ClothingService, private http: HttpClient) {
     this.setUpCart();
     this.cart = new BehaviorSubject<ShoppingCart>(this.shoppingCart);
   }
@@ -29,7 +29,7 @@ export class ShoppingCartService {
   public addItem(item: CartItem): void {
     console.log('item', item);
     if (item) {
-      item.totalItemPrice = item.apparel.price * item.quantity;
+      item.price = item.apparel.price * item.quantity;
 
       if (item.size === 'XXL') {
         item.upCharge = item.apparel.upCharge;
@@ -43,16 +43,8 @@ export class ShoppingCartService {
         item.nameCharge = 0;
       }
 
-      this.newCartItems.push(item);
+      this.shoppingCart.items.push(item);
     }
-    console.log('newCartItems ', this.newCartItems);
-
-    this.setUpCart();
-
-    this.shoppingCart.items = this.newCartItems;
-
-    // add shopping cart to the behavior subject for use in other pages
-    this.cart.next(this.shoppingCart);
 
     if (this.shoppingCart.items) {
       let up_charge = 0;
@@ -61,20 +53,24 @@ export class ShoppingCartService {
       for (const i of this.shoppingCart.items) {
         up_charge = i.quantity * i.upCharge;
         name_charge = i.quantity * i.nameCharge;
-        item.totalItemAddedToCartCharge = up_charge + name_charge + i.totalItemPrice;
+        item.totalItemAddedToCartCharge = up_charge + name_charge + i.price;
       }
-      // behavior subject to subscribe to get the what item was just added to the cart
+
+      // gets the shopping cart (behavior subject for use in other pages)
+      this.cart.next(this.shoppingCart);
+
+      // gets the current item that was added to the cart  (behavior subject to subscribe)
       this.tempShoppingCartItem.next(item);
     }
 
-// add to session
+    // add to session
     sessionStorage.setItem('shoppingItems', JSON.stringify(this.shoppingCart));
   }
 
   clearOutCart() {
     this.shoppingCart = new ShoppingCart;
     sessionStorage.removeItem('shoppingItems');
-     // update menu shopping cart number
+    // update menu shopping cart number
     this.cart.next(this.shoppingCart);
   }
 
@@ -91,19 +87,49 @@ export class ShoppingCartService {
     return JSON.parse(sessionStorage.getItem('shoppingItems'));  // retrieven from session
   }
 
-  orderItems() {
-    // Add code to save order
-    sessionStorage.removeItem('shoppingItems');
-  }
-
   setUpCart() {
-     const tempShoppingCart = sessionStorage.getItem('shoppingItems');
+    const tempShoppingCart = sessionStorage.getItem('shoppingItems');
     if (tempShoppingCart === null) {
       this.shoppingCart = new ShoppingCart();
     } else {
       this.shoppingCart = JSON.parse(tempShoppingCart) as ShoppingCart;
     }
+    if (this.cart) {
+      this.cart.next(this.shoppingCart);
+    }
   }
+
+  // CRUD
+
+
+  saveOrder(cart: ShoppingCart) {
+    console.log('saveing', ShoppingCart);
+    return this.http.post<ShoppingCart>(`${environment.baseUrl}${environment.orderApiUrl}`, cart)
+      .pipe(
+        catchError(Utilities.handleError)
+      ).subscribe(r =>
+        sessionStorage.removeItem('shoppingItems'));
+
+  }
+
+  // editApparelRecord(id: number, updateMessage: string): Observable < void | {} > {
+  //   const data: IMessage = {
+  //     messageID: id,
+  //     messageText: updateMessage
+  //   };
+
+  //   return this.http.put<void>(`${environment.baseUrl}${environment.apparelApiUrl}/${id}`, data)
+  //     .pipe(
+  //       catchError(Utilities.handleError)
+  //     );
+  // }
+
+  // deleteMessageRecord(id: number): Observable < void | {} > {
+  //   return this.http.delete<void>(`${environment.baseUrl}${environment.apparelApiUrl}/${id}`)
+  //     .pipe(
+  //       catchError(Utilities.handleError)
+  //     );
+  // }
 
 
 }

@@ -22,25 +22,23 @@ export class OrderConfirmationComponent implements OnInit {
   }
 
   getItems() {
-  this.grossTotal = 0;
     this.shoppingCartService.cart.subscribe(c => {
-
       this.shoppingCartItems = c;
-
+      this.grossTotal = 0;
       if (this.shoppingCartItems) {
-      for (const i of this.shoppingCartItems.items) {
-        this.grossTotal = i.totalItemAddedToCartCharge + this.grossTotal;
+        for (const i of this.shoppingCartItems.items) {
+          this.grossTotal = i.totalItemAddedToCartCharge + this.grossTotal;
+        }
+        this.shoppingCartItems.grossTotal = this.grossTotal;
       }
-    }
     });
 
     console.log('retrive order ', this.shoppingCartItems);
   }
 
   order() {
-
-    // TODO: Save order to api
-
+    // Save order to api
+    this.shoppingCartService.saveOrder(this.shoppingCartItems);
     // clear out page after order has been saved
     this.shoppingCartService.clearOutCart();
     this.grossTotal = 0;
@@ -48,7 +46,7 @@ export class OrderConfirmationComponent implements OnInit {
   }
 
   remove(item: number) {
-     this.shoppingCartService.removeItemFromCart(item);
+    this.shoppingCartService.removeItemFromCart(item);
   }
 
   getToDate() {
