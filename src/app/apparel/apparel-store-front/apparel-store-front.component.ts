@@ -94,7 +94,7 @@ export class ApparelStoreFrontComponent implements OnInit {
 
   public addItemToCart(apparel: IApparel) {
     this.submitted = true;
-    debugger;
+
     // stop here if form is invalid
     if (this.apparelForm.invalid) {
       return;
