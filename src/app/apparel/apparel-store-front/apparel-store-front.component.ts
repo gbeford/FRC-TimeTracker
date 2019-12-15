@@ -91,6 +91,7 @@ export class ApparelStoreFrontComponent implements OnInit {
 
   // convenience getter for easy access to form fields
   get f() { return this.apparelForm.controls; }
+  
 
   public addItemToCart(apparel: IApparel) {
     this.submitted = true;
@@ -107,6 +108,8 @@ export class ApparelStoreFrontComponent implements OnInit {
       return this.apparelForm.invalid === false;
 
     }
+
+    // add item to model
     this.item = new CartItem();
     this.item.apparel = apparel;
     this.item.upCharge = this.apparelForm.value.upChargeCtrl ? this.apparelForm.value.upChargeCtrl : null;
@@ -124,7 +127,7 @@ export class ApparelStoreFrontComponent implements OnInit {
   }
 
 
-
+// get last item added to the cart, (subscribe to behavior subject)
   getCartDetails() {
     this.shoppingCartService.tempShoppingCartItem
       .subscribe(s => {

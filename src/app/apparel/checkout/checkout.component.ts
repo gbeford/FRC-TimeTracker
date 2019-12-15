@@ -8,6 +8,7 @@ import { ShoppingCart } from '../shopping-cart-model';
   styleUrls: ['./checkout.component.scss']
 })
 export class CheckoutComponent implements OnInit {
+  order: ShoppingCart[];
 
   constructor(private shoppingCartService: ShoppingCartService) { }
 
@@ -15,6 +16,14 @@ export class CheckoutComponent implements OnInit {
 
   }
 
-  //TODO call api to display what was ordered and display a receipt
+  // TODO call api to display what was ordered and display a receipt
+
+  getAppareal() {
+    this.shoppingCartService.getOrder().subscribe(data => {
+      console.log('order', data);
+      this.order = data;
+    });
+  }
+
 
 }

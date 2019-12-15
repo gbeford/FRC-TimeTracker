@@ -103,7 +103,6 @@ export class ShoppingCartService {
 
 
   saveOrder(cart: ShoppingCart) {
-    console.log('saveing', ShoppingCart);
     return this.http.post<ShoppingCart>(`${environment.baseUrl}${environment.orderApiUrl}`, cart)
       .pipe(
         catchError(Utilities.handleError)
@@ -111,6 +110,23 @@ export class ShoppingCartService {
         sessionStorage.removeItem('shoppingItems'));
 
   }
+
+  // get apparel item
+  getOrder(): Observable<ShoppingCart[]> {
+    return this.http.get<ShoppingCart[]>(`${environment.baseUrl}${environment.orderApiUrl}`)
+      .pipe(
+        catchError(Utilities.handleError)
+      );   // ...errors if any
+  }
+
+  // get apparel by id
+  // getApparelItem(id: string): Observable<IApparel[]> {
+  //   return this.http.get<IApparel[]>(`${environment.baseUrl}${environment.apparelApiUrl}/${id}`)
+  //     .pipe(
+  //       catchError(Utilities.handleError)
+  //     );   // ...errors if any
+  // }
+
 
   // editApparelRecord(id: number, updateMessage: string): Observable < void | {} > {
   //   const data: IMessage = {
