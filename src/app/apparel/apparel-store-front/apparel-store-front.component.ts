@@ -116,7 +116,7 @@ export class ApparelStoreFrontComponent implements OnInit {
 
     }
 
-    // add item to model
+    // add appareal item to model
     this.item = new CartItem();
     this.item.apparel = apparel;
     this.item.upCharge = this.apparelForm.value.upChargeCtrl ? this.apparelForm.value.upChargeCtrl : null;
@@ -147,22 +147,22 @@ export class ApparelStoreFrontComponent implements OnInit {
       });
   }
 
-  // autoComplete
+  // autoComplete to get students name and id
   onNotify(value: Student): void {
-    this.selectedStudent = value.studentId;
+    // set student info to session
     this.shoppingCartService.AddStudentIdToCart(value);
-    console.log('student', this.selectedStudent);
   }
 
+  // pull student info from behavior subject
   getCart() {
     this.shoppingCartService.cart.subscribe(c => {
       this.student = c.studentName;
-      // console.log('cart', c);
+
       if (c.studentID) {
         this.pickStudent = true;
       } else {
         this.pickStudent = false;
-}
+      }
     });
   }
 
