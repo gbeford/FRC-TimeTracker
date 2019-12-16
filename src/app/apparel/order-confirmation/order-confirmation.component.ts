@@ -14,6 +14,7 @@ export class OrderConfirmationComponent implements OnInit {
   shoppingCartItems: ShoppingCart;
   grossTotal = 0;
   today: number;
+  student: string;
   constructor(private shoppingCartService: ShoppingCartService, private router: Router) { }
 
   ngOnInit() {
@@ -31,9 +32,12 @@ export class OrderConfirmationComponent implements OnInit {
         }
         this.shoppingCartItems.grossTotal = this.grossTotal;
       }
+      this.student = c.studentName;
+      console.log('student', this.student);
+
     });
 
-    console.log('retrive order ', this.shoppingCartItems);
+    console.log('confirm order ', this.shoppingCartItems);
   }
 
   order() {

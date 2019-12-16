@@ -7,6 +7,7 @@ import { ClothingService } from './clothing.service';
 import { environment } from '@environment/environment';
 import { Utilities } from 'app/shared/utils';
 import { catchError, tap } from 'rxjs/operators';
+import { Student } from 'app/model/student';
 
 
 
@@ -65,6 +66,13 @@ export class ShoppingCartService {
 
     // add to session
     sessionStorage.setItem('shoppingItems', JSON.stringify(this.shoppingCart));
+
+    console.log('session cart', this.shoppingCart);
+  }
+
+  AddStudentIdToCart(student: Student) {
+    this.shoppingCart.studentID = student.studentId;
+    this.shoppingCart.studentName = student.firstName + ' ' + student.lastName;
   }
 
   clearOutCart() {

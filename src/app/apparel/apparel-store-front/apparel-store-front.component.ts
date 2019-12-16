@@ -5,6 +5,9 @@ import { FormGroup, Validators, FormBuilder } from '@angular/forms';
 import { Observable } from 'rxjs';
 import { ShoppingCartService } from '../shopping-cart.service';
 import { CartItem } from 'app/apparel/cart-Item';
+import { Student } from 'app/model/student';
+import { ShoppingCart } from '../shopping-cart-model';
+import { connectableObservableDescriptor } from 'rxjs/internal/observable/ConnectableObservable';
 
 // http://learningprogramming.net/mean-stack/angular-6/build-shopping-cart-in-angular-6/
 
@@ -32,6 +35,9 @@ export class ApparelStoreFrontComponent implements OnInit {
   showBox = false;
   submitted = false;
   hasError = false;
+  shoppingCart: ShoppingCart;
+  pickStudent: boolean;
+  student: string;
 
   constructor(private clothingService: ClothingService,
     private formBuilder: FormBuilder,
@@ -43,6 +49,7 @@ export class ApparelStoreFrontComponent implements OnInit {
     this.getAppareal();
     this.createForm();
     this.getCartDetails();
+    this.getCart();
   }
 
   getSizes() {
@@ -91,7 +98,7 @@ export class ApparelStoreFrontComponent implements OnInit {
 
   // convenience getter for easy access to form fields
   get f() { return this.apparelForm.controls; }
-  
+
 
   public addItemToCart(apparel: IApparel) {
     this.submitted = true;
@@ -119,6 +126,7 @@ export class ApparelStoreFrontComponent implements OnInit {
     this.item.quantity = this.apparelForm.value.quantityCtrl;
     this.item.sleeveName = this.apparelForm.value.sleeveNameCtrl;
     this.item.nameOnSleeve = this.apparelForm.value.canHaveNameCtl;
+
     this.shoppingCartService.addItem(this.item);
 
     this.showBox = true;
@@ -127,7 +135,7 @@ export class ApparelStoreFrontComponent implements OnInit {
   }
 
 
-// get last item added to the cart, (subscribe to behavior subject)
+  // get last item added to the cart, (subscribe to behavior subject)
   getCartDetails() {
     this.shoppingCartService.tempShoppingCartItem
       .subscribe(s => {
@@ -139,7 +147,24 @@ export class ApparelStoreFrontComponent implements OnInit {
       });
   }
 
+  // autoComplete
+  onNotify(value: Student): void {
+    this.selectedStudent = value.studentId;
+    this.shoppingCartService.AddStudentIdToCart(value);
+    console.log('student', this.selectedStudent);
+  }
 
+  getCart() {
+    this.shoppingCartService.cart.subscribe(c => {
+      this.student = c.studentName;
+      // console.log('cart', c);
+      if (c.studentID) {
+        this.pickStudent = true;
+      } else {
+        this.pickStudent = false;
+}
+    });
+  }
 
 
 }
