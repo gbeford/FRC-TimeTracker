@@ -90,9 +90,10 @@ export class ShoppingCartService {
     // update menu shopping cart number
     this.cart.next(this.shoppingCart);
   }
-
+  
+// retrieve from session
   retrieveShoppingCart(): ShoppingCart {
-    return JSON.parse(sessionStorage.getItem('shoppingItems'));  // retrieven from session
+    return JSON.parse(sessionStorage.getItem('shoppingItems'));
   }
 
   setUpCart() {
