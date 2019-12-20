@@ -44,7 +44,7 @@
               </div>
               <div class="col-3 pt-1">
                 <select class="form-control" formControlName="genderCtrl"
-                  [ngClass]="{ 'is-invalid':submitted && f.genderCtrl.invalid }" required>
+                  [ngClass]="{ 'is-invalid':submitted && f.genderCtrl.invalid || f.genderCtrl.touched}" required>
                   <option selected disabled value="">Choose...</option>
                   <option>Mens</option>
                   <option>Womens</option>

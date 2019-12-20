@@ -116,7 +116,7 @@ export class ApparelStoreFrontComponent implements OnInit {
 
     }
 
-    // add appareal item to model
+    // add apparel item to model
     this.item = new CartItem();
     this.item.apparel = apparel;
     this.item.upCharge = this.apparelForm.value.upChargeCtrl ? this.apparelForm.value.upChargeCtrl : null;
