@@ -1,0 +1,57 @@
+
+.card {
+  margin-top: 25px;
+  // background: #abbdd8;
+  //background: #e9eff8;
+  background: #ffffff;
+  padding: 2em;
+  line-height: 1.5em;
+}
+
+img {
+  // max-width: 100%;
+  width: 393px;
+  height: 395px;
+}
+
+// make input into a line for name on sleeve
+input[type="text"],
+select.form-control.name {
+  background: transparent;
+  border: none;
+  border-bottom: 1px solid #000000;
+  -webkit-box-shadow: none;
+  box-shadow: none;
+  border-radius: 0;
+}
+
+// validation for name line
+// input[type="text"],
+// select.form-control.is-invalid {
+//   border-bottom: 1px solid #dc3545;
+// }
+
+input[type="text"]:focus,
+select.form-control:focus {
+  -webkit-box-shadow: none;
+  box-shadow: none;
+}
+
+span.teal {
+  //color: #b36800;
+  color: #17a2b8;
+}
+
+
+.small-text {
+  font-size: 14px;
+  font-weight: bold;
+}
+
+.card-alert {
+  background-color: #ffffff;
+  height: 55px;
+  border-radius: .35rem;
+  background-clip: border-box;
+  border: 1px solid #eee;
+}

@@ -56,6 +56,7 @@ import { StudentHoursReportComponent } from './reports/student-hours-report.comp
 import { ReportsService } from './reports/reports.service';
 import { OrderConfirmationComponent } from './apparel/order-confirmation/order-confirmation.component';
 import { CheckoutComponent } from './apparel/checkout/checkout.component';
+import { ApparelCardComponent } from './apparel/apparel-card/apparel-card.component';
 // import { Angular5Csv } from 'angular5-csv/dist/Angular5-csv';
 
 
@@ -96,6 +97,7 @@ import { CheckoutComponent } from './apparel/checkout/checkout.component';
     StudentHoursReportComponent,
     OrderConfirmationComponent,
     CheckoutComponent,
+    ApparelCardComponent,
 
   ],
   imports: [
