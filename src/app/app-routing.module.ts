@@ -120,7 +120,7 @@ import { CheckoutComponent } from './apparel/checkout/checkout.component';
                 component: OrderConfirmationComponent,
             },
             {
-                path: 'checkout',
+                path: 'checkout/:OrderId',
                 component: CheckoutComponent,
             },
 

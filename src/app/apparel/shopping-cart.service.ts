@@ -8,7 +8,7 @@ import { environment } from '@environment/environment';
 import { Utilities } from 'app/shared/utils';
 import { catchError, tap } from 'rxjs/operators';
 import { Student } from 'app/model/student';
-
+import { IOrder } from '../apparel/order-model';
 
 
 @Injectable({
@@ -111,13 +111,11 @@ export class ShoppingCartService {
   // CRUD
 
 
-  saveOrder(cart: ShoppingCart) {
-    return this.http.post<ShoppingCart>(`${environment.baseUrl}${environment.orderApiUrl}`, cart)
+  saveOrder(cart: ShoppingCart): Observable<IOrder> {
+    return this.http.post<IOrder>(`${environment.baseUrl}${environment.orderApiUrl}`, cart)
       .pipe(
         catchError(Utilities.handleError)
-      ).subscribe(r =>
-        sessionStorage.removeItem('shoppingItems'));
-
+      );
   }
 
   // get apparel item

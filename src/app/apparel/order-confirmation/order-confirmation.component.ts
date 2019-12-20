@@ -40,13 +40,18 @@ export class OrderConfirmationComponent implements OnInit {
     console.log('confirm order ', this.shoppingCartItems);
   }
 
-  order() {
+  order(id) {
     // Save order to api
-    this.shoppingCartService.saveOrder(this.shoppingCartItems);
-    // clear out page after order has been saved
-    this.shoppingCartService.clearOutCart();
-    this.grossTotal = 0;
-    this.router.navigate(['/checkout']);
+    this.shoppingCartService.saveOrder(this.shoppingCartItems).subscribe(r => {
+      console.log(r);
+      sessionStorage.removeItem('shoppingItems');
+      // clear out page after order has been saved
+      this.shoppingCartService.clearOutCart();
+      this.grossTotal = 0;
+      this.router.navigate([`/checkout/${r.orderId}`]);
+    });
+
+    
   }
 
   remove(item: number) {
