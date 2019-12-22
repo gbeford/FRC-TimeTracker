@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { IApparel } from '../apparel-model';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { ShoppingCart } from '../shopping-cart-model';
@@ -16,6 +16,7 @@ import { Student } from 'app/model/student';
 export class ApparelCardComponent implements OnInit {
 
   @Input() public apparelItem: IApparel;
+  @Output() addCartItem: EventEmitter<CartItem> = new EventEmitter<CartItem>();
 
   sizes: string[];
   // imageData: IApparelImage;
@@ -26,12 +27,8 @@ export class ApparelCardComponent implements OnInit {
   formObj: IApparel;
   imageId: number;
   // public apparel: Observable<IApparel[]>;
-  item: CartItem;
+
   cartSize = 0;
-  itemsSelected: string;
-  itemsSelectedTotal = 0;
-  itemQuanitySelected = 0;
-  showBox = false;
   submitted = false;
   hasError = false;
   shoppingCart: ShoppingCart;
@@ -63,6 +60,7 @@ export class ApparelCardComponent implements OnInit {
       sleeveNameCtrl: [''],
     });
   }
+
   getSizes() {
     this.sizes = this.clothingService.getClothingSize();
     console.log('sizes', this.sizes);
@@ -88,21 +86,21 @@ export class ApparelCardComponent implements OnInit {
     }
 
     // add apparel item to model
-    this.item = new CartItem();
-    this.item.apparel = apparel;
-    this.item.upCharge = this.apparelForm.value.upChargeCtrl ? this.apparelForm.value.upChargeCtrl : null;
-    this.item.nameCharge = this.apparelForm.value.nameChargeCtl ? this.apparelForm.value.nameChargeCtl : null;
-    this.item.gender = this.apparelForm.value.genderCtrl;
-    this.item.size = this.apparelForm.value.size;
-    this.item.quantity = this.apparelForm.value.quantityCtrl;
-    this.item.sleeveName = this.apparelForm.value.sleeveNameCtrl;
-    this.item.nameOnSleeve = this.apparelForm.value.canHaveNameCtl;
+    const item = new CartItem();
+    item.apparel = apparel;
+    item.upCharge = this.apparelForm.value.upChargeCtrl ? this.apparelForm.value.upChargeCtrl : null;
+    item.nameCharge = this.apparelForm.value.nameChargeCtl ? this.apparelForm.value.nameChargeCtl : null;
+    item.gender = this.apparelForm.value.genderCtrl;
+    item.size = this.apparelForm.value.size;
+    item.quantity = this.apparelForm.value.quantityCtrl;
+    item.sleeveName = this.apparelForm.value.sleeveNameCtrl;
+    item.nameOnSleeve = this.apparelForm.value.canHaveNameCtl;
 
-    this.shoppingCartService.addItem(this.item);
+    this.addCartItem.emit(item);
 
-    this.showBox = true;
     this.apparelForm.reset();
     this.submitted = false;
+
   }
 
 
