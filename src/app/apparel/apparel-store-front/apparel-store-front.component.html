@@ -15,8 +15,6 @@
         </div>
       </div>
     </div>
-
-    <!-- <form [formGroup]="form"> -->
       <div *ngIf="!pickStudent" class="row">
         <div class="col">
           <app-auto-complete (notify)='onNotify($event)' [autoCompleteForm]="form">Loading...
@@ -26,7 +24,6 @@
           </div>
         </div>
       </div>
-    <!-- </form> -->
     <div>
       <app-apparel-card *ngFor="let apparel of this.apparealData" [apparelItem]="apparel"
         (addCartItem)='addItemToCart($event)'>
