@@ -18,26 +18,21 @@ import { connectableObservableDescriptor } from 'rxjs/internal/observable/Connec
 })
 export class ApparelStoreFrontComponent implements OnInit {
 
-  // sizes: string[];
+  studentRequired: string;
+  showError = false;
   // imageData: IApparelImage;
   // imageSrc: string;
   // imageBase64: string;
   apparealData: IApparel[];
   public form: FormGroup;
-  // formObj: IApparel;
-  // imageId: number;
-  // public apparel: Observable<IApparel[]>;
-  // item: CartItem;
-  // cartSize = 0;
   itemsSelected: string;
   itemsSelectedTotal = 0;
   itemQuanitySelected = 0;
-  // showBox = false;
-  // submitted = false;
-  // hasError = false;
-  shoppingCart: ShoppingCart;
+   showBox = false;
+    shoppingCart: ShoppingCart;
   pickStudent: boolean;
   student: string;
+  hasStudent = false;
 
   constructor(private clothingService: ClothingService,
     private formBuilder: FormBuilder,
@@ -81,7 +76,18 @@ export class ApparelStoreFrontComponent implements OnInit {
       });
   }
 
-  
+  public addItemToCart(value: CartItem) {
+    if (this.hasStudent) {
+      this.showError = false;
+      this.shoppingCartService.addItem(value);
+      this.showBox = true;
+    } else {
+      this.showError = true;
+      this.studentRequired = 'Please select a student';
+    }
+
+  }
+
 
   // get last item added to the cart, (subscribe to behavior subject)
   getCartDetails() {
@@ -97,8 +103,14 @@ export class ApparelStoreFrontComponent implements OnInit {
 
   // autoComplete to get students name and id
   onNotify(value: Student): void {
+    if (value) {
+      this.hasStudent = true;
+    }
     // set student info to session
     this.shoppingCartService.AddStudentIdToCart(value);
+
+
+
   }
 
   // pull student info from behavior subject

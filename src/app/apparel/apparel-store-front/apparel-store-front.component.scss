@@ -1,8 +1,4 @@
-/*****************globals*************/
-/* body {
-  font-family: 'open sans';
-  overflow-x: hidden;
-} */
+@import '../src/assets/scss/variables.scss';
 
 h6 {
   text-transform: UPPERCASE;
@@ -10,6 +6,17 @@ h6 {
   line-height: 2em;
 }
 
+.card-alert {
+  background-color: #ffffff;
+  height: 55px;
+  border-radius: .35rem;
+  background-clip: border-box;
+  border: 1px solid #eee;
+}
+
+// .red{
+//   color: @extend red;
+// }
 
 // .not-available {
 //   text-align: center;

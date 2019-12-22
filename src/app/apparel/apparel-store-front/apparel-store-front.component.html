@@ -1,6 +1,6 @@
   <div class="container">
     <h1 class="my-4">Shrewsbury Robotics Optional Apparel Order Form</h1>
-<h4>{{student}}</h4>
+    <h4>{{student}}</h4>
     <div *ngIf="showBox" class="p-2 card-alert">
       <div class="row d-flex justify-content-between">
         <div class="col">
@@ -15,17 +15,19 @@
         </div>
       </div>
     </div>
-
-<form [formGroup]="form">
       <div *ngIf="!pickStudent" class="row">
         <div class="col">
           <app-auto-complete (notify)='onNotify($event)' [autoCompleteForm]="form">Loading...
           </app-auto-complete>
+          <div *ngIf="showError" class="red">
+            <span>{{studentRequired}}</span>
+          </div>
         </div>
       </div>
-      <div>
-        <app-apparel-card *ngFor="let apparel of this.apparealData" [apparelItem]="apparel" ></app-apparel-card>
-      </div>
-</form>
+    <div>
+      <app-apparel-card *ngFor="let apparel of this.apparealData" [apparelItem]="apparel"
+        (addCartItem)='addItemToCart($event)'>
+      </app-apparel-card>
+    </div>
 
   </div>
