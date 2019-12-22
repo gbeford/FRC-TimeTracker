@@ -1,4 +1,4 @@
-@import '../src/assets/scss/variables.scss';
+@import '../../../assets/scss/variables.scss';
 
 h6 {
   text-transform: UPPERCASE;
@@ -14,10 +14,6 @@ h6 {
   border: 1px solid #eee;
 }
 
-// .red{
-//   color: @extend red;
-// }
-
 // .not-available {
 //   text-align: center;
 //   line-height: 2em;
@@ -30,6 +26,6 @@ h6 {
 //   color: #fff;
 // }
 
-.error{
-  color: #dc3545;
+.errorMsg{
+  color: $red;;
 }
