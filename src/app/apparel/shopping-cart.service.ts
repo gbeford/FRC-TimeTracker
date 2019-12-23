@@ -28,7 +28,6 @@ export class ShoppingCartService {
   }
 
   public addItem(item: CartItem): void {
-    console.log('item', item);
     if (item) {
       item.price = item.apparel.price * item.quantity;
 
@@ -66,8 +65,6 @@ export class ShoppingCartService {
 
     // add to session
     sessionStorage.setItem('shoppingItems', JSON.stringify(this.shoppingCart));
-
-    console.log('session cart', this.shoppingCart);
   }
 
   AddStudentIdToCart(student: Student) {
@@ -90,8 +87,8 @@ export class ShoppingCartService {
     // update menu shopping cart number
     this.cart.next(this.shoppingCart);
   }
-  
-// retrieve from session
+
+  // retrieve from session
   retrieveShoppingCart(): ShoppingCart {
     return JSON.parse(sessionStorage.getItem('shoppingItems'));
   }
@@ -109,8 +106,6 @@ export class ShoppingCartService {
   }
 
   // CRUD
-
-
   saveOrder(cart: ShoppingCart): Observable<IOrder> {
     return this.http.post<IOrder>(`${environment.baseUrl}${environment.orderApiUrl}`, cart)
       .pipe(
@@ -119,20 +114,21 @@ export class ShoppingCartService {
   }
 
   // get apparel item
-  getOrder(): Observable<ShoppingCart[]> {
-    return this.http.get<ShoppingCart[]>(`${environment.baseUrl}${environment.orderApiUrl}`)
+  getOrder(): Observable<IOrder[]> {
+    return this.http.get<IOrder[]>(`${environment.baseUrl}${environment.orderApiUrl}`)
       .pipe(
         catchError(Utilities.handleError)
       );   // ...errors if any
   }
 
   // get apparel by id
-  // getApparelItem(id: string): Observable<IApparel[]> {
-  //   return this.http.get<IApparel[]>(`${environment.baseUrl}${environment.apparelApiUrl}/${id}`)
-  //     .pipe(
-  //       catchError(Utilities.handleError)
-  //     );   // ...errors if any
-  // }
+  getOrderById(id: string): Observable<IOrder> {
+    return this.http.get<IOrder>(`${environment.baseUrl}${environment.orderApiUrl}/${id}`)
+      .pipe(
+        tap(data => console.log('results', data)),
+        catchError(Utilities.handleError)
+      );   // ...errors if any
+  }
 
 
   // editApparelRecord(id: number, updateMessage: string): Observable < void | {} > {

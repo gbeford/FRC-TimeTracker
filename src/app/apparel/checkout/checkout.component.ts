@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { ShoppingCartService } from '../shopping-cart.service';
-import { ShoppingCart } from '../shopping-cart-model';
+import { ActivatedRoute } from '@angular/router';
+import { IOrder } from '../order-model';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-checkout',
@@ -8,22 +10,26 @@ import { ShoppingCart } from '../shopping-cart-model';
   styleUrls: ['./checkout.component.scss']
 })
 export class CheckoutComponent implements OnInit {
-  order: ShoppingCart[];
+  order: Observable<IOrder>;
+  orderId: string;
 
-  constructor(private shoppingCartService: ShoppingCartService) { }
+  constructor(private shoppingCartService: ShoppingCartService, private activatedRoute: ActivatedRoute) { }
 
   ngOnInit() {
-
+    // get ID from URL
+    this.orderId = this.activatedRoute.snapshot.paramMap.get('orderId');
+    this.getOrder() ;
   }
 
-  // TODO call api to display what was ordered and display a receipt
+  getOrder() {
+    this.order = this.shoppingCartService.getOrderById(this.orderId);
 
-  getAppareal() {
-    this.shoppingCartService.getOrder().subscribe(data => {
-      console.log('order', data);
-      this.order = data;
-    });
+    // .subscribe(data => {
+    //   this.order = data;
+    //   console.log('order', this.order);
+    // });
   }
+
 
 
 }

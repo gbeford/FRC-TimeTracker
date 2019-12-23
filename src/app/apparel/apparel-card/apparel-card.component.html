@@ -46,15 +46,11 @@
           </div>
           <div class="col pt-2">
             <span *ngIf="this.apparelItem.upCharge" class="teal small-text">Add {{this.apparelItem.upCharge | currency}}
-              for
-              XXL</span>
+              for XXL</span>
           </div>
         </div>
-        <!-- <div *ngIf="f.size.errors" class="invalid-feedback">
-              <div *ngIf="f.size.errors"> Size Is Required</div>
-            </div> -->
-        <!-- </div> -->
-        <div *ngIf="apparelItem.nameCharge" class="mb-2">
+
+        <div  *ngIf="this.apparelItem.nameCharge" class="mb-2">
           <div class="row pt-2">
             <div class="col-3">
               <h6 class="mr-1" style="display: inline-block;">Add Name?</h6>
@@ -63,24 +59,27 @@
               <mat-checkbox aria-label="shirt can have name on sleeve" name="canHaveName"
                 formControlName="canHaveNameCtl">Yes</mat-checkbox>
             </div>
+
           </div>
-          <div class="row">
+          <div *ngIf="apparelForm.value.canHaveNameCtl === true" class="row">
             <div class="col-3 pt-3">
               <h6>Name: </h6>
             </div>
             <div class="col-5 pt-2">
-              <input class="form-control name" name='nameOnSleeve' type='text' formControlName="sleeveNameCtrl"
-                [ngClass]="{ 'is-invalid':hasError }">
+              <input class="form-control" name='nameOnSleeve' type='text' formControlName="sleeveNameCtrl"
+                [ngClass]="{ 'is-invalid':hasErrors}">
             </div>
             <div class="col pt-3">
               <span class="teal small-text">Additonal {{this.apparelItem.nameCharge | currency}} </span>
             </div>
+            <div class="">
+              <div *ngIf="hasErrors" class="invalid-feedback d-block">
+                <p> Name Is Required</p>
+              </div>
+            </div>
           </div>
+        </div>
 
-        </div>
-        <div *ngIf="hasError" class="invalid-feedback">
-          <p> Name Is Required</p>
-        </div>
         <div class="row">
           <div class="col-3">
             <h6>QUANTITY: </h6>

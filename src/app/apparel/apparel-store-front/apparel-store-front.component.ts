@@ -45,8 +45,6 @@ export class ApparelStoreFrontComponent implements OnInit {
     this.getCart();
   }
 
-
-
   // getImageList() {
   //   this.clothingService.getImages().subscribe(data => {
   //     this.imageData = data[0];
@@ -67,9 +65,9 @@ export class ApparelStoreFrontComponent implements OnInit {
   getAppareal() {
     this.clothingService.getApparelList().subscribe(data => {
       this.apparealData = data;
+      console.log('apparel',  this.apparealData);
     });
   }
-
 
   createForm() {
     this.form = this.formBuilder.group({
@@ -85,9 +83,7 @@ export class ApparelStoreFrontComponent implements OnInit {
       this.showError = true;
       this.studentRequired = 'Please select a student';
     }
-
   }
-
 
   // get last item added to the cart, (subscribe to behavior subject)
   getCartDetails() {
@@ -108,9 +104,6 @@ export class ApparelStoreFrontComponent implements OnInit {
     }
     // set student info to session
     this.shoppingCartService.AddStudentIdToCart(value);
-
-
-
   }
 
   // pull student info from behavior subject

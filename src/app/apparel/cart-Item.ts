@@ -4,6 +4,7 @@ import { IApparel } from './apparel-model';
 /* Defines the cart item entity */
 export class CartItem {
     apparel: IApparel;
+    apparelId: number;
     price: number;
     upCharge: number;
     nameCharge: number;

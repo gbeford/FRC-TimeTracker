@@ -1,5 +1,80 @@
-<h1> Receipt </h1>
+=
 <!-- This will print out an invoice of all items ordered w/quanity
 and total needed to pay Shrewsbury Robotics -->
 
-{{this.order | json}}
+<div class="container" *ngIf="order | async as theOrder; else loading">
+    <h1>Receipt</h1>
+    <div class="row">
+      <div class="col-xs-12 col-md-3 col-lg-3 pull-left">
+        <div class="panel panel-default height">
+          <div class="panel-body">
+            <strong>Order Date :</strong> &nbsp;
+            <span>{{ theOrder.orderDate || date}}</span> &nbsp;
+            <strong>Student Name:</strong> {{ theOrder.studentName}}
+          </div>
+        </div>
+      </div>
+    </div>
+  
+    <div class="row">
+      <div class="col-md-12">
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <h3 class="text-center"><strong>Invoice</strong></h3>
+          </div>
+          <div class="panel-body">
+            <div class="table-responsive">
+              <table class="table table-condensed">
+                <thead>
+                  <tr>
+                    <td><strong>Item Name</strong></td>
+                    <td class="text-center"><strong>Item Type</strong></td>
+                    <td class="text-center"><strong>Gender</strong></td>
+                    <td class="text-center"><strong>Size</strong></td>
+                    <td class="text-center"><strong>Name on sleeve</strong></td>
+                    <td class="text-center"><strong>Item Quantity</strong></td>
+                    <td class="text-center"><strong>Item Price</strong></td>
+                    <td class="text-center"><strong>Name Charge</strong></td>
+                    <td class="text-center"><strong>Up Charge</strong></td>
+  
+                    <td class="text-right"><strong>Total</strong></td>
+                  </tr>
+                </thead>
+                <tbody *ngFor="let item of theOrder.items">
+                  <tr>
+                    <!-- <td> {{item.apparel.item}}</td> -->
+                    <!-- <td class="text-center">{{item.apparel.type}}</td> -->
+                    <td class="text-center">{{item.gender}}</td>
+                    <td class="text-center">{{item.size}}</td>
+                    <td class="text-center">{{item.sleeveName}}</td>
+                    <td class="text-center">{{item.quantity}}</td>
+                    <td class="text-right">{{item.price | currency}}</td>
+                    <td class="text-center">{{item.nameCharge | currency}}</td>
+                    <!-- <td class="text-center">{{item.upCharge | currency}}</td> -->
+                    <!-- <td class="text-right">{{item.totalItemAddedToCartCharge | currency}}</td> -->
+                  </tr>
+                </tbody>
+                <tbody>
+                  <tr>
+                    <td class="emptyrow"><i class="fa fa-barcode iconbig"></i></td>
+                    <td class="emptyrow"></td>
+                    <td class="emptyrow"></td>
+                    <td class="emptyrow"></td>
+                    <td class="emptyrow"></td>
+                    <td class="emptyrow"></td>
+                    <td class="emptyrow"></td>
+                    <td class="emptyrow"></td>
+                    <td class="emptyrow text-center"><strong>Grand Total</strong></td>
+                    <td class="emptyrow text-right">{{theOrder.grossTotal | currency}}</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <ng-template #loading>
+    <div>Loading ...</div>
+</ng-template>
