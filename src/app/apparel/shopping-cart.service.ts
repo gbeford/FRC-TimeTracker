@@ -107,7 +107,17 @@ export class ShoppingCartService {
 
   // CRUD
   saveOrder(cart: ShoppingCart): Observable<IOrder> {
-    return this.http.post<IOrder>(`${environment.baseUrl}${environment.orderApiUrl}`, cart)
+    const order: IOrder = {
+      items: cart.items,
+      orderDate: new Date(),
+      studentName: cart.studentName,
+      studentId: cart.studentID,
+      orderId: 0,
+      grossTotal: cart.grossTotal,
+      itemsTotaltal: cart.itemsTotal
+    };
+
+    return this.http.post<IOrder>(`${environment.baseUrl}${environment.orderApiUrl}`, order)
       .pipe(
         catchError(Utilities.handleError)
       );
