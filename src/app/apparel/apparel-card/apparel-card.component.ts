@@ -87,6 +87,7 @@ export class ApparelCardComponent implements OnInit {
 
     // add apparel item to model
     const item = new CartItem();
+    item.apparel = apparel;
     item.apparelId = apparel.apparelId;
     item.upCharge = this.apparelForm.value.upChargeCtrl ? this.apparelForm.value.upChargeCtrl : null;
     item.nameCharge = this.apparelForm.value.nameChargeCtl ? this.apparelForm.value.nameChargeCtl : null;

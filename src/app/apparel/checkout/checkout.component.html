@@ -9,13 +9,13 @@ and total needed to pay Shrewsbury Robotics -->
         <div class="panel panel-default height">
           <div class="panel-body">
             <strong>Order Date :</strong> &nbsp;
-            <span>{{ theOrder.orderDate || date}}</span> &nbsp;
+            <span>{{ theOrder.orderDate | date: "short"}}</span> &nbsp;
             <strong>Student Name:</strong> {{ theOrder.studentName}}
           </div>
         </div>
       </div>
     </div>
-  
+
     <div class="row">
       <div class="col-md-12">
         <div class="panel panel-default">
@@ -36,21 +36,21 @@ and total needed to pay Shrewsbury Robotics -->
                     <td class="text-center"><strong>Item Price</strong></td>
                     <td class="text-center"><strong>Name Charge</strong></td>
                     <td class="text-center"><strong>Up Charge</strong></td>
-  
+
                     <td class="text-right"><strong>Total</strong></td>
                   </tr>
                 </thead>
                 <tbody *ngFor="let item of theOrder.items">
                   <tr>
-                    <!-- <td> {{item.apparel.item}}</td> -->
-                    <!-- <td class="text-center">{{item.apparel.type}}</td> -->
+                    <td> {{item.apparel.item}}</td>
+                    <td class="text-center">{{item.apparel.type}}</td>
                     <td class="text-center">{{item.gender}}</td>
                     <td class="text-center">{{item.size}}</td>
                     <td class="text-center">{{item.sleeveName}}</td>
                     <td class="text-center">{{item.quantity}}</td>
                     <td class="text-right">{{item.price | currency}}</td>
                     <td class="text-center">{{item.nameCharge | currency}}</td>
-                    <!-- <td class="text-center">{{item.upCharge | currency}}</td> -->
+                    <td class="text-center">{{item.upCharge | currency}}</td>
                     <!-- <td class="text-right">{{item.totalItemAddedToCartCharge | currency}}</td> -->
                   </tr>
                 </tbody>

@@ -17,7 +17,7 @@ export class StudentListComponent implements AfterViewInit {
   dataSource: MatTableDataSource<any>; // StudentsDataSource;
 
   displayedColumns = ['studentId', 'status', 'lastName', 'firstName', 'email', 'grade', 'messages'];
-  @ViewChild(MatSort) sort: MatSort;
+  @ViewChild(MatSort, { static: true }) sort: MatSort;
 
   constructor(private sls: StudentService) { }
 

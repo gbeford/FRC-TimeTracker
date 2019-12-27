@@ -6,7 +6,7 @@ import { Component, OnInit, ElementRef, ViewChild, Input, AfterViewInit, Output,
   styleUrls: ['./alert-message.component.css']
 })
 export class AlertMessageComponent implements OnInit {
-  @ViewChild('alert') alert: ElementRef;
+  @ViewChild('alert', { static: true }) alert: ElementRef;
 
   @Input() alertMessage: string;
   @Output() notify: EventEmitter<any> = new EventEmitter<any>();

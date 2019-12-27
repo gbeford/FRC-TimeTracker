@@ -20,7 +20,7 @@ export class StudentHoursReportComponent implements OnInit {
   dataSource: MatTableDataSource<any>;
 
   displayedColumns = ['studentId', 'firstName', 'lastName', 'createDateTime', 'checkIn', 'checkOut'];
-  @ViewChild(MatSort) sort: MatSort;
+  @ViewChild(MatSort, { static: true }) sort: MatSort;
 
   // MatPaginator Inputs
   // length = 100;

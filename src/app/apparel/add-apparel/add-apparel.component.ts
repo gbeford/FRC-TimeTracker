@@ -22,7 +22,7 @@ export class AddApparelComponent implements OnInit {
   imageList = [];
   filename: string;
 
-  @ViewChild('fileInput') fileInput: ElementRef;
+  @ViewChild('fileInput', { static: true }) fileInput: ElementRef;
 
   constructor(private formBuilder: FormBuilder, private apparelService: ClothingService) { }
 

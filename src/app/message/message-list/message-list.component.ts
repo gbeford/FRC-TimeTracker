@@ -14,7 +14,7 @@ export class MessageListComponent implements AfterViewInit {
   messageList: IMessage[];
   displayedColumns = ['messageText'];
 
-  @ViewChild(MatSort) sort: MatSort;
+  @ViewChild(MatSort, { static: true }) sort: MatSort;
 
 
   constructor(private messageService: MessageService) { }
