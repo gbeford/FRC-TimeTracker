@@ -57,6 +57,8 @@ import { ReportsService } from './reports/reports.service';
 import { OrderConfirmationComponent } from './apparel/order-confirmation/order-confirmation.component';
 import { CheckoutComponent } from './apparel/checkout/checkout.component';
 import { ApparelCardComponent } from './apparel/apparel-card/apparel-card.component';
+import { GuertinReportComponent } from './apparel/guertin-report/guertin-report.component';
+import { UnpaidOrdersComponent } from './apparel/unpaid-orders/unpaid-orders.component';
 // import { Angular5Csv } from 'angular5-csv/dist/Angular5-csv';
 
 
@@ -98,6 +100,8 @@ import { ApparelCardComponent } from './apparel/apparel-card/apparel-card.compon
     OrderConfirmationComponent,
     CheckoutComponent,
     ApparelCardComponent,
+    GuertinReportComponent,
+    UnpaidOrdersComponent,
 
   ],
   imports: [

@@ -79,6 +79,12 @@
         <span>Student List</span>
       </a>
     </ng-container>
+    <ng-container *ngIf="securityObject.isAuthenticated">
+      <a [routerLink]="['/order-report']" *hasClaim="'canAccess_Admin'" mat-menu-item>
+        <span>Orders</span>
+      </a>
+    </ng-container>
+    
   </mat-menu>
 
 

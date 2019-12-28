@@ -23,6 +23,7 @@ import { ImageUploadFormComponent } from './apparel/image-upload-form.component'
 import { StudentHoursReportComponent } from './reports/student-hours-report.component';
 import { OrderConfirmationComponent } from './apparel/order-confirmation/order-confirmation.component';
 import { CheckoutComponent } from './apparel/checkout/checkout.component';
+import { ApparelOrdersReportComponent } from './apparel/apparel-orders-report/apparel-orders-report.component';
 
 
 
@@ -123,6 +124,11 @@ import { CheckoutComponent } from './apparel/checkout/checkout.component';
                 path: 'checkout/:orderId',
                 component: CheckoutComponent,
             },
+            {
+                path: 'order-report',
+                component: ApparelOrdersReportComponent,
+            },
+            
 
             // { path: 'badges', component: BadgeViewComponent },
             // { path: 'applyPoints', component: ApplyPointsToStudentComponent },

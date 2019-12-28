@@ -28,8 +28,8 @@ export class ApparelStoreFrontComponent implements OnInit {
   itemsSelected: string;
   itemsSelectedTotal = 0;
   itemQuanitySelected = 0;
-   showBox = false;
-    shoppingCart: ShoppingCart;
+  showBox = false;
+  shoppingCart: ShoppingCart;
   pickStudent: boolean;
   student: string;
   hasStudent = false;
@@ -39,7 +39,7 @@ export class ApparelStoreFrontComponent implements OnInit {
     private shoppingCartService: ShoppingCartService) { }
 
   ngOnInit() {
-     this.getAppareal();
+    this.getAppareal();
     this.createForm();
     this.getCartDetails();
     this.getCart();
@@ -65,17 +65,17 @@ export class ApparelStoreFrontComponent implements OnInit {
   getAppareal() {
     this.clothingService.getApparelList().subscribe(data => {
       this.apparealData = data;
-      console.log('apparel',  this.apparealData);
+      console.log('apparel', this.apparealData);
     });
   }
 
   createForm() {
     this.form = this.formBuilder.group({
-      });
+    });
   }
 
   public addItemToCart(value: CartItem) {
-    if (this.hasStudent) {
+    if (this.hasStudent || this.student) {
       this.showError = false;
       this.shoppingCartService.addItem(value);
       this.showBox = true;
@@ -99,6 +99,7 @@ export class ApparelStoreFrontComponent implements OnInit {
 
   // autoComplete to get students name and id
   onNotify(value: Student): void {
+    console.log('student', value);
     if (value) {
       this.hasStudent = true;
     }
