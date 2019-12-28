@@ -128,7 +128,7 @@ import { ApparelOrdersReportComponent } from './apparel/apparel-orders-report/ap
                 path: 'order-report',
                 component: ApparelOrdersReportComponent,
             },
-            
+
 
             // { path: 'badges', component: BadgeViewComponent },
             // { path: 'applyPoints', component: ApplyPointsToStudentComponent },

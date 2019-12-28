@@ -84,7 +84,7 @@
         <span>Orders</span>
       </a>
     </ng-container>
-    
+
   </mat-menu>
 
 
@@ -122,7 +122,7 @@
       <a routerLink="login" *ngIf="!securityObject.isAuthenticated">Login</a>
     </div>
     <div>
-      <a href="#" (onclick)="logout()" *ngIf="securityObject.isAuthenticated"> Logout &nbsp;{{
+      <a (click)="logout()" *ngIf="securityObject.isAuthenticated"> Logout &nbsp;{{
         securityObject.userName}}</a>
     </div>
   </div>

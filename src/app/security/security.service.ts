@@ -11,9 +11,16 @@ import { environment } from '@environment/environment';
   providedIn: 'root'
 })
 export class SecurityService {
-  securityObject: AppUserAuth = new AppUserAuth;
+  public securityObject: AppUserAuth;
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient) {
+    const secObject = localStorage.getItem('secobject');
+    if (secObject != null) {
+      this.securityObject = JSON.parse(secObject);
+    } else {
+      this.securityObject = new AppUserAuth();
+    }
+  }
 
   logout(): void {
     this.resetSecurityObject();
@@ -26,6 +33,7 @@ export class SecurityService {
     this.securityObject.claims = [];
 
     localStorage.removeItem('bearerToken');
+    localStorage.removeItem('secobject');
   }
 
   // This method can be called a couple of different ways
@@ -93,6 +101,7 @@ export class SecurityService {
           Object.assign(this.securityObject, resp);
           // Store into local storage
           localStorage.setItem('bearerToken', this.securityObject.bearerToken);
+          localStorage.setItem('secobject', JSON.stringify(this.securityObject));
         }));
   }
 }

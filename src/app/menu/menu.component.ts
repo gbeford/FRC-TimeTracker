@@ -4,6 +4,7 @@ import { SecurityService } from 'app/security/security.service';
 import { AppUserAuth } from 'app/security/app-user-auth';
 import { ShoppingCartService } from 'app/apparel/shopping-cart.service';
 import { ShoppingCart } from 'app/apparel/shopping-cart-model';
+import { Router } from '@angular/router';
 
 
 @Component({
@@ -20,7 +21,7 @@ export class MenuComponent implements OnInit {
 
 
   constructor(private svc: StudentService, private securityService: SecurityService,
-    private cartService: ShoppingCartService) {
+    private cartService: ShoppingCartService, private router: Router) {
     this.securityObject = securityService.securityObject;
   }
 
@@ -44,5 +45,6 @@ export class MenuComponent implements OnInit {
 
   logout(): void {
     this.securityService.logout();
+    this.router.navigateByUrl('/');
   }
 }
