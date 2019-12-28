@@ -114,7 +114,7 @@ export class ShoppingCartService {
       studentId: cart.studentID,
       orderId: 0,
       grossTotal: cart.grossTotal,
-      itemsTotaltal: cart.itemsTotal
+     // itemsTotal: cart.itemsTotal
     };
 
     return this.http.post<IOrder>(`${environment.baseUrl}${environment.orderApiUrl}`, order)

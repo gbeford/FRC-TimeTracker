@@ -1,52 +1,29 @@
-
- <div class="row mt-5">
+<div class="row mt-5">
   <div class="col-md-12">
-<h1>Orders</h1>
-<table class="table table-condensed">
-  <thead class="table-header">
-    <tr>
-      <td><strong>Item Name</strong></td>
-      <td class="text-center"><strong>Item Type</strong></td>
-      <td class="text-center"><strong>Gender</strong></td>
-      <td class="text-center"><strong>Size</strong></td>
-      <td class="text-center"><strong>Name on sleeve</strong></td>
-      <td class="text-center"><strong>Item Quantity</strong></td>
-      <td class="text-center"><strong>Item Price</strong></td>
-      <td class="text-center"><strong>Name Charge</strong></td>
-      <td class="text-center"><strong>Up Charge</strong></td>
+    <h1>Orders</h1>
 
-      <td class="text-right"><strong>Total</strong></td>
-    </tr>
-  </thead>
-  <!-- <tbody *ngFor="let item of itemsOrdered.items" class="table-backgroud">
-    <tr>
-      <td> {{item.apparel.item}}</td>
-      <td class="text-center">{{item.apparel.type}}</td>
-      <td class="text-center">{{item.gender}}</td>
-      <td class="text-center">{{item.size}}</td>
-      <td class="text-center">{{item.sleeveName}}</td>
-      <td class="text-center">{{item.quantity}}</td>
-      <td class="text-right">{{item.price | currency}}</td>
-      <td class="text-center">{{item.nameCharge | currency}}</td>
-      <td class="text-center">{{item.upCharge | currency}}</td>
-      <td class="text-right">{{item.price + item.nameCharge + item.upCharge | currency}}</td>
-    </tr>
-  </tbody>
-  <tbody class="table-backgroud">
-    <tr class="row-height">
-      <td colspan="2" class="row-alignment">Cash or Check Only. <br /><i>Make payable to Shrewsbury
-          Robotics</i></td>
-      <td class="emptyrow"></td>
-      <td class="emptyrow"></td>
-      <td class="emptyrow"></td>
-      <td class="emptyrow"></td>
-      <td class="emptyrow"></td>
-      <td class="emptyrow"></td>
-      <td class="emptyrow text-center"><strong>Grand Total</strong></td>
-      <td class="emptyrow text-right"><strong>{{itemsOrdered.grossTotal | currency}}</strong></td>
-    </tr>
-  </tbody> -->
-</table>
+    <!-- {{order | json}} -->
+
+    <table class="table table-condensed">
+      <thead class="table-header">
+        <tr>
+          <td><strong>Order Id</strong></td>
+          <td class="text-center"><strong>Student Name</strong></td>
+          <td class="text-center"><strong>Student Id</strong></td>
+          <td class="text-center"><strong>Gross Total</strong></td>
+          <td class="text-center"><strong>Paid</strong></td>
+        </tr>
+      </thead>
+      <tbody *ngFor="let orders of order" class="table-backgroud">
+        <tr>
+          <td> {{orders.orderId}}</td>
+          <td class="text-center">{{orders.studentName}}</td>
+          <td class="text-center">{{orders.studentId}}</td>
+          <td class="text-center">{{orders.grossTotal}}</td>
+          <td class="text-center">{{orders.paid}}</td>
+        </tr>
+      </tbody>
+    </table>
   </div>
 
-  </div>
+</div>

@@ -6,6 +6,7 @@ export interface IOrder {
     studentName: string;
     orderDate: Date;
     items: CartItem[];
-    itemsTotaltal: number;
+   // itemsTotal: number;
     grossTotal: number;
+    paid?: boolean;
 }
