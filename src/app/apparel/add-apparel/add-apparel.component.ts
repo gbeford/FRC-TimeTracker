@@ -67,7 +67,10 @@ export class AddApparelComponent implements OnInit {
         canHaveName: this.apparelForm.value.canHaveNameCtl ? this.apparelForm.value.canHaveNameCtl : 0,
         filename: this.apparelForm.value.imageCtrl.filename,
         contentType: this.apparelForm.value.imageCtrl.contentType,
-        image: this.apparelForm.value.imageCtrl.value
+        image: this.apparelForm.value.imageCtrl.value,
+        showGender: true,
+        showSize: true,
+        showItem: true
       };
       this.apparelService.saveApparelItem(
         this.formObj).subscribe(res => {

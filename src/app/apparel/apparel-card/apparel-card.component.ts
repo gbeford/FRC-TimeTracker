@@ -1,12 +1,13 @@
-import { Component, OnInit, Input, Output, EventEmitter} from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { IApparel } from '../apparel-model';
-import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { FormGroup, FormBuilder, Validators, AbstractControl, ValidatorFn } from '@angular/forms';
 import { ShoppingCart } from '../shopping-cart-model';
 import { CartItem } from '../cart-Item';
 import { Observable } from 'rxjs';
 import { ClothingService } from '../clothing.service';
 import { ShoppingCartService } from '../shopping-cart.service';
 import { Student } from 'app/model/student';
+import { OptionalRequired } from './optional-required-validation';
 
 @Component({
   selector: 'app-apparel-card',
@@ -53,17 +54,26 @@ export class ApparelCardComponent implements OnInit {
       priceCtrl: [''],
       nameChargeCtl: [''],
       canHaveNameCtl: [false],
-      genderCtrl: ['', Validators.required],
+      genderCtrl: ['', [OptionalRequired(Validators.required, this.apparelItem.showGender)]],
+      size: [''],
       quantityCtrl: ['', Validators.required],
-      size: ['', Validators.required],
       sleeveNameCtrl: [''],
     });
+  }
+
+   conditionalValidator(condition: (() => boolean), validator: ValidatorFn): ValidatorFn {
+    return (control: AbstractControl): {[key: string]: any} => {
+      if (! condition()) {
+        return null;
+      }
+      return validator(control);
+    };
   }
 
   getSizes() {
     this.sizes = this.clothingService.getClothingSize();
   }
-  
+
   // convenience getter for easy access to form fields
   get f() { return this.apparelForm.controls; }
 
@@ -81,8 +91,8 @@ export class ApparelCardComponent implements OnInit {
     // validate if checkbox for name is selected that a name is in the name input
     if (this.apparelForm.value.canHaveNameCtl === true &&
       (this.apparelForm.value.sleeveNameCtrl === null || this.apparelForm.value.sleeveNameCtrl === '')) {
-     // this.apparelForm.controls['sleeveNameCtrl'].setErrors({ 'invalid': true });
-     this.hasErrors = true;
+      // this.apparelForm.controls['sleeveNameCtrl'].setErrors({ 'invalid': true });
+      this.hasErrors = true;
       return;
     }
 

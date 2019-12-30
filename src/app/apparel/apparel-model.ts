@@ -17,4 +17,7 @@ export interface IApparel {
     filename: string;
     image: any;
     contentType: string;
+    showGender: boolean;
+    showSize: boolean;
+    showItem: boolean;
 }
