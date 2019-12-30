@@ -107,6 +107,30 @@
         </div>
       </div>
     </div>
+    <div class="col-xs-2 col-sm-2 col-md-2">
+      <div class="form-group">
+        <label for="canHaveName">Show Item</label>
+        <div>
+          <mat-checkbox aria-label="show item on page" id="showItem" name="showItem" formControlName="showItemCtrl">Yes</mat-checkbox>
+        </div>
+      </div>
+    </div>
+    <div class="col-xs-2 col-sm-2 col-md-2">
+      <div class="form-group">
+        <label for="canHaveName">Show Gender</label>
+        <div>
+          <mat-checkbox aria-label="show gender on page" id="showGender" name="showGender" formControlName="showGenderCtrl">Yes</mat-checkbox>
+        </div>
+      </div>
+    </div>
+    <div class="col-xs-2 col-sm-2 col-md-2">
+      <div class="form-group">
+        <label for="canHaveName">Show Size</label>
+        <div>
+          <mat-checkbox aria-label="show size on page" id="showSize" name="showSize" formControlName="showSizeCtrl">Yes</mat-checkbox>
+        </div>
+      </div>
+    </div>
   </div>
   <button class='trackerBtn' [disabled]="!apparelForm.valid">Submit </button>
 </form>

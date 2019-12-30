@@ -43,7 +43,9 @@ export class AddApparelComponent implements OnInit {
       imageCtrl: null,
       nameChargeCtl: [''],
       canHaveNameCtl: [''],
-      // genderCtrl: ['', [<any>Validators.required]],
+      showItemCtrl: [''],
+      showSizeCtrl: [''],
+      showGenderCtrl: ['']
     });
   }
   // convenience getter for easy access to form fields
@@ -68,9 +70,9 @@ export class AddApparelComponent implements OnInit {
         filename: this.apparelForm.value.imageCtrl.filename,
         contentType: this.apparelForm.value.imageCtrl.contentType,
         image: this.apparelForm.value.imageCtrl.value,
-        showGender: true,
-        showSize: true,
-        showItem: true
+        showGender: this.apparelForm.value.showGenderCtrl ? this.apparelForm.value.showGenderCtrl : 0,
+        showSize: this.apparelForm.value.showSizeCtrl ? this.apparelForm.value.showSizeCtrl : 0,
+        showItem: this.apparelForm.value.showItemCtrl ? this.apparelForm.value.showItemCtrl : 0,
       };
       this.apparelService.saveApparelItem(
         this.formObj).subscribe(res => {

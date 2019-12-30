@@ -4,19 +4,19 @@
       <div class="col">
         <h3>{{apparelItem.item}}</h3>
         <p class="product-description">{{apparelItem.description}}</p>
-        <div class="row">
+        <div class="row pt-1">
           <div class="col-3">
             <h6>Price:</h6>
           </div>
-          <div class="col pt-1">
+          <div class="col">
             <span class="teal font-weight-bold">{{apparelItem.price | currency}}</span>
           </div>
         </div>
-        <div class="row" *ngIf="apparelItem.showGender">
+        <div class="row pt-2" *ngIf="apparelItem.showGender">
           <div class="col-3">
             <h6>gender: </h6>
           </div>
-          <div class="col-3 pt-1">
+          <div class="col-3">
             <select class="form-control" formControlName="genderCtrl"
               [ngClass]="{ 'is-invalid':submitted && f.genderCtrl.invalid }" required>
               <option selected disabled value="">Choose...</option>
@@ -28,11 +28,11 @@
             </div>
           </div>
         </div>
-        <div class="row" *ngIf="apparelItem.showSize">
+        <div class="row pt-3" *ngIf="apparelItem.showSize">
           <div class="col-3">
             <h6 class="sizes">sizes:</h6>
           </div>
-          <div class="col-3 pt-1">
+          <div class="col-3">
             <select class="form-control" formControlName="size"
               [ngClass]="{ 'is-invalid':submitted && f.size.invalid }">
               <option selected disabled value="">Choose...</option>
@@ -42,7 +42,7 @@
               <div *ngIf="f.size.errors.required">Size is required</div>
             </div>
           </div>
-          <div class="col pt-2">
+          <div class="col">
             <span *ngIf="this.apparelItem.upCharge" class="teal small-text">Add {{apparelItem.upCharge | currency}}
               for XXL</span>
           </div>
@@ -77,11 +77,11 @@
           </div>
         </div>
 
-        <div class="row">
+        <div class="row pt-3">
           <div class="col-3">
             <h6>QUANTITY: </h6>
           </div>
-          <div class="col-3 pt-1">
+          <div class="col-3">
             <select class="form-control" formControlName="quantityCtrl"
               [ngClass]="{ 'is-invalid':submitted && f.quantityCtrl.invalid }">
               <option selected disabled value="">Choose...</option>
@@ -96,7 +96,7 @@
             </div>
           </div>
         </div>
-        <div class="action pt-2 d-flex justify-content-end">
+        <div class="action pt-3">
           <button class="btn btn-secondary" type="button" (click)="addItemToCart(apparelItem)">add to
             cart</button>
         </div>
