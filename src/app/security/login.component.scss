@@ -1,40 +1,11 @@
-@import '../../styles';
+
+@import '../../assets/scss/variables.scss';
 
 .ng-invalid.ng-touched:not(form) {
   border: 2px solid red;
 }
 
-.signup {
-  padding-top: 35px;
-}
-
-.panel-title {
-  /* margin-top: 0;
-  margin-bottom: 0;
-  font-size: 16px; */
-  color: $primary-yellow;
-}
-
-.panel-info>.panel-heading {
-  /* color: #31708f; */
-  background-color: $primary-blue
-    /* border-color: rgb(221, 204, 120); */
-}
-
-.forgot-password a {
-  color: $primary-yellow;
-}
-
-.forgot-password {
-  float: right;
-  font-size: 80%;
-  position: relative;
-  top: -10px
-}
-
-a {
-  color: $secondary-blue;
-}
+#title{font-family:fantasy;}
 
 .btn-default {
   background-color: $primary-gray;

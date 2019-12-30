@@ -14,7 +14,7 @@ export class SecurityService {
   public securityObject: AppUserAuth;
 
   constructor(private http: HttpClient) {
-    const secObject = localStorage.getItem('secobject');
+    const secObject = sessionStorage.getItem('secobject');
     if (secObject != null) {
       this.securityObject = JSON.parse(secObject);
     } else {
@@ -32,8 +32,8 @@ export class SecurityService {
     this.securityObject.isAuthenticated = false;
     this.securityObject.claims = [];
 
-    localStorage.removeItem('bearerToken');
-    localStorage.removeItem('secobject');
+    sessionStorage.removeItem('bearerToken');
+    sessionStorage.removeItem('secobject');
   }
 
   // This method can be called a couple of different ways
@@ -100,8 +100,8 @@ export class SecurityService {
           //       because that destroys all references to object
           Object.assign(this.securityObject, resp);
           // Store into local storage
-          localStorage.setItem('bearerToken', this.securityObject.bearerToken);
-          localStorage.setItem('secobject', JSON.stringify(this.securityObject));
+          sessionStorage.setItem('bearerToken', this.securityObject.bearerToken);
+          sessionStorage.setItem('secobject', JSON.stringify(this.securityObject));
         }));
   }
 }

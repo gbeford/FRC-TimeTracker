@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { MatSnackBar } from '@angular/material';
 import { MessageService } from 'app/message/message.service';
 import { StudentService } from '../student/student.service';
+import { AppUserAuth } from 'app/security/app-user-auth';
+import { SecurityService } from 'app/security/security.service';
 
 @Component({
   selector: 'app-home',
@@ -11,9 +13,12 @@ import { StudentService } from '../student/student.service';
 
 export class HomeComponent implements OnInit {
   signedInStudent: number;
+  securityObject: AppUserAuth = null;
 
   constructor(private studentService: StudentService, private snackBar: MatSnackBar,
-    private messageService: MessageService) { }
+    private securityService: SecurityService, private messageService: MessageService) {
+    this.securityObject = securityService.securityObject;
+  }
 
   ngOnInit() {
 

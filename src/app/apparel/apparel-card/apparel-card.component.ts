@@ -63,6 +63,7 @@ export class ApparelCardComponent implements OnInit {
   getSizes() {
     this.sizes = this.clothingService.getClothingSize();
   }
+  
   // convenience getter for easy access to form fields
   get f() { return this.apparelForm.controls; }
 

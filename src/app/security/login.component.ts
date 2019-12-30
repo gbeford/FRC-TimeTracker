@@ -16,6 +16,7 @@ export class LoginComponent implements OnInit {
   securityObject: AppUserAuth = null;
   returnUrl: string;
   signUpBox = false;
+  submitted = false;
 
   constructor(private securityService: SecurityService,
     private route: ActivatedRoute,
@@ -27,6 +28,12 @@ export class LoginComponent implements OnInit {
   }
 
   login(form: NgForm) {
+    this.submitted = true;
+
+    // stop here if form is invalid
+    if (form.invalid) {
+      return;
+    }
     if (form.valid) {
       this.securityService.login(this.user).subscribe(
         resp => {
@@ -60,13 +67,13 @@ export class LoginComponent implements OnInit {
     // TODO send password to user
   }
 
-// signUp(){
-//    this.registerForm = this.formBuilder.group({
-//      firstName: ['', Validators.required],
-//      lastName: ['', Validators.required],
-//      email: ['', [Validators.required, Validators.email]],
-//      password: ['', [Validators.required, Validators.minLength(6)]]
-//    });
-// }
+  // signUp(){
+  //    this.registerForm = this.formBuilder.group({
+  //      firstName: ['', Validators.required],
+  //      lastName: ['', Validators.required],
+  //      email: ['', [Validators.required, Validators.email]],
+  //      password: ['', [Validators.required, Validators.minLength(6)]]
+  //    });
+  // }
 
 }

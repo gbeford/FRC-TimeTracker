@@ -3,21 +3,15 @@
 // Typography
 
 @font-face {
-  font-family: "Alte Haas Grotesk";
-  src: url('/assets/AlteHaasGrotesk/AlteHaasGroteskRegular.ttf') format("opentype");
+  font-family: 'Source Sans Pro';
+  src: url('https://fonts.googleapis.com/css?family=Source+Sans+Pro&display=swap') format("opentype");
   font-weight: 400;
 }
 
-@font-face {
-  font-family: "PAlte Haas Grotesk";
-  src: url('/assets/AlteHaasGrotesk/AlteHaasGroteskBold.ttf') format("opentype");
-  font-weight: 700;
-}
 
 // font-body is being declared in mixins and should be the same variable
-$font-body: 'Alte Haas Grotesk';
-$font-monospace: 'Menlo',
-sans-serif;
+$font-body: 'Source Sans Pro';
+$font-monospace: 'Source Sans Pro', sans-serif;
 
 * {
   -webkit-font-smoothing: antialiased;
