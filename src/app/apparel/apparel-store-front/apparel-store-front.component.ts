@@ -2,14 +2,11 @@ import { Component, OnInit } from '@angular/core';
 import { ClothingService } from '../clothing.service';
 import { IApparel } from 'app/apparel/apparel-model';
 import { FormGroup, Validators, FormBuilder } from '@angular/forms';
-import { Observable } from 'rxjs';
+// import { Observable } from 'rxjs';
 import { ShoppingCartService } from '../shopping-cart.service';
 import { CartItem } from 'app/apparel/cart-Item';
 import { Student } from 'app/model/student';
 import { ShoppingCart } from '../shopping-cart-model';
-import { connectableObservableDescriptor } from 'rxjs/internal/observable/ConnectableObservable';
-
-// http://learningprogramming.net/mean-stack/angular-6/build-shopping-cart-in-angular-6/
 
 @Component({
   selector: 'app-apparel-store-front',

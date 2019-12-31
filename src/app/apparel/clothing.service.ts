@@ -6,6 +6,7 @@ import { HttpClient } from '@angular/common/http';
 import { Utilities } from '../shared/utils';
 import { Observable, throwError } from 'rxjs';
 import { IApparelImage } from 'app/apparel/apparel-image-model';
+import { IOrder } from './order-model';
 
 @Injectable({
   providedIn: 'root'
@@ -51,6 +52,33 @@ export class ClothingService {
       );   // ...errors if any
   }
 
+  getUnpaidOrders(searchBy: string, searchValue: string) {
+    if (searchBy === 'all') {
+      return this.http.get<IOrder[]>(`${environment.baseUrl}api/Order/${searchBy}/null`)
+        .pipe(
+          catchError(Utilities.handleError)
+        );   // ...errors if any
+    } else {
+      return this.http.get<IOrder[]>(`${environment.baseUrl}api/Order/${searchBy}/${searchValue}`)
+        .pipe(
+          catchError(Utilities.handleError)
+        );
+    }
+
+    //http://localhost:5000/api/Order/All/
+    //     /api/Order/{searchBy}/{searchValue}
+
+    // /api/Order/all/anything - return all unpaid orders
+    // /api/Order/name/blah - search all unpaid orders with student name containing blah
+    // /api/Order/oid/123 - search unpaid orders with order id - 123
+    // /api/order/sid/4444 - search unpaid orders with student id 4444
+
+
+
+
+
+  }
+
 
 
   // CRUD
@@ -70,7 +98,9 @@ export class ClothingService {
       });
   }
 
+  SavePaidOrder() {
 
+  }
 
 }
 

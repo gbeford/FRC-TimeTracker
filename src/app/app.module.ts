@@ -59,6 +59,8 @@ import { CheckoutComponent } from './apparel/checkout/checkout.component';
 import { ApparelCardComponent } from './apparel/apparel-card/apparel-card.component';
 import { GuertinReportComponent } from './apparel/guertin-report/guertin-report.component';
 import { UnpaidOrdersComponent } from './apparel/unpaid-orders/unpaid-orders.component';
+import { PaidModalComponent } from './apparel/paid-modal/paid-modal.component';
+
 // import { Angular5Csv } from 'angular5-csv/dist/Angular5-csv';
 
 
@@ -102,6 +104,7 @@ import { UnpaidOrdersComponent } from './apparel/unpaid-orders/unpaid-orders.com
     ApparelCardComponent,
     GuertinReportComponent,
     UnpaidOrdersComponent,
+    PaidModalComponent,
 
   ],
   imports: [
@@ -142,7 +145,8 @@ import { UnpaidOrdersComponent } from './apparel/unpaid-orders/unpaid-orders.com
     SecurityService,
     ReportsService,
   ],
-  entryComponents: [TimeTrackerMsgComponent],
+  entryComponents: [TimeTrackerMsgComponent, PaidModalComponent],
   bootstrap: [AppComponent]
+
 })
 export class AppModule { }

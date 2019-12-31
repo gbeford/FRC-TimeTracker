@@ -39,19 +39,19 @@ import { ApparelOrdersReportComponent } from './apparel/apparel-orders-report/ap
                 path: 'trackTime',
                 component: TimeTrackerComponent,
                 canActivate: [AuthGuard],
-                data: { claim: 'canAccess_Student' }
+                data: { claim: ['canAccess_Student', 'canAccess_Admin'] }
             },
             {
                 path: 'studentTimeReport',
                 component: StudentTimePointReportComponent,
                 canActivate: [AuthGuard],
-                data: { claim: 'canAccess_Student' }
+                data: {claim:  ['canAccess_Student', 'canAccess_Admin']  }
             },
             {
                 path: 'studentlist',
                 component: StudentListComponent,
                 canActivate: [AuthGuard],
-                data: { claim: 'canAccess_Student' }
+                data: { claim: ['canAccess_Student', 'canAccess_Admin'] }
             },
             {
                 path: 'studentEditForm',
@@ -69,7 +69,7 @@ import { ApparelOrdersReportComponent } from './apparel/apparel-orders-report/ap
                 path: 'messageList',
                 component: MessageListComponent,
                 canActivate: [AuthGuard],
-                data: { claim: 'canAccess_Student' }
+                data: { claim: ['canAccess_Student', 'canAccess_Admin']  }
             },
 
             {
@@ -107,14 +107,20 @@ import { ApparelOrdersReportComponent } from './apparel/apparel-orders-report/ap
             {
                 path: 'addApparel',
                 component: AddApparelComponent,
+                canActivate: [AuthGuard],
+                data: { claim: 'canAccess_Admin' }
             },
             {
                 path: 'addImage',
                 component: ImageUploadFormComponent,
+                canActivate: [AuthGuard],
+                data: { claim: 'canAccess_Admin' }
             },
             {
                 path: 'attendance',
                 component: StudentHoursReportComponent,
+                canActivate: [AuthGuard],
+                data: { claim: 'canAccess_Admin' }
             },
             {
                 path: 'order-confirm',
@@ -127,6 +133,8 @@ import { ApparelOrdersReportComponent } from './apparel/apparel-orders-report/ap
             {
                 path: 'order-report',
                 component: ApparelOrdersReportComponent,
+                canActivate: [AuthGuard],
+                data: { claim: 'canAccess_Admin' }
             },
 
 

@@ -1,7 +1,10 @@
 <div class="row mt-5">
-  <div class="col-md-12">
+  <div class="col">
     <h1>Orders</h1>
-
+  </div>
+  <div class="col d-flex justify-content-end pb-2">
+    <button class="btn btn-secondary" (click)="openDialog()">Mark Paid</button>
+  </div>
     <!-- {{order | json}} -->
 <!--  TODO:
   - make table sortable
@@ -10,6 +13,7 @@
 - add paid button which will open a modal that will show all unpaid orders and will be searchable by student id and ordre id
 will have a paid something that will click to save paid bool to the db 
 -->
+<div class="col-md-12">
     <table class="table table-condensed">
       <thead class="table-header">
         <tr>

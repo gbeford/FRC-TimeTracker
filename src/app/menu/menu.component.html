@@ -1,9 +1,9 @@
 <mat-toolbar color="">
   <a [routerLink]="['/']">
-  <span class="colonial">
-    <img class="colonialImg" src="/assets/images/colonial.png">
-  </span>
-</a>
+    <span class="colonial">
+      <img class="colonialImg" src="/assets/images/colonial.png">
+    </span>
+  </a>
   <button mat-icon-button [matMenuTriggerFor]="appMenu">
     <mat-icon>menu</mat-icon>
   </button>
@@ -12,20 +12,13 @@
     <a [routerLink]="['/']" mat-menu-item>
       <span>Home </span>
     </a>
-    <button mat-menu-item [matMenuTriggerFor]="admin">Admin</button>
+    <ng-container *ngIf="securityObject.isAuthenticated">
+      <button mat-menu-item [matMenuTriggerFor]="admin">Admin</button>
+    </ng-container>
     <ng-container *ngIf="securityObject.isAuthenticated">
       <button mat-menu-item [matMenuTriggerFor]="reports">Reports</button>
     </ng-container>
-    <ng-container *ngIf="securityObject.isAuthenticated">
-      <a [routerLink]="['/event']" *hasClaim="'canAccess_Admin'" mat-menu-item>
-        <span>Add New Event</span>
-      </a>
-    </ng-container>
-    <ng-container *ngIf="securityObject.isAuthenticated">
-      <a [routerLink]="['/message']" *hasClaim="'canAccess_Admin'" mat-menu-item>
-        <span>Add New Message</span>
-      </a>
-    </ng-container>
+   
     <ng-container *ngIf="securityObject.isAuthenticated">
       <a [routerLink]="['/messageStudent']" *hasClaim="'canAccess_Admin'" mat-menu-item>
         <span>Message Student</span>
@@ -38,29 +31,38 @@
     </ng-container>
 
 
-      <a [routerLink]="['/attendance']" mat-menu-item>
-        <span>Attendance</span>
-      </a>
+ 
 
 
     <a [routerLink]="['/apparel']" mat-menu-item>
       <span>Apparel</span>
     </a>
 
-    <a [routerLink]="['/test']" mat-menu-item>
+    <!-- <a [routerLink]="['/test']" mat-menu-item>
       <span>Test</span>
-    </a>
+    </a> -->
 
   </mat-menu>
 
-
   <mat-menu #admin="matMenu">
-    <a [routerLink]="['/addApparel']" mat-menu-item>
-      <span>Add Apparel</span>
-    </a>
-    <a [routerLink]="['/addImage']" mat-menu-item>
+    <ng-container *ngIf="securityObject.isAuthenticated">
+      <a [routerLink]="['/addApparel']" *hasClaim="'canAccess_Admin'" mat-menu-item>
+        <span>Add Apparel</span>
+      </a>
+    </ng-container>
+    <ng-container *ngIf="securityObject.isAuthenticated">
+      <a [routerLink]="['/event']" *hasClaim="'canAccess_Admin'" mat-menu-item>
+        <span>Add New Event</span>
+      </a>
+    </ng-container>
+    <ng-container *ngIf="securityObject.isAuthenticated">
+      <a [routerLink]="['/message']" *hasClaim="'canAccess_Admin'" mat-menu-item>
+        <span>Add New Message</span>
+      </a>
+    </ng-container>
+    <!-- <a [routerLink]="['/addImage']" *hasClaim="'canAccess_Admin'" mat-menu-item>
       <span>Add Image</span>
-    </a>
+    </a> -->
   </mat-menu>
 
 
@@ -80,6 +82,11 @@
         <span>Student List</span>
       </a>
     </ng-container>
+    <ng-container *ngIf="securityObject.isAuthenticated">
+    <a [routerLink]="['/attendance']" *hasClaim="'canAccess_Admin'" mat-menu-item>
+      <span>Attendance</span>
+    </a>
+  </ng-container>
     <ng-container *ngIf="securityObject.isAuthenticated">
       <a [routerLink]="['/order-report']" *hasClaim="'canAccess_Admin'" mat-menu-item>
         <span>Orders</span>
@@ -120,7 +127,7 @@
   <span class="spacer"> </span>
   <div style="padding-right: 50px;">
     <div>
-      <a routerLink="login" *ngIf="!securityObject.isAuthenticated">Login</a>
+      <a routerLink="/" *ngIf="!securityObject.isAuthenticated">Login</a>
     </div>
     <div>
       <a (click)="logout()" *ngIf="securityObject.isAuthenticated"> Logout &nbsp;{{
@@ -128,9 +135,10 @@
     </div>
   </div>
 
-   <a [routerLink]="['/order-confirm']">
-   <mat-icon matBadge="{{cartSize}}" matBadgeColor="accent" matBadgeSize="medium" matBadgePosition="above after">shopping_cart</mat-icon>
-    </a>
+  <a [routerLink]="['/order-confirm']">
+    <mat-icon matBadge="{{cartSize}}" matBadgeColor="accent" matBadgeSize="medium" matBadgePosition="above after">
+      shopping_cart</mat-icon>
+  </a>
 
 
 </mat-toolbar>

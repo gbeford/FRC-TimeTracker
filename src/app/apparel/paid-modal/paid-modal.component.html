@@ -1,0 +1,70 @@
+<div class="modal-content">
+  <!--Header-->
+  <div class="modal-header">
+    <h1 class="heading">Mark Paid</h1>
+
+    <button type="button" class="close" data-dismiss="modal" aria-label="Close" (click)="close()">
+      <span aria-hidden="true" class="white-text">×</span>
+    </button>
+  </div>
+
+  <!--Body-->
+  <div class="modal-body">
+    <form role="form" [formGroup]="paidForm">
+      <div class="row mb-3">
+        <div class="col">
+          <label for="item">Search Type</label>
+          <select class="form-control" formControlName="searchType">
+            <option value="all">All</option>
+            <option value="oid">By Order Id</option>
+            <option value="sid">By Student Id</option>
+            <option value="name">Student Name</option>
+          </select>
+        </div>
+        <div class="col">
+          <label for="item">Search</label>
+          <input id="search" type="text" class="form-control" formControlName="search">
+        </div>
+        <div class="col d-flex justify-content-end">
+          <button type="button" class="btn btn-secondary btn-size"
+            (click)="search()">Search</button>
+            <!-- [disabled]="this.paidForm.value.searchType !== 'all'"  -->
+        </div>
+      </div>
+    </form>
+    <div class="row">
+      <div class="col-md-12">
+        <table class="table table-condensed">
+          <thead class="table-header">
+            <tr>
+              <td><strong>Order Id</strong></td>
+              <td class="text-center"><strong>Student Id</strong></td>
+              <td class="text-center"><strong>Student Name</strong></td>
+              <td class="text-center"><strong>Total</strong></td>
+              <td class="text-center"><strong>Paid</strong></td>
+            </tr>
+          </thead>
+          <tbody *ngFor="let orders of order" class="table-backgroud">
+            <tr>
+              <td> {{orders.orderId}}</td>
+              <td class="text-center">{{orders.studentName}}</td>
+              <td class="text-center">{{orders.studentId}}</td>
+              <td class="text-center">{{orders.grossTotal}}</td>
+              <td class="text-center">
+                <div>
+                  <mat-checkbox id="paid"></mat-checkbox>
+                </div>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col d-flex justify-content-end">
+        <button type="button" class="btn btn-secondary mr-2">Save</button>
+        <button type="button" class="btn btn-light" (click)="close()">Cancel</button>
+      </div>
+    </div>
+  </div>
+</div>
