@@ -4,7 +4,7 @@
   </p>
   <!-- alert box -->
   <div>
-    <app-alert-message *ngIf="success" [alertMessage]="alertmessage" (notify)='alerttNotify($event)'>
+    <app-alert-message *ngIf="success" [alertMessage]="alertmessage" (notify)='alerttNotify()'>
     </app-alert-message>
   </div>
 
@@ -18,5 +18,5 @@
 
 
 <!-- upload  -->
-<app-image-upload (notify)='uploadNotify($event)'></app-image-upload>
+<app-image-upload (notify)='uploadNotify()'></app-image-upload>
 
