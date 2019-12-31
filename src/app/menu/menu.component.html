@@ -20,24 +20,15 @@
     </ng-container>
    
     <ng-container *ngIf="securityObject.isAuthenticated">
-      <a [routerLink]="['/messageStudent']" *hasClaim="'canAccess_Admin'" mat-menu-item>
-        <span>Message Student</span>
-      </a>
-    </ng-container>
+    <a [routerLink]="['/apparel']"  *hasClaim="['canAccess_Student', 'canAccess_Admin']" mat-menu-item>
+      <span>Apparel</span>
+    </a>
+  </ng-container>
     <ng-container *ngIf="securityObject.isAuthenticated">
-      <a [routerLink]="['/trackTime']" *hasClaim="'canAccess_Student'" mat-menu-item>
+      <a [routerLink]="['/trackTime']" *hasClaim="['canAccess_Student', 'canAccess_Admin']" mat-menu-item>
         <span>Track Time</span>
       </a>
     </ng-container>
-
-
- 
-
-
-    <a [routerLink]="['/apparel']" mat-menu-item>
-      <span>Apparel</span>
-    </a>
-
     <!-- <a [routerLink]="['/test']" mat-menu-item>
       <span>Test</span>
     </a> -->
@@ -60,6 +51,11 @@
         <span>Add New Message</span>
       </a>
     </ng-container>
+    <ng-container *ngIf="securityObject.isAuthenticated">
+      <a [routerLink]="['/messageStudent']" *hasClaim="'canAccess_Admin'" mat-menu-item>
+        <span>Message Student</span>
+      </a>
+    </ng-container>
     <!-- <a [routerLink]="['/addImage']" *hasClaim="'canAccess_Admin'" mat-menu-item>
       <span>Add Image</span>
     </a> -->
@@ -67,11 +63,6 @@
 
 
   <mat-menu #reports="matMenu">
-    <!-- <ng-container *ngIf="securityObject.isAuthenticated">
-      <a [routerLink]="['/attendance']" *hasClaim="'canAccess_Admin'" mat-menu-item>
-        <span>Attendance</span>
-      </a>
-    </ng-container> -->
     <ng-container *ngIf="securityObject.isAuthenticated">
       <a [routerLink]="['/messageList']" *hasClaim="'canAccess_Admin'" mat-menu-item>
         <span>Message List</span>
@@ -92,13 +83,9 @@
         <span>Orders</span>
       </a>
     </ng-container>
-
   </mat-menu>
 
 
-
-
-  <!--       TODO: need to re-wire back up for page to work again       -->
   <!-- <ng-container *ngIf="securityObject.isAuthenticated">
       <a [routerLink]="['/studentTimeReport']" *hasClaim="'canAccess_Student'" mat-menu-item>
         <span>Student Hours</span>
@@ -117,10 +104,6 @@
       <span>Apply Points to Student</span>
     </a> -->
 
-
-
-
-  <!-- <span style="padding-left: 50px;" *ngIf="user">Welcome {{ user.displayName }}</span> -->
   <span class="spacer"> </span>
   {{ signedInStudents }} signed in.
   <span class="spacer"> </span>

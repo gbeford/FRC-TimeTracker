@@ -12,26 +12,24 @@
   <div class="modal-body">
     <form role="form" [formGroup]="paidForm">
       <div class="row mb-3">
-        <div class="col">
+        <div class="col-3">
           <label for="item">Search Type</label>
           <select class="form-control" formControlName="searchType">
-            <option value="all">All</option>
-            <option value="oid">By Order Id</option>
-            <option value="sid">By Student Id</option>
-            <option value="name">Student Name</option>
+            <option *ngFor="let type of typeList" value="{{type.value}}">{{type.name}}</option>
           </select>
         </div>
-        <div class="col">
-          <label for="item">Search</label>
-          <input id="search" type="text" class="form-control" formControlName="search">
-        </div>
-        <div class="col d-flex justify-content-end">
-          <button type="button" class="btn btn-secondary btn-size"
-            (click)="search()">Search</button>
-            <!-- [disabled]="this.paidForm.value.searchType !== 'all'"  -->
+        <div *ngIf="this.paidForm.value.searchType !== 'all'" class="d-flex justify-content-around">
+          <div class="col-7">
+            <label for="item">Search</label>
+            <input id="search" type="text" class="form-control search" formControlName="search">
+          </div>
+          <div class="col-2">
+            <button type="button" class="btn btn-secondary btn-size" (click)="search()">Search</button>
+          </div>
         </div>
       </div>
     </form>
+    <!-- {{order|json}} -->
     <div class="row">
       <div class="col-md-12">
         <table class="table table-condensed">
@@ -52,7 +50,7 @@
               <td class="text-center">{{orders.grossTotal}}</td>
               <td class="text-center">
                 <div>
-                  <mat-checkbox id="paid"></mat-checkbox>
+                    <input type="checkbox" checked="orders.paid">
                 </div>
               </td>
             </tr>
