@@ -18,15 +18,6 @@
       </div>
     </div>
   </div>
-
-<div *ngIf="showError" class="invalid-feedback d-block">
-  <span>You cannot submit an empty order. Please go back and order an item. 
-    <a [routerLink]="['/apparel']">
-      <span>Apparel</span>
-    </a>
-  </span>
-</div>
-
   <div class="row">
     <div class="col-md-12">
       <div class="panel panel-default">
@@ -87,7 +78,8 @@
               </tbody>
             </table>
           </div>
-          <button class="btn btn-secondary" style="float:right" (click)="order()">Order</button>
+          <button class="btn btn-secondary" style="float:right" (click)="order()" 
+          [disabled]="this.shoppingCartItems.items.length <= 0">Order</button>
         </div>
       </div>
     </div>

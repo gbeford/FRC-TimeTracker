@@ -15,8 +15,7 @@ export class OrderConfirmationComponent implements OnInit {
   grossTotal = 0;
   today: number;
   student: string;
-  showError = false;
-  
+
   constructor(private shoppingCartService: ShoppingCartService, private router: Router) { }
 
   ngOnInit() {
@@ -35,18 +34,10 @@ export class OrderConfirmationComponent implements OnInit {
         this.shoppingCartItems.grossTotal = this.grossTotal;
       }
       this.student = c.studentName;
-      console.log('student', this.student);
-
     });
-
-    console.log('confirm order ', this.shoppingCartItems);
   }
 
   order() {
-    console.log('shopping cart item', this.shoppingCartItems.items);
-    if (this.shoppingCartItems.items.length > 0) {
-      console.log('true');
-
       // Save order to api
       this.shoppingCartService.saveOrder(this.shoppingCartItems).subscribe(r => {
         sessionStorage.removeItem('shoppingItems');
@@ -55,10 +46,6 @@ export class OrderConfirmationComponent implements OnInit {
         this.grossTotal = 0;
         this.router.navigate([`/checkout/${r.orderId}`]);
       });
-    } else {
-      this.showError = true;
-      // put message on screen to order something
-    }
   }
 
   remove(item: number) {
