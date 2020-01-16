@@ -7,41 +7,49 @@
 
 <div class="container" *ngIf="this.shoppingCartItems">
   <h1>Confirm your order</h1>
+
   <div class="row">
     <div class="col-xs-12 col-md-3 col-lg-3 pull-left">
       <div class="panel panel-default height">
         <div class="panel-body">
-          <strong>Today's Date:</strong> &nbsp;
-          <span>{{today | date:'MM-dd-yyyy'}}</span> &nbsp;
-          <strong>Student Name:</strong> {{student}}
+          <div>
+            <strong>Today's Date:</strong> &nbsp;
+            <span>{{today | date:'MM-dd-yyyy'}}</span> &nbsp;
+          </div>
+          <div>
+            <strong>Student Name:</strong> &nbsp;
+            {{student}}
+          </div>
         </div>
       </div>
     </div>
   </div>
+
+
   <div class="row">
     <div class="col-md-12">
       <div class="panel panel-default">
         <div class="panel-heading">
           <h3 class="text-center"><strong>Order summary</strong></h3>
         </div>
-        <div class="panel-body">
-          <div class="table-responsive">
+        <div class="row mt-3">
+          <div class="col-md-12">
             <table class="table table-condensed">
-              <thead>
-                <tr>
-                  <td><strong>Item Name</strong></td>
-                  <td class="text-center"><strong>Item Type</strong></td>
-                  <td class="text-center"><strong>Gender</strong></td>
-                  <td class="text-center"><strong>Size</strong></td>
-                  <td class="text-center"><strong>Name on sleeve</strong></td>
-                  <td class="text-center"><strong>Item Quantity</strong></td>
-                  <td class="text-center"><strong>Item Price</strong></td>
-                  <td class="text-center"><strong>Name Charge</strong></td>
-                  <td class="text-center"><strong>Up Charge</strong></td>
+              <thead class="table-header">
+                  <tr>
+                    <td><strong>Item Name</strong></td>
+                    <td class="text-center"><strong>Item Type</strong></td>
+                    <td class="text-center"><strong>Gender</strong></td>
+                    <td class="text-center"><strong>Size</strong></td>
+                    <td class="text-center"><strong>Name on sleeve</strong></td>
+                    <td class="text-center"><strong>Item Quantity</strong></td>
+                    <td class="text-center"><strong>Item Price</strong></td>
+                    <td class="text-center"><strong>Name Charge</strong></td>
+                    <td class="text-center"><strong>Up Charge</strong></td>
 
-                  <td class="text-right"><strong>Total</strong></td>
-                </tr>
-              </thead>
+                    <td class="text-right"><strong>Total</strong></td>
+                  </tr>
+                </thead>
               <tbody *ngFor="let cartItem of this.shoppingCartItems.items">
                 <tr>
                   <td> {{cartItem.apparel.item}}</td>
@@ -78,10 +86,12 @@
               </tbody>
             </table>
           </div>
-          <button class="btn btn-secondary" style="float:right" (click)="order()" 
-          [disabled]="this.shoppingCartItems.items.length <= 0">Order</button>
         </div>
+
+        <button class="btn btn-secondary" style="float:right" (click)="order()"
+          [disabled]="this.shoppingCartItems.items.length <= 0">Order</button>
       </div>
     </div>
   </div>
 </div>
+
