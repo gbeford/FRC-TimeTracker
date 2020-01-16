@@ -1,11 +1,5 @@
 <!-- {{this.shoppingCartItems | json}} -->
 
-<!-- <ul>
-  <li *ngFor="let element of this.shoppingCartItems"></li>
-</ul> -->
-<!-- list items to buy
-this is where they have the option to remove any items they do not want
-this will show all items and total charges -->
 <div *ngIf="!this.shoppingCartItems">
 
   <h2>Your Shopping Cart is empty.</h2>
@@ -24,6 +18,14 @@ this will show all items and total charges -->
       </div>
     </div>
   </div>
+
+<div *ngIf="showError" class="invalid-feedback d-block">
+  <span>You cannot submit an empty order. Please go back and order an item. 
+    <a [routerLink]="['/apparel']">
+      <span>Apparel</span>
+    </a>
+  </span>
+</div>
 
   <div class="row">
     <div class="col-md-12">
