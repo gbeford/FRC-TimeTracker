@@ -1,12 +1,12 @@
-import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter, ViewChild, ElementRef } from '@angular/core';
 import { IApparel } from '../apparel-model';
 import { FormGroup, FormBuilder, Validators, AbstractControl, ValidatorFn } from '@angular/forms';
 import { ShoppingCart } from '../shopping-cart-model';
 import { CartItem } from '../cart-Item';
-import { Observable } from 'rxjs';
+// import { Observable } from 'rxjs';
 import { ClothingService } from '../clothing.service';
 import { ShoppingCartService } from '../shopping-cart.service';
-import { Student } from 'app/model/student';
+// import { Student } from 'app/model/student';
 import { OptionalRequired } from './optional-required-validation';
 
 @Component({
@@ -18,6 +18,8 @@ export class ApparelCardComponent implements OnInit {
 
   @Input() public apparelItem: IApparel;
   @Output() addCartItem: EventEmitter<CartItem> = new EventEmitter<CartItem>();
+
+ //  @ViewChild('addedToCart', { static: false }) addedToCart;
 
   sizes: string[];
   // imageData: IApparelImage;

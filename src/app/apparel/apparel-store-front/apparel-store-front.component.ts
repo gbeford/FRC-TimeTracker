@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 import { ClothingService } from '../clothing.service';
 import { IApparel } from 'app/apparel/apparel-model';
 import { FormGroup, Validators, FormBuilder } from '@angular/forms';
@@ -14,6 +14,8 @@ import { ShoppingCart } from '../shopping-cart-model';
   styleUrls: ['./apparel-store-front.component.scss']
 })
 export class ApparelStoreFrontComponent implements OnInit {
+
+  @ViewChild('addedToCart', { static: false }) addedToCartLink: ElementRef;
 
   studentRequired: string;
   showError = false;
@@ -76,6 +78,8 @@ export class ApparelStoreFrontComponent implements OnInit {
       this.showError = false;
       this.shoppingCartService.addItem(value);
       this.showBox = true;
+      // to scroll to the item added to cart box
+     this.addedToCartLink.nativeElement.scrollIntoView({block: 'start', inline: 'start'});
     } else {
       this.showError = true;
       this.studentRequired = 'Please select a student';
