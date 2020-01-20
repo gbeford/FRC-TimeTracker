@@ -14,7 +14,7 @@
       <div class="row mb-3">
         <div class="col-3">
           <label for="item">Search Type</label>
-          <select class="form-control" formControlName="searchType">
+          <select class="form-control" formControlName="searchType" (change)="getAllUnpaid()">
             <option *ngFor="let type of typeList" value="{{type.value}}">{{type.name}}</option>
           </select>
         </div>
@@ -43,14 +43,15 @@
             </tr>
           </thead>
           <tbody *ngFor="let orders of order" class="table-backgroud">
+            <!-- {{order|json}} -->
             <tr>
               <td> {{orders.orderId}}</td>
-              <td class="text-center">{{orders.studentName}}</td>
               <td class="text-center">{{orders.studentId}}</td>
+              <td class="text-center"> {{orders.studentName}}</td>
               <td class="text-center">{{orders.grossTotal}}</td>
               <td class="text-center">
                 <div>
-                    <input type="checkbox" checked="orders.paid">
+                  <button type="button" (click)="paid(orders.orderId)">Paid</button>
                 </div>
               </td>
             </tr>

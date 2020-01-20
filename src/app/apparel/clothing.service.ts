@@ -52,6 +52,15 @@ export class ClothingService {
       );   // ...errors if any
   }
 
+
+    // http://localhost:5000/api/Order/All/
+    // /api/Order/{searchBy}/{searchValue}
+
+    // /api/Order/all/anything - return all unpaid orders
+    // /api/Order/name/blah - search all unpaid orders with student name containing blah
+    // /api/Order/oid/123 - search unpaid orders with order id - 123
+    // /api/order/sid/4444 - search unpaid orders with student id 4444
+
   getUnpaidOrders(searchBy: string, searchValue: string) {
     if (searchBy === 'all') {
       return this.http.get<IOrder[]>(`${environment.baseUrl}api/Order/${searchBy}/null`)
@@ -64,21 +73,7 @@ export class ClothingService {
           catchError(Utilities.handleError)
         );
     }
-
-    //http://localhost:5000/api/Order/All/
-    //     /api/Order/{searchBy}/{searchValue}
-
-    // /api/Order/all/anything - return all unpaid orders
-    // /api/Order/name/blah - search all unpaid orders with student name containing blah
-    // /api/Order/oid/123 - search unpaid orders with order id - 123
-    // /api/order/sid/4444 - search unpaid orders with student id 4444
-
-
-
-
-
-  }
-
+}
 
 
   // CRUD
@@ -98,8 +93,8 @@ export class ClothingService {
       });
   }
 
-  SavePaidOrder() {
-
+  savePaidOrder(orderId): Observable<boolean> {
+    return this.http.post<boolean>(`${environment.baseUrl}${environment.markPaidOrders}`, orderId);
   }
 
 }

@@ -23,6 +23,7 @@ order: IOrder[];
     this.shoppingCartService.getOrder()
     .subscribe (data => {
       this.order = data;
+      
       console.log('order', this.order);
     });
   }

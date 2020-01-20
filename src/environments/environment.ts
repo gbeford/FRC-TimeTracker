@@ -22,4 +22,5 @@ export const environment = {
   imageNameApiUrl: 'api/apparelImage/GetImageNames',
   studentAttendanceUrl: 'api/Reports/Attendance',
   orderApiUrl: 'api/order',
+  markPaidOrders: 'api/order/MarkPaid/',
 };

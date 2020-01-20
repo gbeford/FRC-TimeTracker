@@ -30,7 +30,7 @@ will have a paid something that will click to save paid bool to the db
           <td class="text-center">{{orders.studentName}}</td>
           <td class="text-center">{{orders.studentId}}</td>
           <td class="text-center">{{orders.grossTotal}}</td>
-          <td class="text-center">{{orders.paid}}</td>
+          <td class="text-center">{{orders.paid?'Yes':'No'}}</td>
         </tr>
       </tbody>
     </table>

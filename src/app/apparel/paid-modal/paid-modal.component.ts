@@ -36,16 +36,32 @@ export class PaidModalComponent implements OnInit {
     });
   }
 
+  getAllUnpaid() {
+    if (this.paidForm.value.searchType === 'all') {
+      this.search();
+    }
+  }
+
   search() {
+    this.order = [];
     this.clothingService.getUnpaidOrders(this.paidForm.value.searchType, this.paidForm.value.search)
       .subscribe(data => {
         this.order = data;
         console.log('unpaid', this.order);
+        this.paidForm.controls['search'].reset();
       });
   }
 
+  paid(id: number) {
+    this.clothingService.savePaidOrder(id).subscribe(res => {
+      if (res) {
+        this.search();
+      }
+    });
+  }
+
   close() {
-    this.dialogRef.close('Pizza!');
+    this.dialogRef.close('hello');
   }
 
 }
