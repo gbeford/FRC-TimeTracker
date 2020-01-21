@@ -7,33 +7,42 @@
   </div>
     <!-- {{order | json}} -->
 <!--  TODO:
-  - make table sortable
 - add link to order id that will open a modal with the order details
-
-- add paid button which will open a modal that will show all unpaid orders and will be searchable by student id and ordre id
-will have a paid something that will click to save paid bool to the db 
 -->
-<div class="col-md-12">
-    <table class="table table-condensed">
-      <thead class="table-header">
-        <tr>
-          <td><strong>Order Id</strong></td>
-          <td class="text-center"><strong>Student Name</strong></td>
-          <td class="text-center"><strong>Student Id</strong></td>
-          <td class="text-center"><strong>Gross Total</strong></td>
-          <td class="text-center"><strong>Paid</strong></td>
-        </tr>
-      </thead>
-      <tbody *ngFor="let orders of order" class="table-backgroud">
-        <tr>
-          <td> {{orders.orderId}}</td>
-          <td class="text-center">{{orders.studentName}}</td>
-          <td class="text-center">{{orders.studentId}}</td>
-          <td class="text-center">{{orders.grossTotal}}</td>
-          <td class="text-center">{{orders.paid?'Yes':'No'}}</td>
-        </tr>
-      </tbody>
-    </table>
+  <div class="col-md-12 example-container mat-elevation-z8">
+    <mat-table #table [dataSource]="dataSource" matSort>
+      <!-- Position Column -->
+      <ng-container matColumnDef="orderId">
+        <mat-header-cell *matHeaderCellDef mat-sort-header fxFlex="100px" > Order Id </mat-header-cell>
+        <mat-cell *matCellDef="let element" fxFlex="100px"> {{element.orderId}} </mat-cell>
+      </ng-container>
+      <ng-container matColumnDef="studentId">
+        <mat-header-cell *matHeaderCellDef mat-sort-header>Student Id </mat-header-cell>
+        <mat-cell *matCellDef="let element"> {{element.studentId}} </mat-cell>
+      </ng-container>
+      <ng-container matColumnDef="studentName">
+        <mat-header-cell *matHeaderCellDef mat-sort-header> Student Name </mat-header-cell>
+        <mat-cell *matCellDef="let element"> {{element.studentName}} </mat-cell>
+      </ng-container>
+      <ng-container matColumnDef="grossTotal">
+        <mat-header-cell *matHeaderCellDef mat-sort-header> Gross Total </mat-header-cell>
+        <mat-cell *matCellDef="let element"> {{element.grossTotal}} </mat-cell>
+      </ng-container>
+      <ng-container matColumnDef="paid">
+        <mat-header-cell *matHeaderCellDef mat-sort-header > Paid </mat-header-cell>
+        <mat-cell *matCellDef="let element"> {{element.paid?'Yes':'No'}} </mat-cell>
+      </ng-container>
+      <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+      <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+    </mat-table>
   </div>
+  
+
+
+
+
+
+
+
 
 </div>

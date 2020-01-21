@@ -1,7 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { ShoppingCartService } from '../shopping-cart.service';
 import { IOrder } from '../order-model';
-import { MatDialog } from '@angular/material';
+import { MatDialog, MatTableDataSource, MatSort } from '@angular/material';
 import { PaidModalComponent } from '../paid-modal/paid-modal.component';
 
 @Component({
@@ -10,8 +10,12 @@ import { PaidModalComponent } from '../paid-modal/paid-modal.component';
   styleUrls: ['./apparel-orders-report.component.scss']
 })
 export class ApparelOrdersReportComponent implements OnInit {
-order: IOrder[];
+  dataSource: MatTableDataSource<IOrder>; // PaidDataSource;
 
+  displayedColumns = ['orderId', 'studentId', 'studentName', 'grossTotal', 'paid'];
+  @ViewChild(MatSort, { static: true }) sort: MatSort;
+
+  order: IOrder[];
 
   constructor(private shoppingCartService: ShoppingCartService, public dialog: MatDialog) { }
 
@@ -21,23 +25,35 @@ order: IOrder[];
 
   getOrder() {
     this.shoppingCartService.getOrder()
-    .subscribe (data => {
-      this.order = data;
-      
-      console.log('order', this.order);
-    });
+      .subscribe(data => {
+        this.order = data;
+        this.dataSource = new MatTableDataSource(data);
+        this.dataSource.sort = this.sort;
+      });
   }
+
+  // private getStudentList() {
+  //   this.sls.getStudents().subscribe(data => {
+  //     this.dataSource = new MatTableDataSource(data);
+  //     this.dataSource.sort = this.sort;
+  //   });
+  // }
+
+
+
+
+
 
   openDialog(): void {
     const dialogRef = this.dialog.open(PaidModalComponent, {
       width: '650px',
-     height: '400px',
-      data: {name: 'test', animal: 'this.animal'}
+      height: '400px',
+      data: { name: 'test', animal: 'this.animal' }
     });
 
     dialogRef.afterClosed().subscribe(result => {
-      console.log('The dialog was closed', result);
-     // this.animal = result;
+      // console.log(result);
+      this.getOrder();
     });
   }
 
