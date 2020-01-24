@@ -107,6 +107,11 @@ export class ShoppingCartService {
 
   // CRUD
   saveOrder(cart: ShoppingCart): Observable<IOrder> {
+    // make image data an empty string as we dont want save it here
+    cart.items.forEach(item => {
+     item.apparel.image = '';
+    });
+
     const order: IOrder = {
       items: cart.items,
       orderDate: new Date(),
@@ -114,7 +119,6 @@ export class ShoppingCartService {
       studentId: cart.studentID,
       orderId: 0,
       grossTotal: cart.grossTotal,
-     // itemsTotal: cart.itemsTotal
     };
 
     return this.http.post<IOrder>(`${environment.baseUrl}${environment.orderApiUrl}`, order)

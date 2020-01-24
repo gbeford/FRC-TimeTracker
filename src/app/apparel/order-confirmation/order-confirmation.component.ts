@@ -38,6 +38,8 @@ export class OrderConfirmationComponent implements OnInit {
   }
 
   order() {
+    console.log('this is what i am going to order', this.shoppingCartItems);
+    
       // Save order to api
       this.shoppingCartService.saveOrder(this.shoppingCartItems).subscribe(r => {
         sessionStorage.removeItem('shoppingItems');
