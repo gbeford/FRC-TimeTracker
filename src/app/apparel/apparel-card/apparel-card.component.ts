@@ -43,9 +43,7 @@ export class ApparelCardComponent implements OnInit {
   ngOnInit() {
     this.getSizes();
     this.createForm();
-    // this.apparelForm.controls['sleeveNameCtrl'].setErrors({ 'invalid': false });
   }
-
 
   createForm() {
     this.apparelForm = this.formBuilder.group({
@@ -63,15 +61,6 @@ export class ApparelCardComponent implements OnInit {
     });
   }
 
-   conditionalValidator(condition: (() => boolean), validator: ValidatorFn): ValidatorFn {
-    return (control: AbstractControl): {[key: string]: any} => {
-      if (! condition()) {
-        return null;
-      }
-      return validator(control);
-    };
-  }
-
   getSizes() {
     this.sizes = this.clothingService.getClothingSize();
   }
@@ -82,7 +71,6 @@ export class ApparelCardComponent implements OnInit {
 
   public addItemToCart(apparel: IApparel) {
     this.submitted = true;
-    // this.apparelForm.controls['sleeveNameCtrl'].setErrors({ 'invalid': false });
     this.hasErrors = false;
 
     // stop here if form is invalid
@@ -93,7 +81,6 @@ export class ApparelCardComponent implements OnInit {
     // validate if checkbox for name is selected that a name is in the name input
     if (this.apparelForm.value.canHaveNameCtl === true &&
       (this.apparelForm.value.sleeveNameCtrl === null || this.apparelForm.value.sleeveNameCtrl === '')) {
-      // this.apparelForm.controls['sleeveNameCtrl'].setErrors({ 'invalid': true });
       this.hasErrors = true;
       return;
     }

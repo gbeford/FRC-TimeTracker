@@ -42,7 +42,6 @@ export class ShoppingCartService {
       } else {
         item.nameCharge = 0;
       }
-
       this.shoppingCart.items.push(item);
     }
 
@@ -56,10 +55,10 @@ export class ShoppingCartService {
         item.totalItemAddedToCartCharge = up_charge + name_charge + i.price;
       }
 
-      // gets the shopping cart (behavior subject for use in other pages)
+      // lets the subscribers know there is a change to the cart - update cart icon (behavior subject for use in other pages)
       this.cart.next(this.shoppingCart);
 
-      // gets the current item that was added to the cart  (behavior subject to subscribe)
+      // lets the subscribers know the item that was just added to the cart
       this.tempShoppingCartItem.next(item);
     }
 
@@ -101,6 +100,7 @@ export class ShoppingCartService {
       this.shoppingCart = JSON.parse(tempShoppingCart) as ShoppingCart;
     }
     if (this.cart) {
+       // update menu shopping cart number
       this.cart.next(this.shoppingCart);
     }
   }
@@ -109,7 +109,7 @@ export class ShoppingCartService {
   saveOrder(cart: ShoppingCart): Observable<IOrder> {
     // make image data an empty string as we dont want save it here
     cart.items.forEach(item => {
-     item.apparel.image = '';
+      item.apparel.image = '';
     });
 
     const order: IOrder = {

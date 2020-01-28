@@ -34,6 +34,7 @@ import { ApparelOrdersReportComponent } from './apparel/apparel-orders-report/ap
     imports: [
         RouterModule.forRoot([
             { path: '', component: HomeComponent },
+            { path: 'home', component: HomeComponent },
             { path: 'login', component: LoginComponent },
             {
                 path: 'trackTime',

@@ -22,6 +22,7 @@ export class CheckoutComponent implements OnInit {
   }
 
   getOrder() {
+    // using | async in html
     this.order = this.shoppingCartService.getOrderById(this.orderId);
 
     // .subscribe(data => {
@@ -29,7 +30,5 @@ export class CheckoutComponent implements OnInit {
     //   console.log('order', this.order);
     // });
   }
-
-
 
 }

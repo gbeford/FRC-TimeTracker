@@ -2,7 +2,6 @@ import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 import { ClothingService } from '../clothing.service';
 import { IApparel } from 'app/apparel/apparel-model';
 import { FormGroup, Validators, FormBuilder } from '@angular/forms';
-// import { Observable } from 'rxjs';
 import { ShoppingCartService } from '../shopping-cart.service';
 import { CartItem } from 'app/apparel/cart-Item';
 import { Student } from 'app/model/student';
@@ -64,7 +63,7 @@ export class ApparelStoreFrontComponent implements OnInit {
   getAppareal() {
     this.clothingService.getApparelList().subscribe(data => {
       this.apparealData = data;
-      console.log('apparel', this.apparealData);
+      // console.log('apparel', this.apparealData);
     });
   }
 
@@ -79,14 +78,14 @@ export class ApparelStoreFrontComponent implements OnInit {
       this.shoppingCartService.addItem(value);
       this.showBox = true;
       // to scroll to the item added to cart box
-     this.addedToCartLink.nativeElement.scrollIntoView({block: 'start', inline: 'start'});
+      this.addedToCartLink.nativeElement.scrollIntoView({ block: 'start', inline: 'start' });
     } else {
       this.showError = true;
       this.studentRequired = 'Please select a student';
     }
   }
 
-  // get last item added to the cart, (subscribe to behavior subject)
+  // gets last item added to the cart, (subscribe to behavior subject)
   getCartDetails() {
     this.shoppingCartService.tempShoppingCartItem
       .subscribe(s => {
