@@ -63,7 +63,7 @@ export class ApparelStoreFrontComponent implements OnInit {
   getAppareal() {
     this.clothingService.getApparelList().subscribe(data => {
       this.apparealData = data;
-      // console.log('apparel', this.apparealData);
+      console.log('apparel', this.apparealData);
     });
   }
 

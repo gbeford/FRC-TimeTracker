@@ -19,7 +19,7 @@ export class ApparelCardComponent implements OnInit {
   @Input() public apparelItem: IApparel;
   @Output() addCartItem: EventEmitter<CartItem> = new EventEmitter<CartItem>();
 
- //  @ViewChild('addedToCart', { static: false }) addedToCart;
+  //  @ViewChild('addedToCart', { static: false }) addedToCart;
 
   sizes: string[];
   // imageData: IApparelImage;
@@ -54,7 +54,7 @@ export class ApparelCardComponent implements OnInit {
       priceCtrl: [''],
       nameChargeCtl: [''],
       canHaveNameCtl: [false],
-      genderCtrl: ['', [OptionalRequired(Validators.required, this.apparelItem.showGender)]],
+     // genderCtrl: ['', [OptionalRequired(Validators.required, this.apparelItem.showGender)]],
       size: [''],
       quantityCtrl: ['', Validators.required],
       sleeveNameCtrl: [''],
@@ -63,11 +63,15 @@ export class ApparelCardComponent implements OnInit {
 
   getSizes() {
     this.sizes = this.clothingService.getClothingSize();
+    if (this.apparelItem.showXS === true) {
+      this.sizes.unshift('XS');
+    } else if (this.apparelItem.showYXL === true) {
+      this.sizes .unshift('YXL');
+    }
   }
 
   // convenience getter for easy access to form fields
   get f() { return this.apparelForm.controls; }
-
 
   public addItemToCart(apparel: IApparel) {
     this.submitted = true;
@@ -91,7 +95,7 @@ export class ApparelCardComponent implements OnInit {
     item.apparelId = apparel.apparelId;
     item.upCharge = this.apparelForm.value.upChargeCtrl ? this.apparelForm.value.upChargeCtrl : null;
     item.nameCharge = this.apparelForm.value.nameChargeCtl ? this.apparelForm.value.nameChargeCtl : null;
-    item.gender = this.apparelForm.value.genderCtrl;
+    // item.gender = this.apparelForm.value.genderCtrl;
     item.size = this.apparelForm.value.size;
     item.quantity = this.apparelForm.value.quantityCtrl;
     item.sleeveName = this.apparelForm.value.sleeveNameCtrl;

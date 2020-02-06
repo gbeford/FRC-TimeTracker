@@ -12,7 +12,7 @@
             <span class="teal font-weight-bold">{{apparelItem.price | currency}}</span>
           </div>
         </div>
-        <div class="row pt-2" *ngIf="apparelItem.showGender">
+        <!-- <div class="row pt-2" *ngIf="apparelItem.showGender">
           <div class="col-3">
             <h6>gender: </h6>
           </div>
@@ -27,7 +27,7 @@
               <div *ngIf="f.genderCtrl.errors.required" style="width: 250px;">Gender is required</div>
             </div>
           </div>
-        </div>
+        </div> -->
         <div class="row pt-3" *ngIf="apparelItem.showSize">
           <div class="col-3">
             <h6 class="sizes">sizes:</h6>
@@ -35,8 +35,8 @@
           <div class="col-3">
             <select class="form-control" formControlName="size"
               [ngClass]="{ 'is-invalid':submitted && f.size.invalid }">
-              <option selected disabled value="">Choose...</option>
-              <option *ngFor="let s of sizes" [value]="s"> {{s}}</option>
+                <option selected disabled value="">Choose...</option>
+                <option *ngFor="let s of sizes" [value]="s"> {{s}} </option>
             </select>
             <div *ngIf="f.size.invalid" class="invalid-feedback">
               <div *ngIf="f.size.errors.required">Size is required</div>

@@ -6,7 +6,7 @@ export interface IApparel {
     apparelImageId: number;
     item: string;
     description: string;
-    gender: string;
+    gender?: string;
     price: number;
     size: string;
     type: string;
@@ -17,7 +17,9 @@ export interface IApparel {
     filename: string;
     image: any;
     contentType: string;
-    showGender: boolean;
+    showGender?: boolean;
     showSize: boolean;
     showItem: boolean;
+    showXS?: boolean;
+    showYXL?: boolean;
 }
