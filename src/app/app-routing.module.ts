@@ -24,6 +24,7 @@ import { StudentHoursReportComponent } from './reports/student-hours-report.comp
 import { OrderConfirmationComponent } from './apparel/order-confirmation/order-confirmation.component';
 import { CheckoutComponent } from './apparel/checkout/checkout.component';
 import { ApparelOrdersReportComponent } from './apparel/apparel-orders-report/apparel-orders-report.component';
+import { ApparelListEditComponent } from './apparel/apparel-list-edit/apparel-list-edit.component';
 
 
 
@@ -137,6 +138,13 @@ import { ApparelOrdersReportComponent } from './apparel/apparel-orders-report/ap
                 canActivate: [AuthGuard],
                 data: { claim: 'canAccess_Admin' }
             },
+            {
+                path: 'apparelList',
+                component: ApparelListEditComponent,
+                canActivate: [AuthGuard],
+                data: { claim: 'canAccess_Admin' }
+            },
+            
 
 
             // { path: 'badges', component: BadgeViewComponent },

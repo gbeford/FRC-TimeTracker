@@ -59,6 +59,7 @@ import { CheckoutComponent } from './apparel/checkout/checkout.component';
 import { ApparelCardComponent } from './apparel/apparel-card/apparel-card.component';
 import { GuertinReportComponent } from './apparel/guertin-report/guertin-report.component';
 import { PaidModalComponent } from './apparel/paid-modal/paid-modal.component';
+import { ApparelListEditComponent } from './apparel/apparel-list-edit/apparel-list-edit.component';
 
 // import { Angular5Csv } from 'angular5-csv/dist/Angular5-csv';
 
@@ -103,6 +104,7 @@ import { PaidModalComponent } from './apparel/paid-modal/paid-modal.component';
     ApparelCardComponent,
     GuertinReportComponent,
     PaidModalComponent,
+    ApparelListEditComponent,
 
   ],
   imports: [

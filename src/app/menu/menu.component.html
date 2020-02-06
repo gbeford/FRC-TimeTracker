@@ -42,6 +42,12 @@
       </a>
     </ng-container>
     <ng-container *ngIf="securityObject.isAuthenticated">
+      <a [routerLink]="['/apparelList']" *hasClaim="'canAccess_Admin'" mat-menu-item>
+        <span>Edit Apparel</span>
+      </a>
+    </ng-container>
+    
+    <ng-container *ngIf="securityObject.isAuthenticated">
       <a [routerLink]="['/event']" *hasClaim="'canAccess_Admin'" mat-menu-item>
         <span>Add New Event</span>
       </a>
