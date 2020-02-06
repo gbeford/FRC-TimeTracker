@@ -32,6 +32,18 @@
         <mat-header-cell *matHeaderCellDef mat-sort-header > Paid </mat-header-cell>
         <mat-cell *matCellDef="let element"> {{element.paid?'Yes':'No'}} </mat-cell>
       </ng-container>
+       <!-- Remove Item Column -->
+       <ng-container matColumnDef="removeOrder">
+        <mat-header-cell *matHeaderCellDef mat-sort-header> Remove Order </mat-header-cell>
+        <mat-cell *matCellDef="let element" (click)="deleteOrder(element.orderId)">
+          <ng-container matColumnDef="Remove">
+            <ng-container *ngIf="element.orderId">
+              <mat-icon>delete</mat-icon>
+                &nbsp;{{element.orderId}}
+            </ng-container>
+          </ng-container>
+        </mat-cell>
+      </ng-container>
       <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
       <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
     </mat-table>

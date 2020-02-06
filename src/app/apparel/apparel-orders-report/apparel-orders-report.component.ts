@@ -12,7 +12,7 @@ import { PaidModalComponent } from '../paid-modal/paid-modal.component';
 export class ApparelOrdersReportComponent implements OnInit {
   dataSource: MatTableDataSource<IOrder>; // PaidDataSource;
 
-  displayedColumns = ['orderId', 'studentId', 'studentName', 'grossTotal', 'paid'];
+  displayedColumns = ['orderId', 'studentId', 'studentName', 'grossTotal', 'paid', 'removeOrder'];
   @ViewChild(MatSort, { static: true }) sort: MatSort;
 
   order: IOrder[];
@@ -30,6 +30,16 @@ export class ApparelOrdersReportComponent implements OnInit {
         this.dataSource = new MatTableDataSource(data);
         this.dataSource.sort = this.sort;
       });
+  }
+
+  deleteOrder(el: number) {
+    // this.eventService.deleteEventRecord(el).subscribe((data) => {
+      alert('Order was deleted successfully.');
+    //   this.alertMessage = 'Order was deleted successfully.';
+    //   this.success = true;
+    //   this.showEvents();
+    //   this.addEventForm.reset();
+    // });
   }
 
   // private getStudentList() {

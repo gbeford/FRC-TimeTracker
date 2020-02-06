@@ -12,7 +12,8 @@ import { MatTableDataSource, MatSort } from '@angular/material';
 export class ApparelListEditComponent implements OnInit {
   dataSource: MatTableDataSource<IApparel>; // PaidDataSource;
 
-  displayedColumns = ['apparelId', 'item', 'description',  'price'];
+  displayedColumns = ['editItem', 'apparelId', 'item', 'description', 'price', 'removeItem'];
+  
   @ViewChild(MatSort, { static: true }) sort: MatSort;
 
   apparealData: IApparel[];
@@ -27,8 +28,20 @@ export class ApparelListEditComponent implements OnInit {
   getAppareal() {
     this.clothingService.getApparelList().subscribe(data => {
       this.apparealData = data;
+      this.dataSource = new MatTableDataSource(data);
+      this.dataSource.sort = this.sort;
       console.log('apparel', this.apparealData);
     });
   }
+
+  deleteItem(el: number) {
+    // this.eventService.deleteEventRecord(el).subscribe((data) => {
+    //   this.alertMessage = 'Event was deleted successfully.';
+    //   this.success = true;
+    //   this.showEvents();
+    //   this.addEventForm.reset();
+    // });
+  }
+
 
 }
