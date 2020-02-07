@@ -10,7 +10,7 @@
 - add link to order id that will open a modal with the order details
 -->
   <div class="col-md-12 example-container mat-elevation-z8">
-    <mat-table #table [dataSource]="dataSource" matSort>
+    <mat-table #table class="pointer" [dataSource]="dataSource" matSort>
       <!-- Position Column -->
       <ng-container matColumnDef="orderId">
         <mat-header-cell *matHeaderCellDef mat-sort-header fxFlex="100px" > Order Id </mat-header-cell>
@@ -39,7 +39,6 @@
           <ng-container matColumnDef="Remove">
             <ng-container *ngIf="element.orderId">
               <mat-icon>delete</mat-icon>
-                &nbsp;{{element.orderId}}
             </ng-container>
           </ng-container>
         </mat-cell>
