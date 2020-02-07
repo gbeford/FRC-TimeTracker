@@ -36,7 +36,8 @@ export class ApparelListEditComponent implements OnInit {
 
   deleteItem(el: number) {
     // this.eventService.deleteEventRecord(el).subscribe((data) => {
-    //   this.alertMessage = 'Event was deleted successfully.';
+      alert('click works but did not delete anything as its not fully wired up yet');
+    //   this.alertMessage = 'Apparel item was deleted successfully.';
     //   this.success = true;
     //   this.showEvents();
     //   this.addEventForm.reset();

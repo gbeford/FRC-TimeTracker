@@ -3,6 +3,8 @@ import { ShoppingCartService } from '../shopping-cart.service';
 import { IOrder } from '../order-model';
 import { MatDialog, MatTableDataSource, MatSort } from '@angular/material';
 import { PaidModalComponent } from '../paid-modal/paid-modal.component';
+import { ClothingService } from '../clothing.service';
+import { OrderService } from '../order.service';
 
 @Component({
   selector: 'app-apparel-orders-report',
@@ -17,14 +19,14 @@ export class ApparelOrdersReportComponent implements OnInit {
 
   order: IOrder[];
 
-  constructor(private shoppingCartService: ShoppingCartService, public dialog: MatDialog) { }
+  constructor(private ordeService: OrderService, public dialog: MatDialog) { }
 
   ngOnInit() {
     this.getOrder();
   }
 
   getOrder() {
-    this.shoppingCartService.getOrder()
+    this.ordeService.getOrder()
       .subscribe(data => {
         this.order = data;
         this.dataSource = new MatTableDataSource(data);
@@ -33,13 +35,11 @@ export class ApparelOrdersReportComponent implements OnInit {
   }
 
   deleteOrder(el: number) {
-    // this.eventService.deleteEventRecord(el).subscribe((data) => {
+    this.ordeService.deleteOrder(el).subscribe((data) => {
       alert('Order was deleted successfully.');
-    //   this.alertMessage = 'Order was deleted successfully.';
-    //   this.success = true;
-    //   this.showEvents();
-    //   this.addEventForm.reset();
-    // });
+      // this.alertMessage = 'Order was deleted successfully.';
+      // this.success = true;
+    });
   }
 
   // private getStudentList() {
@@ -48,11 +48,6 @@ export class ApparelOrdersReportComponent implements OnInit {
   //     this.dataSource.sort = this.sort;
   //   });
   // }
-
-
-
-
-
 
   openDialog(): void {
     const dialogRef = this.dialog.open(PaidModalComponent, {
