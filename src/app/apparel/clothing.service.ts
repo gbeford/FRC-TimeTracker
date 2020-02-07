@@ -53,29 +53,6 @@ export class ClothingService {
   }
 
 
-    // http://localhost:5000/api/Order/All/
-    // /api/Order/{searchBy}/{searchValue}
-
-    // /api/Order/all/anything - return all unpaid orders
-    // /api/Order/name/blah - search all unpaid orders with student name containing blah
-    // /api/Order/oid/123 - search unpaid orders with order id - 123
-    // /api/order/sid/4444 - search unpaid orders with student id 4444
-
-  getUnpaidOrders(searchBy: string, searchValue: string) {
-    if (searchBy === 'all') {
-      return this.http.get<IOrder[]>(`${environment.baseUrl}api/Order/${searchBy}/null`)
-        .pipe(
-          catchError(Utilities.handleError)
-        );   // ...errors if any
-    } else {
-      return this.http.get<IOrder[]>(`${environment.baseUrl}api/Order/${searchBy}/${searchValue}`)
-        .pipe(
-          catchError(Utilities.handleError)
-        );
-    }
-}
-
-
   // CRUD
 
   saveApparelItem(apparelItem: IApparel) {
@@ -88,14 +65,28 @@ export class ClothingService {
   saveImage(uploadImage) {
     // this.http is the injected HttpClient
     this.http.post(`${environment.baseUrl}${environment.imageApiUrl}`, uploadImage)
-      .subscribe(event => {
-        // console.log(event); // handle event here
+      .subscribe(r => {
+        // console.log(r); // handle event here
       });
   }
 
-  savePaidOrder(orderId): Observable<boolean> {
-    return this.http.post<boolean>(`${environment.baseUrl}${environment.markPaidOrders}`, orderId);
-  }
+
+
+  // editApparelRecord(id: number, updateMessage: string): Observable < void | {} > {
+  //   const data: IMessage = {
+  //     messageID: id,
+  //     messageText: updateMessage
+  //   };
+
+  //   return this.http.put<void>(`${environment.baseUrl}${environment.apparelApiUrl}/${id}`, data)
+  //     .pipe(
+  //       catchError(Utilities.handleError)
+  //     );
+  // }
+
+
+
+
 
 }
 

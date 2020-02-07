@@ -66,7 +66,7 @@ export class ApparelCardComponent implements OnInit {
     if (this.apparelItem.showXS === true) {
       this.sizes.unshift('XS');
     } else if (this.apparelItem.showYXL === true) {
-      this.sizes .unshift('YXL');
+      this.sizes.unshift('YXL');
     }
   }
 

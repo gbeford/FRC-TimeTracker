@@ -1,9 +1,8 @@
 import { Component, OnInit, Inject } from '@angular/core';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material';
 import { FormBuilder, FormGroup } from '@angular/forms';
-import { ClothingService } from '../clothing.service';
-import { Observable } from 'rxjs';
 import { IOrder } from '../order-model';
+import { OrderService } from '../order.service';
 
 @Component({
   selector: 'app-paid-modal',
@@ -22,7 +21,7 @@ export class PaidModalComponent implements OnInit {
   ];
 
   constructor(private formBuilder: FormBuilder, public dialogRef: MatDialogRef<PaidModalComponent>,
-    private clothingService: ClothingService) { }
+    private ordeService: OrderService) { }
 
   ngOnInit() {
     this.createForm();
@@ -44,7 +43,7 @@ export class PaidModalComponent implements OnInit {
 
   search() {
     this.order = [];
-    this.clothingService.getUnpaidOrders(this.paidForm.value.searchType, this.paidForm.value.search)
+    this.ordeService.getUnpaidOrders(this.paidForm.value.searchType, this.paidForm.value.search)
       .subscribe(data => {
         this.order = data;
         console.log('unpaid', this.order);
@@ -53,7 +52,7 @@ export class PaidModalComponent implements OnInit {
   }
 
   paid(id: number) {
-    this.clothingService.savePaidOrder(id).subscribe(res => {
+    this.ordeService.savePaidOrder(id).subscribe(res => {
       if (res) {
         this.search();
       }

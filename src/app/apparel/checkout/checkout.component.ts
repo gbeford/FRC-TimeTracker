@@ -3,6 +3,7 @@ import { ShoppingCartService } from '../shopping-cart.service';
 import { ActivatedRoute } from '@angular/router';
 import { IOrder } from '../order-model';
 import { Observable } from 'rxjs';
+import { OrderService } from '../order.service';
 
 @Component({
   selector: 'app-checkout',
@@ -13,7 +14,8 @@ export class CheckoutComponent implements OnInit {
   order: Observable<IOrder>;
   orderId: string;
 
-  constructor(private shoppingCartService: ShoppingCartService, private activatedRoute: ActivatedRoute) { }
+  constructor(private shoppingCartService: ShoppingCartService, private activatedRoute: ActivatedRoute,
+    private ordeService: OrderService) { }
 
   ngOnInit() {
     // get ID from URL
@@ -23,7 +25,7 @@ export class CheckoutComponent implements OnInit {
 
   getOrder() {
     // using | async in html
-    this.order = this.shoppingCartService.getOrderById(this.orderId);
+    this.order = this.ordeService.getOrderById(this.orderId);
 
     // .subscribe(data => {
     //   this.order = data;

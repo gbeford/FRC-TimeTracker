@@ -100,7 +100,7 @@ export class ShoppingCartService {
       this.shoppingCart = JSON.parse(tempShoppingCart) as ShoppingCart;
     }
     if (this.cart) {
-       // update menu shopping cart number
+      // update menu shopping cart number
       this.cart.next(this.shoppingCart);
     }
   }
@@ -127,42 +127,8 @@ export class ShoppingCartService {
       );
   }
 
-  // get apparel item
-  getOrder(): Observable<IOrder[]> {
-    return this.http.get<IOrder[]>(`${environment.baseUrl}${environment.orderApiUrl}`)
-      .pipe(
-        catchError(Utilities.handleError)
-      );   // ...errors if any
-  }
-
-  // get apparel by id
-  getOrderById(id: string): Observable<IOrder> {
-    return this.http.get<IOrder>(`${environment.baseUrl}${environment.orderApiUrl}/${id}`)
-      .pipe(
-        tap(data => console.log('results', data)),
-        catchError(Utilities.handleError)
-      );   // ...errors if any
-  }
 
 
-  // editApparelRecord(id: number, updateMessage: string): Observable < void | {} > {
-  //   const data: IMessage = {
-  //     messageID: id,
-  //     messageText: updateMessage
-  //   };
-
-  //   return this.http.put<void>(`${environment.baseUrl}${environment.apparelApiUrl}/${id}`, data)
-  //     .pipe(
-  //       catchError(Utilities.handleError)
-  //     );
-  // }
-
-  // deleteMessageRecord(id: number): Observable < void | {} > {
-  //   return this.http.delete<void>(`${environment.baseUrl}${environment.apparelApiUrl}/${id}`)
-  //     .pipe(
-  //       catchError(Utilities.handleError)
-  //     );
-  // }
 
 
 }

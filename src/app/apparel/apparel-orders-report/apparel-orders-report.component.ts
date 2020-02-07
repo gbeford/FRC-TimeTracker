@@ -1,8 +1,8 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { ShoppingCartService } from '../shopping-cart.service';
 import { IOrder } from '../order-model';
 import { MatDialog, MatTableDataSource, MatSort } from '@angular/material';
 import { PaidModalComponent } from '../paid-modal/paid-modal.component';
+import { OrderService } from '../order.service';
 
 @Component({
   selector: 'app-apparel-orders-report',
@@ -12,19 +12,19 @@ import { PaidModalComponent } from '../paid-modal/paid-modal.component';
 export class ApparelOrdersReportComponent implements OnInit {
   dataSource: MatTableDataSource<IOrder>; // PaidDataSource;
 
-  displayedColumns = ['orderId', 'studentId', 'studentName', 'grossTotal', 'paid'];
+  displayedColumns = ['orderId', 'studentId', 'studentName', 'grossTotal', 'paid', 'removeOrder'];
   @ViewChild(MatSort, { static: true }) sort: MatSort;
 
   order: IOrder[];
 
-  constructor(private shoppingCartService: ShoppingCartService, public dialog: MatDialog) { }
+  constructor(private ordeService: OrderService, public dialog: MatDialog) { }
 
   ngOnInit() {
     this.getOrder();
   }
 
   getOrder() {
-    this.shoppingCartService.getOrder()
+    this.ordeService.getOrder()
       .subscribe(data => {
         this.order = data;
         this.dataSource = new MatTableDataSource(data);
@@ -32,17 +32,15 @@ export class ApparelOrdersReportComponent implements OnInit {
       });
   }
 
-  // private getStudentList() {
-  //   this.sls.getStudents().subscribe(data => {
-  //     this.dataSource = new MatTableDataSource(data);
-  //     this.dataSource.sort = this.sort;
-  //   });
-  // }
+  deleteOrder(el: number) {
+    this.ordeService.deleteOrder(el).subscribe((data) => {
+      alert('Order was deleted successfully.');
+      // this.alertMessage = 'Order was deleted successfully.';
+      // this.success = true;
+      this.getOrder();
+    });
 
-
-
-
-
+  }
 
   openDialog(): void {
     const dialogRef = this.dialog.open(PaidModalComponent, {

@@ -47,7 +47,7 @@ import { ApparelListEditComponent } from './apparel/apparel-list-edit/apparel-li
                 path: 'studentTimeReport',
                 component: StudentTimePointReportComponent,
                 canActivate: [AuthGuard],
-                data: {claim:  ['canAccess_Student', 'canAccess_Admin']  }
+                data: { claim: ['canAccess_Student', 'canAccess_Admin'] }
             },
             {
                 path: 'studentlist',
@@ -71,7 +71,7 @@ import { ApparelListEditComponent } from './apparel/apparel-list-edit/apparel-li
                 path: 'messageList',
                 component: MessageListComponent,
                 canActivate: [AuthGuard],
-                data: { claim: ['canAccess_Student', 'canAccess_Admin']  }
+                data: { claim: ['canAccess_Student', 'canAccess_Admin'] }
             },
 
             {
@@ -142,6 +142,12 @@ import { ApparelListEditComponent } from './apparel/apparel-list-edit/apparel-li
             },
             {
                 path: 'apparelList',
+                component: ApparelListEditComponent,
+                canActivate: [AuthGuard],
+                data: { claim: 'canAccess_Admin' }
+            },
+            {
+                path: 'apparelList/:id',
                 component: ApparelListEditComponent,
                 canActivate: [AuthGuard],
                 data: { claim: 'canAccess_Admin' }

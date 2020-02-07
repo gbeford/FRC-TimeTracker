@@ -35,7 +35,9 @@ body {
   border-radius: $radius;
 }
 
-
+.pointer {
+  cursor: pointer;
+}
 
 .trackerBtn {
   background-color: $primary-blue;
