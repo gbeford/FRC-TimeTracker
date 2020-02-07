@@ -105,8 +105,8 @@ import { ApparelListEditComponent } from './apparel/apparel-list-edit/apparel-li
             {
                 path: 'apparel',
                 component: ApparelStoreFrontComponent,
-                canActivate: [AuthGuard],
-                data: {claim: ['canAccess_Student', 'canAccess_Admin'] }
+                // canActivate: [AuthGuard],
+                // data: {claim: ['canAccess_Student', 'canAccess_Admin'] }
             },
             {
                 path: 'addApparel',
