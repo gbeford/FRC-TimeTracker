@@ -61,9 +61,7 @@ export class OrderService {
   // CRUD
 
   deleteOrder(id): Observable<void | {}> {
-    console.log('id', id);
-
-    return this.http.delete<void>(`${environment.baseUrl}${environment.orderApiUrl}`, id)
+    return this.http.delete<void>(`${environment.baseUrl}${environment.orderApiUrl}/${id}`)
       .pipe(
         catchError(Utilities.handleError)
       );

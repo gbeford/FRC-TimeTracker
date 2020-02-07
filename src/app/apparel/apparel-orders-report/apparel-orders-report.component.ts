@@ -1,9 +1,7 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { ShoppingCartService } from '../shopping-cart.service';
 import { IOrder } from '../order-model';
 import { MatDialog, MatTableDataSource, MatSort } from '@angular/material';
 import { PaidModalComponent } from '../paid-modal/paid-modal.component';
-import { ClothingService } from '../clothing.service';
 import { OrderService } from '../order.service';
 
 @Component({
@@ -39,15 +37,10 @@ export class ApparelOrdersReportComponent implements OnInit {
       alert('Order was deleted successfully.');
       // this.alertMessage = 'Order was deleted successfully.';
       // this.success = true;
+      this.getOrder();
     });
-  }
 
-  // private getStudentList() {
-  //   this.sls.getStudents().subscribe(data => {
-  //     this.dataSource = new MatTableDataSource(data);
-  //     this.dataSource.sort = this.sort;
-  //   });
-  // }
+  }
 
   openDialog(): void {
     const dialogRef = this.dialog.open(PaidModalComponent, {
