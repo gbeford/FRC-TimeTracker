@@ -153,8 +153,6 @@ import { ApparelListEditComponent } from './apparel/apparel-list-edit/apparel-li
                 data: { claim: 'canAccess_Admin' }
             },
 
-
-
             // { path: 'badges', component: BadgeViewComponent },
             // { path: 'applyPoints', component: ApplyPointsToStudentComponent },
             { path: 'test', component: TestSharedComponentsComponent },
