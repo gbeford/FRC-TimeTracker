@@ -28,6 +28,7 @@ export class ShoppingCartService {
   }
 
   public addItem(item: CartItem): void {
+    console.log('item', item);
     if (item) {
       item.price = item.apparel.price * item.quantity;
 
@@ -37,7 +38,7 @@ export class ShoppingCartService {
         item.upCharge = 0;
       }
 
-      if (item.sleeveName != null) {
+      if (item.sleeveName !== null && item.sleeveName !== '') {
         item.nameCharge = item.apparel.nameCharge;
       } else {
         item.nameCharge = 0;
@@ -54,7 +55,7 @@ export class ShoppingCartService {
         name_charge = i.quantity * i.nameCharge;
         item.totalItemAddedToCartCharge = up_charge + name_charge + i.price;
       }
-
+      console.log('item 2', item);
       // lets the subscribers know there is a change to the cart - update cart icon (behavior subject for use in other pages)
       this.cart.next(this.shoppingCart);
 
