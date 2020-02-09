@@ -5,6 +5,7 @@ import { catchError, tap } from 'rxjs/operators';
 import { HttpClient } from '@angular/common/http';
 import { Utilities } from 'app/shared/utils';
 import { IOrder } from './order-model';
+import { IOrderDetails } from './order-details.model';
 
 @Injectable({
   providedIn: 'root'
@@ -27,7 +28,7 @@ export class OrderService {
   getOrderById(id: string): Observable<IOrder> {
     return this.http.get<IOrder>(`${environment.baseUrl}${environment.orderApiUrl}/${id}`)
       .pipe(
-        tap(data => console.log('results', data)),
+       //  tap(data => console.log('results', data)),
         catchError(Utilities.handleError)
       );   // ...errors if any
   }
@@ -56,6 +57,14 @@ export class OrderService {
     }
   }
 
+
+  getOrderDetails(): Observable<IOrderDetails[]> {
+    return this.http.get<IOrderDetails[]>(`${environment.baseUrl}${environment.orderDetailsApiUrl}`)
+      .pipe(
+        // tap(data => console.log('order details', data)),
+        catchError(Utilities.handleError)
+      );   // ...errors if any
+  }
 
 
   // CRUD

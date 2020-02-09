@@ -23,4 +23,5 @@ export const environment = {
   studentAttendanceUrl: 'api/Reports/Attendance',
   orderApiUrl: 'api/order',
   markPaidOrders: 'api/order/MarkPaid/',
+  orderDetailsApiUrl: 'api/order/OrderReport',
 };

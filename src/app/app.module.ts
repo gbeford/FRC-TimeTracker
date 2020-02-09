@@ -47,7 +47,7 @@ import { AddEditEventComponent } from './events/add-edit-event.component';
 import { EventsService } from './events/events.service';
 import { SignUpFormComponent } from './sign-up-form/sign-up-form.component';
 import { ApparelStoreFrontComponent } from './apparel/apparel-store-front/apparel-store-front.component';
-import { ApparelOrdersReportComponent } from './apparel/apparel-orders-report/apparel-orders-report.component';
+import { OrdersReportComponent } from './apparel/orders-report/orders-report.component';
 import { AlertMessageComponent } from './shared/alert-message/alert-message.component';
 import { AddApparelComponent } from './apparel/add-apparel/add-apparel.component';
 import { ImageUploadComponent } from './shared/image-upload/image-upload.component';
@@ -60,6 +60,7 @@ import { ApparelCardComponent } from './apparel/apparel-card/apparel-card.compon
 import { GuertinReportComponent } from './apparel/guertin-report/guertin-report.component';
 import { PaidModalComponent } from './apparel/paid-modal/paid-modal.component';
 import { ApparelListEditComponent } from './apparel/apparel-list-edit/apparel-list-edit.component';
+import { OrderDetailReportComponent } from './apparel/order-detail-report/order-detail-report.component';
 
 // import { Angular5Csv } from 'angular5-csv/dist/Angular5-csv';
 
@@ -93,7 +94,7 @@ import { ApparelListEditComponent } from './apparel/apparel-list-edit/apparel-li
     AddEditEventComponent,
     SignUpFormComponent,
     ApparelStoreFrontComponent,
-    ApparelOrdersReportComponent,
+    OrdersReportComponent,
     AlertMessageComponent,
     AddApparelComponent,
     ImageUploadComponent,
@@ -105,6 +106,7 @@ import { ApparelListEditComponent } from './apparel/apparel-list-edit/apparel-li
     GuertinReportComponent,
     PaidModalComponent,
     ApparelListEditComponent,
+    OrderDetailReportComponent,
 
   ],
   imports: [

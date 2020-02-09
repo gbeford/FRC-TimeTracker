@@ -5,11 +5,11 @@ import { PaidModalComponent } from '../paid-modal/paid-modal.component';
 import { OrderService } from '../order.service';
 
 @Component({
-  selector: 'app-apparel-orders-report',
-  templateUrl: './apparel-orders-report.component.html',
-  styleUrls: ['./apparel-orders-report.component.scss']
+  selector: 'app-orders-report',
+  templateUrl: './orders-report.component.html',
+  styleUrls: ['./orders-report.component.scss']
 })
-export class ApparelOrdersReportComponent implements OnInit {
+export class OrdersReportComponent implements OnInit {
   dataSource: MatTableDataSource<IOrder>; // PaidDataSource;
 
   displayedColumns = ['orderId', 'studentId', 'studentName', 'grossTotal', 'paid', 'removeOrder'];
@@ -42,6 +42,7 @@ export class ApparelOrdersReportComponent implements OnInit {
 
   }
 
+  // this is the modal code
   openDialog(): void {
     const dialogRef = this.dialog.open(PaidModalComponent, {
       width: '650px',

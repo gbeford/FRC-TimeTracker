@@ -55,7 +55,7 @@ export class ShoppingCartService {
         name_charge = i.quantity * i.nameCharge;
         item.totalItemAddedToCartCharge = up_charge + name_charge + i.price;
       }
-      console.log('item 2', item);
+
       // lets the subscribers know there is a change to the cart - update cart icon (behavior subject for use in other pages)
       this.cart.next(this.shoppingCart);
 
