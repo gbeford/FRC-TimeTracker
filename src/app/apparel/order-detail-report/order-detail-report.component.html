@@ -6,6 +6,11 @@
     <div class="col-md-12 example-container mat-elevation-z8">
       <mat-table #table class="pointer" [dataSource]="dataSource" matSort>
         <!-- Position Column -->
+        
+        <ng-container matColumnDef="orderNumber">
+            <mat-header-cell *matHeaderCellDef mat-sort-header fxFlex="100px" >Order Id </mat-header-cell>
+            <mat-cell *matCellDef="let element" fxFlex="100px"> {{element.orderNumber}} </mat-cell>
+          </ng-container>
         <ng-container matColumnDef="studentName">
           <mat-header-cell *matHeaderCellDef mat-sort-header fxFlex="100px" >Student Name </mat-header-cell>
           <mat-cell *matCellDef="let element" fxFlex="100px"> {{element.studentName}} </mat-cell>

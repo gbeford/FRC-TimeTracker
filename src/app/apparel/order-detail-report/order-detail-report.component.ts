@@ -10,7 +10,7 @@ import { IOrderDetails } from '../order-details.model';
 })
 export class OrderDetailReportComponent implements OnInit {
   dataSource: MatTableDataSource<IOrderDetails>; // PaidDataSource;
-  displayedColumns = ['studentName', 'item', 'quantity', 'grossTotal', 'paid'];
+  displayedColumns = ['orderNumber', 'studentName', 'item', 'quantity', 'grossTotal', 'paid'];
   @ViewChild(MatSort, { static: true }) sort: MatSort;
 
   orderDetails: IOrderDetails[];
