@@ -18,9 +18,8 @@
     <ng-container *ngIf="securityObject.isAuthenticated">
       <button mat-menu-item [matMenuTriggerFor]="reports">Reports</button>
     </ng-container>
-   
-    <ng-container>
-    <a [routerLink]="['/apparel']"   mat-menu-item>
+    <ng-container *ngIf="securityObject.isAuthenticated">
+    <a [routerLink]="['/apparel']"  *hasClaim="['canAccess_Admin']"  mat-menu-item>
       <span>Apparel</span>
     </a>
   </ng-container>

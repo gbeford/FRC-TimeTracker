@@ -106,8 +106,8 @@ import { OrderDetailReportComponent } from './apparel/order-detail-report/order-
             {
                 path: 'apparel',
                 component: ApparelStoreFrontComponent,
-                // canActivate: [AuthGuard],
-                // data: {claim: ['canAccess_Student', 'canAccess_Admin'] }
+                canActivate: [AuthGuard],
+                data: {claim: ['canAccess_Admin'] }
             },
             {
                 path: 'addApparel',
