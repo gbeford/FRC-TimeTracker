@@ -10,7 +10,7 @@ import { IOrderDetails } from '../order-details.model';
 })
 export class OrderDetailReportComponent implements OnInit {
   dataSource: MatTableDataSource<IOrderDetails>; // PaidDataSource;
-  displayedColumns = ['orderNumber', 'studentName', 'item', 'quantity', 'grossTotal', 'paid'];
+  displayedColumns = ['orderNumber', 'studentName', 'item', 'size', 'quantity', 'grossTotal', 'paid'];
   @ViewChild(MatSort, { static: true }) sort: MatSort;
 
   orderDetails: IOrderDetails[];
@@ -27,6 +27,7 @@ export class OrderDetailReportComponent implements OnInit {
       .subscribe(data => {
         console.log('order details component', data);
         this.orderDetails = data;
+        console.log('order details', this.orderDetails);
         this.dataSource = new MatTableDataSource(data);
         this.dataSource.sort = this.sort;
       });
