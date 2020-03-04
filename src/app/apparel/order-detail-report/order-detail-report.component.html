@@ -24,6 +24,10 @@
           <mat-cell *matCellDef="let element"> {{element.size}} </mat-cell>
         </ng-container>
         <ng-container matColumnDef="quantity">
+          <mat-header-cell *matHeaderCellDef mat-sort-header>Sleeve Name </mat-header-cell>
+          <mat-cell *matCellDef="let element"> {{element.sleeveName}} </mat-cell>
+        </ng-container>
+        <ng-container matColumnDef="sleeveName">
           <mat-header-cell *matHeaderCellDef mat-sort-header> Quantity </mat-header-cell>
           <mat-cell *matCellDef="let element"> {{element.quantity}} </mat-cell>
         </ng-container>
