@@ -1,8 +1,9 @@
 <mat-toolbar color="">
-  <span class="colonial">
-    <img class="colonialImg" src="/assets/images/colonial.png">
-  </span>
-
+  <a [routerLink]="['/']">
+    <span class="colonial">
+      <img class="colonialImg" src="/assets/images/colonial.png">
+    </span>
+  </a>
   <button mat-icon-button [matMenuTriggerFor]="appMenu">
     <mat-icon>menu</mat-icon>
   </button>
@@ -11,10 +12,40 @@
     <a [routerLink]="['/']" mat-menu-item>
       <span>Home </span>
     </a>
-    <!-- <button mat-menu-item [matMenuTriggerFor]="admin">Admin</button> -->
+    <ng-container *ngIf="securityObject.isAuthenticated">
+      <button mat-menu-item [matMenuTriggerFor]="admin">Admin</button>
+    </ng-container>
     <ng-container *ngIf="securityObject.isAuthenticated">
       <button mat-menu-item [matMenuTriggerFor]="reports">Reports</button>
     </ng-container>
+    <ng-container *ngIf="securityObject.isAuthenticated">
+    <a [routerLink]="['/apparel']"  *hasClaim="['canAccess_Admin']"  mat-menu-item>
+      <span>Apparel</span>
+    </a>
+  </ng-container>
+    <ng-container *ngIf="securityObject.isAuthenticated">
+      <a [routerLink]="['/trackTime']" *hasClaim="['canAccess_Student', 'canAccess_Admin']" mat-menu-item>
+        <span>Track Time</span>
+      </a>
+    </ng-container>
+    <!-- <a [routerLink]="['/test']" mat-menu-item>
+      <span>Test</span>
+    </a> -->
+
+  </mat-menu>
+
+  <mat-menu #admin="matMenu">
+    <ng-container *ngIf="securityObject.isAuthenticated">
+      <a [routerLink]="['/addApparel']" *hasClaim="'canAccess_Admin'" mat-menu-item>
+        <span>Add Apparel</span>
+      </a>
+    </ng-container>
+    <ng-container *ngIf="securityObject.isAuthenticated">
+      <a [routerLink]="['/apparelList']" *hasClaim="'canAccess_Admin'" mat-menu-item>
+        <span>Edit Apparel</span>
+      </a>
+    </ng-container>
+    
     <ng-container *ngIf="securityObject.isAuthenticated">
       <a [routerLink]="['/event']" *hasClaim="'canAccess_Admin'" mat-menu-item>
         <span>Add New Event</span>
@@ -30,38 +61,13 @@
         <span>Message Student</span>
       </a>
     </ng-container>
-    <ng-container *ngIf="securityObject.isAuthenticated">
-      <a [routerLink]="['/trackTime']" *hasClaim="'canAccess_Student'" mat-menu-item>
-        <span>Track Time</span>
-      </a>
-    </ng-container>
-
-    <!-- <a [routerLink]="['/apparel']" mat-menu-item>
-      <span>Apparel</span>
-    </a>
-
-    <a [routerLink]="['/test']" mat-menu-item>
-      <span>Test</span>
-    </a>-->
-  </mat-menu>
-
-
-  <mat-menu #admin="matMenu">
-    <a [routerLink]="['/addApparel']" mat-menu-item>
-      <span>Add Apparel</span>
-    </a>
-    <a [routerLink]="['/addImage']" mat-menu-item>
+    <!-- <a [routerLink]="['/addImage']" *hasClaim="'canAccess_Admin'" mat-menu-item>
       <span>Add Image</span>
-    </a>
+    </a> -->
   </mat-menu>
 
 
   <mat-menu #reports="matMenu">
-    <ng-container *ngIf="securityObject.isAuthenticated">
-      <a [routerLink]="['/attendance']" *hasClaim="'canAccess_Admin'" mat-menu-item>
-        <span>Attendance</span>
-      </a>
-    </ng-container>
     <ng-container *ngIf="securityObject.isAuthenticated">
       <a [routerLink]="['/messageList']" *hasClaim="'canAccess_Admin'" mat-menu-item>
         <span>Message List</span>
@@ -72,12 +78,24 @@
         <span>Student List</span>
       </a>
     </ng-container>
+    <ng-container *ngIf="securityObject.isAuthenticated">
+    <a [routerLink]="['/attendance']" *hasClaim="'canAccess_Admin'" mat-menu-item>
+      <span>Attendance</span>
+    </a>
+  </ng-container>
+    <ng-container *ngIf="securityObject.isAuthenticated">
+      <a [routerLink]="['/order-report']" *hasClaim="'canAccess_Admin'" mat-menu-item>
+        <span>Orders</span>
+      </a>
+    </ng-container>
+    <ng-container *ngIf="securityObject.isAuthenticated">
+      <a [routerLink]="['/order-details']" *hasClaim="'canAccess_Admin'" mat-menu-item>
+        <span>Orders Details</span>
+      </a>
+    </ng-container>
   </mat-menu>
 
 
-
-
-  <!--       TODO: need to re-wire back up for page to work again       -->
   <!-- <ng-container *ngIf="securityObject.isAuthenticated">
       <a [routerLink]="['/studentTimeReport']" *hasClaim="'canAccess_Student'" mat-menu-item>
         <span>Student Hours</span>
@@ -96,23 +114,24 @@
       <span>Apply Points to Student</span>
     </a> -->
 
-
-
-
-  <!-- <span style="padding-left: 50px;" *ngIf="user">Welcome {{ user.displayName }}</span> -->
   <span class="spacer"> </span>
   {{ signedInStudents }} signed in.
   <span class="spacer"> </span>
   <span class="spacer"> </span>
-  <div style="padding-right: 70px;">
+  <div style="padding-right: 50px;">
     <div>
-      <a routerLink="login" *ngIf="!securityObject.isAuthenticated">Login</a>
+      <a routerLink="/" *ngIf="!securityObject.isAuthenticated">Login</a>
     </div>
     <div>
-      <a href="#" (onclick)="logout()" *ngIf="securityObject.isAuthenticated"> Logout &nbsp;{{
+      <a (click)="logout()" *ngIf="securityObject.isAuthenticated"> Logout &nbsp;{{
         securityObject.userName}}</a>
     </div>
   </div>
 
-  <span class="glyphicon glyphicon-shopping-cart cart"></span>
+  <a [routerLink]="['/order-confirm']">
+    <mat-icon matBadge="{{cartSize}}" matBadgeColor="accent" matBadgeSize="medium" matBadgePosition="above after">
+      shopping_cart</mat-icon>
+  </a>
+
+
 </mat-toolbar>

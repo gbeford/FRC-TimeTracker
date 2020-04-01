@@ -37,7 +37,7 @@ export class AutoCompleteComponent implements OnInit {
   getAllStudents() {
     this.timeTrackerService.getStudents().subscribe(s => {
       this.students = s;
-      console.log('auto', s);
+      // console.log('auto', s);
       this.studentAutoComplete();
     });
   }

@@ -17,10 +17,16 @@ import { EditMessageComponent } from './message/edit-message/edit-message.compon
 import { LoginComponent } from './security/login.component';
 import { AuthGuard } from './security/auth.guard';
 import { AddEditEventComponent } from './events/add-edit-event.component';
-import { ApparelOrderFormComponent } from './apparel/apparel-order-form/apparel-order-form.component';
+import { ApparelStoreFrontComponent } from './apparel/apparel-store-front/apparel-store-front.component';
 import { AddApparelComponent } from './apparel/add-apparel/add-apparel.component';
 import { ImageUploadFormComponent } from './apparel/image-upload-form.component';
 import { StudentHoursReportComponent } from './reports/student-hours-report.component';
+import { OrderConfirmationComponent } from './apparel/order-confirmation/order-confirmation.component';
+import { CheckoutComponent } from './apparel/checkout/checkout.component';
+import { OrdersReportComponent } from './apparel/orders-report/orders-report.component';
+import { ApparelListEditComponent } from './apparel/apparel-list-edit/apparel-list-edit.component';
+import { OrderDetailReportComponent } from './apparel/order-detail-report/order-detail-report.component';
+
 
 
 
@@ -30,23 +36,25 @@ import { StudentHoursReportComponent } from './reports/student-hours-report.comp
     imports: [
         RouterModule.forRoot([
             { path: '', component: HomeComponent },
+            { path: 'home', component: HomeComponent },
             { path: 'login', component: LoginComponent },
             {
                 path: 'trackTime',
                 component: TimeTrackerComponent,
                 canActivate: [AuthGuard],
-                data: { claim: 'canAccess_Student' }
+                data: { claim: ['canAccess_Student', 'canAccess_Admin'] }
             },
             {
                 path: 'studentTimeReport',
                 component: StudentTimePointReportComponent,
                 canActivate: [AuthGuard],
-                data: { claim: 'canAccess_Student' } },
+                data: { claim: ['canAccess_Student', 'canAccess_Admin'] }
+            },
             {
                 path: 'studentlist',
                 component: StudentListComponent,
                 canActivate: [AuthGuard],
-                data: { claim: 'canAccess_Student' }
+                data: { claim: ['canAccess_Student', 'canAccess_Admin'] }
             },
             {
                 path: 'studentEditForm',
@@ -64,7 +72,7 @@ import { StudentHoursReportComponent } from './reports/student-hours-report.comp
                 path: 'messageList',
                 component: MessageListComponent,
                 canActivate: [AuthGuard],
-                data: { claim: 'canAccess_Student' }
+                data: { claim: ['canAccess_Student', 'canAccess_Admin'] }
             },
 
             {
@@ -97,22 +105,60 @@ import { StudentHoursReportComponent } from './reports/student-hours-report.comp
             },
             {
                 path: 'apparel',
-                component: ApparelOrderFormComponent,
+                component: ApparelStoreFrontComponent,
+                canActivate: [AuthGuard],
+                data: {claim: ['canAccess_Admin'] }
             },
             {
                 path: 'addApparel',
                 component: AddApparelComponent,
+                canActivate: [AuthGuard],
+                data: { claim: 'canAccess_Admin' }
             },
             {
                 path: 'addImage',
                 component: ImageUploadFormComponent,
+                canActivate: [AuthGuard],
+                data: { claim: 'canAccess_Admin' }
             },
             {
                 path: 'attendance',
                 component: StudentHoursReportComponent,
+                canActivate: [AuthGuard],
+                data: { claim: 'canAccess_Admin' }
             },
-
-
+            {
+                path: 'order-confirm',
+                component: OrderConfirmationComponent,
+            },
+            {
+                path: 'checkout/:orderId',
+                component: CheckoutComponent,
+            },
+            {
+                path: 'order-report',
+                component: OrdersReportComponent,
+                canActivate: [AuthGuard],
+                data: { claim: 'canAccess_Admin' }
+            },
+            {
+                path: 'order-details',
+                component: OrderDetailReportComponent,
+                canActivate: [AuthGuard],
+                data: { claim: 'canAccess_Admin' }
+            },
+            {
+                path: 'apparelList',
+                component: ApparelListEditComponent,
+                canActivate: [AuthGuard],
+                data: { claim: 'canAccess_Admin' }
+            },
+            {
+                path: 'apparelList/:id',
+                component: ApparelListEditComponent,
+                canActivate: [AuthGuard],
+                data: { claim: 'canAccess_Admin' }
+            },
 
             // { path: 'badges', component: BadgeViewComponent },
             // { path: 'applyPoints', component: ApplyPointsToStudentComponent },

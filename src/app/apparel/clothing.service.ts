@@ -1,11 +1,12 @@
 import { Injectable } from '@angular/core';
 import { environment } from '@environment/environment';
-import { IApparel } from 'app/model/apparel';
+import { IApparel } from 'app/apparel/apparel-model';
 import { catchError, retry } from 'rxjs/operators';
 import { HttpClient } from '@angular/common/http';
 import { Utilities } from '../shared/utils';
 import { Observable, throwError } from 'rxjs';
-import { IApparelImage } from 'app/model/apparel-image';
+import { IApparelImage } from 'app/apparel/apparel-image-model';
+import { IOrder } from './order-model';
 
 @Injectable({
   providedIn: 'root'
@@ -29,20 +30,20 @@ export class ClothingService {
       );   // ...errors if any
   }
 
+  // get apparel by id
+  getApparelItem(id: string): Observable<IApparel[]> {
+    return this.http.get<IApparel[]>(`${environment.baseUrl}${environment.apparelApiUrl}/${id}`)
+      .pipe(
+        catchError(Utilities.handleError)
+      );   // ...errors if any
+  }
+
   getImages(): Observable<IApparelImage[]> {
     return this.http.get<IApparelImage[]>(`${environment.baseUrl}${environment.imageApiUrl}`)
       .pipe(
         catchError(Utilities.handleError)
       );   // ...errors if any
   }
-
-
-  // getImagesById(imageId): Observable<IApparelImage[]> {
-  //   return this.http.get<IApparelImage[]>(`${environment.baseUrl}${environment.imageApiUrl}`)
-  //     .pipe(
-  //       catchError(Utilities.handleError)
-  //     );   // ...errors if any
-  // }
 
   getImageNames(): Observable<IApparelImage[]> {
     return this.http.get<IApparelImage[]>(`${environment.baseUrl}${environment.imageNameApiUrl}`)
@@ -64,17 +65,12 @@ export class ClothingService {
   saveImage(uploadImage) {
     // this.http is the injected HttpClient
     this.http.post(`${environment.baseUrl}${environment.imageApiUrl}`, uploadImage)
-      .subscribe(event => {
-        // console.log(event); // handle event here
+      .subscribe(r => {
+        // console.log(r); // handle event here
       });
   }
 
-  // saveCartItem(cartItem: IApparel) {
-  //   return this.http.post<IApparel>(`${environment.baseUrl}${environment.apparelApiUrl}`, apparelItem)
-  //     .pipe(
-  //       catchError(Utilities.handleError)
-  //     );
-  // }
+
 
   // editApparelRecord(id: number, updateMessage: string): Observable < void | {} > {
   //   const data: IMessage = {
@@ -88,12 +84,7 @@ export class ClothingService {
   //     );
   // }
 
-  // deleteMessageRecord(id: number): Observable < void | {} > {
-  //   return this.http.delete<void>(`${environment.baseUrl}${environment.apparelApiUrl}/${id}`)
-  //     .pipe(
-  //       catchError(Utilities.handleError)
-  //     );
-  // }
+
 
 
 

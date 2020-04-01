@@ -1,8 +1,50 @@
-@import '../../styles';
 
-img {
-  opacity: 0.3;
-  filter: alpha(opacity=50);
-  /* For IE8 and earlier */
+// .img-background {
+//   background-image: url("assets/images/change.jpg");
+//   background-repeat: no-repeat; /* Do not repeat the image */
+//   opacity: 0.3;
+//   filter: alpha(opacity=50);
+//   width: 100%;
+//   height: 600px;
+//   background-size: cover;
+//    z-index: -1;
+// }
+
+
+.wrapper {
+  width: 100%;
+  height: 500px;
+  float: left;
+  position: relative;
 }
 
+.img-background {
+    background: transparent url(assets/images/change.jpg) no-repeat 0 0;
+    width: 100%;
+    height: 600px;
+    float: left;
+    opacity: 0.3;
+    background-size: cover;
+  }
+  
+
+  .login {
+    background: white;
+    position: absolute;
+    top: 100px;
+    left: 300px;
+  }
+
+  .students-logged-in {
+    background: transparent;
+    position: absolute;
+    top: 20px;
+    left: 20px;
+
+  }
+  .logout-btn {
+    background: transparent;
+    position: absolute;
+    top: 20px;
+    left: 650px;
+  }

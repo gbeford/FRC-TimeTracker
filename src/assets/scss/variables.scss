@@ -1,0 +1,75 @@
+// Color Declarations
+$primary-gray: #eee;
+$white: #ffffff;
+$Modal-Screen: rgba(55, 58, 59, 0.4);
+$addaptive-blue: #004262;
+$addaptive-blue-80: #336881;
+$addaptive-blue-60: #668ea1;
+$addaptive-blue-40: #99b3c0;
+$addaptive-blue-30: #b9ced8;
+$addaptive-blue-20: #ccd9e0;
+$aquamarine: #4191b3;
+$aquamarine-80: #67a7c2;
+$aquamarine-60: #8dbdd1;
+$aquamarine-40: #b3d3e1;
+$charcoal: #373a3b;
+$addaptive-orange: #f69e33;
+$gray-blue: #d9e9f0;
+$medium-gray: #dddddd;
+$green: #417f00;
+$red: #c91c1c;
+$red-shade-20: #a01616;
+$red-tint-20: #d34949;
+$green-shade-20: #346500;
+$green-tint-20: #679833;
+$sand: #eaeced;
+$sand-80: #eef0f1;
+$sand-60: #f2f4f4;
+$sand-40: #f7f7f8;
+$sand-20: #fbfbfb;
+$dark-gray: #b4b4b4;
+
+$gray-100: #fbfbfb; // Sand-20
+$gray-200: #f7f7f8; // Sand-40
+$gray-300: #f2f4f4; // Sand-60
+$gray-400: #EAECED; // Sand
+$gray-700: #D9E9F0; // Medium Gray
+$gray-800: #B4B4B4; // Dark Gray
+$gray-900: #373A3B; // Charcoal
+
+//Component Based Color Declarations
+$color-list: ("white"#ffffff,
+  "Modal-Screen"rgba(55, 58, 59, 0.4),
+  "addaptive-blue"#004262,
+  "addaptive-blue-80"#336881,
+  "addaptive-blue-60"#668ea1,
+  "addaptive-blue-40"#99b3c0,
+  "addaptive-blue-30"#b9ced8,
+  "addaptive-blue-20"#ccd9e0,
+  "aquamarine"#4191b3,
+  "aquamarine-80"#67a7c2,
+  "aquamarine-60"#8dbdd1,
+  "aquamarine-40"#b3d3e1,
+  "charcoal"#373a3b,
+  "addaptive-orange"#f69e33,
+  "gray-blue"#d9e9f0,
+  "medium-gray"#dddddd,
+  "green"#417f00,
+  "red"#c91c1c,
+  "red-120"#a01616,
+  "red-80"#d34949,
+  "green-120"#346500,
+  "green-80"#679833,
+  "sand"#eaeced,
+  "sand-80"#eef0f1,
+  "sand-60"#f2f4f4,
+  "sand-40"#f7f7f8,
+  "sand-20"#fbfbfb,
+  "dark-gray"#b4b4b4,
+  "gray-100"#fbfbfb,
+  "gray-200"#f7f7f8,
+  "gray-300"#f2f4f4,
+  "gray-400"#EAECED,
+  "gray-700"#D9E9F0,
+  "gray-800"#B4B4B4,
+  "gray-900"#373A3B);

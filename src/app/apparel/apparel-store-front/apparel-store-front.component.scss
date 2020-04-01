@@ -1,0 +1,32 @@
+@import '../../../assets/scss/variables.scss';
+
+h6 {
+  text-transform: UPPERCASE;
+  font-weight: bold;
+  line-height: 2em;
+}
+
+.card-alert {
+  background-color: #ffffff;
+  height: 55px;
+  border-radius: .35rem;
+  background-clip: border-box;
+  border: 1px solid #eee;
+}
+
+.invalid-feedback {
+font-size: 100%;
+}
+
+// .not-available {
+//   text-align: center;
+//   line-height: 2em;
+// }
+
+
+// .not-available:before {
+//   font-family: fontawesome;
+//   content: "\f00d";
+//   color: #fff;
+// }
+

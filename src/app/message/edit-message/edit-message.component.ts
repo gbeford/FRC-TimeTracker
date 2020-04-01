@@ -21,7 +21,7 @@ export class EditMessageComponent implements OnInit {
   // messageList: IMessage[];
   displayedColumns = ['editMessage', 'messageText', 'removeMessage'];
 
-  @ViewChild(MatSort) sort: MatSort;
+  @ViewChild(MatSort, { static: true }) sort: MatSort;
 
   constructor(private formBuilder: FormBuilder, private messageService: MessageService,
     private changeDetectorRefs: ChangeDetectorRef,

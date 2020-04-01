@@ -7,7 +7,7 @@ import { AppComponent } from './app.component';
 import {
   MatToolbarModule, MatButtonModule, MatMenuModule, MatIconModule, MatDatepickerModule, MatSelectModule,
   MatFormFieldModule, MatNativeDateModule, MatInputModule, MatSnackBarModule, MatTableModule, MatSortModule,
-  MatCheckboxModule, MatDialogModule, MatPaginatorModule
+  MatCheckboxModule, MatDialogModule, MatPaginatorModule, MatBadgeModule
 } from '@angular/material';
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
 import { environment } from '@environment/environment';
@@ -46,15 +46,23 @@ import { HasClaimDirective } from './security/has-claim.directive';
 import { AddEditEventComponent } from './events/add-edit-event.component';
 import { EventsService } from './events/events.service';
 import { SignUpFormComponent } from './sign-up-form/sign-up-form.component';
-import { ApparelOrderFormComponent } from './apparel/apparel-order-form/apparel-order-form.component';
-import { ApparelOrdersReportComponent } from './apparel/apparel-orders-report/apparel-orders-report.component';
+import { ApparelStoreFrontComponent } from './apparel/apparel-store-front/apparel-store-front.component';
+import { OrdersReportComponent } from './apparel/orders-report/orders-report.component';
 import { AlertMessageComponent } from './shared/alert-message/alert-message.component';
 import { AddApparelComponent } from './apparel/add-apparel/add-apparel.component';
 import { ImageUploadComponent } from './shared/image-upload/image-upload.component';
 import { ImageUploadFormComponent } from './apparel/image-upload-form.component';
 import { StudentHoursReportComponent } from './reports/student-hours-report.component';
 import { ReportsService } from './reports/reports.service';
+import { OrderConfirmationComponent } from './apparel/order-confirmation/order-confirmation.component';
+import { CheckoutComponent } from './apparel/checkout/checkout.component';
+import { ApparelCardComponent } from './apparel/apparel-card/apparel-card.component';
+import { GuertinReportComponent } from './apparel/guertin-report/guertin-report.component';
+import { PaidModalComponent } from './apparel/paid-modal/paid-modal.component';
+import { ApparelListEditComponent } from './apparel/apparel-list-edit/apparel-list-edit.component';
+import { OrderDetailReportComponent } from './apparel/order-detail-report/order-detail-report.component';
 
+// import { Angular5Csv } from 'angular5-csv/dist/Angular5-csv';
 
 
 
@@ -85,13 +93,21 @@ import { ReportsService } from './reports/reports.service';
     HasClaimDirective,
     AddEditEventComponent,
     SignUpFormComponent,
-    ApparelOrderFormComponent,
-    ApparelOrdersReportComponent,
+    ApparelStoreFrontComponent,
+    OrdersReportComponent,
     AlertMessageComponent,
     AddApparelComponent,
     ImageUploadComponent,
     ImageUploadFormComponent,
     StudentHoursReportComponent,
+    OrderConfirmationComponent,
+    CheckoutComponent,
+    ApparelCardComponent,
+    GuertinReportComponent,
+    PaidModalComponent,
+    ApparelListEditComponent,
+    OrderDetailReportComponent,
+
   ],
   imports: [
     BrowserModule,
@@ -115,10 +131,12 @@ import { ReportsService } from './reports/reports.service';
     MatCheckboxModule,
     MatDialogModule,
     MatPaginatorModule,
+    MatBadgeModule,
     AppRoutingModule,
     HttpClientModule,
     SatPopoverModule,
-    HttpInterceptorModule
+    HttpInterceptorModule,
+    // Angular5Csv
   ],
   providers: [
     StudentService,
@@ -129,7 +147,8 @@ import { ReportsService } from './reports/reports.service';
     SecurityService,
     ReportsService,
   ],
-  entryComponents: [TimeTrackerMsgComponent],
+  entryComponents: [TimeTrackerMsgComponent, PaidModalComponent],
   bootstrap: [AppComponent]
+
 })
 export class AppModule { }

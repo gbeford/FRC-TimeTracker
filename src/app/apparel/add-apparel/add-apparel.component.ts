@@ -1,7 +1,7 @@
 import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ClothingService } from '../clothing.service';
-import { IApparel } from 'app/model/apparel';
+import { IApparel } from 'app/apparel/apparel-model';
 
 
 // https://nehalist.io/uploading-files-in-angular2/
@@ -22,7 +22,7 @@ export class AddApparelComponent implements OnInit {
   imageList = [];
   filename: string;
 
-  @ViewChild('fileInput') fileInput: ElementRef;
+  @ViewChild('fileInput', { static: true }) fileInput: ElementRef;
 
   constructor(private formBuilder: FormBuilder, private apparelService: ClothingService) { }
 
@@ -43,7 +43,9 @@ export class AddApparelComponent implements OnInit {
       imageCtrl: null,
       nameChargeCtl: [''],
       canHaveNameCtl: [''],
-      // genderCtrl: ['', [<any>Validators.required]],
+      showItemCtrl: [''],
+      showSizeCtrl: [''],
+      showGenderCtrl: ['']
     });
   }
   // convenience getter for easy access to form fields
@@ -67,7 +69,10 @@ export class AddApparelComponent implements OnInit {
         canHaveName: this.apparelForm.value.canHaveNameCtl ? this.apparelForm.value.canHaveNameCtl : 0,
         filename: this.apparelForm.value.imageCtrl.filename,
         contentType: this.apparelForm.value.imageCtrl.contentType,
-        image: this.apparelForm.value.imageCtrl.value
+        image: this.apparelForm.value.imageCtrl.value,
+        showGender: this.apparelForm.value.showGenderCtrl ? this.apparelForm.value.showGenderCtrl : 0,
+        showSize: this.apparelForm.value.showSizeCtrl ? this.apparelForm.value.showSizeCtrl : 0,
+        showItem: this.apparelForm.value.showItemCtrl ? this.apparelForm.value.showItemCtrl : 0,
       };
       this.apparelService.saveApparelItem(
         this.formObj).subscribe(res => {

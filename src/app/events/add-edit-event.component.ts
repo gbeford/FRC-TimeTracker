@@ -19,7 +19,7 @@ export class AddEditEventComponent implements OnInit {
   alertMessage: string;
 
 
-  @ViewChild(MatSort) sort: MatSort;
+  @ViewChild(MatSort, { static: true }) sort: MatSort;
 
   constructor(private formBuilder: FormBuilder, private eventService: EventsService,
     private changeDetectorRefs: ChangeDetectorRef,

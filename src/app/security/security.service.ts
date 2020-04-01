@@ -11,9 +11,16 @@ import { environment } from '@environment/environment';
   providedIn: 'root'
 })
 export class SecurityService {
-  securityObject: AppUserAuth = new AppUserAuth;
+  public securityObject: AppUserAuth;
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient) {
+    const secObject = sessionStorage.getItem('secobject');
+    if (secObject != null) {
+      this.securityObject = JSON.parse(secObject);
+    } else {
+      this.securityObject = new AppUserAuth();
+    }
+  }
 
   logout(): void {
     this.resetSecurityObject();
@@ -25,7 +32,8 @@ export class SecurityService {
     this.securityObject.isAuthenticated = false;
     this.securityObject.claims = [];
 
-    localStorage.removeItem('bearerToken');
+    sessionStorage.removeItem('bearerToken');
+    sessionStorage.removeItem('secobject');
   }
 
   // This method can be called a couple of different ways
@@ -92,7 +100,8 @@ export class SecurityService {
           //       because that destroys all references to object
           Object.assign(this.securityObject, resp);
           // Store into local storage
-          localStorage.setItem('bearerToken', this.securityObject.bearerToken);
+          sessionStorage.setItem('bearerToken', this.securityObject.bearerToken);
+          sessionStorage.setItem('secobject', JSON.stringify(this.securityObject));
         }));
   }
 }

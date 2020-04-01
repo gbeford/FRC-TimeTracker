@@ -1,0 +1,56 @@
+<div class="row mt-5">
+  <div class="col">
+    <h1>Orders</h1>
+  </div>
+  <div class="col d-flex justify-content-end pb-2">
+    <button class="btn btn-secondary" (click)="openDialog()">Mark Paid</button>
+  </div>
+    <!-- {{order | json}} -->
+  <div class="col-md-12 example-container mat-elevation-z8">
+    <mat-table #table class="pointer" [dataSource]="dataSource" matSort>
+      <!-- Position Column -->
+      <ng-container matColumnDef="orderId">
+        <mat-header-cell *matHeaderCellDef mat-sort-header fxFlex="100px" > Order Id </mat-header-cell>
+        <mat-cell *matCellDef="let element" fxFlex="100px"> {{element.orderId}} </mat-cell>
+      </ng-container>
+      <ng-container matColumnDef="studentId">
+        <mat-header-cell *matHeaderCellDef mat-sort-header>Student Id </mat-header-cell>
+        <mat-cell *matCellDef="let element"> {{element.studentId}} </mat-cell>
+      </ng-container>
+      <ng-container matColumnDef="studentName">
+        <mat-header-cell *matHeaderCellDef mat-sort-header> Student Name </mat-header-cell>
+        <mat-cell *matCellDef="let element"> {{element.studentName}} </mat-cell>
+      </ng-container>
+      <ng-container matColumnDef="grossTotal">
+        <mat-header-cell *matHeaderCellDef mat-sort-header> Gross Total </mat-header-cell>
+        <mat-cell *matCellDef="let element"> {{element.grossTotal}} </mat-cell>
+      </ng-container>
+      <ng-container matColumnDef="paid">
+        <mat-header-cell *matHeaderCellDef mat-sort-header > Paid </mat-header-cell>
+        <mat-cell *matCellDef="let element"> {{element.paid?'Yes':'No'}} </mat-cell>
+      </ng-container>
+       <!-- Remove Item Column -->
+       <ng-container matColumnDef="removeOrder">
+        <mat-header-cell *matHeaderCellDef mat-sort-header> Remove Order </mat-header-cell>
+        <mat-cell *matCellDef="let element" (click)="deleteOrder(element.orderId)">
+          <ng-container matColumnDef="Remove">
+            <ng-container *ngIf="element.orderId">
+              <mat-icon>delete</mat-icon>
+            </ng-container>
+          </ng-container>
+        </mat-cell>
+      </ng-container>
+      <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+      <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+    </mat-table>
+  </div>
+  
+
+
+
+
+
+
+
+
+</div>

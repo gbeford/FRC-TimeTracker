@@ -1,0 +1,73 @@
+<div class="container" *ngIf="order | async as itemsOrdered; else loading">
+  <h1>Receipt</h1>
+  <div class="row">
+    <div class="col-xs-12 col-md-3 col-lg-3 pull-left">
+      <div class="panel panel-default height">
+        <div class="panel-body">
+          <div>
+            <strong>Order Number:</strong> &nbsp; <span>{{itemsOrdered.orderId}}</span>
+          </div>
+          <div> <strong>Order Date :</strong> &nbsp;
+            <span>{{ itemsOrdered.orderDate | date:'MM-dd-yyyy'}}</span>
+          </div>
+          <div>
+            <strong>Student Name:</strong> {{ itemsOrdered.studentName}}
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+    <div class="row mt-5">
+      <div class="col-md-12">
+        <table class="table table-condensed">
+          <thead class="table-header">
+            <tr>
+              <td><strong>Item Name</strong></td>
+              <td class="text-center"><strong>Item Type</strong></td>
+              <td class="text-center"><strong>Gender</strong></td>
+              <td class="text-center"><strong>Size</strong></td>
+              <td class="text-center"><strong>Name on sleeve</strong></td>
+              <td class="text-center"><strong>Item Quantity</strong></td>
+              <td class="text-center"><strong>Item Price</strong></td>
+              <td class="text-center"><strong>Name Charge</strong></td>
+              <td class="text-center"><strong>Up Charge</strong></td>
+
+              <td class="text-right"><strong>Total</strong></td>
+            </tr>
+          </thead>
+          <tbody *ngFor="let item of itemsOrdered.items" class="table-backgroud">
+            <tr>
+              <td> {{item.apparel.item}}</td>
+              <td class="text-center">{{item.apparel.type}}</td>
+              <td class="text-center">{{item.gender}}</td>
+              <td class="text-center">{{item.size}}</td>
+              <td class="text-center">{{item.sleeveName}}</td>
+              <td class="text-center">{{item.quantity}}</td>
+              <td class="text-right">{{item.price | currency}}</td>
+              <td class="text-center">{{item.nameCharge | currency}}</td>
+              <td class="text-center">{{item.upCharge | currency}}</td>
+              <td class="text-right">{{item.price + item.nameCharge + item.upCharge | currency}}</td>
+            </tr>
+          </tbody>
+          <tbody class="table-backgroud">
+            <tr class="row-height">
+              <td colspan="2" class="row-alignment">Cash or Check Only. <br /><i>Make payable to Shrewsbury
+                  Robotics</i></td>
+              <td class="emptyrow"></td>
+              <td class="emptyrow"></td>
+              <td class="emptyrow"></td>
+              <td class="emptyrow"></td>
+              <td class="emptyrow"></td>
+              <td class="emptyrow"></td>
+              <td class="emptyrow text-center"><strong>Grand Total</strong></td>
+              <td class="emptyrow text-right"><strong>{{itemsOrdered.grossTotal | currency}}</strong></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+</div>
+  <ng-template #loading>
+    <div>Loading ...</div>
+  </ng-template>

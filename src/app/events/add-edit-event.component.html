@@ -4,8 +4,8 @@
 {{this.alertMessage}}
 </div> -->
     <div>
-      <app-alert-message *ngIf="this.success" [alertMessage]="this.alertMessage" (notify)='alerttNotify($event)'>
-      </app-alert-message>
+      <!-- <app-alert-message *ngIf="this.success" [alertMessage]="this.alertMessage" (notify)='alerttNotify($event)'>
+      </app-alert-message> -->
     </div>
 
     <h2>
@@ -35,7 +35,7 @@
         <!-- Edit Event text Column -->
         <ng-container matColumnDef="editEvent">
           <mat-header-cell *matHeaderCellDef mat-sort-header> Edit Event </mat-header-cell>
-          <mat-cell *matCellDef="let element" [satPopoverAnchorFor]="p" (click)="p.open()">
+          <mat-cell *matCellDef="let element" [satPopoverAnchor]="p" (click)="p.open()">
             <ng-container *ngIf="element.eventID">
               <mat-icon>create</mat-icon>
             </ng-container>

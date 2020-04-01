@@ -1,0 +1,57 @@
+<div class="row mt-5">
+    <div class="col">
+      <h1>Orders Details</h1>
+    </div>
+
+    <div class="col-md-12 example-container mat-elevation-z8">
+      <mat-table #table class="pointer" [dataSource]="dataSource" matSort>
+        <!-- Position Column -->
+        
+        <ng-container matColumnDef="orderNumber">
+            <mat-header-cell *matHeaderCellDef mat-sort-header fxFlex="100px" >Order Id </mat-header-cell>
+            <mat-cell *matCellDef="let element" fxFlex="100px"> {{element.orderNumber}} </mat-cell>
+          </ng-container>
+        <ng-container matColumnDef="studentName">
+          <mat-header-cell *matHeaderCellDef mat-sort-header fxFlex="100px" >Student Name </mat-header-cell>
+          <mat-cell *matCellDef="let element" fxFlex="100px"> {{element.studentName}} </mat-cell>
+        </ng-container>
+        <ng-container matColumnDef="item">
+          <mat-header-cell *matHeaderCellDef mat-sort-header>Item </mat-header-cell>
+          <mat-cell *matCellDef="let element"> {{element.item}} </mat-cell>
+        </ng-container>
+        <ng-container matColumnDef="size">
+          <mat-header-cell *matHeaderCellDef mat-sort-header>Size </mat-header-cell>
+          <mat-cell *matCellDef="let element"> {{element.size}} </mat-cell>
+        </ng-container>
+        <ng-container matColumnDef="quantity">
+          <mat-header-cell *matHeaderCellDef mat-sort-header>Sleeve Name </mat-header-cell>
+          <mat-cell *matCellDef="let element"> {{element.sleeveName}} </mat-cell>
+        </ng-container>
+        <ng-container matColumnDef="sleeveName">
+          <mat-header-cell *matHeaderCellDef mat-sort-header> Quantity </mat-header-cell>
+          <mat-cell *matCellDef="let element"> {{element.quantity}} </mat-cell>
+        </ng-container>
+        <ng-container matColumnDef="grossTotal">
+          <mat-header-cell *matHeaderCellDef mat-sort-header> Gross Total </mat-header-cell>
+          <mat-cell *matCellDef="let element"> {{element.grossTotal}} </mat-cell>
+        </ng-container>
+        <ng-container matColumnDef="paid">
+          <mat-header-cell *matHeaderCellDef mat-sort-header > Paid </mat-header-cell>
+          <mat-cell *matCellDef="let element"> {{element.paid?'Yes':'No'}} </mat-cell>
+        </ng-container>
+   
+        <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+        <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+      </mat-table>
+    </div>
+    
+  
+  
+  
+  
+  
+  
+  
+  
+  </div>
+  

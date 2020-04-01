@@ -1,0 +1,170 @@
+@import '../scss/variables.scss';
+
+// Typography
+
+@font-face {
+  font-family: 'Source Sans Pro';
+  src: url('https://fonts.googleapis.com/css?family=Source+Sans+Pro&display=swap') format("opentype");
+  font-weight: 400;
+}
+
+
+// font-body is being declared in mixins and should be the same variable
+$font-body: 'Source Sans Pro';
+$font-monospace: 'Source Sans Pro', sans-serif;
+
+* {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-smooth: always;
+}
+
+$base-font-value: 16px;
+
+//font declaration, any new typography style should be called out here. Mixin uses native h5 elements or classes
+$font-list: (h1 2em $font-body 900 bold,
+  h2 1.75em $font-body 100,
+  h3 1.5em $font-body 700,
+  h4 1.25em $font-body 700,
+  h5 1em $font-body 700,
+  h6 1em $font-body 400,
+  button 1em $font-body 400,
+  '.small-text'.75em $font-body 400,
+  a 1em $font-body 400);
+
+//body
+$body-bg: $gray-200; // body background
+
+// $primary:
+// $secondary:
+// $success:
+// $info:
+// $warning:
+// $danger:
+
+// Cards
+$card-cap-bg: $gray-400; // card-header
+
+body {
+  font-family: $font-body;
+  font-size: $base-font-value;
+}
+
+@each $value in $font-list {
+  #{nth($value, 1)} {
+    font-size: nth($value, 2);
+    color: $charcoal;
+    font-family: nth($value, 3);
+    font-weight: nth($value, 4);
+  }
+}
+
+.strong {
+  font-weight: bold;
+}
+
+
+// Horizontal rules
+hr.sm {
+  margin: 0.35em 0;
+}
+
+// Cloaking
+[ng\:cloak],
+[ng-cloak],
+[data-ng-cloak],
+[x-ng-cloak],
+.ng-cloak,
+.x-ng-cloak {
+  display: none !important;
+}
+
+// Links
+
+a {
+  color: $aquamarine;
+
+  &:focus,
+  &:hover,
+  &:active {
+    text-decoration: none;
+  }
+
+  &[ng-click],
+  &[ui-sref],
+  &.text-muted {
+    cursor: default;
+  }
+}
+
+// Definition lists
+dl {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-content: flex-start;
+  align-items: flex-start;
+  margin: -5px 0 20px;
+
+  dt {
+    order: 0;
+    flex: 1 1 15%;
+    align-self: auto;
+    margin: 5px 0 0;
+  }
+
+  dd {
+    order: 0;
+    flex: 1 1 85%;
+    align-self: auto;
+    margin: 5px 0 0;
+  }
+}
+
+.horizontal-list {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 20px;
+
+  li {
+    display: inline-block;
+  }
+
+  li+li {
+    margin-left: 50px;
+  }
+}
+
+// Code
+code,
+pre {
+  font-family: $font-monospace;
+}
+
+pre.code-snippet {
+  //@extend .dark-gray-text;
+  display: block;
+  width: 100%;
+  padding: .5rem .75rem;
+  font-size: 1rem;
+  line-height: 1.25;
+  background-color: #fff;
+  background-image: none;
+  background-clip: padding-box;
+  border: 1px solid rgba(0, 0, 0, .15);
+  border-radius: .25rem;
+  font-family: $font-monospace;
+}
+
+// Alignment
+
+$alignments: ("center", "left", "right");
+
+@each $alignment in $alignments {
+  .text-#{$alignment} {
+    text-align: #{$alignment};
+  }
+}
+
+;

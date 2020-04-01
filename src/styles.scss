@@ -1,3 +1,8 @@
+@import '../src/assets/scss/variables.scss';
+@import '../src/assets/scss/typography.scss';
+@import '../src/assets/scss/form.scss';
+
+
 /* You can add global styles to this file, and also import other style files */
 
 $primary-blue:#2A4283;
@@ -7,24 +12,21 @@ $primary-gray: #eee;
 ;
 
 //---------------------------------------------------------
-html {
-  font: 500 14px/32px Roboto, "Helvetica Neue", sans-serif;
-}
+
 
 html,
 body {
-  height: 100%
+  height: 100%;
+  margin: 0;
+  background-color: #dce3ec;
 }
 
-a {
-  cursor: pointer;
+.pageHeight {
+  min-height: calc(100vh - 70px);
+  padding-bottom: 20px;
+  ;
 }
 
-h1,
-h2 {
-  margin-bottom: 30px;
-  margin-top: 15px;
-}
 
 @mixin border-radius($radius) {
   -webkit-border-radius: $radius;
@@ -33,16 +35,8 @@ h2 {
   border-radius: $radius;
 }
 
-// this removes the arrows in the number box
-input[type='number'] {
-  -moz-appearance: textfield;
-}
-
-// this remove the arrows in the number box
-input::-webkit-outer-spin-button,
-input::-webkit-inner-spin-button {
-  -webkit-appearance: none;
-  margin: 0;
+.pointer {
+  cursor: pointer;
 }
 
 .trackerBtn {
@@ -78,20 +72,15 @@ input::-webkit-inner-spin-button {
   }
 }
 
-.mat-cell,
-.mat-header-cell {
-  padding: 0 1em 0 1em;
-}
 
-.messageText {
-  width: 55%;
-}
+// footer stuff
 
 footer {
   background-color: $primary-gray;
   color: $primary-blue;
   height: 50px;
   width: 100%;
+  //margin-top: 40px;
 }
 
 .footer {

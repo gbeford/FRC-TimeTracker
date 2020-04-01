@@ -11,7 +11,7 @@ import { ngModuleJitUrl } from '@angular/compiler';
 export class HttpRequestInterceptor implements HttpInterceptor {
     intercept(req: HttpRequest<any>, next: HttpHandler):
         Observable<HttpEvent<any>> {
-        const token = localStorage.getItem('bearerToken');
+        const token = sessionStorage.getItem('bearerToken');
 
         if (token) {
             const newReq = req.clone(

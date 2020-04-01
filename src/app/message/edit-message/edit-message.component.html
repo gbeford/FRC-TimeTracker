@@ -25,7 +25,7 @@
         <!-- Edit Message text Column -->
         <ng-container matColumnDef="editMessage">
           <mat-header-cell *matHeaderCellDef mat-sort-header> Edit Message </mat-header-cell>
-          <mat-cell *matCellDef="let element" [satPopoverAnchorFor]="p" (click)="p.open()">
+          <mat-cell *matCellDef="let element" [satPopoverAnchor]="p" (click)="p.open()">
             <ng-container *ngIf="element.messageID">
               <mat-icon>create</mat-icon>
               <!-- &nbsp;{{element.messageID}} -->
@@ -54,7 +54,6 @@
             <ng-container matColumnDef="Remove">
               <ng-container *ngIf="element.messageID">
                 <mat-icon>delete</mat-icon>
-                <!-- &nbsp;{{element.messageID}} -->
               </ng-container>
             </ng-container>
           </mat-cell>
