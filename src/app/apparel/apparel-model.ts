@@ -1,5 +1,3 @@
-import { BinaryData } from 'fs';
-
 /* Defines the apparel entity */
 export interface IApparel {
     apparelId: number;
