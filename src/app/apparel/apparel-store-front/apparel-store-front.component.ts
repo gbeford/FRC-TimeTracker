@@ -14,7 +14,7 @@ import { ShoppingCart } from '../shopping-cart-model';
 })
 export class ApparelStoreFrontComponent implements OnInit {
 
-  @ViewChild('addedToCart', { static: false }) addedToCartLink: ElementRef;
+  @ViewChild('addedToCart') addedToCartLink: ElementRef;
 
   studentRequired: string;
   showError = false;
