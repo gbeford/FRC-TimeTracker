@@ -1,5 +1,5 @@
-import { BinaryData } from 'fs';
-import { Binary } from '@angular/compiler';
+// import { BinaryData } from 'fs';
+
 
 /* Defines the apparel entity */
 export interface IApparelImage {
@@ -7,6 +7,6 @@ export interface IApparelImage {
     apparelImageId: number;
     filename: string;
     imageName: string;
-    image: BinaryData;
+    image: any;
     contentType: string;
 }
