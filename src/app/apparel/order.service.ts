@@ -1,12 +1,14 @@
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { environment } from '@environment/environment';
-import { catchError, tap } from 'rxjs/operators';
+import { catchError, tap, count } from 'rxjs/operators';
 import { HttpClient } from '@angular/common/http';
 import { Utilities } from 'app/shared/utils';
 import { IOrder } from './order-model';
 import { IOrderDetails } from './order-details.model';
-
+import testData from '../apparel/guertin-report/ordersByType.json';
+import { IGuertin } from './guertin-report/guertin.model';
+import { OrderDetailReportComponent } from './order-detail-report/order-detail-report.component';
 @Injectable({
   providedIn: 'root'
 })
@@ -14,7 +16,6 @@ import { IOrderDetails } from './order-details.model';
 export class OrderService {
 
   constructor(private http: HttpClient) { }
-
 
   // get apparel item
   getOrder(): Observable<IOrder[]> {
@@ -28,11 +29,60 @@ export class OrderService {
   getOrderById(id: string): Observable<IOrder> {
     return this.http.get<IOrder>(`${environment.baseUrl}${environment.orderApiUrl}/${id}`)
       .pipe(
-       //  tap(data => console.log('results', data)),
+        //  tap(data => console.log('results', data)),
         catchError(Utilities.handleError)
       );   // ...errors if any
   }
 
+  getOrderItemCounts() {
+    const items = testData;
+    const result: IGuertin[] = [];
+    let orderCount = 0;
+    let orders: IGuertin;
+
+    for (let item, i = 0; item = items[i++];) {
+      const x = result.find(f => f.size === item.Size && f.item === item.Item);
+      const found = item.Item;
+      const sizeFound = item.Size;
+      // see if item exist
+      if (x === undefined) {
+        orders = {
+          item: item.Item,
+          size: item.Size,
+          sleeveName: item.SleeveName,
+          count: item.Quantity,
+        };
+        result.push(orders);
+      } else {
+          x.count += item.Quantity;
+      }
+
+         orderCount = item.Quantity + orderCount;
+        // see if orders exist
+
+        // if (orders !== undefined) {
+        //   if (orders.size !== sizeFound) {
+        //     result.push(orders);
+        //     orderCount = 1;
+        //   }
+          // see if item changes
+          // if (orders.item !== found) {
+          //   orderCount = 0;
+          // }
+       // }
+        // create object
+        // orders = {
+        //   item: item.Item,
+        //   size: item.Size,
+        //   sleeveName: item.SleeveName,
+        //   count: orderCount,
+        // };
+      }
+      console.log('results', result);
+      return result;
+    }
+
+ // }
 
 
   // http://localhost:5000/api/Order/All/

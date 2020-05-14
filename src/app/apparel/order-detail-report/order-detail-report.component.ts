@@ -15,7 +15,7 @@ export class OrderDetailReportComponent implements OnInit {
 
   orderDetails: IOrderDetails[];
 
-  constructor(private ordeService: OrderService, public dialog: MatDialog) { }
+  constructor(private orderService: OrderService, public dialog: MatDialog) { }
 
   ngOnInit() {
     this.getDetails();
@@ -23,7 +23,7 @@ export class OrderDetailReportComponent implements OnInit {
 
 
   getDetails() {
-    this.ordeService.getOrderDetails()
+    this.orderService.getOrderDetails()
       .subscribe(data => {
         console.log('order details component', data);
         this.orderDetails = data;

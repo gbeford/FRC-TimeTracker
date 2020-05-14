@@ -26,6 +26,7 @@ import { CheckoutComponent } from './apparel/checkout/checkout.component';
 import { OrdersReportComponent } from './apparel/orders-report/orders-report.component';
 import { ApparelListEditComponent } from './apparel/apparel-list-edit/apparel-list-edit.component';
 import { OrderDetailReportComponent } from './apparel/order-detail-report/order-detail-report.component';
+import { GuertinReportComponent } from './apparel/guertin-report/guertin-report.component';
 
 
 
@@ -147,6 +148,12 @@ import { OrderDetailReportComponent } from './apparel/order-detail-report/order-
                 canActivate: [AuthGuard],
                 data: { claim: 'canAccess_Admin' }
             },
+            {
+              path: 'guertin',
+              component: GuertinReportComponent,
+              // canActivate: [AuthGuard],
+              // data: { claim: 'canAccess_Admin' }
+          },
             {
                 path: 'apparelList',
                 component: ApparelListEditComponent,

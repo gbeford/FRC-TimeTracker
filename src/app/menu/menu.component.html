@@ -12,6 +12,9 @@
     <a [routerLink]="['/']" mat-menu-item>
       <span>Home </span>
     </a>
+    <a [routerLink]="['/guertin']"  mat-menu-item>
+      <span>Guertin Report</span>
+    </a>
     <ng-container *ngIf="securityObject.isAuthenticated">
       <button mat-menu-item [matMenuTriggerFor]="admin">Admin</button>
     </ng-container>
@@ -45,7 +48,7 @@
         <span>Edit Apparel</span>
       </a>
     </ng-container>
-    
+
     <ng-container *ngIf="securityObject.isAuthenticated">
       <a [routerLink]="['/event']" *hasClaim="'canAccess_Admin'" mat-menu-item>
         <span>Add New Event</span>
@@ -93,6 +96,7 @@
         <span>Orders Details</span>
       </a>
     </ng-container>
+
   </mat-menu>
 
 
