@@ -1,3 +1,7 @@
+//  https://blog.codewithdan.com/debugging-jasmine-ts-unit-tests-in-vs-code/
+// https://angular.io/cli/test
+// https://code.visualstudio.com/docs/editor/debugging#_launch-configurations
+
 {
     "version": "0.2.0",
     "configurations": [
