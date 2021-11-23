@@ -22,7 +22,7 @@
         "environments/*"
       ]
     },
-    "module": "esnext"
+    "module": "es2020"
   },
   "angularCompilerOptions": {
     "fullTemplateTypeCheck": true,
