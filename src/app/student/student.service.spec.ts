@@ -1,4 +1,4 @@
-import { TestBed, inject, async } from '@angular/core/testing';
+import { TestBed, inject, waitForAsync } from '@angular/core/testing';
 import { of } from 'rxjs';
 import { StudentService } from './student.service';
 
