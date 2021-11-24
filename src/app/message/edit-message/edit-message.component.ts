@@ -1,11 +1,10 @@
 import { Component, OnInit, ViewChild, ChangeDetectorRef } from '@angular/core';
 import { MessageService } from '../message.service';
-import { FormGroup, FormControl, FormBuilder, Validators } from '@angular/forms';
+import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { IMessage } from '../../model/message';
-import { MatTableDataSource, MatSort } from '@angular/material';
+import { MatTableDataSource } from '@angular/material/table';
+import { MatSort } from '@angular/material/sort';
 import { TitleCasePipe } from '@angular/common';
-import { BehaviorSubject } from 'rxjs/BehaviorSubject';
-
 
 // https://www.npmjs.com/package/@ncstate/sat-popover
 // https://stackblitz.com/edit/inline-edit-mat-table?file=app%2Fapp.component.html

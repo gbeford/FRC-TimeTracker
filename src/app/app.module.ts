@@ -1,15 +1,14 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { HttpModule } from '@angular/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AppComponent } from './app.component';
-import {
-  MatToolbarModule, MatButtonModule, MatMenuModule, MatIconModule, MatDatepickerModule, MatSelectModule,
-  MatFormFieldModule, MatNativeDateModule, MatInputModule, MatSnackBarModule, MatTableModule, MatSortModule,
-  MatCheckboxModule, MatDialogModule, MatPaginatorModule, MatBadgeModule
-} from '@angular/material';
-import { MatAutocompleteModule } from '@angular/material/autocomplete';
+// import {
+//   MatToolbarModule, MatButtonModule, MatMenuModule, MatIconModule, MatDatepickerModule, MatSelectModule,
+//   MatFormFieldModule, MatNativeDateModule, MatInputModule, MatSnackBarModule, MatTableModule, MatSortModule,
+//   MatCheckboxModule, MatDialogModule, MatPaginatorModule, MatBadgeModule
+// } from '@angular/material';
+// import { MatAutocompleteModule } from '@angular/material/autocomplete';
 import { environment } from '@environment/environment';
 import { TitleCasePipe } from '@angular/common';
 import { SatPopoverModule } from '@ncstate/sat-popover';
@@ -61,6 +60,7 @@ import { GuertinReportComponent } from './apparel/guertin-report/guertin-report.
 import { PaidModalComponent } from './apparel/paid-modal/paid-modal.component';
 import { ApparelListEditComponent } from './apparel/apparel-list-edit/apparel-list-edit.component';
 import { OrderDetailReportComponent } from './apparel/order-detail-report/order-detail-report.component';
+import { MaterialModule } from './material.module';
 
 // import { Angular5Csv } from 'angular5-csv/dist/Angular5-csv';
 
@@ -113,29 +113,12 @@ import { OrderDetailReportComponent } from './apparel/order-detail-report/order-
     BrowserModule,
     FormsModule,
     ReactiveFormsModule,
-    HttpModule,
     BrowserAnimationsModule,
-    MatToolbarModule,
-    MatButtonModule,
-    MatMenuModule,
-    MatIconModule,
-    MatFormFieldModule,
-    MatNativeDateModule,
-    MatSelectModule,
-    MatInputModule,
-    MatDatepickerModule,
-    MatAutocompleteModule,
-    MatSnackBarModule,
-    MatTableModule,
-    MatSortModule,
-    MatCheckboxModule,
-    MatDialogModule,
-    MatPaginatorModule,
-    MatBadgeModule,
     AppRoutingModule,
     HttpClientModule,
     SatPopoverModule,
     HttpInterceptorModule,
+    MaterialModule
     // Angular5Csv
   ],
   providers: [

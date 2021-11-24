@@ -31,11 +31,11 @@
     </h2>
 
     <div class="mat-elevation-z8">
-      <mat-table class="pointer" #table [dataSource]="dataSource" matSort>
+      <table mat-table class="pointer" [dataSource]="dataSource" matSort>
         <!-- Edit Event text Column -->
         <ng-container matColumnDef="editEvent">
-          <mat-header-cell *matHeaderCellDef mat-sort-header> Edit Event </mat-header-cell>
-          <mat-cell *matCellDef="let element" [satPopoverAnchor]="p" (click)="p.open()">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header> Edit Event </th>
+          <td mat-cell *matCellDef="let element" [satPopoverAnchor]="p" (click)="p.open()">
             <ng-container *ngIf="element.eventID">
               <mat-icon>create</mat-icon>
             </ng-container>
@@ -43,37 +43,39 @@
             <sat-popover #p hasBackdrop xAlign="start" yAlign="start" (closed)="update(element, $event)">
               <app-inline-edit [value]="element.description"></app-inline-edit>
             </sat-popover>
-          </mat-cell>
+          </td>
         </ng-container>
 
         <!-- Event Id  Column -->
         <ng-container matColumnDef="eventId">
-          <mat-header-cell *matHeaderCellDef mat-sort-header fxFlex="100px"> Event Id </mat-header-cell>
-          <mat-cell *matCellDef="let event" fxFlex="100px"> {{event.eventID}}</mat-cell>
+          <th mat-header-cell *matHeaderCellDef mat-sort-header fxFlex="100px" mat-sort-header
+            sortActionDescription="Sort by event id"> Event Id </th>
+          <td mat-cell *matCellDef="let event" fxFlex="100px"> {{event.eventID}}</td>
         </ng-container>
 
         <!-- Event text Column -->
         <ng-container matColumnDef="eventText">
-          <mat-header-cell *matHeaderCellDef mat-sort-header fxFlex="100px"> Event </mat-header-cell>
-          <mat-cell *matCellDef="let event" fxFlex="100px"> {{event.description}}</mat-cell>
+          <th mat-header-cell *matHeaderCellDef mat-sort-header fxFlex="100px" mat-sort-header
+            sortActionDescription="Sort by event"> Event </th>
+          <td mat-cell *matCellDef="let event" fxFlex="100px"> {{event.description}}</td>
         </ng-container>
 
         <!-- Remove Event Column -->
         <ng-container matColumnDef="removeEvent">
-          <mat-header-cell *matHeaderCellDef mat-sort-header> Remove Event </mat-header-cell>
-          <mat-cell *matCellDef="let element" (click)="deleteEvent(element.eventID)">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header mat-sort-header sortActionDescription="Sort by remove event">
+            Remove Event </th>
+          <td mat-cell *matCellDef="let element" (click)="deleteEvent(element.eventID)">
             <ng-container matColumnDef="Remove">
               <ng-container *ngIf="element.eventID">
                 <mat-icon>delete</mat-icon>
               </ng-container>
             </ng-container>
-          </mat-cell>
+          </td>
         </ng-container>
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
 
-        <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
-        <mat-row *matRowDef="let row; columns: displayedColumns"></mat-row>
-
-      </mat-table>
+      </table>
     </div>
   </div>
 </div>

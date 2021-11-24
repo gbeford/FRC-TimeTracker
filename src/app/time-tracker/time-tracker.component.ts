@@ -1,23 +1,19 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, FormBuilder, Validators } from '@angular/forms';
 import { Observable } from 'rxjs/Observable';
-import { map, tap, startWith, debounceTime } from 'rxjs/operators';
-import { MatSnackBar, MatDialog } from '@angular/material';
+import { MatDialog } from '@angular/material/dialog';
+import { MatSnackBar } from '@angular/material/snack-bar';
 import { StudentService } from '../student/student.service';
 import { Student } from '../model/student';
 import { TimeTrackerMsgComponent } from './time-tracker-msg-component';
 import { IEvent } from 'app/model/event';
-
-import { pipe } from 'rxjs';
 import { EventsService } from 'app/events/events.service';
-
-
-
 @Component({
   selector: 'app-tracker',
   templateUrl: './time-tracker.component.html',
   styleUrls: ['./time-tracker.component.scss']
 })
+
 export class TimeTrackerComponent implements OnInit {
   title = 'Hours / Points Tracker';
   enterBtn = '';

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { MatSnackBar } from '@angular/material';
+import { MatSnackBar } from '@angular/material/snack-bar';
 import { MessageService } from 'app/message/message.service';
 import { StudentService } from '../student/student.service';
 import { AppUserAuth } from 'app/security/app-user-auth';

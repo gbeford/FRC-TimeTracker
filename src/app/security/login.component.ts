@@ -3,7 +3,7 @@ import { AppUser } from './app-user';
 import { AppUserAuth } from './app-user-auth';
 import { SecurityService } from './security.service';
 import { ActivatedRoute, Router } from '@angular/router';
-import { NgForm } from '@angular/forms';
+import { NgForm, FormsModule, FormGroup, FormBuilder, Validators } from '@angular/forms';
 // import { formArrayNameProvider } from '@angular/forms/src/directives/reactive_directives/form_group_name';
 
 @Component({
@@ -13,6 +13,7 @@ import { NgForm } from '@angular/forms';
 })
 export class LoginComponent implements OnInit {
   user: AppUser = new AppUser();
+  public loginForm: FormGroup;
   securityObject: AppUserAuth = null;
   returnUrl: string;
   signUpBox = false;
@@ -20,21 +21,32 @@ export class LoginComponent implements OnInit {
 
   constructor(private securityService: SecurityService,
     private route: ActivatedRoute,
-    private router: Router) { }
+    private router: Router,
+    private formBuilder: FormBuilder) { }
 
 
   ngOnInit() {
+    this.createForm();
     this.returnUrl = this.route.snapshot.queryParamMap.get('returnUrl');
   }
 
-  login(form: NgForm) {
-    this.submitted = true;
 
+  createForm() {
+    this.loginForm = this.formBuilder.group({
+      userName: ['', [Validators.required]],
+      password: ['', [Validators.required]]
+    });
+  }
+
+
+
+  submit() {
+    this.submitted = true;
     // stop here if form is invalid
-    if (form.invalid) {
+    if (this.loginForm.invalid) {
       return;
     }
-    if (form.valid) {
+    if (this.loginForm.valid) {
       this.securityService.login(this.user).subscribe(
         resp => {
           this.securityObject = resp;
@@ -51,7 +63,7 @@ export class LoginComponent implements OnInit {
         }
       );
     }
-    form.reset();
+    this.loginForm.reset();
   }
 
 

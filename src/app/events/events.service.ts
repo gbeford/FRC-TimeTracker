@@ -5,7 +5,6 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { catchError, tap } from 'rxjs/operators';
 import { IEvent } from '../model/event';
 import { Observable } from 'rxjs';
-import { MAT_SORT_HEADER_INTL_PROVIDER } from '@angular/material';
 
 @Injectable({
   providedIn: 'root'

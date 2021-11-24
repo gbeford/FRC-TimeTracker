@@ -1,8 +1,8 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { ClothingService } from '../clothing.service';
 import { IApparel } from '../apparel-model';
-import { MatTableDataSource, MatSort } from '@angular/material';
-
+import { MatTableDataSource } from '@angular/material/table';
+import { MatSort } from '@angular/material/sort';
 @Component({
   selector: 'app-apparel-list-edit',
   templateUrl: './apparel-list-edit.component.html',
@@ -13,7 +13,7 @@ export class ApparelListEditComponent implements OnInit {
   dataSource: MatTableDataSource<IApparel>; // PaidDataSource;
 
   displayedColumns = ['editItem', 'apparelId', 'item', 'description', 'price', 'removeItem'];
-  
+
   @ViewChild(MatSort, { static: true }) sort: MatSort;
 
   apparealData: IApparel[];

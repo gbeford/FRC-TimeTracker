@@ -1,10 +1,9 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { FormGroup, Validators, FormBuilder } from '@angular/forms';
 import { ReportsService } from './reports.service';
-import { MatSort, MatTableDataSource, PageEvent } from '@angular/material';
+import { MatTableDataSource } from '@angular/material/table';
+import { MatSort } from '@angular/material/sort';
 
-import { Angular5Csv } from 'angular5-csv/dist/Angular5-csv';
-import { ConditionalExpr } from '@angular/compiler';
 // https://material.angular.io/components/paginator/examples
 // https://github.com/alhazmy13/angular-csv/blob/master/README.md  -- export to csv
 // https://www.npmjs.com/package/angular5-csv
@@ -15,20 +14,13 @@ import { ConditionalExpr } from '@angular/compiler';
   templateUrl: './student-hours-report.component.html',
   styleUrls: ['./student-hours-report.component.scss']
 })
+
 export class StudentHoursReportComponent implements OnInit {
-  public studentAttendanceForm: FormGroup;
-  dataSource: MatTableDataSource<any>;
-
-  displayedColumns = ['studentId', 'firstName', 'lastName', 'createDateTime', 'checkIn', 'checkOut'];
   @ViewChild(MatSort, { static: true }) sort: MatSort;
-
-  // MatPaginator Inputs
-  // length = 100;
-  // pageSize = 10;
-  // pageSizeOptions: number[] = [5, 10, 25, 100];
+  studentAttendanceForm: FormGroup;
+  dataSource: MatTableDataSource<any>;
+  displayedColumns = ['studentId', 'firstName', 'lastName', 'createDateTime', 'checkIn', 'checkOut'];
   reportResults: any;
-  pageEvent: PageEvent;
-
   showExport = true;
 
   constructor(private formBuilder: FormBuilder, private reportService: ReportsService) { }
@@ -37,18 +29,12 @@ export class StudentHoursReportComponent implements OnInit {
     this.createForm();
   }
 
-  // MatPaginator Output
-  // setPageSizeOptions(setPageSizeOptionsInput: string) {
-  //   this.pageSizeOptions = setPageSizeOptionsInput.split(',').map(str => +str);
-  // }
-
   createForm() {
     this.studentAttendanceForm = this.formBuilder.group({
       startDateCtrl: ['', [<any>Validators.required]],
       endDateCtrl: ['', [<any>Validators.required]]
     });
   }
-
 
   submit() {
     if (this.studentAttendanceForm.valid) {
@@ -77,13 +63,12 @@ export class StudentHoursReportComponent implements OnInit {
       noDownload: false,
       headers: ['SchoolID', 'FirstName', 'LastName', 'CreatedDate', 'CheckIn', 'CheckOut']
     };
-    let result = [];
-    //debugger;
+    const result = [];
 
     this.reportResults.map(r => {
 
       for (let i = 0; i < this.reportResults.length; i++) {
-// create class to create the new object
+        // create class to create the new object
         r.createDate = r.times[i].createDateTime;
         r.checkIn = r.times[i].checkIn;
         r.checkOut = r.times[i].checkOut;
@@ -91,12 +76,6 @@ export class StudentHoursReportComponent implements OnInit {
       }
       return r;
     });
-
-
-    console.log('result', this.reportResults);
-    // const results = new Angular5Csv(this.reportResults, 'Attendance_Report', options);
-    // const results = new Angular5Csv(this.reportResults, 'Attendance_Report');
-
 
   }
 

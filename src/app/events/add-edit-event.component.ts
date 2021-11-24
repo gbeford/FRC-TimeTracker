@@ -1,7 +1,8 @@
 import { Component, OnInit, ChangeDetectorRef, ViewChild } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { EventsService } from 'app/events/events.service';
-import { MatSort, MatTableDataSource } from '@angular/material';
+import { MatTableDataSource } from '@angular/material/table';
+import { MatSort } from '@angular/material/sort';
 import { TitleCasePipe } from '@angular/common';
 import { IEvent } from 'app/model/event';
 

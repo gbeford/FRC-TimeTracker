@@ -1,5 +1,6 @@
 import { Component, AfterViewInit, ViewChild } from '@angular/core';
-import { MatTableDataSource, MatSort } from '@angular/material';
+import { MatTableDataSource } from '@angular/material/table';
+import { MatSort } from '@angular/material/sort';
 import { IMessage } from '../../model/message';
 import { MessageService } from '../message.service';
 

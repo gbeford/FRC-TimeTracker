@@ -22,11 +22,11 @@
         </mat-form-field>
       </div>
     </div>
-     <div class="col-xs-1 col-sm-1 col-md-1">
+    <div class="col-xs-1 col-sm-1 col-md-1">
     </div>
     <div class="col-xs-2 col-sm-2 col-md-2">
 
-       <button class='trackerBtn' type="submit" (click)="exportToCsv()" *ngIf="!showExport">Export</button>
+      <button class='trackerBtn' type="submit" (click)="exportToCsv()" *ngIf="!showExport">Export</button>
 
     </div>
   </div>
@@ -35,55 +35,48 @@
 
 <div [hidden]="!dataSource">
   <div class="row">
-    <!-- <div class="col-md-9 go-right">
-<mat-paginator [length]="length" [pageSize]="pageSize" [pageSizeOptions]="pageSizeOptions" (page)="pageEvent = $event">
-</mat-paginator>
-    </div> -->
-  </div>
-  <div class="row">
     <hr class="col-xs-12 col-sm-12 col-md-12">
   </div>
   <div class="row">
     <div class="col-xs-12 col-sm-12 col-md-12">
-      <mat-table #table [dataSource]="dataSource" matSort>
+      <table mat-table #table [dataSource]="dataSource" matSort>
 
         <!--- Note that these columns can be defined in any order.
             The actual rendered columns are set as a property on the row definition" -->
 
         <!-- Position Column -->
         <ng-container matColumnDef="studentId">
-          <mat-header-cell *matHeaderCellDef mat-sort-header fxFlex="100px"> School Id </mat-header-cell>
-          <mat-cell *matCellDef="let element" fxFlex="100px"> {{element.studentId}} </mat-cell>
+          <th mat-header-cell *matHeaderCellDef mat-sort-header fxFlex="100px"> School Id </th>
+          <td mat-cell *matCellDef="let element" fxFlex="100px"> {{element.studentId}} </td>
         </ng-container>
 
         <ng-container matColumnDef="firstName">
-          <mat-header-cell *matHeaderCellDef mat-sort-header> First Name </mat-header-cell>
-          <mat-cell *matCellDef="let element"> {{element.firstName}} </mat-cell>
+          <th mat-header-cell *matHeaderCellDef mat-sort-header> First Name </th>
+          <td mat-cell *matCellDef="let element"> {{element.firstName}} </td>
         </ng-container>
 
         <ng-container matColumnDef="lastName">
-          <mat-header-cell *matHeaderCellDef mat-sort-header> Last Name </mat-header-cell>
-          <mat-cell *matCellDef="let element"> {{element.lastName}} </mat-cell>
+          <th mat-header-cell *matHeaderCellDef mat-sort-header> Last Name </th>
+          <td mat-cell *matCellDef="let element"> {{element.lastName}} </td>
         </ng-container>
         <ng-container matColumnDef="createDateTime">
-          <mat-header-cell *matHeaderCellDef mat-sort-header> Created Date </mat-header-cell>
-          <mat-cell *matCellDef="let element"> {{element.times.createDateTime | date:'MMM d, y h:mm:ss a'}}
-          </mat-cell>
+          <th mat-header-cell *matHeaderCellDef mat-sort-header> Created Date </th>
+          <td mat-cell *matCellDef="let element"> {{element.times.createDateTime | date:'MMM d, y h:mm:ss a'}}
+          </td>
         </ng-container>
 
         <ng-container matColumnDef="checkIn">
-          <mat-header-cell *matHeaderCellDef mat-sort-header> Check In </mat-header-cell>
-          <mat-cell *matCellDef="let element"> {{element.times.checkIn | date:'MMM d, y h:mm:ss a'}} </mat-cell>
+          <th mat-header-cell *matHeaderCellDef mat-sort-header> Check In </th>
+          <td mat-cell *matCellDef="let element"> {{element.times.checkIn | date:'MMM d, y h:mm:ss a'}} </td>
         </ng-container>
 
         <ng-container matColumnDef="checkOut">
-          <mat-header-cell *matHeaderCellDef mat-sort-header> Check Out </mat-header-cell>
-          <mat-cell *matCellDef="let element"> {{element.times.checkOut| date:'MMM d, y h:mm:ss a'}} </mat-cell>
+          <th mat-header-cell *matHeaderCellDef mat-sort-header> Check Out </th>
+          <td mat-cell *matCellDef="let element"> {{element.times.checkOut| date:'MMM d, y h:mm:ss a'}} </td>
         </ng-container>
-
-        <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
-        <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
-      </mat-table>
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+      </table>
     </div>
   </div>
 </div>
