@@ -12,7 +12,7 @@ import { MatSelectModule } from '@angular/material/select';
 import { MatIconModule } from '@angular/material/icon';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatToolbarModule } from '@angular/material/toolbar';
-
+import { MatBadgeModule } from '@angular/material/badge';
 @NgModule({
     exports: [
         CdkTableModule,
@@ -27,7 +27,8 @@ import { MatToolbarModule } from '@angular/material/toolbar';
         MatSelectModule,
         MatIconModule,
         MatMenuModule,
-        MatToolbarModule
+        MatToolbarModule,
+        MatBadgeModule
     ]
 })
 export class MaterialModule { }
