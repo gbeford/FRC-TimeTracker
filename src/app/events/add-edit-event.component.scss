@@ -1,9 +1,7 @@
-/*
-.example-form {
-  min-width: 150px;
-  max-width: 500px;
+table {
   width: 100%;
-}*/
+}
+
 .container-list {
   padding-top: 20px;
 }
@@ -21,24 +19,3 @@
   padding-left: 20px;
 }
 
-/* mat-table {
-  overflow: auto;
-  max-height: 700px;
-} */
-.mat-row {
-  align-items: stretch;
-
-  .mat-cell {
-    display: flex;
-    align-items: center;
-  }
-}
-
-.mat-column-symbol,
-.mat-column-name {
-  max-width: 160px;
-}
-
-.mat-form-field {
-  width: 480px;
-}

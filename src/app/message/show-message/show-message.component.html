@@ -9,7 +9,7 @@
       <app-auto-complete (notify)='onNotify($event)' [autoCompleteForm]="showMessageForm">Loading...</app-auto-complete>
     </div>
     <div>
-      <mat-checkbox formControlName="clearMessages">Clear messages?</mat-checkbox>
+      <mat-checkbox id="clearMessage" color="primary" formControlName="clearMessage">Clear messages?</mat-checkbox>
     </div>
     <mat-form-field style="width: 50%;" *ngIf='!clearMessages.value'>
       <mat-select placeholder="Select messages you want to flag the kids" formControlName="messageCtrl" multiple>
@@ -24,7 +24,8 @@
       <mat-error *ngIf="showMessageForm.hasError('required')">Please choose at least 1 message</mat-error>
     </mat-form-field>
     <div>
-      <button class='trackerBtn' type="submit" [disabled]="!showMessageForm.valid && clearMessages.value != true">Submit</button>
+      <button class='trackerBtn' type="submit"
+        [disabled]="!showMessageForm.valid && clearMessages.value != true">Submit</button>
     </div>
 
   </form>

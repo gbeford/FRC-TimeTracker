@@ -1,11 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormBuilder, Validators, FormControl } from '@angular/forms';
+import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { IMessage } from '../../model/message';
 import { MessageService } from '../message.service';
 import { Student } from '../../model/student';
 import { StudentService } from 'app/student/student.service';
-
-
 
 @Component({
   selector: 'app-show-message',
@@ -35,12 +33,12 @@ export class ShowMessageComponent implements OnInit {
   }
 
 
-  get clearMessages() { return this.showMessageForm.get('clearMessages'); }
+  get clearMessages() { return this.showMessageForm.get('clearMessage'); }
 
   createForm() {
     this.showMessageForm = this.formBuilder.group({
       messageCtrl: ['', [<any>Validators.required]],
-      clearMessages: ['']
+      clearMessage: ['']
     });
   }
 
@@ -49,9 +47,9 @@ export class ShowMessageComponent implements OnInit {
   }
 
   submit() {
-    if ((this.studentID !== null) && (this.showMessageForm.valid || this.showMessageForm.value.clearMessages)) {
+    if ((this.studentID !== null) && (this.showMessageForm.valid || this.showMessageForm.value.clearMessage)) {
       let messages = [];
-      if (this.showMessageForm.value.clearMessages) {
+      if (this.showMessageForm.value.clearMessage) {
         messages = [];
       } else {
         messages = this.showMessageForm.value.messageCtrl;
