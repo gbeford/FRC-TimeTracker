@@ -4,8 +4,6 @@ import {
     HttpEvent, HttpInterceptor, HttpHandler,
     HttpRequest, HTTP_INTERCEPTORS
 } from '@angular/common/http';
-import { ngModuleJitUrl } from '@angular/compiler';
-
 
 @Injectable()
 export class HttpRequestInterceptor implements HttpInterceptor {

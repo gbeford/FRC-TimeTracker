@@ -91,6 +91,7 @@ export class SecurityService {
   login(entity: AppUser): Observable<AppUserAuth> {
     // Initialize security object
     this.resetSecurityObject();
+    console.log('entity', entity);
 
     return this.http.post<AppUserAuth>(`${environment.baseUrl}${environment.login}`,
       entity).pipe(

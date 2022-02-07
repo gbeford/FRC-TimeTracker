@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ɵɵsetComponentScope } from '@angular/core';
 import { AppUser } from './app-user';
 import { AppUserAuth } from './app-user-auth';
 import { SecurityService } from './security.service';
@@ -41,12 +41,17 @@ export class LoginComponent implements OnInit {
 
 
   submit() {
+    console.log('here');
     this.submitted = true;
     // stop here if form is invalid
     if (this.loginForm.invalid) {
+      console.log('invaid', this.loginForm.invalid);
       return;
     }
     if (this.loginForm.valid) {
+      console.log('vaid');
+      this.user.userName = this.loginForm.value.userName;
+      this.user.password = this.loginForm.value.password;
       this.securityService.login(this.user).subscribe(
         resp => {
           this.securityObject = resp;
