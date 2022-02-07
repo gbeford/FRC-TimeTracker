@@ -1,6 +1,4 @@
-import { BinaryData } from 'fs';
 import * as fs from 'fs';
-import { Binary } from '@angular/compiler';
 
 /* Defines the apparel entity */
 export interface IApparelImage {
