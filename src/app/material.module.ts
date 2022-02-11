@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { CdkTableModule } from '@angular/cdk/table';
 import { MatSortModule } from '@angular/material/sort';
 import { MatTableModule } from '@angular/material/table';
+
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatGridListModule } from '@angular/material/grid-list';
 import { MatDialogModule } from '@angular/material/dialog';
@@ -14,6 +15,7 @@ import { MatMenuModule } from '@angular/material/menu';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatBadgeModule } from '@angular/material/badge';
 import { MatCheckboxModule } from '@angular/material/checkbox';
+import { MatNativeDateModule } from '@angular/material/core';
 
 @NgModule({
     exports: [
@@ -22,6 +24,7 @@ import { MatCheckboxModule } from '@angular/material/checkbox';
         MatTableModule,
         MatGridListModule,
         MatDatepickerModule,
+        MatNativeDateModule,
         MatDialogModule,
         MatSnackBarModule,
         MatAutocompleteModule,

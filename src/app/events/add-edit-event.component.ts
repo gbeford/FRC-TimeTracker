@@ -79,7 +79,8 @@ export class AddEditEventComponent implements OnInit {
 
   deleteEvent(el: number) {
     this.eventService.deleteEventRecord(el).subscribe((data) => {
-      this.alertMessage = 'Event was deleted successfully.';
+      alert('Record Deleted');
+      // this.alertMessage = 'Event was deleted successfully.'; TODO: FIXXXXX it is broken
       this.success = true;
       this.showEvents();
       this.addEventForm.reset();
